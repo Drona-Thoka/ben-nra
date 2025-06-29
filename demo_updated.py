@@ -2,6 +2,11 @@ import openai, re, random, time, json, os
 from datetime import datetime
 import argparse
 import glob
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
 
 # --- Constants ---
 BASE_LOG_DIR = "logs"
@@ -184,8 +189,7 @@ ALL_BIASES = {**COGNITIVE_BIASES, **DEMOGRAPHIC_BIASES}
 
 # --- Utility Functions ---
 def query_model(prompt, system_prompt, max_tokens=200):
-    api_key = os.environ.get("OPENAI_API_KEY")
-    
+    api_key = os.environ.get("OPENAI_API_KEY")    
     client = openai.OpenAI(api_key=api_key)
     
     messages = [

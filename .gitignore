@@ -3,3 +3,4 @@ results/*
 *.out
 entrust
 sandbox
+.env

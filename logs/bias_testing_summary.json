@@ -1,5 +1,5 @@
 {
-  "start_time": "2025-05-24T21:35:13.493962",
+  "start_time": "2025-06-29T16:11:54.546210",
   "completed_combinations": 70,
   "total_combinations": 70,
   "results_by_combination": {
@@ -412,6 +412,6 @@
       "accuracy": 40.0
     }
   },
-  "end_time": "2025-05-24T21:35:13.908599",
-  "total_duration_seconds": 0.414637
+  "end_time": "2025-06-29T16:11:56.008630",
+  "total_duration_seconds": 1.46242
 }
