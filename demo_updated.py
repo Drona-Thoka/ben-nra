@@ -23,13 +23,12 @@ USE_DOCTOR = True
 USE_MEASUREMENT = True
 USE_SPECIALIST = True
 
-#-- Prompts for each A-F situtation --
-MINIMALIST_PROMPT = f"You are a doctor named Dr. Agent who only responds in the form of dialogue. You are inspecting a patient who you will ask questions in order to understand their disease. You are only allowed to ask {TOTAL_INFERENCES} questions total before you must make a decision. You have asked {0} questions so far. Your dialogue will only be 1-3 sentences in length. Once you have decided to make a diagnosis please type \"DIAGNOSIS READY: [diagnosis here]\""
-AUGMENTED_DOCTOR_PROMPT = ""
-DOCTOR_TEAM_PROMPT = ""
-BASE_PROMPT = ""
-SPECIALIST_CASE_PROMPT = ""
-AUGMENTED_SPECIALIST_CASE_PROMPT = ""
+#-- Prompts for each A-D situtation --
+MINIMALIST_PROMPT = "You are a doctor named Dr. Agent who only responds in the form of dialogue. You are inspecting a patient who you will ask questions in order to understand their disease. You are only allowed to ask {self.MAX_INFS} questions total before you must make a decision. You have asked {self.infs} questions so far. Your dialogue will only be 1-3 sentences in length. Once you have decided to make a diagnosis please type \"DIAGNOSIS READY: [diagnosis here]\""
+AUGMENTED_DOCTOR_PROMPT = "You are a doctor named Dr. Agent who only responds in the form of dialogue. You are inspecting a patient who you will ask questions in order to understand their disease. You are only allowed to ask {self.MAX_INFS} questions total before you must make a decision. You have asked {self.infs} questions so far. You can request test results using the format \"REQUEST TEST: [test]\". For example, \"REQUEST TEST: Chest_X-Ray\". Your dialogue will only be 1-3 sentences in length. Once you have decided to make a diagnosis please type \"DIAGNOSIS READY: [diagnosis here]\""
+DOCTOR_TEAM_PROMPT = "You are a doctor named Dr. Agent who only responds in the form of dialogue. You are inspecting a patient who you will ask questions in order to understand their disease. You are only allowed to ask {self.MAX_INFS} questions total before you must make a decision. You have asked {self.infs} questions so far. You will be given a chance to consult with a specialist doctor during the session. Your dialogue will only be 1-3 sentences in length. Once you have decided to make a diagnosis please type \"DIAGNOSIS READY: [diagnosis here]\""
+BASELINE_PROMPT = "You are a doctor named Dr. Agent who only responds in the form of dialogue. You are inspecting a patient who you will ask questions in order to understand their disease. You are only allowed to ask {self.MAX_INFS} questions total before you must make a decision. You have asked {self.infs} questions so far. You can request test results using the format \"REQUEST TEST: [test]\". For example, \"REQUEST TEST: Chest_X-Ray\". You will be given a chance to consult with a specialist doctor during the session. Your dialogue will only be 1-3 sentences in length. Once you have decided to make a diagnosis please type \"DIAGNOSIS READY: [diagnosis here]\""
+
 
 # --- Utility Functions ---
 def query_model(prompt, system_prompt, max_tokens=200):
@@ -375,11 +374,14 @@ class SpecialistAgent(Agent):
         return answer
 
 # --- Main Simulation Logic ---
-def run_single_scenario(scenario, dataset, total_inferences, max_consultation_turns, scenario_idx, bias=None):
+# --- aggent_activitation [measurement, specialist] -> binary --- 
+def run_single_scenario(scenario, dataset, total_inferences, max_consultation_turns, scenario_idx, AGENT_CONFIG):
     patient_agent = PatientAgent(scenario=scenario)
-    doctor_agent = DoctorAgent(scenario=scenario, max_infs=total_inferences, bias=bias)
-    meas_agent = MeasurementAgent(scenario=scenario)
-    specialist_agent = None
+    doctor_agent = DoctorAgent(scenario=scenario, max_infs=total_inferences)
+
+    # Instantiation by config
+    meas_agent = MeasurementAgent(scenario=scenario) if AGENT_CONFIG["use_measurement"] else None
+    specialist_agent = SpecialistAgent(scenario=scenario) if AGENT_CONFIG["use_specialist"] else None
 
     available_tests = scenario.get_available_tests()
     run_log = {
@@ -387,7 +389,6 @@ def run_single_scenario(scenario, dataset, total_inferences, max_consultation_tu
         "model": MODEL_NAME,
         "dataset": dataset,
         "scenario_id": scenario_idx,
-        "bias_applied": bias,
         "max_patient_turns": total_inferences,
         "max_consultation_turns": max_consultation_turns,
         "correct_diagnosis": scenario.diagnosis_information(),
