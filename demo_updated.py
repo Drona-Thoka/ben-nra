@@ -55,10 +55,10 @@ def compare_results(diagnosis, correct_diagnosis):
     answer = query_model(prompt, system_prompt)
     return answer.strip().lower() == "yes"
 
-def get_log_file(dataset, bias_name):
+def get_log_file(dataset, config_name):
     """Create a log file name based on dataset and bias"""
     os.makedirs(BASE_LOG_DIR, exist_ok=True)
-    return os.path.join(BASE_LOG_DIR, f"{dataset}_{bias_name}_log.json")
+    return os.path.join(BASE_LOG_DIR, f"{dataset}_{config_name}_log.json")
 
 def log_scenario_data(data, log_file):
     """Log data to a specific log file"""
@@ -423,21 +423,30 @@ def run_single_scenario(scenario, dataset, total_inferences, max_consultation_tu
                 print("Warning: Could not parse test name from doctor request.")
                 test_name = "Unknown Test"
 
-            result = meas_agent.inference_measurement(doctor_dialogue)
-            print(f"Measurement [Turn {turn}]: {result}")
+            if AGENT_CONFIG["use_measurement"]:
+                result = meas_agent.inference_measurement(doctor_dialogue)
+                print(f"Measurement [Turn {turn}]: {result}")
             next_input_for_doctor = result
             run_log["dialogue_history"].append({"speaker": "Measurement", "turn": turn, "phase": "patient", "text": result})
-            history_update = f"Doctor: {doctor_dialogue}\n\nMeasurement: {result}"
+
+            if AGENT_CONFIG["use_measurement"]:
+                history_update = f"Doctor: {doctor_dialogue}\n\nMeasurement: {result}"
+                meas_agent.add_hist(history_update)
+                current_speaker = "Measurement"
+            else:
+                history_update = f"Doctor: {doctor_dialogue}"
+            
             patient_agent.add_hist(history_update)
-            meas_agent.add_hist(history_update)
-            current_speaker = "Measurement"
         else:
             patient_response = patient_agent.inference_patient(doctor_dialogue)
             print(f"Patient [Turn {turn}]: {patient_response}")
             next_input_for_doctor = patient_response
             run_log["dialogue_history"].append({"speaker": "Patient", "turn": turn, "phase": "patient", "text": patient_response})
             history_update = f"Patient: {patient_response}"
-            meas_agent.add_hist(f"Doctor: {doctor_dialogue}\n\nPatient: {patient_response}")
+
+            if AGENT_CONFIG["use_measurement"]:        
+                meas_agent.add_hist(f"Doctor: {doctor_dialogue}\n\nPatient: {patient_response}")
+            
             current_speaker = "Patient"
 
         doctor_dialogue, state = doctor_agent.inference_doctor(next_input_for_doctor, mode="patient")
@@ -445,7 +454,7 @@ def run_single_scenario(scenario, dataset, total_inferences, max_consultation_tu
         run_log["dialogue_history"].append({"speaker": "Doctor", "turn": turn, "phase": "patient", "text": doctor_dialogue})
         meas_agent.add_hist(f"Doctor: {doctor_dialogue}")
 
-        if state == "consultation_needed" or turn == total_inferences:
+        if ((AGENT_CONFIG["use_specialist"] and state == "consultation_needed") or turn == total_inferences):
              print("\nPatient interaction phase complete.")
              break
 
@@ -456,37 +465,38 @@ def run_single_scenario(scenario, dataset, total_inferences, max_consultation_tu
     print(f"Total tests requested during patient interaction: {run_log['tests_requested_count']}")
     print(f"Tests left out: {run_log['tests_left_out']}")
 
-    # --- Specialist Determination Phase ---
-    print(f"\n--- Phase 2: Determining Specialist ---")
-    specialist_type, specialist_reason = doctor_agent.determine_specialist()
-    run_log["determined_specialist"] = specialist_type
-    run_log["specialist_reason"] = specialist_reason
-    specialist_agent = SpecialistAgent(scenario=scenario, specialty=specialist_type)
-    specialist_agent.agent_hist = doctor_agent.agent_hist
-    last_specialist_response = "I have reviewed the patient's case notes. Please share your thoughts to begin the consultation."
-    run_log["dialogue_history"].append({"speaker": "System", "turn": total_inferences + 1, "phase": "consultation", "text": f"Consultation started with {specialist_type}. Reason: {specialist_reason}"})
+    if AGENT_CONFIG["use_specialist"]:
+        # --- Specialist Determination Phase ---
+        print(f"\n--- Phase 2: Determining Specialist ---")
+        specialist_type, specialist_reason = doctor_agent.determine_specialist()
+        run_log["determined_specialist"] = specialist_type
+        run_log["specialist_reason"] = specialist_reason
+        specialist_agent = SpecialistAgent(scenario=scenario, specialty=specialist_type)
+        specialist_agent.agent_hist = doctor_agent.agent_hist
+        last_specialist_response = "I have reviewed the patient's case notes. Please share your thoughts to begin the consultation."
+        run_log["dialogue_history"].append({"speaker": "System", "turn": total_inferences + 1, "phase": "consultation", "text": f"Consultation started with {specialist_type}. Reason: {specialist_reason}"})
 
 
-    # --- Specialist Consultation Phase ---
-    print(f"\n--- Phase 3: Specialist Consultation (Max {max_consultation_turns} turns) ---")
-    consultation_dialogue_entries = []
-    for consult_turn in range(1, max_consultation_turns + 1):
-        full_turn = total_inferences + consult_turn
+        # --- Specialist Consultation Phase ---
+        print(f"\n--- Phase 3: Specialist Consultation (Max {max_consultation_turns} turns) ---")
+        consultation_dialogue_entries = []
+        for consult_turn in range(1, max_consultation_turns + 1):
+            full_turn = total_inferences + consult_turn
 
-        doctor_consult_msg, state = doctor_agent.inference_doctor(last_specialist_response, mode="consultation")
-        print(f"Doctor [Consult Turn {consult_turn}]: {doctor_consult_msg}")
-        doctor_entry = {"speaker": "Doctor", "turn": full_turn, "phase": "consultation", "text": doctor_consult_msg}
-        run_log["dialogue_history"].append(doctor_entry)
-        consultation_dialogue_entries.append(doctor_entry)
+            doctor_consult_msg, state = doctor_agent.inference_doctor(last_specialist_response, mode="consultation")
+            print(f"Doctor [Consult Turn {consult_turn}]: {doctor_consult_msg}")
+            doctor_entry = {"speaker": "Doctor", "turn": full_turn, "phase": "consultation", "text": doctor_consult_msg}
+            run_log["dialogue_history"].append(doctor_entry)
+            consultation_dialogue_entries.append(doctor_entry)
 
-        specialist_response = specialist_agent.inference_specialist(doctor_consult_msg)
-        print(f"Specialist ({specialist_type}) [Consult Turn {consult_turn}]: {specialist_response}")
-        specialist_entry = {"speaker": f"Specialist ({specialist_type})", "turn": full_turn, "phase": "consultation", "text": specialist_response}
-        run_log["dialogue_history"].append(specialist_entry)
-        consultation_dialogue_entries.append(specialist_entry)
-        last_specialist_response = specialist_response
+            specialist_response = specialist_agent.inference_specialist(doctor_consult_msg)
+            print(f"Specialist ({specialist_type}) [Consult Turn {consult_turn}]: {specialist_response}")
+            specialist_entry = {"speaker": f"Specialist ({specialist_type})", "turn": full_turn, "phase": "consultation", "text": specialist_response}
+            run_log["dialogue_history"].append(specialist_entry)
+            consultation_dialogue_entries.append(specialist_entry)
+            last_specialist_response = specialist_response
 
-        time.sleep(0.5)
+            time.sleep(0.5)
 
     # --- Final Diagnosis Phase ---
     print("\n--- Phase 4: Final Diagnosis ---")
@@ -524,42 +534,32 @@ def run_single_scenario(scenario, dataset, total_inferences, max_consultation_tu
 
     return run_log, run_log.get("is_correct", False)
 
-def run_bias_dataset_combination(dataset, bias, num_scenarios, total_inferences, consultation_turns):
-    """Run a single bias-dataset combination test"""
-    log_file = get_log_file(dataset, bias)
-    completed_scenario_ids = get_completed_scenarios(log_file) # Renamed for clarity
-    
-    print(f"\n=== Testing {bias} bias on {dataset} dataset ===")
-    print(f"Log file: {log_file}")
-    print(f"Already completed scenario IDs: {len(completed_scenario_ids)}")
-
-    # Calculate number of correct scenarios from previous runs
-    num_correct_from_previous_runs = 0
-    if os.path.exists(log_file) and os.path.getsize(log_file) > 0:
-        with open(log_file, 'r') as f:
-            try:
-                previous_log_data = json.load(f)
-                if isinstance(previous_log_data, list):
-                    num_correct_from_previous_runs = sum(
-                        1 for entry in previous_log_data
-                        if entry.get("scenario_id") in completed_scenario_ids and entry.get("is_correct")
-                    )
-            except json.JSONDecodeError:
-                print(f"Warning: Could not parse log file {log_file} for calculating previous accuracy.")
+def run_experiment_three(dataset, num_scenarios, total_inferences, consultation_turns):
+    """Run a single config-dataset combination test"""
+ 
+    # Create a list of scenarios to run
+    scenarios_to_process = [{"name": "Base-Case", "use_measurement": True, "use-specialist": True}, 
+                            {"name": "Augmented-Doctor", "use_measurement": True, "use-specialist": False}, 
+                            {"name": "Doctoral-Team", "use_measurement": False, "use-specialist": True}, 
+                            {"name": "Minimalist", "use_measurement": False, "use-specialist": False}]
     
     scenario_loader = ScenarioLoader(dataset=dataset)
-    max_available = scenario_loader.num_scenarios
-    scenarios_to_run = min(num_scenarios, max_available)
+    scenarios_to_run = 4    
+    total_correct_current_session = 0 
+    total_simulated_current_session = 0 
+
+    config_name = scenarios_to_process[0]["name"]
     
-    total_correct_current_session = 0 # Renamed for clarity
-    total_simulated_current_session = 0 # Renamed for clarity
+    log_file = get_log_file(dataset, config_name)
+    completed_scenario_ids = get_completed_scenarios(log_file) 
     
-    # Create a list of scenarios to run, skipping already completed ones
-    scenarios_to_process = [i for i in range(scenarios_to_run) if i not in completed_scenario_ids]
+    print(f"\n=== Testing {config_name} configuration on {dataset} dataset ===")
+    print(f"Log file: {log_file}")
+    print(f"Already completed scenario IDs: {len(completed_scenario_ids)}")
     print(f"Scenarios to run in this session: {len(scenarios_to_process)} of {scenarios_to_run} total planned")
     
     for scenario_idx in scenarios_to_process:
-        print(f"\n--- Running Scenario {scenario_idx + 1}/{scenarios_to_run} with {bias} bias ---")
+        print(f"\n--- Running Scenario {scenario_idx + 1}/{scenarios_to_run} with {config_name} configuration ---")
         scenario = scenario_loader.get_scenario(id=scenario_idx)
         if scenario is None:
             print(f"Error loading scenario {scenario_idx}, skipping.")
@@ -567,7 +567,7 @@ def run_bias_dataset_combination(dataset, bias, num_scenarios, total_inferences,
 
         total_simulated_current_session += 1
         run_log, is_correct = run_single_scenario(
-            scenario, dataset, total_inferences, consultation_turns, scenario_idx, bias
+            scenario, dataset, total_inferences, consultation_turns, scenario_idx, config_name
         )
 
         if is_correct:
@@ -579,18 +579,18 @@ def run_bias_dataset_combination(dataset, bias, num_scenarios, total_inferences,
         # Update progress
         if total_simulated_current_session > 0:
             accuracy_current_session = (total_correct_current_session / total_simulated_current_session) * 100
-            print(f"\nCurrent Accuracy for this session ({bias} bias on {dataset}): {accuracy_current_session:.2f}% ({total_correct_current_session}/{total_simulated_current_session})")
+            print(f"\nCurrent Accuracy for this session ({config_name} configuration on {dataset}): {accuracy_current_session:.2f}% ({total_correct_current_session}/{total_simulated_current_session})")
             
             # Calculate overall progress including previously completed scenarios
             overall_completed_count = len(completed_scenario_ids) + total_simulated_current_session
-            overall_correct_count = num_correct_from_previous_runs + total_correct_current_session
+            overall_correct_count = total_correct_current_session
             
             overall_accuracy_so_far = (overall_correct_count / overall_completed_count) * 100 if overall_completed_count > 0 else 0
             # The original problematic line was:
             # overall_accuracy = ((len([s for s in completed_scenarios if s in run_log.get("is_correct", False)]) + total_correct) / 
             #                    overall_completed) * 100 if overall_completed > 0 else 0
             # This is now correctly calculated as overall_accuracy_so_far.
-            print(f"Overall Progress for {bias} on {dataset}: {overall_completed_count}/{scenarios_to_run} scenarios completed. Overall Accuracy: {overall_accuracy_so_far:.2f}% ({overall_correct_count}/{overall_completed_count})")
+            print(f"Overall Progress for {config_name} on {dataset}: {overall_completed_count}/{scenarios_to_run} scenarios completed. Overall Accuracy: {overall_accuracy_so_far:.2f}% ({overall_correct_count}/{overall_completed_count})")
     
     # Calculate final statistics for this combination
     final_completed_count = len(completed_scenario_ids) + total_simulated_current_session
@@ -615,7 +615,7 @@ def run_bias_dataset_combination(dataset, bias, num_scenarios, total_inferences,
         
         final_accuracy = (correct_count_total / actual_entries_in_log) * 100 if actual_entries_in_log > 0 else 0
         
-        print(f"\n=== Results for {bias} bias on {dataset} dataset ===")
+        print(f"\n=== Results for {config_name} configuration on {dataset} dataset ===")
         print(f"Total Scenarios Logged: {actual_entries_in_log} (planned: {scenarios_to_run}, completed this/prev sessions: {final_completed_count})")
         print(f"Final Accuracy: {final_accuracy:.2f}% ({correct_count_total}/{actual_entries_in_log})")
     
