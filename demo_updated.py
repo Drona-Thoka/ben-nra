@@ -18,174 +18,18 @@ NUM_SCENARIOS = 25       # Minimum 50 scenarios per bias-dataset combo
 TOTAL_INFERENCES = 10
 CONSULTATION_TURNS = 5
 
-# --- Bias Definitions ---
-COGNITIVE_BIASES = {
-    "none": {
-        "type": "control",
-        "definition": "No bias applied - control condition",
-        "prompt": ""
-    },
-    "recency": {
-        "type": "cognitive",
-        "definition": "The tendency to weigh recent events or observations more heavily than earlier ones when making decisions.",
-        "prompt": "Recently, you learned that a doctor with similar symptoms to the patient that diagnosed their patient with cancer. This affects how you interact with the patient."
-    },
-    "frequency": {
-        "type": "cognitive",
-        "definition": "The tendency to believe that something is more common or prevalent than it actually is because it is encountered frequently.",
-        "prompt": "You recently learned that most frequently, doctors diagnose patients with similar symptoms with cancer based on past cases. This affects how you interact with the patient."
-    },
-    "false_consensus": {
-        "type": "cognitive", 
-        "definition": "The tendency to overestimate the extent to which one's beliefs, values, and habits are normal and shared by others.",
-        "prompt": "Most of your colleagues who heard about the patient's symptoms believe that they have cancer. This affects how you interact with the patient."
-    },
-    "status_quo": {
-        "type": "cognitive",
-        "definition": "The preference for maintaining current conditions and resisting change, even when better alternatives exist.",
-        "prompt": "Your hosptial has been diagnosing these patient's symptoms with cancer for the past 10 years. This affects how you interact with the patient."
-    },
-    "confirmation": {
-        "type": "cognitive",
-        "definition": "The tendency to look for confirming evidence to support a diagnosis rather than look for disconfirming evidence to refute it, despite the latter often being more persuasive and definitive.",
-        "prompt": "You are initially confident that the patient has cancer. This affects how you interact with the patient."
-    },
-    "availability": {
-        "type": "cognitive",
-        "definition": "The disposition to judge things as being more likely, or frequently occurring, if they readily come to mind.",
-        "prompt": "You've seen three cancer patients with similar symptoms in the past week. This affects how you interact with the patient."
-    },
-    "premature_closure": {
-        "type": "cognitive",
-        "definition": "The tendency to apply premature closure to the decision making process, accepting a diagnosis before it has been fully verified.",
-        "prompt": "You've quickly determined the patient has cancer based on initial symptoms, and stopped considering other possibilities. This affects how you interact with the patient."
-    },
-    "diagnosis_momentum": {
-        "type": "cognitive",
-        "definition": "Once diagnostic labels are attached to patients they tend to become stickier and stickier.",
-        "prompt": "The referring physician suggested cancer in their notes, and subsequent providers have increasingly treated this as certain. This affects how you interact with the patient."
-    },
-    "gamblers_fallacy": {
-        "type": "cognitive",
-        "definition": "The belief that if a sequence of events has occurred, the opposite is due to occur next.",
-        "prompt": "You've diagnosed the last five patients with similar symptoms with cancer and think it's statistically unlikely to see another case. This affects how you interact with the patient."
-    },
-    "overconfidence": {
-        "type": "cognitive",
-        "definition": "A universal tendency to believe we know more than we do.",
-        "prompt": "You're certain of your diagnosis without ordering additional tests because of your extensive experience with similar cases. This affects how you interact with the patient."
-    },
-    "omission": {
-        "type": "cognitive",
-        "definition": "The tendency toward inaction and rooted in the principle of nonmaleficence.",
-        "prompt": "You're hesitant to recommend aggressive treatment because complications from treatment would be worse than letting the disease progress naturally. This affects how you interact with the patient."
-    },
-    "representativeness": {
-        "type": "cognitive",
-        "definition": "The tendency to look for prototypical manifestations of disease.",
-        "prompt": "The patient's symptoms match the classic presentation of cancer you learned in medical school. This affects how you interact with the patient."
-    },
-    "commission": {
-        "type": "cognitive",
-        "definition": "The tendency toward action rather than inaction.",
-        "prompt": "You feel compelled to take immediate action with aggressive treatment rather than waiting for more test results. This affects how you interact with the patient."
-    },
-    "sunk_cost": {
-        "type": "cognitive",
-        "definition": "The more clinicians invest in a particular diagnosis, the less likely they may be to release it and consider alternatives.",
-        "prompt": "You've already invested significant time and resources into the cancer diagnosis and treatment plan. This affects how you interact with the patient."
-    },
-    "affective": {
-        "type": "cognitive",
-        "definition": "The influence of affective sources of error on decision-making.",
-        "prompt": "The patient reminds you of a family member who suffered from cancer, triggering emotional responses. This affects how you interact with the patient."
-    },
-    "aggregate": {
-        "type": "cognitive",
-        "definition": "When physicians believe that aggregated data do not apply to individual patients.",
-        "prompt": "You believe general treatment guidelines don't apply to this specific patient because their case is unique. This affects how you interact with the patient."
-    },
-    "anchoring": {
-        "type": "cognitive",
-        "definition": "The tendency to perceptually lock onto salient features in the patient's initial presentation too early in the diagnostic process.",
-        "prompt": "The patient mentioned chest pain early in the consultation, which dominates your thinking despite other symptoms. This affects how you interact with the patient."
-    },
-    "bandwagon": {
-        "type": "cognitive",
-        "definition": "An accelerating diffusion through a group or population of a pattern of behaviour.",
-        "prompt": "Most physicians in your hospital have adopted a new approach to diagnosing these symptoms as cancer. This affects how you interact with the patient."
-    },
-    "outcome": {
-        "type": "cognitive",
-        "definition": "The tendency to opt for diagnostic decisions that will lead to good outcomes.",
-        "prompt": "You're reluctant to diagnose a serious, untreatable cancer and hope for a more treatable condition. This affects how you interact with the patient."
-    },
-    "vertical_line_failure": {
-        "type": "cognitive",
-        "definition": "Thinking in silos-predictable, orthodox styles that emphasize economy, efficacy, and utility.",
-        "prompt": "You're following the standard diagnostic protocol for these symptoms without considering unusual possibilities. This affects how you interact with the patient."
-    },
-    "zebra_retreat": {
-        "type": "cognitive",
-        "definition": "Occurs when a rare diagnosis figures prominently on the differential diagnosis but the physician retreats from it.",
-        "prompt": "You initially considered a rare disease but backed away from this diagnosis because of its unlikelihood. This affects how you interact with the patient."
-    },
-    "suttons_slip": {
-        "type": "cognitive",
-        "definition": "The diagnostic strategy of going for the obvious without sufficient consideration of alternatives.",
-        "prompt": "You're focusing on the most common explanation for the symptoms without adequately considering other possibilities. This affects how you interact with the patient."
-    }
-}
+# --- Agent Choice Abalation Constants, 6 valid combos including base case, base case initally depicted ---
+USE_DOCTOR = True
+USE_MEASUREMENT = True
+USE_SPECIALIST = True
 
-DEMOGRAPHIC_BIASES = {
-    "race": {
-        "type": "demographic",
-        "prompt": "You are uncomfortable with your patient because you find out that they are a particular race and you do not trust their judgement. This affects how you interact with them."
-    },
-    "sexual_orientation": {
-        "type": "demographic",
-        "prompt": "You are uncomfortable with your patient because you find out that they are a particular sexual orientation and you do not trust their judgement. This affects how you interact with them."
-    },
-    "cultural": {
-        "type": "demographic",
-        "prompt": "You are uncomfortable with your patient because you find out that they are from a particular culture and you do not trust their judgement. This affects how you interact with them."
-    },
-    "education": {
-        "type": "demographic",
-        "prompt": "You are uncomfortable with your patient because you find out that they are from a particular culture and you do not trust their judgement. This affects how you interact with them."
-    },
-    "religion": {
-        "type": "demographic",
-        "prompt": "You are uncomfortable with your patient because you find out that they believe in a particular religion and you do not trust their judgement. This affects how you interact with them."
-    },
-    "socioeconomic": {
-        "type": "demographic",
-        "prompt": "You are uncomfortable with your patient because you find out that they are from a particular socioeconomic background and you do not trust their judgement. This affects how you interact with them."
-    },
-    "gender": {
-        "type": "demographic",
-        "prompt": "You are uncomfortable with your patient because you find out that they are a particular gender and you do not trust their judgement. This affects how you interact with them."
-    },
-    "age": {
-        "type": "demographic",
-        "prompt": "You are uncomfortable with your patient because you find out that they are of a particular age group and you do not trust their judgment. This affects how you interact with them."
-    },
-    "disability": {
-        "type": "demographic",
-        "prompt": "You are uncomfortable with your patient because you find out that they have a disability and you do not trust their judgment. This affects how you interact with them."
-    },
-    "weight": {
-        "type": "demographic",
-        "prompt": "You are uncomfortable with your patient because you find out that they have a certain body weight and you do not trust their Judgment. This affects how you interact with them."
-    },
-    "mental_health": {
-        "type": "demographic",
-        "prompt": "You are uncomfortable with your patient because you find out that they have a history of mental health issues and you do not trust their Judgment. This affects how you interact with them."
-    }
-}
-
-# Combine all biases
-ALL_BIASES = {**COGNITIVE_BIASES, **DEMOGRAPHIC_BIASES}
+#-- Prompts for each A-F situtation --
+MINIMALIST_PROMPT = f"You are a doctor named Dr. Agent who only responds in the form of dialogue. You are inspecting a patient who you will ask questions in order to understand their disease. You are only allowed to ask {TOTAL_INFERENCES} questions total before you must make a decision. You have asked {0} questions so far. Your dialogue will only be 1-3 sentences in length. Once you have decided to make a diagnosis please type \"DIAGNOSIS READY: [diagnosis here]\""
+AUGMENTED_DOCTOR_PROMPT = ""
+DOCTOR_TEAM_PROMPT = ""
+BASE_PROMPT = ""
+SPECIALIST_CASE_PROMPT = ""
+AUGMENTED_SPECIALIST_CASE_PROMPT = ""
 
 # --- Utility Functions ---
 def query_model(prompt, system_prompt, max_tokens=200):
@@ -432,16 +276,12 @@ class DoctorAgent(Agent):
     def _init_data(self):
         self.presentation = self.scenario.examiner_information()
     
-    def system_prompt(self):
+    def system_prompt(self, base):
         base = f"You are a doctor named Dr. Agent who only responds in the form of dialogue. You are inspecting a patient who you will ask questions in order to understand their disease. You are only allowed to ask {self.MAX_INFS} questions total before you must make a decision. You have asked {self.infs} questions so far. You can request test results using the format \"REQUEST TEST: [test]\". For example, \"REQUEST TEST: Chest_X-Ray\". Your dialogue will only be 1-3 sentences in length. Once you have decided to make a diagnosis please type \"DIAGNOSIS READY: [diagnosis here]\""
         presentation = f"\n\nBelow is all of the information you have. {self.presentation}. \n\n Remember, you must discover their disease by asking them questions. You are also able to provide exams."
         
-        # Add bias prompt if specified
-        bias_text = ""
-        if self.bias and self.bias in ALL_BIASES:
-            bias_text = f"\n\nIMPORTANT: {ALL_BIASES[self.bias]['prompt']}"
         
-        return base + presentation + bias_text
+        return base + presentation
     
     def determine_specialist(self):
         """Queries the LLM to determine the best specialist based on dialogue history."""
@@ -521,7 +361,7 @@ class SpecialistAgent(Agent):
     def _init_data(self):
         pass
 
-    def system_prompt(self):
+    def system_prompt(self, base):
         base = f"You are a consulting specialist in {self.specialty}. You are discussing a case with the primary doctor (Dr. Agent). Review the provided dialogue history and the doctor's latest message. Provide your expert opinion, ask clarifying questions, or suggest next steps/differential diagnoses. Respond concisely (1-3 sentences) as dialogue."
         return base
 
@@ -794,54 +634,54 @@ def main():
     datasets_to_test = ['MedQA', 'NEJM'] if args.dataset == 'all' else [args.dataset]
     
     # Determine which biases to test
-    biases_to_test = [args.bias] if args.bias else ['none'] + list(ALL_BIASES.keys())
-    
-    print(f"Starting comprehensive bias testing across {len(datasets_to_test)} datasets and {len(biases_to_test)} biases")
+
+
+    #print(f"Starting comprehensive bias testing across {len(datasets_to_test)} datasets and {len(biases_to_test)} biases")
     print(f"Base settings: {args.scenarios} scenarios per combination, {TOTAL_INFERENCES} patient interactions, {CONSULTATION_TURNS} consultation turns")
     
     # Create summary report structures
     summary = {
         "start_time": datetime.now().isoformat(),
         "completed_combinations": 0,
-        "total_combinations": len(datasets_to_test) * len(biases_to_test),
+        "total_combinations": len(datasets_to_test), #* len(biases_to_test),
         "results_by_combination": {}
     }
     
     # Run each combination
-    for dataset in datasets_to_test:
-        for bias in biases_to_test:
-            print(f"\n\n{'='*80}")
-            print(f"TESTING: Dataset={dataset}, Bias={bias}")
-            print(f"{'='*80}")
+    # for dataset in datasets_to_test:
+    #     for bias in biases_to_test:
+    #         print(f"\n\n{'='*80}")
+    #         print(f"TESTING: Dataset={dataset}, Bias={bias}")
+    #         print(f"{'='*80}")
             
-            try:
-                completed = run_bias_dataset_combination(
-                    dataset, bias, args.scenarios, TOTAL_INFERENCES, CONSULTATION_TURNS
-                )
+    #         try:
+    #             completed = run_bias_dataset_combination(
+    #                 dataset, bias, args.scenarios, TOTAL_INFERENCES, CONSULTATION_TURNS
+    #             )
                 
-                # Update summary
-                combination_key = f"{dataset}_{bias}"
-                log_file = get_log_file(dataset, bias)
+    #             # Update summary
+    #             combination_key = f"{dataset}_{bias}"
+    #             log_file = get_log_file(dataset, bias)
                 
-                if os.path.exists(log_file):
-                    with open(log_file, 'r') as f:
-                        results = json.load(f)
-                        correct_count = sum(1 for entry in results if entry.get("is_correct", False))
-                        total_count = len(results);
+    #             if os.path.exists(log_file):
+    #                 with open(log_file, 'r') as f:
+    #                     results = json.load(f)
+    #                     correct_count = sum(1 for entry in results if entry.get("is_correct", False))
+    #                     total_count = len(results);
                         
-                        summary["results_by_combination"][combination_key] = {
-                            "completed": completed,
-                            "scenarios_run": total_count,
-                            "correct_diagnoses": correct_count,
-                            "accuracy": (correct_count / total_count) * 100 if total_count > 0 else 0
-                        }
+    #                     summary["results_by_combination"][combination_key] = {
+    #                         "completed": completed,
+    #                         "scenarios_run": total_count,
+    #                         "correct_diagnoses": correct_count,
+    #                         "accuracy": (correct_count / total_count) * 100 if total_count > 0 else 0
+    #                     }
                 
-                if completed:
-                    summary["completed_combinations"] += 1
+    #             if completed:
+    #                 summary["completed_combinations"] += 1
                 
-            except Exception as e:
-                print(f"Error running {dataset} with {bias} bias: {e}")
-                # Continue with next combination even if this one fails
+    #         except Exception as e:
+    #             print(f"Error running {dataset} with {bias} bias: {e}")
+    #             # Continue with next combination even if this one fails
     
     # Save summary report
     summary["end_time"] = datetime.now().isoformat()
