@@ -29,6 +29,7 @@ AUGMENTED_DOCTOR_PROMPT = "You are a doctor named Dr. Agent who only responds in
 DOCTOR_TEAM_PROMPT = "You are a doctor named Dr. Agent who only responds in the form of dialogue. You are inspecting a patient who you will ask questions in order to understand their disease. You are only allowed to ask {self.MAX_INFS} questions total before you must make a decision. You have asked {self.infs} questions so far. You will be given a chance to consult with a specialist doctor during the session. Your dialogue will only be 1-3 sentences in length. Once you have decided to make a diagnosis please type \"DIAGNOSIS READY: [diagnosis here]\""
 BASELINE_PROMPT = "You are a doctor named Dr. Agent who only responds in the form of dialogue. You are inspecting a patient who you will ask questions in order to understand their disease. You are only allowed to ask {self.MAX_INFS} questions total before you must make a decision. You have asked {self.infs} questions so far. You can request test results using the format \"REQUEST TEST: [test]\". For example, \"REQUEST TEST: Chest_X-Ray\". You will be given a chance to consult with a specialist doctor during the session. Your dialogue will only be 1-3 sentences in length. Once you have decided to make a diagnosis please type \"DIAGNOSIS READY: [diagnosis here]\""
 
+DOCTOR_PROMPTS = {"MINIMALIST": MINIMALIST_PROMPT, "AUGMENTED_DOCTOR_PROMPT": AUGMENTED_DOCTOR_PROMPT, "DOCTOR_TEAM_PROMPT": DOCTOR_TEAM_PROMPT, "BASELINE_PROMPT" : BASELINE_PROMPT}
 
 # --- Utility Functions ---
 def query_model(prompt, system_prompt, max_tokens=200):
@@ -264,32 +265,29 @@ class PatientAgent(Agent):
         return answer
 
 class DoctorAgent(Agent):
-    def __init__(self, scenario=None, max_infs=20, bias=None):
+    def __init__(self, scenario=None, max_infs=20, prompt=DOCTOR_PROMPTS["BASELINE_PROMPT"]):
         self.MAX_INFS = max_infs
         self.infs = 0
         self.specialist_type = None
         self.consultation_turns = 0
-        self.bias = bias  # New bias parameter
+        self.system_prompt = prompt
         super().__init__(scenario)
     
     def _init_data(self):
         self.presentation = self.scenario.examiner_information()
     
-    def system_prompt(self, base):
-        base = f"You are a doctor named Dr. Agent who only responds in the form of dialogue. You are inspecting a patient who you will ask questions in order to understand their disease. You are only allowed to ask {self.MAX_INFS} questions total before you must make a decision. You have asked {self.infs} questions so far. You can request test results using the format \"REQUEST TEST: [test]\". For example, \"REQUEST TEST: Chest_X-Ray\". Your dialogue will only be 1-3 sentences in length. Once you have decided to make a diagnosis please type \"DIAGNOSIS READY: [diagnosis here]\""
+    def system_prompt(self):
         presentation = f"\n\nBelow is all of the information you have. {self.presentation}. \n\n Remember, you must discover their disease by asking them questions. You are also able to provide exams."
         
-        
-        return base + presentation
+        return self.system_prompt + presentation
     
     def determine_specialist(self):
         """Queries the LLM to determine the best specialist based on dialogue history."""
         prompt = f"Based on the following patient interaction history, what type of medical specialist (e.g., Cardiologist, Neurologist, Pulmonologist, Gastroenterologist, Endocrinologist, Infectious Disease Specialist, Oncologist, etc.) would be most appropriate to consult for a potential diagnosis? Please respond with only the specialist type.\n\nHistory:\n{self.agent_hist}"
-        system_prompt = "You are a helpful medical assistant. Analyze the dialogue and suggest the single most relevant medical specialist type."
-        specialist = query_model(prompt, system_prompt)
+        specialist = query_model(prompt, self.system_prompt)
         self.specialist_type = specialist.replace("Specialist", "").strip()
         explanation_prompt = f"Explain why a {self.specialist_type} is the most appropriate specialist based on the following dialogue history:\n\n{self.agent_hist}"
-        explanation = query_model(explanation_prompt, system_prompt)
+        explanation = query_model(explanation_prompt, self.system_prompt)
         print(f"Doctor decided to consult: {self.specialist_type}")
         print(f"Reason for choice: {explanation}")
         return self.specialist_type, explanation
@@ -373,15 +371,23 @@ class SpecialistAgent(Agent):
         self.add_hist(f"Specialist ({self.specialty}): {answer}")
         return answer
 
+# --- Somthing to aviod repetitve manual checks, make measurer useless
+class NullMeasurmentAgent:
+    def inference_measurement(self, *args, **kwargs):
+        return ""
+    
+    def add_hist(self, *args, **kwargs):
+        pass
+
 # --- Main Simulation Logic ---
 # --- aggent_activitation [measurement, specialist] -> binary --- 
 def run_single_scenario(scenario, dataset, total_inferences, max_consultation_turns, scenario_idx, AGENT_CONFIG):
     patient_agent = PatientAgent(scenario=scenario)
-    doctor_agent = DoctorAgent(scenario=scenario, max_infs=total_inferences)
+
+    doctor_agent = DoctorAgent(scenario=scenario, max_infs=total_inferences, prompt=DOCTOR_PROMPTS[AGENT_CONFIG["prompt_type"]])
 
     # Instantiation by config
-    meas_agent = MeasurementAgent(scenario=scenario) if AGENT_CONFIG["use_measurement"] else None
-    specialist_agent = SpecialistAgent(scenario=scenario) if AGENT_CONFIG["use_specialist"] else None
+    meas_agent = MeasurementAgent(scenario=scenario) if AGENT_CONFIG["use_measurement"] else NullMeasurmentAgent()
 
     available_tests = scenario.get_available_tests()
     run_log = {
@@ -423,19 +429,15 @@ def run_single_scenario(scenario, dataset, total_inferences, max_consultation_tu
                 print("Warning: Could not parse test name from doctor request.")
                 test_name = "Unknown Test"
 
-            if AGENT_CONFIG["use_measurement"]:
-                result = meas_agent.inference_measurement(doctor_dialogue)
-                print(f"Measurement [Turn {turn}]: {result}")
+            result = meas_agent.inference_measurement(doctor_dialogue)
+            print(f"Measurement [Turn {turn}]: {result}")
             next_input_for_doctor = result
             run_log["dialogue_history"].append({"speaker": "Measurement", "turn": turn, "phase": "patient", "text": result})
 
-            if AGENT_CONFIG["use_measurement"]:
-                history_update = f"Doctor: {doctor_dialogue}\n\nMeasurement: {result}"
-                meas_agent.add_hist(history_update)
-                current_speaker = "Measurement"
-            else:
-                history_update = f"Doctor: {doctor_dialogue}"
-            
+            history_update = f"Doctor: {doctor_dialogue}\n\nMeasurement: {result}"
+            meas_agent.add_hist(history_update)
+            current_speaker = "Measurement"
+            history_update = f"Doctor: {doctor_dialogue}"            
             patient_agent.add_hist(history_update)
         else:
             patient_response = patient_agent.inference_patient(doctor_dialogue)
@@ -443,10 +445,7 @@ def run_single_scenario(scenario, dataset, total_inferences, max_consultation_tu
             next_input_for_doctor = patient_response
             run_log["dialogue_history"].append({"speaker": "Patient", "turn": turn, "phase": "patient", "text": patient_response})
             history_update = f"Patient: {patient_response}"
-
-            if AGENT_CONFIG["use_measurement"]:        
-                meas_agent.add_hist(f"Doctor: {doctor_dialogue}\n\nPatient: {patient_response}")
-            
+            meas_agent.add_hist(f"Doctor: {doctor_dialogue}\n\nPatient: {patient_response}")
             current_speaker = "Patient"
 
         doctor_dialogue, state = doctor_agent.inference_doctor(next_input_for_doctor, mode="patient")
@@ -466,7 +465,7 @@ def run_single_scenario(scenario, dataset, total_inferences, max_consultation_tu
     print(f"Tests left out: {run_log['tests_left_out']}")
 
     if AGENT_CONFIG["use_specialist"]:
-        # --- Specialist Determination Phase ---
+        # --- Specialist Determination Phase, if and only if configured---
         print(f"\n--- Phase 2: Determining Specialist ---")
         specialist_type, specialist_reason = doctor_agent.determine_specialist()
         run_log["determined_specialist"] = specialist_type
@@ -538,10 +537,10 @@ def run_experiment_three(dataset, num_scenarios, total_inferences, consultation_
     """Run a single config-dataset combination test"""
  
     # Create a list of scenarios to run
-    scenarios_to_process = [{"name": "Base-Case", "use_measurement": True, "use-specialist": True}, 
-                            {"name": "Augmented-Doctor", "use_measurement": True, "use-specialist": False}, 
-                            {"name": "Doctoral-Team", "use_measurement": False, "use-specialist": True}, 
-                            {"name": "Minimalist", "use_measurement": False, "use-specialist": False}]
+    scenarios_to_process = [{"name": "Base-Case", "use_measurement": True, "use-specialist": True, "prompt_type": "BASELINE_PROMPT"}, 
+                            {"name": "Augmented-Doctor", "use_measurement": True, "use-specialist": False, "prompt_type": "AUGMENTED_DOCTOR_PROMPT"}, 
+                            {"name": "Doctoral-Team", "use_measurement": False, "use-specialist": True, "prompt_type": "DOCTOR_TEAM_PROMPT"}, 
+                            {"name": "Minimalist", "use_measurement": False, "use-specialist": False, "prompt_type": "MINIMALIST_PROMPT"}]
     
     scenario_loader = ScenarioLoader(dataset=dataset)
     scenarios_to_run = 4    
@@ -567,7 +566,7 @@ def run_experiment_three(dataset, num_scenarios, total_inferences, consultation_
 
         total_simulated_current_session += 1
         run_log, is_correct = run_single_scenario(
-            scenario, dataset, total_inferences, consultation_turns, scenario_idx, config_name
+            scenario, dataset, total_inferences, consultation_turns, scenario_idx, #... 
         )
 
         if is_correct:
