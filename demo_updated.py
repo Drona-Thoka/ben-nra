@@ -270,24 +270,26 @@ class DoctorAgent(Agent):
         self.infs = 0
         self.specialist_type = None
         self.consultation_turns = 0
-        self.system_prompt = prompt
+        self.system_prompt_template = prompt
         super().__init__(scenario)
     
     def _init_data(self):
         self.presentation = self.scenario.examiner_information()
 
+    def get_system_prompt(self):
+        return self.system_prompt_template.format(infs=self.infs, MAX_INFS=self.MAX_INFS)
+    
     def system_prompt(self):
         presentation = f"\n\nBelow is all of the information you have. {self.presentation}. \n\n Remember, you must discover their disease by asking them questions. You are also able to provide exams."
-        
-        return self.system_prompt + presentation
+        return self.system_prompt_template + presentation
     
     def determine_specialist(self):
         """Queries the LLM to determine the best specialist based on dialogue history."""
         prompt = f"Based on the following patient interaction history, what type of medical specialist (e.g., Cardiologist, Neurologist, Pulmonologist, Gastroenterologist, Endocrinologist, Infectious Disease Specialist, Oncologist, etc.) would be most appropriate to consult for a potential diagnosis? Please respond with only the specialist type.\n\nHistory:\n{self.agent_hist}"
-        specialist = query_model(prompt, self.system_prompt)
+        specialist = query_model(prompt, self.get_system_prompt())
         self.specialist_type = specialist.replace("Specialist", "").strip()
         explanation_prompt = f"Explain why a {self.specialist_type} is the most appropriate specialist based on the following dialogue history:\n\n{self.agent_hist}"
-        explanation = query_model(explanation_prompt, self.system_prompt)
+        explanation = query_model(explanation_prompt, self.get_system_prompt())
         print(f"Doctor decided to consult: {self.specialist_type}")
         print(f"Reason for choice: {explanation}")
         return self.specialist_type, explanation
@@ -306,7 +308,7 @@ class DoctorAgent(Agent):
 
             prompt = f"\nHere is a history of your dialogue with the patient:\n{self.agent_hist}\nHere was the patient response:\n{last_response}\nNow please continue your dialogue with the patient. You have {self.MAX_INFS - self.infs} questions remaining for the patient. Remember you can REQUEST TEST: [test].\nDoctor: "
             system_prompt = f"You are a doctor named Dr. Agent interacting with a patient. You have {self.MAX_INFS - self.infs} questions left. Your goal is to gather information. {self.presentation}"
-            answer = query_model(prompt, system_prompt)
+            answer = query_model(prompt, self.get_system_prompt())
             self.add_hist(f"Doctor: {answer}")
             self.infs += 1
             if "DIAGNOSIS READY:" in answer:
@@ -533,7 +535,7 @@ def run_single_scenario(scenario, dataset, total_inferences, max_consultation_tu
 
     return run_log, run_log.get("is_correct", False)
 
-def run_experiment_three(dataset, num_scenarios, total_inferences, consultation_turns):
+def run_experiment_three(dataset, total_inferences, consultation_turns):
     """Run a single config-dataset combination test"""
  
     # Create a list of scenarios to run
@@ -543,22 +545,25 @@ def run_experiment_three(dataset, num_scenarios, total_inferences, consultation_
                             {"name": "Minimalist", "use_measurement": False, "use-specialist": False, "prompt_type": "MINIMALIST_PROMPT"}]
     
     scenario_loader = ScenarioLoader(dataset=dataset)
-    scenarios_to_run = 4    
-    total_correct_current_session = 0 
-    total_simulated_current_session = 0 
-
-    config_name = scenarios_to_process[0]["name"]
+    scenarios_to_run = len(scenarios_to_process)    
     
     log_file = get_log_file(dataset, config_name)
-    completed_scenario_ids = get_completed_scenarios(log_file) 
+    completed_scenario_ids = get_completed_scenarios(log_file)
     
-    print(f"\n=== Testing {config_name} configuration on {dataset} dataset ===")
-    print(f"Log file: {log_file}")
-    print(f"Already completed scenario IDs: {len(completed_scenario_ids)}")
-    print(f"Scenarios to run in this session: {len(scenarios_to_process)} of {scenarios_to_run} total planned")
+    total_simulated_current_session = 0 
+    total_correct_current_session = 0
     
-    for scenario_idx in scenarios_to_process:
+    scenario_idx = 0
+    
+    for config in scenarios_to_process:
+        config_name = config["name"]
+
+        print(f"\n=== Testing {config_name} configuration on {dataset} dataset ===")
+        print(f"Log file: {log_file}")
+        print(f"Already completed scenario IDs: {len(completed_scenario_ids)}")
+        print(f"Scenarios to run in this session: {len(scenarios_to_process)} of {scenarios_to_run} total planned")
         print(f"\n--- Running Scenario {scenario_idx + 1}/{scenarios_to_run} with {config_name} configuration ---")
+
         scenario = scenario_loader.get_scenario(id=scenario_idx)
         if scenario is None:
             print(f"Error loading scenario {scenario_idx}, skipping.")
@@ -566,7 +571,7 @@ def run_experiment_three(dataset, num_scenarios, total_inferences, consultation_
 
         total_simulated_current_session += 1
         run_log, is_correct = run_single_scenario(
-            scenario, dataset, total_inferences, consultation_turns, scenario_idx, #... 
+            scenario, dataset, total_inferences, consultation_turns, scenario_idx, scenarios_to_process[scenario_idx] 
         )
 
         if is_correct:
@@ -575,6 +580,7 @@ def run_experiment_three(dataset, num_scenarios, total_inferences, consultation_
         log_scenario_data(run_log, log_file)
         print(f"Tests requested in Scenario {scenario_idx + 1}: {run_log.get('requested_tests', [])}")
         
+        scenario_idx += 1
         # Update progress
         if total_simulated_current_session > 0:
             accuracy_current_session = (total_correct_current_session / total_simulated_current_session) * 100
@@ -585,10 +591,6 @@ def run_experiment_three(dataset, num_scenarios, total_inferences, consultation_
             overall_correct_count = total_correct_current_session
             
             overall_accuracy_so_far = (overall_correct_count / overall_completed_count) * 100 if overall_completed_count > 0 else 0
-            # The original problematic line was:
-            # overall_accuracy = ((len([s for s in completed_scenarios if s in run_log.get("is_correct", False)]) + total_correct) / 
-            #                    overall_completed) * 100 if overall_completed > 0 else 0
-            # This is now correctly calculated as overall_accuracy_so_far.
             print(f"Overall Progress for {config_name} on {dataset}: {overall_completed_count}/{scenarios_to_run} scenarios completed. Overall Accuracy: {overall_accuracy_so_far:.2f}% ({overall_correct_count}/{overall_completed_count})")
     
     # Calculate final statistics for this combination
