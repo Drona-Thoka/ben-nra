@@ -275,7 +275,7 @@ class DoctorAgent(Agent):
     
     def _init_data(self):
         self.presentation = self.scenario.examiner_information()
-    
+
     def system_prompt(self):
         presentation = f"\n\nBelow is all of the information you have. {self.presentation}. \n\n Remember, you must discover their disease by asking them questions. You are also able to provide exams."
         
