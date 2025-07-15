@@ -1,0 +1,157 @@
+[
+  {
+    "timestamp": "2025-07-15T18:21:57.266073",
+    "model": "gpt-4.1",
+    "dataset": "MedQA",
+    "scenario_id": 0,
+    "max_patient_turns": 10,
+    "max_consultation_turns": 5,
+    "correct_diagnosis": "Myasthenia gravis",
+    "dialogue_history": [
+      {
+        "speaker": "Doctor",
+        "turn": 0,
+        "phase": "patient",
+        "text": "Can you describe your main symptoms and how long you have been experiencing them?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 1,
+        "phase": "patient",
+        "text": "I've been having double vision and muscle weakness for about a month now. It gets harder to climb stairs or brush my hair, especially after I've been active, but I feel better after resting for a while."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 1,
+        "phase": "patient",
+        "text": "Have you noticed any difficulty swallowing, speaking, or breathing, especially when you\u2019re tired?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Yes, sometimes when I\u2019m really tired, I notice my speech gets a bit slurred and it feels a little harder to swallow, but I haven\u2019t had any trouble breathing."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Have you noticed any drooping of your eyelids, especially as the day goes on or when you\u2019re tired?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 3,
+        "phase": "patient",
+        "text": "Yes, I have noticed that my eyelids sometimes droop, especially later in the day or when I feel more tired. It seems to get better after I rest for a while."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 3,
+        "phase": "patient",
+        "text": "Have you experienced any recent infections, fevers, or other illnesses before your symptoms started?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 4,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any recent infections, fevers, or illnesses before these symptoms began."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 4,
+        "phase": "patient",
+        "text": "Have you noticed any changes in your vision besides double vision, such as blurry vision or loss of vision?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 5,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any blurry vision or loss of vision\u2014just the double vision, especially when I\u2019m tired."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 5,
+        "phase": "patient",
+        "text": "Have you noticed any muscle weakness in your legs or arms that is worse at the end of the day or after repeated use, and does it improve with rest?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 6,
+        "phase": "patient",
+        "text": "Yes, I definitely notice the weakness gets worse after I use my arms or legs for a while, especially by the end of the day, but after I rest for a bit, I feel much better."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 6,
+        "phase": "patient",
+        "text": "Have you ever experienced any numbness, tingling, or loss of sensation in your arms or legs, or is it only weakness?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 7,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any numbness or tingling\u2014just the weakness, especially after I use my arms or legs for a while."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 7,
+        "phase": "patient",
+        "text": "Have you or anyone in your family ever been diagnosed with an autoimmune disease or any neurological conditions?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 8,
+        "phase": "patient",
+        "text": "No, as far as I know, no one in my family has had any autoimmune or neurological conditions, and I haven't been diagnosed with anything like that before either."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 8,
+        "phase": "patient",
+        "text": "Have you noticed any changes in your facial expressions, such as difficulty smiling, frowning, or making other facial movements, especially when you\u2019re tired?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 9,
+        "phase": "patient",
+        "text": "Yes, sometimes when I\u2019m really tired, it feels harder to smile or make certain expressions. It\u2019s not all the time, but it does seem worse after I\u2019ve been active or at the end of the day."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 9,
+        "phase": "patient",
+        "text": "Have you noticed any improvement in your symptoms after taking any medications, such as pyridostigmine or similar treatments, or have you tried any treatments so far?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 10,
+        "phase": "patient",
+        "text": "I haven\u2019t taken any medications like pyridostigmine, and I haven\u2019t tried any treatments yet. My symptoms just seem to get better on their own after I rest for a while."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 10,
+        "phase": "patient",
+        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
+      }
+    ],
+    "requested_tests": [],
+    "tests_requested_count": 0,
+    "available_tests": [
+      "Blood_Tests",
+      "Electromyography",
+      "Imaging"
+    ],
+    "determined_specialist": null,
+    "consultation_analysis": {
+      "error": "No consultation dialogue recorded"
+    },
+    "final_doctor_diagnosis": "Myasthenia Gravis",
+    "is_correct": true,
+    "tests_left_out": [
+      "Blood_Tests",
+      "Imaging",
+      "Electromyography"
+    ]
+  }
+]

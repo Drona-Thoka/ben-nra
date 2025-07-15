@@ -29,7 +29,7 @@ AUGMENTED_DOCTOR_PROMPT = "You are a doctor named Dr. Agent who only responds in
 DOCTOR_TEAM_PROMPT = "You are a doctor named Dr. Agent who only responds in the form of dialogue. You are inspecting a patient who you will ask questions in order to understand their disease. You are only allowed to ask {self.MAX_INFS} questions total before you must make a decision. You have asked {self.infs} questions so far. You will be given a chance to consult with a specialist doctor during the session. Your dialogue will only be 1-3 sentences in length. Once you have decided to make a diagnosis please type \"DIAGNOSIS READY: [diagnosis here]\""
 BASELINE_PROMPT = "You are a doctor named Dr. Agent who only responds in the form of dialogue. You are inspecting a patient who you will ask questions in order to understand their disease. You are only allowed to ask {self.MAX_INFS} questions total before you must make a decision. You have asked {self.infs} questions so far. You can request test results using the format \"REQUEST TEST: [test]\". For example, \"REQUEST TEST: Chest_X-Ray\". You will be given a chance to consult with a specialist doctor during the session. Your dialogue will only be 1-3 sentences in length. Once you have decided to make a diagnosis please type \"DIAGNOSIS READY: [diagnosis here]\""
 
-DOCTOR_PROMPTS = {"MINIMALIST": MINIMALIST_PROMPT, "AUGMENTED_DOCTOR_PROMPT": AUGMENTED_DOCTOR_PROMPT, "DOCTOR_TEAM_PROMPT": DOCTOR_TEAM_PROMPT, "BASELINE_PROMPT" : BASELINE_PROMPT}
+DOCTOR_PROMPTS = {"MINIMALIST_PROMPT": MINIMALIST_PROMPT, "AUGMENTED_DOCTOR_PROMPT": AUGMENTED_DOCTOR_PROMPT, "DOCTOR_TEAM_PROMPT": DOCTOR_TEAM_PROMPT, "BASELINE_PROMPT" : BASELINE_PROMPT}
 
 # --- Utility Functions ---
 def query_model(prompt, system_prompt, max_tokens=200):
@@ -277,7 +277,7 @@ class DoctorAgent(Agent):
         self.presentation = self.scenario.examiner_information()
 
     def get_system_prompt(self):
-        return self.system_prompt_template.format(infs=self.infs, MAX_INFS=self.MAX_INFS)
+        return self.system_prompt_template.format(infs=self.infs, MAX_INFS=self.MAX_INFS, self=self)
     
     def system_prompt(self):
         presentation = f"\n\nBelow is all of the information you have. {self.presentation}. \n\n Remember, you must discover their disease by asking them questions. You are also able to provide exams."
@@ -360,7 +360,7 @@ class SpecialistAgent(Agent):
     def _init_data(self):
         pass
 
-    def system_prompt(self, base):
+    def system_prompt(self):
         base = f"You are a consulting specialist in {self.specialty}. You are discussing a case with the primary doctor (Dr. Agent). Review the provided dialogue history and the doctor's latest message. Provide your expert opinion, ask clarifying questions, or suggest next steps/differential diagnoses. Respond concisely (1-3 sentences) as dialogue."
         return base
 
@@ -535,21 +535,18 @@ def run_single_scenario(scenario, dataset, total_inferences, max_consultation_tu
 
     return run_log, run_log.get("is_correct", False)
 
-def run_experiment_three(dataset, total_inferences, consultation_turns):
+def run_experiment_three(dataset, total_inferences, consultation_turns, max_scenarios=1):
     """Run a single config-dataset combination test"""
  
     # Create a list of scenarios to run
-    scenarios_to_process = [{"name": "Base-Case", "use_measurement": True, "use-specialist": True, "prompt_type": "BASELINE_PROMPT"}, 
-                            {"name": "Augmented-Doctor", "use_measurement": True, "use-specialist": False, "prompt_type": "AUGMENTED_DOCTOR_PROMPT"}, 
-                            {"name": "Doctoral-Team", "use_measurement": False, "use-specialist": True, "prompt_type": "DOCTOR_TEAM_PROMPT"}, 
-                            {"name": "Minimalist", "use_measurement": False, "use-specialist": False, "prompt_type": "MINIMALIST_PROMPT"}]
+    scenarios_to_process = [{"name": "Base-Case", "use_measurement": True, "use_specialist": True, "prompt_type": "BASELINE_PROMPT"}, 
+                            {"name": "Augmented-Doctor", "use_measurement": True, "use_specialist": False, "prompt_type": "AUGMENTED_DOCTOR_PROMPT"}, 
+                            {"name": "Doctoral-Team", "use_measurement": False, "use_specialist": True, "prompt_type": "DOCTOR_TEAM_PROMPT"}, 
+                            {"name": "Minimalist", "use_measurement": False, "use_specialist": False, "prompt_type": "MINIMALIST_PROMPT"}]
     
     scenario_loader = ScenarioLoader(dataset=dataset)
     scenarios_to_run = len(scenarios_to_process)    
-    
-    log_file = get_log_file(dataset, config_name)
-    completed_scenario_ids = get_completed_scenarios(log_file)
-    
+        
     total_simulated_current_session = 0 
     total_correct_current_session = 0
     
@@ -558,29 +555,38 @@ def run_experiment_three(dataset, total_inferences, consultation_turns):
     for config in scenarios_to_process:
         config_name = config["name"]
 
+        log_file = get_log_file(dataset, config_name)
+        completed_scenario_ids = get_completed_scenarios(log_file)
+
         print(f"\n=== Testing {config_name} configuration on {dataset} dataset ===")
         print(f"Log file: {log_file}")
         print(f"Already completed scenario IDs: {len(completed_scenario_ids)}")
         print(f"Scenarios to run in this session: {len(scenarios_to_process)} of {scenarios_to_run} total planned")
         print(f"\n--- Running Scenario {scenario_idx + 1}/{scenarios_to_run} with {config_name} configuration ---")
 
-        scenario = scenario_loader.get_scenario(id=scenario_idx)
-        if scenario is None:
-            print(f"Error loading scenario {scenario_idx}, skipping.")
-            continue
+        for scenario_idx in range(min(NUM_SCENARIOS, max_scenarios)):
+            if scenario_idx in completed_scenario_ids:
+                print(f"Completed, skipping scenario: {scenario_idx}", scenario_idx)
+                continue
 
-        total_simulated_current_session += 1
-        run_log, is_correct = run_single_scenario(
-            scenario, dataset, total_inferences, consultation_turns, scenario_idx, scenarios_to_process[scenario_idx] 
-        )
+            scenario = scenario_loader.get_scenario(id=scenario_idx)
 
-        if is_correct:
-            total_correct_current_session += 1
+            if scenario is None:
+                print(f"Error loading scenario {scenario_idx}, skipping.")
+                continue
 
-        log_scenario_data(run_log, log_file)
-        print(f"Tests requested in Scenario {scenario_idx + 1}: {run_log.get('requested_tests', [])}")
-        
-        scenario_idx += 1
+            
+            total_simulated_current_session += 1
+            run_log, is_correct = run_single_scenario(
+                scenario, dataset, total_inferences, consultation_turns, scenario_idx, config 
+            )
+
+            if is_correct:
+                total_correct_current_session += 1
+
+            log_scenario_data(run_log, log_file)
+            print(f"Tests requested in Scenario {scenario_idx + 1}: {run_log.get('requested_tests', [])}")
+            
         # Update progress
         if total_simulated_current_session > 0:
             accuracy_current_session = (total_correct_current_session / total_simulated_current_session) * 100
@@ -633,9 +639,14 @@ def main():
     args = parser.parse_args()
     
     # Determine which datasets to test
-    datasets_to_test = ['MedQA', 'NEJM'] if args.dataset == 'all' else [args.dataset]
+    #datasets_to_test = ['MedQA', 'NEJM'] if args.dataset == 'all' else [args.dataset]
+    datasets_to_test = ['MedQA'] if args.dataset == 'all' else [args.dataset]
     
-    # Determine which biases to test
+    # Determine which configs to test
+    scenarios_to_process = [{"name": "Base-Case", "use_measurement": True, "use_specialist": True, "prompt_type": "BASELINE_PROMPT"}, 
+                            {"name": "Augmented-Doctor", "use_measurement": True, "use_specialist": False, "prompt_type": "AUGMENTED_DOCTOR_PROMPT"}, 
+                            {"name": "Doctoral-Team", "use_measurement": False, "use_specialist": True, "prompt_type": "DOCTOR_TEAM_PROMPT"}, 
+                            {"name": "Minimalist", "use_measurement": False, "use_specialist": False, "prompt_type": "MINIMALIST_PROMPT"}]
 
 
     #print(f"Starting comprehensive bias testing across {len(datasets_to_test)} datasets and {len(biases_to_test)} biases")
@@ -650,47 +661,51 @@ def main():
     }
     
     # Run each combination
-    # for dataset in datasets_to_test:
-    #     for bias in biases_to_test:
-    #         print(f"\n\n{'='*80}")
-    #         print(f"TESTING: Dataset={dataset}, Bias={bias}")
-    #         print(f"{'='*80}")
+    for dataset in datasets_to_test:
+        
+        try:
+            completed = run_experiment_three(
+                dataset, TOTAL_INFERENCES, CONSULTATION_TURNS, 1
+            )                
+        except Exception as e:
+            import traceback
+            print(f"Error running {dataset} with config: {e}")
+            traceback.print_exc()                
+            # Continue with next combination even if this one fails
+
+        for config in scenarios_to_process:
+
+            print(f"\n\n{'='*80}")
+            print(f"TESTING: Dataset={dataset}, Config={config["name"]}")
+            print(f"{'='*80}")
+
+            # Update summary
+            combination_key = f"{dataset}_{config}"
+            log_file = get_log_file(dataset, config)
             
-    #         try:
-    #             completed = run_bias_dataset_combination(
-    #                 dataset, bias, args.scenarios, TOTAL_INFERENCES, CONSULTATION_TURNS
-    #             )
-                
-    #             # Update summary
-    #             combination_key = f"{dataset}_{bias}"
-    #             log_file = get_log_file(dataset, bias)
-                
-    #             if os.path.exists(log_file):
-    #                 with open(log_file, 'r') as f:
-    #                     results = json.load(f)
-    #                     correct_count = sum(1 for entry in results if entry.get("is_correct", False))
-    #                     total_count = len(results);
-                        
-    #                     summary["results_by_combination"][combination_key] = {
-    #                         "completed": completed,
-    #                         "scenarios_run": total_count,
-    #                         "correct_diagnoses": correct_count,
-    #                         "accuracy": (correct_count / total_count) * 100 if total_count > 0 else 0
-    #                     }
-                
-    #             if completed:
-    #                 summary["completed_combinations"] += 1
-                
-    #         except Exception as e:
-    #             print(f"Error running {dataset} with {bias} bias: {e}")
-    #             # Continue with next combination even if this one fails
+            if os.path.exists(log_file):
+                with open(log_file, 'r') as f:
+                    results = json.load(f)
+                    correct_count = sum(1 for entry in results if entry.get("is_correct", False))
+                    total_count = len(results);
+                    
+                    summary["results_by_combination"][combination_key] = {
+                        "completed": completed,
+                        "scenarios_run": total_count,
+                        "correct_diagnoses": correct_count,
+                        "accuracy": (correct_count / total_count) * 100 if total_count > 0 else 0
+                    }
+            
+            if completed:
+                summary["completed_combinations"] += 1
+            
     
     # Save summary report
     summary["end_time"] = datetime.now().isoformat()
     summary["total_duration_seconds"] = (datetime.fromisoformat(summary["end_time"]) - 
                                         datetime.fromisoformat(summary["start_time"])).total_seconds()
     
-    with open(os.path.join(BASE_LOG_DIR, "bias_testing_summary.json"), 'w') as f:
+    with open(os.path.join(BASE_LOG_DIR, "config_testing_summary.json"), 'w') as f:
         json.dump(summary, f, indent=2)
     
     print("\n\n=== BIAS TESTING COMPLETE ===")

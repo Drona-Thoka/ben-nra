@@ -1,0 +1,3894 @@
+[
+  {
+    "timestamp": "2025-07-15T17:06:04.718665",
+    "model": "gpt-4.1",
+    "dataset": "MedQA",
+    "scenario_id": 0,
+    "max_patient_turns": 10,
+    "max_consultation_turns": 5,
+    "correct_diagnosis": "Myasthenia gravis",
+    "dialogue_history": [
+      {
+        "speaker": "Doctor",
+        "turn": 0,
+        "phase": "patient",
+        "text": "Can you describe your main symptoms and how long you have been experiencing them?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 1,
+        "phase": "patient",
+        "text": "I've been having double vision and muscle weakness, especially when I try to climb stairs or brush my hair. These problems started about a month ago and seem to get worse after I've been active, but they get better if I rest for a while."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 1,
+        "phase": "patient",
+        "text": "Have you noticed any difficulty swallowing, speaking, or breathing, especially after activity or as the day goes on?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Yes, sometimes my speech gets a bit slurred when I\u2019m tired, and I occasionally have trouble swallowing, especially later in the day. I haven\u2019t had any issues with breathing, though."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Have you noticed any changes in your facial expressions, such as difficulty smiling or closing your eyes tightly?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 3,
+        "phase": "patient",
+        "text": "Yes, sometimes I feel like it's harder to smile fully or close my eyes tightly, especially when I'm tired. It seems to get better after I rest for a while."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 3,
+        "phase": "patient",
+        "text": "Have you noticed any muscle weakness in your arms or legs that is constant, or does it always fluctuate with activity and rest?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 4,
+        "phase": "patient",
+        "text": "The weakness definitely gets worse the more I use my arms or legs, but after I rest for a while, it gets much better. It\u2019s not constant."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 4,
+        "phase": "patient",
+        "text": "Have you noticed any drooping of your eyelids, especially as the day goes on or when you\u2019re feeling tired?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 5,
+        "phase": "patient",
+        "text": "Yes, I have noticed that my eyelids sometimes droop, especially later in the day or when I\u2019m more tired. It seems to get better after I rest for a while."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 5,
+        "phase": "patient",
+        "text": "Have you experienced any recent infections, fevers, or other illnesses before these symptoms started?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 6,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any recent infections, fevers, or illnesses before these symptoms began."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 6,
+        "phase": "patient",
+        "text": "Have you noticed any numbness, tingling, or loss of sensation in your arms, legs, or face, or is it only muscle weakness?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 7,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any numbness or tingling\u2014just the muscle weakness. It mostly affects my arms and legs, especially after I use them for a while."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 7,
+        "phase": "patient",
+        "text": "Have you or anyone in your family ever been diagnosed with an autoimmune disease or a neuromuscular disorder?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 8,
+        "phase": "patient",
+        "text": "No, as far as I know, no one in my family has had an autoimmune disease or a neuromuscular disorder."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 8,
+        "phase": "patient",
+        "text": "Have you noticed any changes in your vision besides double vision, such as blurry vision or difficulty focusing? Also, have you experienced any recent weight loss, night sweats, or other unexplained symptoms?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 9,
+        "phase": "patient",
+        "text": "Other than the double vision, I haven\u2019t noticed any blurriness or trouble focusing. I haven\u2019t lost any weight or had night sweats or other unusual symptoms."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 9,
+        "phase": "patient",
+        "text": "REQUEST TEST: Acetylcholine_Receptor_Antibody_Test"
+      },
+      {
+        "speaker": "Measurement",
+        "turn": 10,
+        "phase": "patient",
+        "text": "RESULTS: Acetylcholine Receptor Antibodies: Present (elevated)"
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 10,
+        "phase": "patient",
+        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
+      }
+    ],
+    "requested_tests": [
+      "Acetylcholine_Receptor_Antibody_Test"
+    ],
+    "tests_requested_count": 1,
+    "available_tests": [
+      "Blood_Tests",
+      "Electromyography",
+      "Imaging"
+    ],
+    "determined_specialist": null,
+    "consultation_analysis": {
+      "error": "No consultation dialogue recorded"
+    },
+    "final_doctor_diagnosis": "Myasthenia Gravis",
+    "is_correct": true,
+    "tests_left_out": [
+      "Electromyography",
+      "Imaging",
+      "Blood_Tests"
+    ]
+  },
+  {
+    "timestamp": "2025-07-15T17:06:41.959253",
+    "model": "gpt-4.1",
+    "dataset": "MedQA",
+    "scenario_id": 1,
+    "max_patient_turns": 10,
+    "max_consultation_turns": 5,
+    "correct_diagnosis": "Progressive multifocal encephalopathy (PML)",
+    "dialogue_history": [
+      {
+        "speaker": "Doctor",
+        "turn": 0,
+        "phase": "patient",
+        "text": "Can you describe your main symptoms and how long you have been experiencing them?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 1,
+        "phase": "patient",
+        "text": "I've been having trouble walking for about a week now\u2014my friends say I look like I'm drunk when I try to walk. My balance feels off, and my right arm feels weaker than usual."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 1,
+        "phase": "patient",
+        "text": "Have you noticed any changes in your vision, speech, or ability to swallow?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 2,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any changes in my vision, speech, or swallowing. It\u2019s mainly the trouble with walking and my right arm feeling weaker."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Have you experienced any headaches, nausea, vomiting, or changes in your level of alertness recently?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 3,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any headaches, nausea, or vomiting. I also haven\u2019t noticed any changes in my alertness."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 3,
+        "phase": "patient",
+        "text": "Have you had any recent injuries, infections, or illnesses before these symptoms started?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 4,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any recent injuries, infections, or illnesses before this started. The walking issues just seemed to come on gradually."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 4,
+        "phase": "patient",
+        "text": "Have you noticed any changes in your sensation, such as numbness or tingling, anywhere in your body?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 5,
+        "phase": "patient",
+        "text": "No, I haven't noticed any numbness or tingling. It's mostly the trouble with my balance and walking that's bothering me."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 5,
+        "phase": "patient",
+        "text": "Have you noticed any changes in your bladder or bowel control, such as incontinence or difficulty urinating?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 6,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any changes in my bladder or bowel control. Everything seems normal in that regard."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 6,
+        "phase": "patient",
+        "text": "Have you noticed any tremors, involuntary movements, or stiffness in your limbs?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 7,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any tremors or involuntary movements. My limbs just feel weaker, especially on the right side, and I feel unsteady when I try to walk."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 7,
+        "phase": "patient",
+        "text": "Have you ever experienced anything like this before, or do you have any history of neurological conditions such as stroke, multiple sclerosis, or migraines?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 8,
+        "phase": "patient",
+        "text": "No, I\u2019ve never had anything like this before. I don\u2019t have a history of stroke, multiple sclerosis, or migraines. This is all new for me."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 8,
+        "phase": "patient",
+        "text": "Have you noticed any changes in your coordination, such as difficulty reaching for objects or problems with fine motor tasks using your hands?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 9,
+        "phase": "patient",
+        "text": "Yes, I've noticed that my hands feel clumsy, especially on the right side, and I sometimes have trouble picking things up or buttoning my shirt."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 9,
+        "phase": "patient",
+        "text": "REQUEST TEST: Brain_MRI"
+      },
+      {
+        "speaker": "Measurement",
+        "turn": 10,
+        "phase": "patient",
+        "text": "RESULTS: MRI Brain findings show lesions consistent with Progressive Multifocal Encephalopathy (PML). T1/T2 images reveal multifocal demyelinating lesions without gadolinium enhancement, indicative of PML."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 10,
+        "phase": "patient",
+        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
+      }
+    ],
+    "requested_tests": [
+      "Brain_MRI"
+    ],
+    "tests_requested_count": 1,
+    "available_tests": [
+      "MRI_Brain"
+    ],
+    "determined_specialist": null,
+    "consultation_analysis": {
+      "error": "No consultation dialogue recorded"
+    },
+    "final_doctor_diagnosis": "Progressive Multifocal Leukoencephalopathy (PML)",
+    "is_correct": false,
+    "tests_left_out": [
+      "MRI_Brain"
+    ]
+  },
+  {
+    "timestamp": "2025-07-15T17:07:16.436566",
+    "model": "gpt-4.1",
+    "dataset": "MedQA",
+    "scenario_id": 2,
+    "max_patient_turns": 10,
+    "max_consultation_turns": 5,
+    "correct_diagnosis": "Hirschsprung disease",
+    "dialogue_history": [
+      {
+        "speaker": "Doctor",
+        "turn": 0,
+        "phase": "patient",
+        "text": "Can you describe your main symptoms and how long you have been experiencing them?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 1,
+        "phase": "patient",
+        "text": "I've been really fussy for the past few days, and my tummy seems to hurt, especially when it's touched. I also haven't been eating as much as usual."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 1,
+        "phase": "patient",
+        "text": "Have you had any vomiting, diarrhea, or fever during this time?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 2,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any vomiting, diarrhea, or fever. I just feel uncomfortable and cry a lot, especially when my tummy is touched."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Have you noticed any changes in your bowel movements, such as constipation or blood in your stool?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 3,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any blood in my stool, and my bowel movements seem about the same as usual."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 3,
+        "phase": "patient",
+        "text": "Have you noticed any swelling, redness, or a lump in your abdomen? Has the pain gotten worse over time or stayed about the same?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 4,
+        "phase": "patient",
+        "text": "My tummy looks bigger than usual, and when you touch it, I cry a lot because it hurts. The pain seems to be getting worse, and I don\u2019t like when anyone presses on my belly."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 4,
+        "phase": "patient",
+        "text": "Have you noticed any changes in your urine, such as difficulty peeing, going less often, or any unusual color or smell?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 5,
+        "phase": "patient",
+        "text": "I haven\u2019t had any trouble peeing, and my mom hasn\u2019t noticed anything unusual about the color or smell of my urine."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 5,
+        "phase": "patient",
+        "text": "Have you had any recent injuries or falls, or has anyone noticed any bruising or marks on your body?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 6,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any injuries or falls, and my mom hasn\u2019t noticed any bruises or marks on my body."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 6,
+        "phase": "patient",
+        "text": "Have you had any recent illnesses, like a cold or sore throat, or been around anyone who was sick recently?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 7,
+        "phase": "patient",
+        "text": "No, I haven\u2019t been sick and no one around me has been sick either. I haven\u2019t had a fever or runny nose."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 7,
+        "phase": "patient",
+        "text": "Have you noticed any changes in your energy level, like being more tired or less active than usual? Also, do you have any trouble sleeping because of the pain?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 8,
+        "phase": "patient",
+        "text": "I\u2019ve been more fussy and less interested in playing lately. I do have trouble sleeping, especially when my tummy hurts."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 8,
+        "phase": "patient",
+        "text": "Has anyone noticed if your belly feels hard or if there are any areas that seem especially tender or different when touched? Also, do you have any history of medical problems or surgeries?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 9,
+        "phase": "patient",
+        "text": "My tummy feels really sore when you touch it, and sometimes it feels kind of big and tight. I haven\u2019t had any surgeries or medical problems before."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 9,
+        "phase": "patient",
+        "text": "REQUEST TEST: Abdominal_Ultrasound"
+      },
+      {
+        "speaker": "Measurement",
+        "turn": 10,
+        "phase": "patient",
+        "text": "RESULTS: NORMAL READINGS."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 10,
+        "phase": "patient",
+        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
+      }
+    ],
+    "requested_tests": [
+      "Abdominal_Ultrasound"
+    ],
+    "tests_requested_count": 1,
+    "available_tests": [
+      "Blood_Test",
+      "Abdominal_X-ray",
+      "Barium_Enema"
+    ],
+    "determined_specialist": null,
+    "consultation_analysis": {
+      "error": "No consultation dialogue recorded"
+    },
+    "final_doctor_diagnosis": "Functional abdominal pain (likely due to constipation or non-organic causes)",
+    "is_correct": false,
+    "tests_left_out": [
+      "Barium_Enema",
+      "Abdominal_X-ray",
+      "Blood_Test"
+    ]
+  },
+  {
+    "timestamp": "2025-07-15T17:07:53.257769",
+    "model": "gpt-4.1",
+    "dataset": "MedQA",
+    "scenario_id": 3,
+    "max_patient_turns": 10,
+    "max_consultation_turns": 5,
+    "correct_diagnosis": "Diffuse large B-cell lymphoma",
+    "dialogue_history": [
+      {
+        "speaker": "Doctor",
+        "turn": 0,
+        "phase": "patient",
+        "text": "Can you describe your main symptoms and how long you have been experiencing them?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 1,
+        "phase": "patient",
+        "text": "I've been feeling really tired and have had this abdominal pain that's been getting worse over the past month. I've also noticed night sweats and have lost about 12 pounds without trying."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 1,
+        "phase": "patient",
+        "text": "Have you noticed any lumps or swelling in your abdomen, neck, armpits, or groin? Have you had any fevers or chills along with the night sweats?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Yes, I\u2019ve noticed some swelling in my neck over the past few days, but I haven\u2019t felt any lumps in my armpits or groin. I haven\u2019t had any fevers or chills, just the night sweats."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Have you experienced any itching, rashes, or changes in your skin? Have you had any recent infections or illnesses before these symptoms started?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 3,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any itching, rashes, or changes in my skin. I also haven\u2019t had any recent infections or illnesses before all this started."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 3,
+        "phase": "patient",
+        "text": "Have you had any difficulty swallowing, shortness of breath, or chest pain? Have you noticed any changes in your appetite or bowel habits?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 4,
+        "phase": "patient",
+        "text": "I haven\u2019t had any trouble swallowing or chest pain, but I do feel a bit short of breath sometimes, especially when I\u2019m active. My appetite has gone down, and my bowel habits are about the same as usual."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 4,
+        "phase": "patient",
+        "text": "Have you noticed any bruising, bleeding, or unusual fatigue with physical activity? Have you ever had any similar symptoms in the past?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 5,
+        "phase": "patient",
+        "text": "I haven\u2019t noticed any unusual bruising or bleeding, but I do feel more tired than usual, especially when I try to do anything physical. I\u2019ve never had these symptoms before; this is the first time it\u2019s happened."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 5,
+        "phase": "patient",
+        "text": "Have you had any recent travel, exposure to chemicals, or family history of cancer or blood disorders? Have you noticed any persistent cough or hoarseness?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 6,
+        "phase": "patient",
+        "text": "No, I haven\u2019t traveled recently and I don\u2019t recall any unusual chemical exposures. There\u2019s no family history of cancer or blood disorders that I know of, and I haven\u2019t had a cough or hoarseness."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 6,
+        "phase": "patient",
+        "text": "Have you noticed any pain or swelling in your legs, or any yellowing of your skin or eyes? Have you had any recent dental work or infections in your mouth?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 7,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any pain or swelling in my legs, and I haven\u2019t noticed any yellowing of my skin or eyes. I also haven\u2019t had any recent dental work or mouth infections."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 7,
+        "phase": "patient",
+        "text": "Have you noticed any changes in your urine or stool color, or any blood in your urine or stool? Have you experienced any bone pain or joint pain recently?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 8,
+        "phase": "patient",
+        "text": "I haven\u2019t noticed any changes in my urine or stool color, and I haven\u2019t seen any blood. I also haven\u2019t had any bone or joint pain lately."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 8,
+        "phase": "patient",
+        "text": "Have you had any recent night sweats that soak your sheets, or do you wake up drenched? Also, have you noticed if the swelling in your neck is tender or painless?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 9,
+        "phase": "patient",
+        "text": "Yes, the night sweats are pretty bad\u2014I wake up drenched and have to change my clothes sometimes. The swelling in my neck isn\u2019t really painful, just feels kind of firm and uncomfortable."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 9,
+        "phase": "patient",
+        "text": "REQUEST TEST: CBC_with_differential, LDH, Peripheral_blood_smear, Neck_Lymph_Node_Ultrasound"
+      },
+      {
+        "speaker": "Measurement",
+        "turn": 10,
+        "phase": "patient",
+        "text": "RESULTS: - CBC with differential: WBC elevated, Hemoglobin slightly decreased, Platelets normal. - LDH: Elevated. - Peripheral blood smear: NOT AVAILABLE. - Neck lymph node ultrasound: NOT AVAILABLE."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 10,
+        "phase": "patient",
+        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
+      }
+    ],
+    "requested_tests": [
+      "CBC_with_differential, LDH, Peripheral_blood_smear, Neck_Lymph_Node_Ultrasound"
+    ],
+    "tests_requested_count": 1,
+    "available_tests": [
+      "Blood_Work",
+      "Imaging",
+      "Biopsy"
+    ],
+    "determined_specialist": null,
+    "consultation_analysis": {
+      "error": "No consultation dialogue recorded"
+    },
+    "final_doctor_diagnosis": "Lymphoma (most likely non-Hodgkin lymphoma)",
+    "is_correct": true,
+    "tests_left_out": [
+      "Biopsy",
+      "Imaging",
+      "Blood_Work"
+    ]
+  },
+  {
+    "timestamp": "2025-07-15T17:08:32.733243",
+    "model": "gpt-4.1",
+    "dataset": "MedQA",
+    "scenario_id": 4,
+    "max_patient_turns": 10,
+    "max_consultation_turns": 5,
+    "correct_diagnosis": "Acute interstitial nephritis",
+    "dialogue_history": [
+      {
+        "speaker": "Doctor",
+        "turn": 0,
+        "phase": "patient",
+        "text": "Can you describe your main symptoms and how long you have been experiencing them?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 1,
+        "phase": "patient",
+        "text": "I've been feeling very tired, having pain in my left flank, and running a fever for about two weeks now. The fatigue and fever started around the time my sinus infection was getting better."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 1,
+        "phase": "patient",
+        "text": "Have you noticed any changes in your urine, such as blood, cloudiness, or pain when urinating?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 2,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any changes in my urine\u2014no blood, cloudiness, or pain when I go."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Have you experienced any nausea, vomiting, or loss of appetite along with your other symptoms?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 3,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any nausea or vomiting, and my appetite has been about the same as usual."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 3,
+        "phase": "patient",
+        "text": "Have you had any recent weight loss, night sweats, or chills along with your fever and fatigue?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 4,
+        "phase": "patient",
+        "text": "I haven\u2019t noticed any weight loss or night sweats, but I do get chills sometimes when the fever comes on."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 4,
+        "phase": "patient",
+        "text": "Have you had any recent injuries, trauma, or surgeries involving your back or abdomen?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 5,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any injuries, trauma, or surgeries to my back or abdomen recently."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 5,
+        "phase": "patient",
+        "text": "Have you traveled anywhere recently, or do you have any history of tick bites or exposure to animals?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 6,
+        "phase": "patient",
+        "text": "No, I haven\u2019t traveled recently, and I don\u2019t recall any tick bites or unusual animal exposures. I\u2019ve mostly been at home or around my neighborhood."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 6,
+        "phase": "patient",
+        "text": "Have you noticed any swelling, redness, or tenderness in your left flank area, or does the pain radiate to your back or groin?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 7,
+        "phase": "patient",
+        "text": "The pain is mostly in my left flank, and it feels a bit tender when you press on it, but I haven\u2019t noticed any swelling or redness. It doesn\u2019t really radiate to my back or groin."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 7,
+        "phase": "patient",
+        "text": "Have you ever had any kidney problems or urinary tract infections in the past?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 8,
+        "phase": "patient",
+        "text": "No, I\u2019ve never had any kidney problems or urinary tract infections before. This is the first time I\u2019ve had these kinds of symptoms."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 8,
+        "phase": "patient",
+        "text": "Have you noticed any rashes, joint pain, or mouth sores recently? Also, do you have any history of chronic illnesses like diabetes or autoimmune diseases?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 9,
+        "phase": "patient",
+        "text": "I did have a rash while I was taking the first antibiotic, but it went away after switching medications. I haven\u2019t had any joint pain or mouth sores, and I don\u2019t have diabetes or any autoimmune diseases that I know of."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 9,
+        "phase": "patient",
+        "text": "REQUEST TEST: Abdominal_CT_Scan"
+      },
+      {
+        "speaker": "Measurement",
+        "turn": 10,
+        "phase": "patient",
+        "text": "NORMAL READINGS."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 10,
+        "phase": "patient",
+        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
+      }
+    ],
+    "requested_tests": [
+      "Abdominal_CT_Scan"
+    ],
+    "tests_requested_count": 1,
+    "available_tests": [
+      "Serum_Biochemistry",
+      "Urinalysis"
+    ],
+    "determined_specialist": null,
+    "consultation_analysis": {
+      "error": "No consultation dialogue recorded"
+    },
+    "final_doctor_diagnosis": "Post-infectious (reactive) left-sided pyelonephritis or perinephric inflammation without urinary tract involvement (sterile pyelonephritis), likely related to recent sinus infection and antibiotic use, given persistent fever, left flank pain, and tenderness, with normal abdominal CT and absence of urinary symptoms.",
+    "is_correct": false,
+    "tests_left_out": [
+      "Serum_Biochemistry",
+      "Urinalysis"
+    ]
+  },
+  {
+    "timestamp": "2025-07-15T17:09:07.755956",
+    "model": "gpt-4.1",
+    "dataset": "MedQA",
+    "scenario_id": 5,
+    "max_patient_turns": 10,
+    "max_consultation_turns": 5,
+    "correct_diagnosis": "Pes anserine bursitis",
+    "dialogue_history": [
+      {
+        "speaker": "Doctor",
+        "turn": 0,
+        "phase": "patient",
+        "text": "Can you describe your main symptoms and how long you have been experiencing them?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 1,
+        "phase": "patient",
+        "text": "My knee started hurting yesterday, and the pain has been getting worse since then. It's mostly on the inside, just below my kneecap."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 1,
+        "phase": "patient",
+        "text": "Did you experience any injury, fall, or unusual activity before the pain started?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 2,
+        "phase": "patient",
+        "text": "No, I didn\u2019t have any falls or direct injuries, but I did play a lot of volleyball recently with a lot of twisting and turning. The pain started after that."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Have you noticed any swelling, redness, or warmth around your knee since the pain started?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 3,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any swelling, redness, or warmth around my knee. It just hurts, especially when I move or put weight on it."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 3,
+        "phase": "patient",
+        "text": "Does the pain get worse when you go up or down stairs, squat, or kneel?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 4,
+        "phase": "patient",
+        "text": "Yes, the pain definitely gets worse when I go up or down stairs, and it also hurts more when I squat or kneel."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 4,
+        "phase": "patient",
+        "text": "Have you ever had knee pain like this before, or any previous knee injuries?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 5,
+        "phase": "patient",
+        "text": "No, I\u2019ve never had knee pain like this before, and I haven\u2019t had any previous knee injuries. This is the first time it\u2019s happened."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 5,
+        "phase": "patient",
+        "text": "Have you noticed any clicking, popping, or locking sensations in your knee when you move it?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 6,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any clicking, popping, or locking in my knee. It just feels sore and a bit tender when I move or press on it."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 6,
+        "phase": "patient",
+        "text": "Have you noticed any weakness or instability in your knee, like it might give out when you walk or stand?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 7,
+        "phase": "patient",
+        "text": "No, I haven\u2019t felt any weakness or like my knee might give out. It just hurts, especially when I move a certain way."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 7,
+        "phase": "patient",
+        "text": "Have you noticed any bruising or discoloration around your knee since the pain started?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 8,
+        "phase": "patient",
+        "text": "No, I haven\u2019t seen any bruising or discoloration around my knee. It just feels sore and a bit tender to touch."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 8,
+        "phase": "patient",
+        "text": "Have you tried any treatments like ice, rest, or over-the-counter pain medication, and if so, has anything helped relieve the pain?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 9,
+        "phase": "patient",
+        "text": "I tried putting some ice on it last night and rested it, but it still hurts today. I haven\u2019t taken any pain medication yet."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 9,
+        "phase": "patient",
+        "text": "Have you noticed any difficulty fully straightening or bending your knee, or does it feel stiff in the morning or after sitting for a while?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 10,
+        "phase": "patient",
+        "text": "I haven\u2019t really noticed any stiffness in the morning or after sitting, and I can still bend and straighten my knee, but it does hurt when I try to move it a lot."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 10,
+        "phase": "patient",
+        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
+      }
+    ],
+    "requested_tests": [],
+    "tests_requested_count": 0,
+    "available_tests": [
+      "X-Ray_Knee",
+      "MRI_Knee"
+    ],
+    "determined_specialist": null,
+    "consultation_analysis": {
+      "error": "No consultation dialogue recorded"
+    },
+    "final_doctor_diagnosis": "Medial patellofemoral pain syndrome (commonly known as \"runner's knee\")",
+    "is_correct": false,
+    "tests_left_out": [
+      "MRI_Knee",
+      "X-Ray_Knee"
+    ]
+  },
+  {
+    "timestamp": "2025-07-15T17:09:42.647122",
+    "model": "gpt-4.1",
+    "dataset": "MedQA",
+    "scenario_id": 6,
+    "max_patient_turns": 10,
+    "max_consultation_turns": 5,
+    "correct_diagnosis": "Situational syncope",
+    "dialogue_history": [
+      {
+        "speaker": "Doctor",
+        "turn": 0,
+        "phase": "patient",
+        "text": "Can you describe your main symptoms and how long you have been experiencing them?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 1,
+        "phase": "patient",
+        "text": "I fainted about an hour ago right after I finished urinating. It lasted less than a minute, and I felt fine right after\u2014I wasn\u2019t confused or anything. This is the first time it\u2019s ever happened to me."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 1,
+        "phase": "patient",
+        "text": "Did you experience any warning signs before you fainted, such as lightheadedness, nausea, sweating, or blurred vision?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 2,
+        "phase": "patient",
+        "text": "I felt a bit lightheaded and maybe a little sweaty right before I passed out, but it happened pretty quickly. I didn\u2019t notice any nausea or blurred vision."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Did you injure yourself when you fainted, or have you had any recent falls or head injuries?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 3,
+        "phase": "patient",
+        "text": "No, I didn\u2019t injure myself when I fainted, and I haven\u2019t had any recent falls or head injuries. I just woke up on the bathroom floor feeling okay."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 3,
+        "phase": "patient",
+        "text": "Have you ever had any similar episodes of fainting or near-fainting in the past, even if they were less severe?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 4,
+        "phase": "patient",
+        "text": "No, this is the first time something like this has happened to me. I\u2019ve never fainted or felt close to fainting before."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 4,
+        "phase": "patient",
+        "text": "Do you have any history of heart problems, high blood pressure, diabetes, or are you currently taking any medications?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 5,
+        "phase": "patient",
+        "text": "No, I don\u2019t have any history of heart problems, high blood pressure, or diabetes, and I\u2019m not taking any regular medications."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 5,
+        "phase": "patient",
+        "text": "Did you experience any chest pain, palpitations, shortness of breath, or unusual weakness before or after you fainted?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 6,
+        "phase": "patient",
+        "text": "No, I didn\u2019t have any chest pain, palpitations, shortness of breath, or weakness before or after I fainted. I felt completely normal right before it happened."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 6,
+        "phase": "patient",
+        "text": "Did anyone witness your fainting episode, and if so, did they notice any abnormal movements, confusion, or incontinence while you were unconscious?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 7,
+        "phase": "patient",
+        "text": "My wife found me on the bathroom floor, but she didn\u2019t see me actually faint. She said I was just lying there and didn\u2019t notice any shaking, confusion, or incontinence."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 7,
+        "phase": "patient",
+        "text": "Have you had any recent illnesses, fevers, or dehydration, or were you straining or standing for a long time before you fainted?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 8,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any recent illnesses or fevers, and I wasn\u2019t feeling dehydrated. I wasn\u2019t straining or standing for a long time\u2014just finished urinating when it happened."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 8,
+        "phase": "patient",
+        "text": "Have you ever experienced any numbness, tingling, or weakness in your arms or legs, either before or after the fainting episode?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 9,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any numbness, tingling, or weakness in my arms or legs before or after the episode. I felt completely normal both before and after it happened."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 9,
+        "phase": "patient",
+        "text": "Did you notice any rapid heartbeat or irregular pulse when you checked your pulse after the episode, or have you ever been told you have an abnormal heart rhythm?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 10,
+        "phase": "patient",
+        "text": "No, I didn't notice any rapid or irregular heartbeat, and I've never been told I have an abnormal heart rhythm. My pulse felt normal when I checked it after I woke up."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 10,
+        "phase": "patient",
+        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
+      }
+    ],
+    "requested_tests": [],
+    "tests_requested_count": 0,
+    "available_tests": [
+      "Blood_Tests",
+      "Electrocardiogram"
+    ],
+    "determined_specialist": null,
+    "consultation_analysis": {
+      "error": "No consultation dialogue recorded"
+    },
+    "final_doctor_diagnosis": "Vasovagal (situational) syncope, specifically micturition syncope",
+    "is_correct": true,
+    "tests_left_out": [
+      "Electrocardiogram",
+      "Blood_Tests"
+    ]
+  },
+  {
+    "timestamp": "2025-07-15T17:10:18.814922",
+    "model": "gpt-4.1",
+    "dataset": "MedQA",
+    "scenario_id": 7,
+    "max_patient_turns": 10,
+    "max_consultation_turns": 5,
+    "correct_diagnosis": "Congenital Rubella Infection",
+    "dialogue_history": [
+      {
+        "speaker": "Doctor",
+        "turn": 0,
+        "phase": "patient",
+        "text": "Can you describe your main symptoms and how long you have been experiencing them?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 1,
+        "phase": "patient",
+        "text": "I\u2019ve had a constant whooshing sound in my chest since birth, and my skin has some bluish spots that don\u2019t go away when pressed. I haven\u2019t passed the hearing tests, and the doctors said my eyes look cloudy."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 1,
+        "phase": "patient",
+        "text": "Have you ever experienced any difficulty breathing, frequent lung infections, or problems with feeding or growth as a child?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 2,
+        "phase": "patient",
+        "text": "I haven\u2019t had any trouble with breathing or feeding so far, and my mom hasn\u2019t noticed any issues with my growth."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Have you ever had any problems with your heart, such as a heart murmur, or has anyone mentioned anything unusual about your heart during checkups?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 3,
+        "phase": "patient",
+        "text": "The doctors said they heard a continuous murmur when listening to my heart. I haven\u2019t had any checkups before since my mom didn\u2019t have prenatal care."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 3,
+        "phase": "patient",
+        "text": "Have you ever noticed any swelling in your legs, feet, or around your eyes, or do you get tired more easily than other children your age?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 4,
+        "phase": "patient",
+        "text": "I haven\u2019t had any swelling that my mom has noticed, and since I\u2019m a newborn, it\u2019s hard to say if I get tired more easily. My mom hasn\u2019t mentioned anything unusual about my activity or feeding."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 4,
+        "phase": "patient",
+        "text": "Have you noticed any unusual bleeding or bruising, or has your mom observed any problems with your joints or movement?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 5,
+        "phase": "patient",
+        "text": "My mom hasn\u2019t noticed any unusual bleeding or bruising, and there haven\u2019t been any problems with my joints or movement so far."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 5,
+        "phase": "patient",
+        "text": "Have you or your mom noticed any family members with similar symptoms, such as bluish skin spots, hearing loss, or heart problems?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 6,
+        "phase": "patient",
+        "text": "My mom says there\u2019s no known family history of these kinds of symptoms. She hasn\u2019t noticed anyone else in the family with bluish spots, hearing issues, or heart problems."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 6,
+        "phase": "patient",
+        "text": "Have you had any imaging studies or tests done on your heart, such as an echocardiogram or ultrasound? If not, I\u2019d like to REQUEST TEST: Echocardiogram."
+      },
+      {
+        "speaker": "Measurement",
+        "turn": 7,
+        "phase": "patient",
+        "text": "RESULTS: Echocardiogram findings show a patent ductus arteriosus."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 7,
+        "phase": "patient",
+        "text": "Have you had any blood tests done, especially to check for clotting factors or platelet function? If not, I\u2019d like to REQUEST TEST: Complete blood count and coagulation profile."
+      },
+      {
+        "speaker": "Measurement",
+        "turn": 8,
+        "phase": "patient",
+        "text": "RESULTS: NORMAL READINGS."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 8,
+        "phase": "patient",
+        "text": "Have you had any imaging or tests done on your eyes, such as an ophthalmology exam or slit-lamp test? If not, I\u2019d like to REQUEST TEST: Ophthalmology evaluation."
+      },
+      {
+        "speaker": "Measurement",
+        "turn": 9,
+        "phase": "patient",
+        "text": "RESULTS: Slit lamp examination shows cloudy lenses in both eyes. Ophthalmologic consult findings indicate congenital cataracts."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 9,
+        "phase": "patient",
+        "text": "Have you had any genetic testing or metabolic screening done to look for underlying syndromes or enzyme deficiencies? If not, I\u2019d like to REQUEST TEST: Genetic and metabolic panel."
+      },
+      {
+        "speaker": "Measurement",
+        "turn": 10,
+        "phase": "patient",
+        "text": "RESULTS: NORMAL READINGS."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 10,
+        "phase": "patient",
+        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
+      }
+    ],
+    "requested_tests": [
+      "Echocardiogram",
+      "Complete blood count and coagulation profile",
+      "Ophthalmology evaluation",
+      "Genetic and metabolic panel"
+    ],
+    "tests_requested_count": 4,
+    "available_tests": [
+      "TORCH_Screen",
+      "Echocardiogram",
+      "Ophthalmologic_Consult",
+      "Hearing_Test"
+    ],
+    "determined_specialist": null,
+    "consultation_analysis": {
+      "error": "No consultation dialogue recorded"
+    },
+    "final_doctor_diagnosis": "Congenital rubella syndrome",
+    "is_correct": true,
+    "tests_left_out": [
+      "TORCH_Screen",
+      "Ophthalmologic_Consult",
+      "Hearing_Test"
+    ]
+  },
+  {
+    "timestamp": "2025-07-15T17:10:55.310494",
+    "model": "gpt-4.1",
+    "dataset": "MedQA",
+    "scenario_id": 8,
+    "max_patient_turns": 10,
+    "max_consultation_turns": 5,
+    "correct_diagnosis": "Phyllodes tumor",
+    "dialogue_history": [
+      {
+        "speaker": "Doctor",
+        "turn": 0,
+        "phase": "patient",
+        "text": "Can you describe your main symptoms and how long you have been experiencing them?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 1,
+        "phase": "patient",
+        "text": "About four weeks ago, I noticed a lump in my left breast. Since then, it has been getting bigger pretty quickly. I haven\u2019t had any pain, skin changes, or nipple changes."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 1,
+        "phase": "patient",
+        "text": "Have you noticed any swelling in your armpit or any unexplained weight loss, fever, or night sweats?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 2,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any swelling in my armpit, and I haven\u2019t had any weight loss, fever, or night sweats."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Have you ever had any breast lumps or breast problems in the past, or any family history of breast cancer or other cancers?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 3,
+        "phase": "patient",
+        "text": "No, I\u2019ve never had any breast lumps or problems before, and there\u2019s no family history of breast cancer or other cancers that I know of."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 3,
+        "phase": "patient",
+        "text": "Have you noticed any changes in the size or shape of your breast, or any new lumps in the other breast?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 4,
+        "phase": "patient",
+        "text": "I\u2019ve only noticed the lump in my left breast, and it\u2019s been getting bigger pretty quickly. I haven\u2019t felt any new lumps or changes in my right breast."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 4,
+        "phase": "patient",
+        "text": "Have you experienced any recent trauma or injury to your left breast, or do you recall any infection or redness in that area?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 5,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any trauma or injury to my left breast, and I haven\u2019t noticed any infection or redness there."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 5,
+        "phase": "patient",
+        "text": "Have you noticed any discharge from your nipple, or any changes in the skin over the lump such as dimpling or puckering?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 6,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any discharge from my nipple, and the skin over the lump looks normal\u2014no dimpling or puckering."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 6,
+        "phase": "patient",
+        "text": "Have you noticed if the lump feels hard or soft, and is it fixed in place or does it move around under the skin when you touch it?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 7,
+        "phase": "patient",
+        "text": "It feels quite firm to me, but I can move it around a little under the skin. It doesn\u2019t seem stuck in one place."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 7,
+        "phase": "patient",
+        "text": "Have you noticed any changes in your menstrual cycle, or are you currently pregnant or breastfeeding?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 8,
+        "phase": "patient",
+        "text": "No, my menstrual cycle has been regular, and I am not pregnant or breastfeeding."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 8,
+        "phase": "patient",
+        "text": "Have you ever taken any hormonal medications, such as birth control pills or hormone replacement therapy? Also, how old are you?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 9,
+        "phase": "patient",
+        "text": "I\u2019m 48 years old, and I haven\u2019t taken any hormonal medications or hormone replacement therapy."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 9,
+        "phase": "patient",
+        "text": "REQUEST TEST: Breast_Ultrasound"
+      },
+      {
+        "speaker": "Measurement",
+        "turn": 10,
+        "phase": "patient",
+        "text": "RESULTS: NORMAL READINGS."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 10,
+        "phase": "patient",
+        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
+      }
+    ],
+    "requested_tests": [
+      "Breast_Ultrasound"
+    ],
+    "tests_requested_count": 1,
+    "available_tests": [
+      "Mammography",
+      "Biopsy"
+    ],
+    "determined_specialist": null,
+    "consultation_analysis": {
+      "error": "No consultation dialogue recorded"
+    },
+    "final_doctor_diagnosis": "Likely benign breast lump (such as a fibroadenoma or cyst), given the firm, mobile, painless nature, absence of alarming features, and normal breast ultrasound. However, continued monitoring and follow-up are recommended to ensure stability.",
+    "is_correct": false,
+    "tests_left_out": [
+      "Biopsy",
+      "Mammography"
+    ]
+  },
+  {
+    "timestamp": "2025-07-15T17:11:32.273582",
+    "model": "gpt-4.1",
+    "dataset": "MedQA",
+    "scenario_id": 9,
+    "max_patient_turns": 10,
+    "max_consultation_turns": 5,
+    "correct_diagnosis": "Endometritis",
+    "dialogue_history": [
+      {
+        "speaker": "Doctor",
+        "turn": 0,
+        "phase": "patient",
+        "text": "Can you describe your main symptoms and how long you have been experiencing them?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 1,
+        "phase": "patient",
+        "text": "I\u2019ve been feeling tenderness in my lower abdomen, especially around my uterus, and I\u2019ve noticed I\u2019m urinating more often. These symptoms started a couple of days after I gave birth."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 1,
+        "phase": "patient",
+        "text": "Have you experienced any fever, chills, or foul-smelling vaginal discharge since your symptoms began?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Yes, I have had a fever, but I haven\u2019t noticed any foul-smelling vaginal discharge or chills."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Have you had any pain or burning sensation when you urinate, or noticed any blood in your urine?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 3,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any pain or burning when I urinate, and I haven\u2019t noticed any blood in my urine."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 3,
+        "phase": "patient",
+        "text": "Have you noticed any increased vaginal bleeding, clots, or a foul odor from your vaginal discharge since giving birth?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 4,
+        "phase": "patient",
+        "text": "I haven\u2019t noticed any heavy bleeding or clots, but there is a bit of a strange smell from my vaginal discharge lately."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 4,
+        "phase": "patient",
+        "text": "Have you experienced any pain in your lower back or pelvis, or do you feel generally unwell or fatigued?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 5,
+        "phase": "patient",
+        "text": "I do feel generally unwell and a bit more tired than usual, but I haven\u2019t noticed any specific pain in my lower back or pelvis."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 5,
+        "phase": "patient",
+        "text": "Have you noticed any redness, swelling, or pain at your cesarean section or episiotomy site, if you had one?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 6,
+        "phase": "patient",
+        "text": "I didn\u2019t have a cesarean section, and I don\u2019t notice any redness or swelling around my vaginal area. I do feel some tenderness in my lower abdomen, though."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 6,
+        "phase": "patient",
+        "text": "Have you had any difficulty breastfeeding, or have you noticed any breast pain, redness, or swelling?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 7,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any issues with breastfeeding, and my breasts feel normal\u2014no pain, redness, or swelling."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 7,
+        "phase": "patient",
+        "text": "Have you noticed any foul odor or change in color of your lochia (postpartum vaginal discharge), or has the amount increased recently?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 8,
+        "phase": "patient",
+        "text": "Yes, I have noticed that my vaginal discharge has a stronger, somewhat foul odor lately, and it seems heavier than before."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 8,
+        "phase": "patient",
+        "text": "Have you experienced any cramping or pain when your uterus is pressed during a physical exam, or has anyone checked your uterus for tenderness since your symptoms began?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 9,
+        "phase": "patient",
+        "text": "Yes, when my uterus was pressed during the exam, it felt quite tender and uncomfortable. The pain seems to get worse when pressure is applied."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 9,
+        "phase": "patient",
+        "text": "REQUEST TEST: Complete_Blood_Count (CBC)"
+      },
+      {
+        "speaker": "Measurement",
+        "turn": 10,
+        "phase": "patient",
+        "text": "RESULTS: Complete Blood Count (CBC) results are pending."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 10,
+        "phase": "patient",
+        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
+      }
+    ],
+    "requested_tests": [
+      "Complete_Blood_Count (CBC)"
+    ],
+    "tests_requested_count": 1,
+    "available_tests": [
+      "Complete_Blood_Count",
+      "Urinalysis",
+      "Vital_Signs_at_Presentation"
+    ],
+    "determined_specialist": null,
+    "consultation_analysis": {
+      "error": "No consultation dialogue recorded"
+    },
+    "final_doctor_diagnosis": "Postpartum endometritis",
+    "is_correct": true,
+    "tests_left_out": [
+      "Complete_Blood_Count",
+      "Urinalysis",
+      "Vital_Signs_at_Presentation"
+    ]
+  },
+  {
+    "timestamp": "2025-07-15T17:12:06.617788",
+    "model": "gpt-4.1",
+    "dataset": "MedQA",
+    "scenario_id": 10,
+    "max_patient_turns": 10,
+    "max_consultation_turns": 5,
+    "correct_diagnosis": "Hemorrhoids",
+    "dialogue_history": [
+      {
+        "speaker": "Doctor",
+        "turn": 0,
+        "phase": "patient",
+        "text": "Can you describe your main symptoms and how long you have been experiencing them?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 1,
+        "phase": "patient",
+        "text": "I've been having rectal bleeding every day when I have a bowel movement for the past two weeks. I haven't noticed any pain when this happens."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 1,
+        "phase": "patient",
+        "text": "Have you noticed any changes in your stool, such as its color, consistency, or the presence of mucus?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 2,
+        "phase": "patient",
+        "text": "No, my stool looks normal to me\u2014no changes in color or consistency, and I haven\u2019t noticed any mucus."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Have you experienced any weight loss, fatigue, or changes in appetite over the past few weeks?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 3,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any weight loss, fatigue, or changes in my appetite recently."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 3,
+        "phase": "patient",
+        "text": "Have you noticed any itching, lumps, or swelling around your anus, or any history of hemorrhoids?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 4,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any itching, lumps, or swelling around my anus, and I\u2019ve never been told I have hemorrhoids before."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 4,
+        "phase": "patient",
+        "text": "Have you had any recent changes in your bowel habits, such as constipation or diarrhea, or any feeling of incomplete evacuation after a bowel movement?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 5,
+        "phase": "patient",
+        "text": "No, my bowel habits have stayed the same\u2014no constipation, diarrhea, or feeling like I haven\u2019t finished after going to the bathroom."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 5,
+        "phase": "patient",
+        "text": "Have you noticed whether the blood is bright red or dark in color, and does it appear on the toilet paper, in the toilet bowl, or mixed with the stool?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 6,
+        "phase": "patient",
+        "text": "The blood is bright red, and I usually see it on the toilet paper and sometimes in the toilet bowl, but not mixed with the stool."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 6,
+        "phase": "patient",
+        "text": "Have you had any recent trauma, vigorous wiping, or anal intercourse that could have caused irritation or injury to the area?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 7,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any recent trauma, vigorous wiping, or anal intercourse."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 7,
+        "phase": "patient",
+        "text": "Have you or any close family members ever been diagnosed with colon polyps, colorectal cancer, or inflammatory bowel disease?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 8,
+        "phase": "patient",
+        "text": "No, neither I nor any close family members have had colon polyps, colorectal cancer, or inflammatory bowel disease."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 8,
+        "phase": "patient",
+        "text": "Have you noticed any other symptoms such as fever, night sweats, or abdominal pain?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 9,
+        "phase": "patient",
+        "text": "No, I haven't had any fever, night sweats, or abdominal pain. I feel otherwise well."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 9,
+        "phase": "patient",
+        "text": "Have you noticed any straining during bowel movements or a history of chronic constipation in the past?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 10,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any issues with constipation or straining during my bowel movements. My bowel habits have been normal."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 10,
+        "phase": "patient",
+        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
+      }
+    ],
+    "requested_tests": [],
+    "tests_requested_count": 0,
+    "available_tests": [
+      "Complete_Blood_Count",
+      "Anoscopy"
+    ],
+    "determined_specialist": null,
+    "consultation_analysis": {
+      "error": "No consultation dialogue recorded"
+    },
+    "final_doctor_diagnosis": "Anal fissure",
+    "is_correct": false,
+    "tests_left_out": [
+      "Complete_Blood_Count",
+      "Anoscopy"
+    ]
+  },
+  {
+    "timestamp": "2025-07-15T17:12:41.083180",
+    "model": "gpt-4.1",
+    "dataset": "MedQA",
+    "scenario_id": 11,
+    "max_patient_turns": 10,
+    "max_consultation_turns": 5,
+    "correct_diagnosis": "Complex partial seizure",
+    "dialogue_history": [
+      {
+        "speaker": "Doctor",
+        "turn": 0,
+        "phase": "patient",
+        "text": "Can you describe your main symptoms and how long you have been experiencing them?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 1,
+        "phase": "patient",
+        "text": "I've been having these weird episodes for about a month now. My face feels funny and I start staring, and I can't remember what happens during them. They last a few minutes and I feel really tired and confused afterwards."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 1,
+        "phase": "patient",
+        "text": "Do these episodes happen at any particular time of day or in response to anything specific, like stress or lack of sleep?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 2,
+        "phase": "patient",
+        "text": "I don\u2019t think they happen at any specific time, and I haven\u2019t noticed anything that makes them start. Sometimes they even happen after I wake up."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Have you ever experienced any jerking movements of your arms or legs during these episodes, or has anyone noticed you making unusual sounds or movements?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 3,
+        "phase": "patient",
+        "text": "My brother said I was making some hand movements during one of the episodes, but I don\u2019t think my arms or legs were jerking a lot. I don\u2019t remember making any unusual sounds either."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 3,
+        "phase": "patient",
+        "text": "Have you ever bitten your tongue, lost control of your bladder, or injured yourself during these episodes?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 4,
+        "phase": "patient",
+        "text": "No, I haven\u2019t bitten my tongue, wet myself, or gotten hurt during any of these episodes."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 4,
+        "phase": "patient",
+        "text": "Have you noticed any warning signs before these episodes start, like strange smells, tastes, or feelings of d\u00e9j\u00e0 vu?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 5,
+        "phase": "patient",
+        "text": "Yes, right before the episodes start, I get a weird muddy taste in my mouth. That\u2019s usually the only thing I notice before it happens."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 5,
+        "phase": "patient",
+        "text": "Have you ever had any serious head injuries, brain infections, or a history of neurological problems in the past?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 6,
+        "phase": "patient",
+        "text": "No, I\u2019ve never had any head injuries or brain infections before, and I haven\u2019t had any problems with my brain or nerves that I know of."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 6,
+        "phase": "patient",
+        "text": "Have you noticed any changes in your memory, mood, or ability to concentrate since these episodes started?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 7,
+        "phase": "patient",
+        "text": "I haven\u2019t really noticed any changes in my memory or mood, but sometimes after an episode I feel really tired and a little confused for a while. My teachers haven\u2019t said anything about me not paying attention in class."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 7,
+        "phase": "patient",
+        "text": "Have you ever had any episodes where you lost consciousness completely, or do you always remain somewhat aware during these events?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 8,
+        "phase": "patient",
+        "text": "I don\u2019t remember anything during these episodes, so I\u2019m not sure if I lose consciousness, but I don\u2019t feel aware at all when they happen."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 8,
+        "phase": "patient",
+        "text": "Have you ever had any similar episodes in childhood, or does anyone in your family have a history of seizures or epilepsy?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 9,
+        "phase": "patient",
+        "text": "No, I\u2019ve never had anything like this before, and no one in my family has seizures or epilepsy that I know of."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 9,
+        "phase": "patient",
+        "text": "Thank you for your answers. To help confirm what\u2019s happening during these episodes, I\u2019d like to REQUEST TEST: EEG (electroencephalogram)."
+      },
+      {
+        "speaker": "Measurement",
+        "turn": 10,
+        "phase": "patient",
+        "text": "RESULTS: Electroencephalogram shows interictal spikes and sharp waves localized to the temporal lobes, more prominent on the right side."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 10,
+        "phase": "patient",
+        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
+      }
+    ],
+    "requested_tests": [
+      "EEG (electroencephalogram)"
+    ],
+    "tests_requested_count": 1,
+    "available_tests": [
+      "Electroencephalogram",
+      "MRI_Brain",
+      "Complete_Blood_Count",
+      "Serum_Electrolytes"
+    ],
+    "determined_specialist": null,
+    "consultation_analysis": {
+      "error": "No consultation dialogue recorded"
+    },
+    "final_doctor_diagnosis": "Temporal lobe epilepsy",
+    "is_correct": true,
+    "tests_left_out": [
+      "Electroencephalogram",
+      "Complete_Blood_Count",
+      "Serum_Electrolytes",
+      "MRI_Brain"
+    ]
+  },
+  {
+    "timestamp": "2025-07-15T17:13:16.615251",
+    "model": "gpt-4.1",
+    "dataset": "MedQA",
+    "scenario_id": 12,
+    "max_patient_turns": 10,
+    "max_consultation_turns": 5,
+    "correct_diagnosis": "Posterior hip dislocation",
+    "dialogue_history": [
+      {
+        "speaker": "Doctor",
+        "turn": 0,
+        "phase": "patient",
+        "text": "Can you describe your main symptoms and how long you have been experiencing them?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 1,
+        "phase": "patient",
+        "text": "Right after the car accident, I felt severe pain in my right groin and both of my knees started hurting. The pain in my right groin is much worse than in my knees."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 1,
+        "phase": "patient",
+        "text": "Did you notice any swelling, bruising, or inability to move your right leg or knees since the accident?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Yes, my right groin and both knees feel swollen, and I can\u2019t really move my right leg at all\u2014it hurts too much. I haven\u2019t noticed much bruising yet, but the pain is really severe."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Have you noticed any numbness, tingling, or weakness in your right leg or feet since the accident?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 3,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any numbness or tingling, but it really hurts to move my right leg. I don\u2019t feel any weakness, just a lot of pain in my groin."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 3,
+        "phase": "patient",
+        "text": "Have you been able to put any weight on your right leg since the accident, or does the pain prevent you from standing or walking at all?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 4,
+        "phase": "patient",
+        "text": "I haven\u2019t been able to put any weight on my right leg at all\u2014the pain is just too severe whenever I try to move or stand."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 4,
+        "phase": "patient",
+        "text": "Have you noticed any changes in the shape or length of your right leg, or does it look different compared to your left leg?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 5,
+        "phase": "patient",
+        "text": "Yes, my right leg looks a bit shorter than the left, and it feels like it\u2019s turned inward and is hard to move. It\u2019s also really painful in my groin area."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 5,
+        "phase": "patient",
+        "text": "Have you had any previous injuries or surgeries to your right hip or leg before this accident?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 6,
+        "phase": "patient",
+        "text": "No, I\u2019ve never had any injuries or surgeries to my right hip or leg before. This pain started right after the accident."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 6,
+        "phase": "patient",
+        "text": "Have you noticed any open wounds, bleeding, or bone protruding through the skin on your right leg or hip area?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 7,
+        "phase": "patient",
+        "text": "No, I haven\u2019t seen any open wounds or bleeding, and there\u2019s nothing sticking out through the skin. It just hurts a lot, especially in my right groin and hip area."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 7,
+        "phase": "patient",
+        "text": "Have you noticed any pain or difficulty when moving your left leg, or is all the severe pain and inability to move limited to your right side?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 8,
+        "phase": "patient",
+        "text": "All the severe pain and trouble moving is on my right side\u2014my left leg feels okay. My right groin hurts a lot, and I can\u2019t really move my right leg without a lot of pain."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 8,
+        "phase": "patient",
+        "text": "REQUEST TEST: Right_Hip_X-Ray While we wait for the X-ray, have you had any fevers, chills, or other symptoms since the accident?"
+      },
+      {
+        "speaker": "Measurement",
+        "turn": 9,
+        "phase": "patient",
+        "text": "RESULTS: Pelvic X-ray findings: No fractures identified in the pelvic ring or femoral neck, but alignment suggests posterior dislocation of the right hip."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 9,
+        "phase": "patient",
+        "text": "Have you noticed any loss of bladder or bowel control since the accident, or any numbness in your groin area?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 10,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any loss of bladder or bowel control, and I don\u2019t feel any numbness in my groin area."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 10,
+        "phase": "patient",
+        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
+      }
+    ],
+    "requested_tests": [
+      "Right_Hip_X-Ray While we wait for the X-ray, have you had any fevers, chills, or other symptoms since the accident"
+    ],
+    "tests_requested_count": 1,
+    "available_tests": [
+      "Imaging"
+    ],
+    "determined_specialist": null,
+    "consultation_analysis": {
+      "error": "No consultation dialogue recorded"
+    },
+    "final_doctor_diagnosis": "Right posterior hip dislocation",
+    "is_correct": true,
+    "tests_left_out": [
+      "Imaging"
+    ]
+  },
+  {
+    "timestamp": "2025-07-15T17:13:52.564898",
+    "model": "gpt-4.1",
+    "dataset": "MedQA",
+    "scenario_id": 13,
+    "max_patient_turns": 10,
+    "max_consultation_turns": 5,
+    "correct_diagnosis": "Hirschsprung\u00e2\u20ac\u2122s disease",
+    "dialogue_history": [
+      {
+        "speaker": "Doctor",
+        "turn": 0,
+        "phase": "patient",
+        "text": "Can you describe your main symptoms and how long you have been experiencing them?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 1,
+        "phase": "patient",
+        "text": "I've been vomiting a greenish fluid since shortly after birth, and my belly looks swollen. I haven't been able to pass any stool yet."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 1,
+        "phase": "patient",
+        "text": "Have you noticed any blood in the vomit or any signs of discomfort when your belly is touched? Also, were you born at full term or prematurely?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 2,
+        "phase": "patient",
+        "text": "There hasn\u2019t been any blood in the vomit, but I seem uncomfortable when my belly is touched. I was born at full term."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Have you noticed any changes in your urine output or color? Also, did your mother have any complications during pregnancy or delivery?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 3,
+        "phase": "patient",
+        "text": "My diapers have been wet, so I am making urine, and my urine looks normal in color. My mother says her pregnancy and delivery were normal without any problems."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 3,
+        "phase": "patient",
+        "text": "Have you noticed any yellowing of your skin or eyes? Also, has your abdomen become more distended over time or stayed the same since birth?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 4,
+        "phase": "patient",
+        "text": "I haven\u2019t noticed any yellowing of my skin or eyes. My abdomen seems to be getting more distended as time goes on."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 4,
+        "phase": "patient",
+        "text": "Have you had any episodes of fever or trouble breathing? Also, have you been feeding well, or do you seem to vomit after every feed?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 5,
+        "phase": "patient",
+        "text": "I haven\u2019t had any fever or trouble breathing. I vomit after every feed, and the vomit looks green."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 5,
+        "phase": "patient",
+        "text": "Have you noticed any swelling in your legs or feet, or any unusual movements or lethargy? Also, do you have any family history of digestive problems in newborns?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 6,
+        "phase": "patient",
+        "text": "I haven\u2019t noticed any swelling in my legs or feet. I do seem uncomfortable and a bit fussy, but there\u2019s no family history of digestive problems in newborns."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 6,
+        "phase": "patient",
+        "text": "Have you noticed if your abdomen looks more swollen in the upper part or lower part? Also, do you have any visible veins on your belly or any redness of the skin?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 7,
+        "phase": "patient",
+        "text": "My whole belly looks swollen, but I can't really tell if it's more in the upper or lower part. I haven't noticed any veins or redness on my skin."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 7,
+        "phase": "patient",
+        "text": "REQUEST TEST: Abdominal_X-Ray While we wait for the results, have you noticed any changes in your activity level, such as being unusually sleepy or difficult to wake up?"
+      },
+      {
+        "speaker": "Measurement",
+        "turn": 8,
+        "phase": "patient",
+        "text": "RESULTS: Abdominal X-ray shows dilated loops of bowel with no gas in the rectum, suggestive of a distal obstruction."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 8,
+        "phase": "patient",
+        "text": "Have you noticed any meconium (the first black, tarry stool) passed at all since birth, or has there been a complete absence of stool? Also, were there any issues with delayed crying or breathing right after birth?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 9,
+        "phase": "patient",
+        "text": "I haven\u2019t passed any meconium at all since I was born. My mom says I cried right away and didn\u2019t have any trouble breathing after birth."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 9,
+        "phase": "patient",
+        "text": "REQUEST TEST: Contrast_Enema"
+      },
+      {
+        "speaker": "Measurement",
+        "turn": 10,
+        "phase": "patient",
+        "text": "RESULTS: NORMAL READINGS."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 10,
+        "phase": "patient",
+        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
+      }
+    ],
+    "requested_tests": [
+      "Abdominal_X-Ray While we wait for the results, have you noticed any changes in your activity level, such as being unusually sleepy or difficult to wake up",
+      "Contrast_Enema"
+    ],
+    "tests_requested_count": 2,
+    "available_tests": [
+      "Abdominal_X-ray",
+      "Rectal_Biopsy"
+    ],
+    "determined_specialist": null,
+    "consultation_analysis": {
+      "error": "No consultation dialogue recorded"
+    },
+    "final_doctor_diagnosis": "Intestinal (Distal) Obstruction due to Hirschsprung Disease",
+    "is_correct": true,
+    "tests_left_out": [
+      "Abdominal_X-ray",
+      "Rectal_Biopsy"
+    ]
+  },
+  {
+    "timestamp": "2025-07-15T17:14:30.312184",
+    "model": "gpt-4.1",
+    "dataset": "MedQA",
+    "scenario_id": 14,
+    "max_patient_turns": 10,
+    "max_consultation_turns": 5,
+    "correct_diagnosis": "Rupture of the flexor digitorum profundus tendon at its point of insertion",
+    "dialogue_history": [
+      {
+        "speaker": "Doctor",
+        "turn": 0,
+        "phase": "patient",
+        "text": "Can you describe your main symptoms and how long you have been experiencing them?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 1,
+        "phase": "patient",
+        "text": "My right ring finger has been swollen and painful for the past two days. I can\u2019t bend the tip of that finger when I try to make a fist."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 1,
+        "phase": "patient",
+        "text": "Did you have any recent injury, cut, or puncture to that finger, or have you noticed any redness, warmth, or pus around the area?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Yeah, I injured it while playing football\u2014my finger got caught in someone\u2019s jersey and was pulled hard. I haven\u2019t noticed any cuts, redness, warmth, or pus around the area."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Are you able to move the rest of your finger at all, or is it just the tip that you can't bend? Do you have any numbness or tingling in that finger?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 3,
+        "phase": "patient",
+        "text": "I can move the rest of my finger, but I just can't bend the tip at all. There's no numbness or tingling\u2014just pain and swelling at the tip joint."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 3,
+        "phase": "patient",
+        "text": "Did you hear or feel a pop at the time of injury, and have you noticed any deformity or drooping of the fingertip since then?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 4,
+        "phase": "patient",
+        "text": "I didn\u2019t hear a pop, but I did feel something give way when it happened. Since then, my fingertip just stays straight and I can\u2019t bend it like the others."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 4,
+        "phase": "patient",
+        "text": "Have you tried to splint or ice the finger since the injury, and has the swelling or pain changed at all since it first happened?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 5,
+        "phase": "patient",
+        "text": "I put some ice on it right after it happened, but the swelling and pain have both gotten worse since then. I haven\u2019t tried to splint it or anything else."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 5,
+        "phase": "patient",
+        "text": "Have you had any previous injuries to this finger or hand, or any history of joint problems like arthritis?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 6,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any injuries to this finger or hand before, and I\u2019ve never had any joint problems or arthritis."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 6,
+        "phase": "patient",
+        "text": "Have you noticed any bruising or discoloration around the finger, or does it hurt more when you try to use your hand?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 7,
+        "phase": "patient",
+        "text": "Yeah, there\u2019s some bruising around the joint, and it definitely hurts more if I try to grip something or move my finger."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 7,
+        "phase": "patient",
+        "text": "Have you noticed any locking or catching sensation in the finger when you try to move it, or does it just stay straight without resistance?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 8,
+        "phase": "patient",
+        "text": "It just stays straight\u2014I can\u2019t bend the tip at all, and there\u2019s no locking or catching. It feels stuck in that extended position."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 8,
+        "phase": "patient",
+        "text": "REQUEST TEST: Finger_X-Ray (right ring finger)"
+      },
+      {
+        "speaker": "Measurement",
+        "turn": 9,
+        "phase": "patient",
+        "text": "RESULTS: X-ray of the right hand shows no bone fractures or dislocations visible. Soft tissue swelling is noted around the distal interphalangeal joint of the right ring finger."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 9,
+        "phase": "patient",
+        "text": "Have you noticed any changes in your ability to straighten the tip of your finger, or is it only bending that's affected?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 10,
+        "phase": "patient",
+        "text": "I can straighten the tip of my finger just fine, but I can't bend it at the last joint when I try to make a fist. It just stays extended."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 10,
+        "phase": "patient",
+        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
+      }
+    ],
+    "requested_tests": [
+      "Finger_X-Ray (right ring finger)"
+    ],
+    "tests_requested_count": 1,
+    "available_tests": [
+      "X-ray_of_the_Right_Hand",
+      "MRI_of_the_Right_Hand"
+    ],
+    "determined_specialist": null,
+    "consultation_analysis": {
+      "error": "No consultation dialogue recorded"
+    },
+    "final_doctor_diagnosis": "Flexor digitorum profundus tendon injury (Jersey finger) of the right ring finger",
+    "is_correct": true,
+    "tests_left_out": [
+      "MRI_of_the_Right_Hand",
+      "X-ray_of_the_Right_Hand"
+    ]
+  },
+  {
+    "timestamp": "2025-07-15T17:15:11.132411",
+    "model": "gpt-4.1",
+    "dataset": "MedQA",
+    "scenario_id": 15,
+    "max_patient_turns": 10,
+    "max_consultation_turns": 5,
+    "correct_diagnosis": "Epidermoid cyst",
+    "dialogue_history": [
+      {
+        "speaker": "Doctor",
+        "turn": 0,
+        "phase": "patient",
+        "text": "Can you describe your main symptoms and how long you have been experiencing them?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 1,
+        "phase": "patient",
+        "text": "I've noticed a swelling on the back of my neck that's been getting bigger over the past two months. It doesn't hurt, and there's no fever or discharge."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 1,
+        "phase": "patient",
+        "text": "Have you noticed any other lumps elsewhere on your body, or have you experienced any recent weight loss, night sweats, or fatigue?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 2,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any other lumps anywhere else. I haven\u2019t had any weight loss, night sweats, or unusual tiredness either."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Have you had any recent infections, injuries, or insect bites near the area of the swelling?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 3,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any infections, injuries, or insect bites near the swelling. It just started getting bigger on its own."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 3,
+        "phase": "patient",
+        "text": "Have you ever had anything like this before, or do you have any family history of lumps, cysts, or cancers?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 4,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had anything like this before, and as far as I know, there\u2019s no family history of lumps or cysts. I did have colon cancer myself, but nothing like this swelling."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 4,
+        "phase": "patient",
+        "text": "Thank you for sharing that. Can you describe the size and texture of the swelling\u2014does it feel soft, firm, or hard, and has it changed in consistency as it has grown?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 5,
+        "phase": "patient",
+        "text": "It feels firm to touch, and I think it\u2019s gotten a bit larger and maybe a little harder over the past few weeks. It doesn\u2019t hurt when I press on it."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 5,
+        "phase": "patient",
+        "text": "Have you noticed any changes in the skin over the swelling, such as redness, ulceration, or changes in color?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 6,
+        "phase": "patient",
+        "text": "No, the skin over the swelling looks normal to me\u2014no redness, sores, or color changes."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 6,
+        "phase": "patient",
+        "text": "Have you experienced any difficulty moving your neck, or any pain or numbness in your arms or shoulders since the swelling appeared?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 7,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any trouble moving my neck, and there\u2019s no pain or numbness in my arms or shoulders. The swelling just feels like a lump, but it doesn\u2019t bother me otherwise."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 7,
+        "phase": "patient",
+        "text": "Have you noticed any recent changes in your appetite or any difficulty swallowing or breathing since the swelling started?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 8,
+        "phase": "patient",
+        "text": "No, my appetite has been normal and I haven\u2019t had any trouble swallowing or breathing. The swelling just keeps getting bigger."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 8,
+        "phase": "patient",
+        "text": "Have you noticed any pulsation in the lump, or does it move when you swallow or stick out your tongue?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 9,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any pulsation in the lump, and it doesn\u2019t seem to move when I swallow or stick out my tongue."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 9,
+        "phase": "patient",
+        "text": "Thank you for your answers. To help determine the nature of this swelling, I\u2019d like to REQUEST TEST: Neck_Ultrasound."
+      },
+      {
+        "speaker": "Measurement",
+        "turn": 10,
+        "phase": "patient",
+        "text": "RESULTS: Ultrasound of the neck shows a well-circumscribed lesion in the subcutaneous tissue suggestive of a cystic nature."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 10,
+        "phase": "patient",
+        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
+      }
+    ],
+    "requested_tests": [
+      "Neck_Ultrasound"
+    ],
+    "tests_requested_count": 1,
+    "available_tests": [
+      "Imaging",
+      "Complete_Blood_Count",
+      "Serum_Chemistry"
+    ],
+    "determined_specialist": null,
+    "consultation_analysis": {
+      "error": "No consultation dialogue recorded"
+    },
+    "final_doctor_diagnosis": "Epidermoid (epidermal inclusion) cyst of the neck",
+    "is_correct": true,
+    "tests_left_out": [
+      "Complete_Blood_Count",
+      "Serum_Chemistry",
+      "Imaging"
+    ]
+  },
+  {
+    "timestamp": "2025-07-15T17:16:03.321580",
+    "model": "gpt-4.1",
+    "dataset": "MedQA",
+    "scenario_id": 16,
+    "max_patient_turns": 10,
+    "max_consultation_turns": 5,
+    "correct_diagnosis": "C. difficile colitis",
+    "dialogue_history": [
+      {
+        "speaker": "Doctor",
+        "turn": 0,
+        "phase": "patient",
+        "text": "Can you describe your main symptoms and how long you have been experiencing them?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 1,
+        "phase": "patient",
+        "text": "I've been having watery diarrhea for the past two days, with about nine episodes in that time. Along with that, I've had some lower abdominal discomfort and cramping."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 1,
+        "phase": "patient",
+        "text": "Have you noticed any blood or mucus in your stool, and have you experienced any fever, nausea, or vomiting?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 2,
+        "phase": "patient",
+        "text": "No, I haven\u2019t seen any blood or mucus in my stool. I also haven\u2019t had any fever, nausea, or vomiting."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Have you recently traveled anywhere, eaten any unusual foods, or had contact with anyone who is sick?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 3,
+        "phase": "patient",
+        "text": "No, I haven\u2019t traveled anywhere recently, and my diet has been the same as usual. I also haven\u2019t been around anyone who is sick."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 3,
+        "phase": "patient",
+        "text": "Have you noticed any signs of dehydration, such as feeling very thirsty, having a dry mouth, or urinating less than usual?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 4,
+        "phase": "patient",
+        "text": "Yes, I have been feeling quite thirsty and my mouth feels dry. I also think I\u2019ve been urinating less than usual."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 4,
+        "phase": "patient",
+        "text": "Have you taken any medications recently, including antibiotics or over-the-counter drugs, before your symptoms started?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 5,
+        "phase": "patient",
+        "text": "Yes, I\u2019ve been taking levofloxacin for my pneumonia. I haven\u2019t taken any other medications or antibiotics recently."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 5,
+        "phase": "patient",
+        "text": "Have you ever experienced diarrhea like this before when taking antibiotics, or is this your first time?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 6,
+        "phase": "patient",
+        "text": "No, this is the first time I\u2019ve had diarrhea like this while taking antibiotics. It started a couple of days after I began the medication."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 6,
+        "phase": "patient",
+        "text": "Have you noticed any recent weight loss, or do you have any underlying health conditions such as inflammatory bowel disease or a weakened immune system?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 7,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any weight loss, and I don\u2019t have any underlying health conditions that I know of. My only recent issue has been the pneumonia."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 7,
+        "phase": "patient",
+        "text": "Have you noticed any foul odor to your stools, or do you have any urgency or incontinence when you need to go to the bathroom?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 8,
+        "phase": "patient",
+        "text": "Yes, the stools do have a pretty foul smell, and I feel like I have to rush to the bathroom each time\u2014sometimes I barely make it in time."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 8,
+        "phase": "patient",
+        "text": "Have you noticed any abdominal tenderness when you press on your belly, or any swelling or bloating?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 9,
+        "phase": "patient",
+        "text": "Yes, my lower abdomen feels tender when I press on it, and I have noticed some mild bloating as well."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 9,
+        "phase": "patient",
+        "text": "REQUEST TEST: Stool_C_difficile_Toxin"
+      },
+      {
+        "speaker": "Measurement",
+        "turn": 10,
+        "phase": "patient",
+        "text": "RESULTS: Clostridium difficile Toxin: Not specified"
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 10,
+        "phase": "patient",
+        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
+      }
+    ],
+    "requested_tests": [
+      "Stool_C_difficile_Toxin"
+    ],
+    "tests_requested_count": 1,
+    "available_tests": [
+      "Complete_Blood_Count",
+      "ESR",
+      "Stool_Test"
+    ],
+    "determined_specialist": null,
+    "consultation_analysis": {
+      "error": "No consultation dialogue recorded"
+    },
+    "final_doctor_diagnosis": "Antibiotic-associated diarrhea, likely Clostridium difficile infection (C. diff infection)",
+    "is_correct": true,
+    "tests_left_out": [
+      "Complete_Blood_Count",
+      "ESR",
+      "Stool_Test"
+    ]
+  },
+  {
+    "timestamp": "2025-07-15T17:16:54.621472",
+    "model": "gpt-4.1",
+    "dataset": "MedQA",
+    "scenario_id": 17,
+    "max_patient_turns": 10,
+    "max_consultation_turns": 5,
+    "correct_diagnosis": "Pyoderma gangrenosum",
+    "dialogue_history": [
+      {
+        "speaker": "Doctor",
+        "turn": 0,
+        "phase": "patient",
+        "text": "Can you describe your main symptoms and how long you have been experiencing them?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 1,
+        "phase": "patient",
+        "text": "I have a painful sore on my right leg that started as a red spot about a month ago and has been getting bigger. It hurts quite a bit, and the center looks dark and dead, with a purplish border around it. I remember getting bitten by an ant at that spot before the sore appeared."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 1,
+        "phase": "patient",
+        "text": "Have you noticed any fever, chills, or feeling generally unwell since the sore appeared?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 2,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any fever or chills, and I don\u2019t feel generally unwell. The main issue has just been the sore on my leg."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Have you noticed any pus, drainage, or foul smell coming from the sore? Has the sore changed in size or appearance recently?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 3,
+        "phase": "patient",
+        "text": "There hasn\u2019t been any pus or foul smell, but the sore has definitely gotten bigger and the center looks darker now. The edges have turned a bit purple and irregular."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 3,
+        "phase": "patient",
+        "text": "Have you noticed any numbness, tingling, or loss of sensation around the sore or in your leg?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 4,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any numbness or tingling around the sore or in my leg. It\u2019s mostly just painful, especially when I touch it or walk."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 4,
+        "phase": "patient",
+        "text": "Have you tried any treatments or medications on the sore, such as creams, antibiotics, or home remedies? If so, did you notice any improvement or worsening after using them?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 5,
+        "phase": "patient",
+        "text": "I tried using an over-the-counter antibiotic ointment, but it didn\u2019t seem to help. The sore kept getting bigger and more painful over the past few weeks."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 5,
+        "phase": "patient",
+        "text": "Have you noticed any swelling in your leg, redness spreading away from the sore, or any swollen lymph nodes in your groin or elsewhere?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 6,
+        "phase": "patient",
+        "text": "Yes, my right leg has been swollen, and the area around the sore is red, but I haven\u2019t noticed any swollen lymph nodes. The swelling seems to get worse as the day goes on."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 6,
+        "phase": "patient",
+        "text": "Have you traveled recently, or do you have any underlying medical conditions such as diabetes or problems with your immune system?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 7,
+        "phase": "patient",
+        "text": "Yes, I have type 2 diabetes and Crohn\u2019s disease. I also visited Wisconsin about two months ago."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 7,
+        "phase": "patient",
+        "text": "Have you noticed any new sores or similar lesions elsewhere on your body, or is this the only one? Also, have you experienced any recent weight loss, night sweats, or fatigue?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 8,
+        "phase": "patient",
+        "text": "This is the only sore I have noticed. I haven\u2019t had any weight loss, night sweats, or unusual fatigue lately."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 8,
+        "phase": "patient",
+        "text": "Have you noticed any changes in the color or temperature of your toes or foot on the affected leg, such as becoming pale, bluish, or unusually cold?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 9,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any changes in color or temperature of my toes or foot. They seem to look and feel normal aside from the swelling in my lower legs."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 9,
+        "phase": "patient",
+        "text": "REQUEST TEST: Wound_Culture_and_Sensitivity"
+      },
+      {
+        "speaker": "Measurement",
+        "turn": 10,
+        "phase": "patient",
+        "text": "NORMAL READINGS"
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 10,
+        "phase": "patient",
+        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
+      }
+    ],
+    "requested_tests": [
+      "Wound_Culture_and_Sensitivity"
+    ],
+    "tests_requested_count": 1,
+    "available_tests": [
+      "Complete_Blood_Count",
+      "Blood_Glucose_Level",
+      "Skin_Biopsy"
+    ],
+    "determined_specialist": null,
+    "consultation_analysis": {
+      "error": "No consultation dialogue recorded"
+    },
+    "final_doctor_diagnosis": "Cutaneous ulcer with necrosis due to probable brown recluse spider (Loxosceles) bite (necrotic arachnidism), complicated by underlying diabetes and chronic inflammation.",
+    "is_correct": false,
+    "tests_left_out": [
+      "Complete_Blood_Count",
+      "Skin_Biopsy",
+      "Blood_Glucose_Level"
+    ]
+  },
+  {
+    "timestamp": "2025-07-15T17:17:38.205532",
+    "model": "gpt-4.1",
+    "dataset": "MedQA",
+    "scenario_id": 18,
+    "max_patient_turns": 10,
+    "max_consultation_turns": 5,
+    "correct_diagnosis": "Uterine rupture",
+    "dialogue_history": [
+      {
+        "speaker": "Doctor",
+        "turn": 0,
+        "phase": "patient",
+        "text": "Can you describe your main symptoms and how long you have been experiencing them?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 1,
+        "phase": "patient",
+        "text": "I started having heavy vaginal bleeding about an hour ago, along with really severe abdominal pain. Before the bleeding started, I was having contractions, but those stopped once the bleeding began."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 1,
+        "phase": "patient",
+        "text": "How far along are you in your pregnancy, and have you had any complications or issues during this pregnancy so far?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 2,
+        "phase": "patient",
+        "text": "I'm 38 weeks pregnant. I haven't had any major issues during this pregnancy until now, but my first baby was delivered by C-section."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Have you noticed any decrease in your baby's movements since the bleeding and pain started?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 3,
+        "phase": "patient",
+        "text": "I'm not really sure\u2014I haven't been paying close attention since the pain and bleeding started, but I don't think I've felt the baby move much."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 3,
+        "phase": "patient",
+        "text": "Have you experienced any dizziness, lightheadedness, or fainting since the bleeding began? Are you passing any clots or tissue with the blood?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 4,
+        "phase": "patient",
+        "text": "I\u2019ve felt a little lightheaded, but I haven\u2019t fainted. I did notice a few small clots in the blood, but nothing large."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 4,
+        "phase": "patient",
+        "text": "Have you had any recent trauma, falls, or accidents? Also, do you have any pain or tenderness when you touch your abdomen, especially at the top or sides?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 5,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any recent trauma, falls, or accidents. My abdomen feels very tender and painful, especially across the top."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 5,
+        "phase": "patient",
+        "text": "Have you had any previous surgeries on your uterus besides your C-section, such as fibroid removal or other procedures? Also, is the pain constant or does it come and go?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 6,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any other surgeries on my uterus besides the C-section. The pain is constant and very severe\u2014it hasn\u2019t let up since it started."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 6,
+        "phase": "patient",
+        "text": "Have you noticed any fluid leaking from your vagina, or do you think your water might have broken? Also, are you experiencing any shortness of breath, chest pain, or palpitations?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 7,
+        "phase": "patient",
+        "text": "I haven\u2019t noticed any fluid leaking, and I don\u2019t think my water has broken. I\u2019m not having any shortness of breath, chest pain, or palpitations either."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 7,
+        "phase": "patient",
+        "text": "REQUEST TEST: Fetal_Heart_Monitoring (Non-Stress Test) and Maternal_Vital_Signs. While we wait for those results, have you ever been told you have placenta previa or any issues with your placenta during this pregnancy?"
+      },
+      {
+        "speaker": "Measurement",
+        "turn": 8,
+        "phase": "patient",
+        "text": "RESULTS: Maternal Vital Signs: - Pulse: 110/min - Blood Pressure: 90/60 mm Hg - Respiratory Rate: 17/min Fetal Heart Rate Monitoring (Non-Stress Test): - Shows recurrent variable decelerations"
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 8,
+        "phase": "patient",
+        "text": "Have you had any recent ultrasounds that mentioned the position of your placenta, or did your doctor ever mention anything about placenta previa or placental abruption? Also, are you feeling any shoulder pain or pain that radiates elsewhere?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 9,
+        "phase": "patient",
+        "text": "I haven\u2019t been told about any issues with my placenta during this pregnancy, and I don\u2019t recall anything unusual on my last ultrasound. I\u2019m not having any shoulder pain or pain radiating anywhere else\u2014just the severe abdominal pain and bleeding."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 9,
+        "phase": "patient",
+        "text": "REQUEST TEST: Bedside_Abdominal_Ultrasound (to assess placental location, evidence of abruption, and fetal status)."
+      },
+      {
+        "speaker": "Measurement",
+        "turn": 10,
+        "phase": "patient",
+        "text": "RESULTS: Ultrasound Abdomen and Pelvis: Findings suggestive of a disruption in the uterine wall continuity adjacent to the scar from the previous cesarean section, with associated hemoperitoneum."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 10,
+        "phase": "patient",
+        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
+      }
+    ],
+    "requested_tests": [
+      "Fetal_Heart_Monitoring (Non-Stress Test) and Maternal_Vital_Signs. While we wait for those results, have you ever been told you have placenta previa or any issues with your placenta during this pregnancy",
+      "Bedside_Abdominal_Ultrasound (to assess placental location, evidence of abruption, and fetal status)"
+    ],
+    "tests_requested_count": 2,
+    "available_tests": [
+      "Hematology",
+      "Coagulation_Profile",
+      "Imaging"
+    ],
+    "determined_specialist": null,
+    "consultation_analysis": {
+      "error": "No consultation dialogue recorded"
+    },
+    "final_doctor_diagnosis": "Uterine rupture",
+    "is_correct": true,
+    "tests_left_out": [
+      "Coagulation_Profile",
+      "Hematology",
+      "Imaging"
+    ]
+  },
+  {
+    "timestamp": "2025-07-15T17:18:20.187850",
+    "model": "gpt-4.1",
+    "dataset": "MedQA",
+    "scenario_id": 19,
+    "max_patient_turns": 10,
+    "max_consultation_turns": 5,
+    "correct_diagnosis": "Disc herniation",
+    "dialogue_history": [
+      {
+        "speaker": "Doctor",
+        "turn": 0,
+        "phase": "patient",
+        "text": "Can you describe your main symptoms and how long you have been experiencing them?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 1,
+        "phase": "patient",
+        "text": "I started having a sharp pain in my lower back a few hours ago while I was at the gym. The pain shoots down the side of my leg and into my foot, and it gets worse when I move."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 1,
+        "phase": "patient",
+        "text": "Did you notice any numbness, tingling, or weakness in your leg or foot since the pain started?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Yes, I have noticed some tingling in my foot, and my leg feels a bit weaker than usual."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Have you had any problems with bladder or bowel control since the pain started?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 3,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any changes with my bladder or bowel control since the pain began."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 3,
+        "phase": "patient",
+        "text": "Have you ever experienced similar back pain or leg symptoms in the past, or is this your first episode?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 4,
+        "phase": "patient",
+        "text": "No, this is the first time I\u2019ve ever had pain like this. I\u2019ve never had any back or leg issues before."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 4,
+        "phase": "patient",
+        "text": "Did you hear or feel a pop or snap in your back when the pain started, or was there a specific movement or exercise that triggered it?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 5,
+        "phase": "patient",
+        "text": "I didn\u2019t hear or feel a pop, but I was doing deadlifts when the pain suddenly started. It just hit me all of a sudden during the lift."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 5,
+        "phase": "patient",
+        "text": "Have you noticed any changes in your ability to walk, such as dragging your foot or tripping more than usual since the pain began?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 6,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any changes in my ability to walk, and I haven\u2019t been dragging my foot or tripping. It just hurts a lot when I move."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 6,
+        "phase": "patient",
+        "text": "Have you tried taking any pain medication or using ice or heat since the pain started, and if so, did it help at all?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 7,
+        "phase": "patient",
+        "text": "I haven\u2019t taken any pain medication yet, but I did try putting some ice on my lower back when I got home. It didn\u2019t seem to make much of a difference."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 7,
+        "phase": "patient",
+        "text": "Have you noticed any swelling, bruising, or visible deformity in your lower back or leg since the pain started?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 8,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any swelling, bruising, or anything that looks out of place. It just really hurts and feels kind of tingly down my leg."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 8,
+        "phase": "patient",
+        "text": "Have you had any fever, unexplained weight loss, or night sweats recently?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 9,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any fever, weight loss, or night sweats."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 9,
+        "phase": "patient",
+        "text": "Have you noticed if the pain or tingling gets worse when you cough, sneeze, or strain, or does it stay the same regardless of those actions?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 10,
+        "phase": "patient",
+        "text": "Yes, the pain does seem to get worse when I cough or try to strain. It shoots down my leg more intensely when that happens."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 10,
+        "phase": "patient",
+        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
+      }
+    ],
+    "requested_tests": [],
+    "tests_requested_count": 0,
+    "available_tests": [
+      "MRI_Lumbar_Spine"
+    ],
+    "determined_specialist": null,
+    "consultation_analysis": {
+      "error": "No consultation dialogue recorded"
+    },
+    "final_doctor_diagnosis": "Acute lumbar radiculopathy (likely due to herniated lumbar intervertebral disc)",
+    "is_correct": true,
+    "tests_left_out": [
+      "MRI_Lumbar_Spine"
+    ]
+  },
+  {
+    "timestamp": "2025-07-15T17:18:59.548113",
+    "model": "gpt-4.1",
+    "dataset": "MedQA",
+    "scenario_id": 20,
+    "max_patient_turns": 10,
+    "max_consultation_turns": 5,
+    "correct_diagnosis": "Cytomegalovirus retinitis",
+    "dialogue_history": [
+      {
+        "speaker": "Doctor",
+        "turn": 0,
+        "phase": "patient",
+        "text": "Can you describe your main symptoms and how long you have been experiencing them?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 1,
+        "phase": "patient",
+        "text": "I've noticed my vision in my right eye has gotten worse over the past two days, and I keep seeing black spots. There's no pain, and my left eye feels completely normal."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 1,
+        "phase": "patient",
+        "text": "Have you experienced any flashes of light, or does it seem like a curtain or shadow is coming over your vision in that eye?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 2,
+        "phase": "patient",
+        "text": "I haven\u2019t noticed any flashes of light or a curtain coming over my vision\u2014just the black spots and blurry vision in my right eye."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Have you had any recent eye injuries, trauma, or surgeries to your right eye?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 3,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any injuries, trauma, or surgeries to my right eye recently."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 3,
+        "phase": "patient",
+        "text": "Have you ever been diagnosed with any eye conditions before, such as diabetes, high blood pressure, or retinal problems?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 4,
+        "phase": "patient",
+        "text": "No, I\u2019ve never had any eye problems before this. I don\u2019t have diabetes or high blood pressure either."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 4,
+        "phase": "patient",
+        "text": "Have you noticed any redness, discharge, or swelling in your right eye? Are you experiencing any headaches, nausea, or other neurological symptoms?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 5,
+        "phase": "patient",
+        "text": "No, there\u2019s no redness, discharge, or swelling in my right eye. I haven\u2019t had any headaches, nausea, or other neurological symptoms either."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 5,
+        "phase": "patient",
+        "text": "Have you noticed any recent changes in your general health, such as unexplained weight loss, fatigue, or fever?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 6,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any fever or weight loss recently. I do feel a bit tired sometimes, but nothing out of the ordinary for me."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 6,
+        "phase": "patient",
+        "text": "Have you ever had any issues with floaters or changes in your vision in the past, even if they resolved on their own?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 7,
+        "phase": "patient",
+        "text": "No, this is the first time I\u2019ve noticed these black spots and the decrease in vision. My vision was normal before this started two days ago."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 7,
+        "phase": "patient",
+        "text": "Have you noticed any distortion of straight lines, such as when looking at a grid or text, or does anything appear wavy or bent in your right eye?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 8,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any wavy or bent lines\u2014things just look blurry, and I see those black spots floating around in my right eye."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 8,
+        "phase": "patient",
+        "text": "Have you noticed any loss of vision in a specific part of your visual field, such as missing areas or blind spots, or is the blurriness affecting your entire right eye?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 9,
+        "phase": "patient",
+        "text": "It feels like there are black spots floating in my right eye, and the blurriness is mostly in that eye. The left eye seems completely normal."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 9,
+        "phase": "patient",
+        "text": "REQUEST TEST: Fundoscopic_Exam"
+      },
+      {
+        "speaker": "Measurement",
+        "turn": 10,
+        "phase": "patient",
+        "text": "RESULTS: Fundoscopy: Granular yellow-white opacities around the retinal vessels and multiple areas of dot-blot hemorrhages."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 10,
+        "phase": "patient",
+        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
+      }
+    ],
+    "requested_tests": [
+      "Fundoscopic_Exam"
+    ],
+    "tests_requested_count": 1,
+    "available_tests": [
+      "CD4_Count"
+    ],
+    "determined_specialist": null,
+    "consultation_analysis": {
+      "error": "No consultation dialogue recorded"
+    },
+    "final_doctor_diagnosis": "Branch Retinal Vein Occlusion (BRVO)",
+    "is_correct": false,
+    "tests_left_out": [
+      "CD4_Count"
+    ]
+  },
+  {
+    "timestamp": "2025-07-15T17:19:42.216238",
+    "model": "gpt-4.1",
+    "dataset": "MedQA",
+    "scenario_id": 21,
+    "max_patient_turns": 10,
+    "max_consultation_turns": 5,
+    "correct_diagnosis": "Reactive Arthritis",
+    "dialogue_history": [
+      {
+        "speaker": "Doctor",
+        "turn": 0,
+        "phase": "patient",
+        "text": "Can you describe your main symptoms and how long you have been experiencing them?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 1,
+        "phase": "patient",
+        "text": "My right knee has been really swollen and painful for about 12 days now. Before that, my left ankle was swollen and hurt, but that got better on its own about a week ago. I\u2019ve also been having pain when I pee for the past 3 weeks."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 1,
+        "phase": "patient",
+        "text": "Have you noticed any eye redness, discharge, or changes in your vision recently?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Yeah, my eyes have been pretty red and irritated lately, but I haven\u2019t noticed any changes in my vision or any discharge."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Have you had any recent infections, such as diarrhea, a sore throat, or a genital infection before these symptoms started?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 3,
+        "phase": "patient",
+        "text": "I haven\u2019t had any diarrhea or sore throat recently, but I did notice some pain when I pee that started a few weeks ago. I\u2019m not sure if I had a genital infection, but the pain with urination has been bothering me."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 3,
+        "phase": "patient",
+        "text": "Have you noticed any new rashes, sores, or ulcers on your skin, especially around your genitals, mouth, or elsewhere on your body?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 4,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any rashes, sores, or ulcers anywhere on my body or around my genitals or mouth."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 4,
+        "phase": "patient",
+        "text": "Have you had any recent sexual activity, and if so, was it with new or multiple partners?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 5,
+        "phase": "patient",
+        "text": "Yes, I\u2019ve been sexually active with two different partners recently, and I haven\u2019t always used condoms."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 5,
+        "phase": "patient",
+        "text": "Have you experienced any fever, chills, or feeling generally unwell along with your joint pain and eye symptoms?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 6,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any fever or chills, and I don\u2019t really feel sick overall\u2014just anxious because of the pain and swelling."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 6,
+        "phase": "patient",
+        "text": "Have you noticed any back pain, especially in the lower back or buttocks, or any stiffness in the mornings?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 7,
+        "phase": "patient",
+        "text": "I haven\u2019t really noticed any back pain, but my left heel feels pretty sore, especially when I walk. I don\u2019t have much morning stiffness either."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 7,
+        "phase": "patient",
+        "text": "Have you ever experienced anything like this before, or do you have any history of joint problems or autoimmune diseases in your family?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 8,
+        "phase": "patient",
+        "text": "No, I\u2019ve never had joint problems like this before. My mom does have rheumatoid arthritis, though."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 8,
+        "phase": "patient",
+        "text": "Have you noticed any discharge from your penis or any sores in the genital area, even if they were mild or went away quickly?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 9,
+        "phase": "patient",
+        "text": "I haven\u2019t noticed any sores, but I did see a little bit of discharge from my penis a couple of times over the past few weeks. It wasn\u2019t a lot, and I didn\u2019t think much of it at the time."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 9,
+        "phase": "patient",
+        "text": "REQUEST TEST: Urine_NAAT_for_Chlamydia_and_Gonorrhea"
+      },
+      {
+        "speaker": "Measurement",
+        "turn": 10,
+        "phase": "patient",
+        "text": "RESULTS: NORMAL READINGS."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 10,
+        "phase": "patient",
+        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
+      }
+    ],
+    "requested_tests": [
+      "Urine_NAAT_for_Chlamydia_and_Gonorrhea"
+    ],
+    "tests_requested_count": 1,
+    "available_tests": [
+      "Complete_Blood_Count",
+      "Blood_Chemistry",
+      "Urinalysis",
+      "ELISA_for_HIV",
+      "Arthrocentesis_of_Right_Knee"
+    ],
+    "determined_specialist": null,
+    "consultation_analysis": {
+      "error": "No consultation dialogue recorded"
+    },
+    "final_doctor_diagnosis": "Reactive arthritis (formerly known as Reiter's syndrome)",
+    "is_correct": true,
+    "tests_left_out": [
+      "Blood_Chemistry",
+      "Complete_Blood_Count",
+      "Urinalysis",
+      "ELISA_for_HIV",
+      "Arthrocentesis_of_Right_Knee"
+    ]
+  },
+  {
+    "timestamp": "2025-07-15T17:20:55.619279",
+    "model": "gpt-4.1",
+    "dataset": "MedQA",
+    "scenario_id": 22,
+    "max_patient_turns": 10,
+    "max_consultation_turns": 5,
+    "correct_diagnosis": "Malignant melanoma",
+    "dialogue_history": [
+      {
+        "speaker": "Doctor",
+        "turn": 0,
+        "phase": "patient",
+        "text": "Can you describe your main symptoms and how long you have been experiencing them?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 1,
+        "phase": "patient",
+        "text": "I noticed a spot on my chest about two months ago, and it seems to have gotten bigger since then. It doesn\u2019t hurt or itch at all."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 1,
+        "phase": "patient",
+        "text": "Have you noticed any changes in the color, shape, or border of the spot? Has it started to bleed, ooze, or form a crust at any point?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Yes, I have noticed that the spot looks a bit darker in the middle and the edges seem less regular than before. It hasn\u2019t bled or oozed, and there\u2019s no crust."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Have you noticed any new spots appearing elsewhere on your body, or any changes in existing moles or freckles?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 3,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any new spots or changes in my other moles or freckles. The only thing that\u2019s changed is this lesion on my chest."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 3,
+        "phase": "patient",
+        "text": "Have you had any significant sun exposure or history of sunburns, especially in your childhood or teenage years?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 4,
+        "phase": "patient",
+        "text": "Yes, I spent a lot of time outdoors when I was younger, and I did get sunburned a few times, especially as a teenager."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 4,
+        "phase": "patient",
+        "text": "Has anyone in your family ever had skin cancer or any other types of cancer?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 5,
+        "phase": "patient",
+        "text": "No, I\u2019m not aware of anyone in my family having skin cancer or any other cancers."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 5,
+        "phase": "patient",
+        "text": "Have you noticed any recent changes in your general health, such as unexplained weight loss, fatigue, or swollen lymph nodes?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 6,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any weight loss, fatigue, or swollen lymph nodes. I feel about the same as usual otherwise."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 6,
+        "phase": "patient",
+        "text": "Have you ever had a skin biopsy or any previous evaluation of this spot by a healthcare professional?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 7,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had a biopsy or had anyone look at this spot before. This is the first time I\u2019m getting it checked out."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 7,
+        "phase": "patient",
+        "text": "Have you noticed if the spot has changed in elevation\u2014has it become raised or developed any lumps or bumps?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 8,
+        "phase": "patient",
+        "text": "Yes, I think it has become a bit more raised compared to when I first noticed it. It feels like there might be a small bump in the middle now."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 8,
+        "phase": "patient",
+        "text": "Have you noticed any pain, tenderness, or changes in sensation (such as numbness or tingling) in the area of the spot or nearby skin?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 9,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any pain, tenderness, numbness, or tingling around the lesion or the nearby skin."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 9,
+        "phase": "patient",
+        "text": "REQUEST TEST: Skin_Biopsy"
+      },
+      {
+        "speaker": "Measurement",
+        "turn": 10,
+        "phase": "patient",
+        "text": "RESULTS: Histopathology findings reveal atypical melanocytes that infiltrate the epidermis and dermis, confirming the diagnosis of malignant melanoma."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 10,
+        "phase": "patient",
+        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
+      }
+    ],
+    "requested_tests": [
+      "Skin_Biopsy"
+    ],
+    "tests_requested_count": 1,
+    "available_tests": [
+      "Skin_Biopsy"
+    ],
+    "determined_specialist": null,
+    "consultation_analysis": {
+      "error": "No consultation dialogue recorded"
+    },
+    "final_doctor_diagnosis": "Malignant melanoma",
+    "is_correct": true,
+    "tests_left_out": []
+  },
+  {
+    "timestamp": "2025-07-15T17:21:37.906844",
+    "model": "gpt-4.1",
+    "dataset": "MedQA",
+    "scenario_id": 23,
+    "max_patient_turns": 10,
+    "max_consultation_turns": 5,
+    "correct_diagnosis": "Irritable Bowel Syndrome",
+    "dialogue_history": [
+      {
+        "speaker": "Doctor",
+        "turn": 0,
+        "phase": "patient",
+        "text": "Can you describe your main symptoms and how long you have been experiencing them?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 1,
+        "phase": "patient",
+        "text": "I've been having diarrhea almost every day for about four months now. I also get lower abdominal cramps that usually feel better after I go to the bathroom."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 1,
+        "phase": "patient",
+        "text": "Have you noticed any blood or mucus in your stool? Also, have you experienced any weight loss, fever, or fatigue during this time?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 2,
+        "phase": "patient",
+        "text": "I haven\u2019t seen any blood, but there is often some mucus in my stool. I haven\u2019t had any weight loss, fever, or unusual fatigue."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Have you noticed if certain foods make your symptoms worse, or do you have any food intolerances such as to dairy or gluten?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 3,
+        "phase": "patient",
+        "text": "I haven\u2019t noticed any specific foods making it worse, and I don\u2019t think I have any issues with dairy or gluten. The symptoms seem to happen regardless of what I eat."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 3,
+        "phase": "patient",
+        "text": "Have you had any recent travel, antibiotic use, or illnesses before your symptoms started? Also, do you have any family history of gastrointestinal diseases like Crohn\u2019s or ulcerative colitis?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 4,
+        "phase": "patient",
+        "text": "I went camping a few months ago, but I haven\u2019t traveled internationally. I haven\u2019t taken any antibiotics recently, and no one in my family has Crohn\u2019s or ulcerative colitis as far as I know."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 4,
+        "phase": "patient",
+        "text": "Have you noticed any joint pain, skin rashes, or eye problems along with your digestive symptoms?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 5,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any joint pain, skin rashes, or eye problems. It\u2019s really just the digestive issues that have been bothering me."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 5,
+        "phase": "patient",
+        "text": "Have you noticed any changes in your bowel movement frequency or consistency at night, or do your symptoms ever wake you up from sleep?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 6,
+        "phase": "patient",
+        "text": "No, my symptoms don\u2019t usually wake me up at night. The diarrhea and urgency mostly happen during the day."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 6,
+        "phase": "patient",
+        "text": "Have you experienced any recent stress or major life changes? Also, do you ever feel bloated or notice relief of symptoms after passing gas or having a bowel movement?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 7,
+        "phase": "patient",
+        "text": "I haven\u2019t had any major life changes or unusual stress lately. I do sometimes feel bloated, and the cramping and discomfort usually get better after I have a bowel movement."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 7,
+        "phase": "patient",
+        "text": "Have you noticed any unintentional weight loss or signs of malnutrition, such as hair loss or brittle nails, over the past few months?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 8,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any weight loss, and my hair and nails seem normal."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 8,
+        "phase": "patient",
+        "text": "Have you ever had similar symptoms in the past, or is this the first time you\u2019ve experienced ongoing digestive issues like this?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 9,
+        "phase": "patient",
+        "text": "This is the first time I\u2019ve had symptoms like this for such a long period. I haven\u2019t had ongoing digestive issues before."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 9,
+        "phase": "patient",
+        "text": "REQUEST TEST: Stool_Culture and Ova_&_Parasite_Exam"
+      },
+      {
+        "speaker": "Measurement",
+        "turn": 10,
+        "phase": "patient",
+        "text": "NORMAL READINGS."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 10,
+        "phase": "patient",
+        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
+      }
+    ],
+    "requested_tests": [
+      "Stool_Culture and Ova_&_Parasite_Exam"
+    ],
+    "tests_requested_count": 1,
+    "available_tests": [
+      "Routine_Stool_Examination",
+      "Blood_Tests"
+    ],
+    "determined_specialist": null,
+    "consultation_analysis": {
+      "error": "No consultation dialogue recorded"
+    },
+    "final_doctor_diagnosis": "Irritable Bowel Syndrome with Diarrhea (IBS-D)",
+    "is_correct": true,
+    "tests_left_out": [
+      "Routine_Stool_Examination",
+      "Blood_Tests"
+    ]
+  },
+  {
+    "timestamp": "2025-07-15T17:22:29.175629",
+    "model": "gpt-4.1",
+    "dataset": "MedQA",
+    "scenario_id": 24,
+    "max_patient_turns": 10,
+    "max_consultation_turns": 5,
+    "correct_diagnosis": "Meigs syndrome",
+    "dialogue_history": [
+      {
+        "speaker": "Doctor",
+        "turn": 0,
+        "phase": "patient",
+        "text": "Can you describe your main symptoms and how long you have been experiencing them?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 1,
+        "phase": "patient",
+        "text": "I've been feeling short of breath and my abdomen has gotten noticeably larger over the past month. I also feel more tired than usual."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 1,
+        "phase": "patient",
+        "text": "Have you noticed any swelling in your legs or ankles, or any yellowing of your skin or eyes?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 2,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any swelling in my legs or ankles, and my skin and eyes look normal to me."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Have you experienced any pain or discomfort in your abdomen, or any changes in your bowel habits such as constipation or diarrhea?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 3,
+        "phase": "patient",
+        "text": "I haven\u2019t had any pain or discomfort in my abdomen, and my bowel habits have been normal\u2014no constipation or diarrhea."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 3,
+        "phase": "patient",
+        "text": "Have you noticed any loss of appetite, unintentional weight loss, or nausea over the past month?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 4,
+        "phase": "patient",
+        "text": "No, I haven\u2019t really lost my appetite, and my weight has stayed about the same. I also haven\u2019t felt nauseous."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 4,
+        "phase": "patient",
+        "text": "Have you had any history of liver disease, heart problems, or kidney issues in the past?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 5,
+        "phase": "patient",
+        "text": "No, I\u2019ve never had any problems with my liver, heart, or kidneys before. I\u2019ve generally been healthy up until now."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 5,
+        "phase": "patient",
+        "text": "Have you noticed any recent cough, chest pain, or difficulty lying flat at night due to shortness of breath?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 6,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any cough or chest pain. I also haven\u2019t had trouble lying flat at night; the shortness of breath just seems to be there most of the time."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 6,
+        "phase": "patient",
+        "text": "Have you noticed any changes in the color of your urine or stool, or any unusual bruising or bleeding?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 7,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any changes in my urine or stool, and I haven\u2019t had any unusual bruising or bleeding."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 7,
+        "phase": "patient",
+        "text": "Have you recently traveled, had any abdominal surgeries, or experienced any trauma to your abdomen?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 8,
+        "phase": "patient",
+        "text": "No, I haven\u2019t traveled recently, and I\u2019ve never had any abdominal surgeries or injuries to my abdomen."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 8,
+        "phase": "patient",
+        "text": "Have you ever had any history of cancer, or do you have a family history of cancer or other serious illnesses?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 9,
+        "phase": "patient",
+        "text": "No, I\u2019ve never had cancer, and as far as I know, there\u2019s no family history of cancer or other serious illnesses."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 9,
+        "phase": "patient",
+        "text": "REQUEST TEST: Abdominal_Ultrasound"
+      },
+      {
+        "speaker": "Measurement",
+        "turn": 10,
+        "phase": "patient",
+        "text": "RESULTS: Large mass in the right ovary, significant ascites present."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 10,
+        "phase": "patient",
+        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
+      }
+    ],
+    "requested_tests": [
+      "Abdominal_Ultrasound"
+    ],
+    "tests_requested_count": 1,
+    "available_tests": [
+      "Complete_Blood_Count",
+      "Chest_X-Ray",
+      "Abdominal_Ultrasound",
+      "CA-125"
+    ],
+    "determined_specialist": null,
+    "consultation_analysis": {
+      "error": "No consultation dialogue recorded"
+    },
+    "final_doctor_diagnosis": "Ovarian tumor (likely ovarian cancer) with malignant ascites",
+    "is_correct": false,
+    "tests_left_out": [
+      "Chest_X-Ray",
+      "Complete_Blood_Count",
+      "CA-125"
+    ]
+  }
+]
