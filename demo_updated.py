@@ -14,7 +14,7 @@ MODEL_NAME = "gpt-4.1"
 
 # --- Simulation Configuration Constants ---
 AGENT_DATASET = "MedQA"  # Start with MedQA as requested
-NUM_SCENARIOS = 25       # Minimum 50 scenarios per bias-dataset combo
+NUM_SCENARIOS = 25       # Minimum 50 scenarios per config-dataset combo
 TOTAL_INFERENCES = 10
 CONSULTATION_TURNS = 5
 
@@ -57,7 +57,7 @@ def compare_results(diagnosis, correct_diagnosis):
     return answer.strip().lower() == "yes"
 
 def get_log_file(dataset, config_name):
-    """Create a log file name based on dataset and bias"""
+    """Create a log file name based on dataset and config"""
     os.makedirs(BASE_LOG_DIR, exist_ok=True)
     return os.path.join(BASE_LOG_DIR, f"{dataset}_{config_name}_log.json")
 
@@ -649,14 +649,13 @@ def main():
                             {"name": "Minimalist", "use_measurement": False, "use_specialist": False, "prompt_type": "MINIMALIST_PROMPT"}]
 
 
-    #print(f"Starting comprehensive bias testing across {len(datasets_to_test)} datasets and {len(biases_to_test)} biases")
     print(f"Base settings: {args.scenarios} scenarios per combination, {TOTAL_INFERENCES} patient interactions, {CONSULTATION_TURNS} consultation turns")
     
     # Create summary report structures
     summary = {
         "start_time": datetime.now().isoformat(),
         "completed_combinations": 0,
-        "total_combinations": len(datasets_to_test), #* len(biases_to_test),
+        "total_combinations": len(datasets_to_test) * len(scenarios_to_process),
         "results_by_combination": {}
     }
     
@@ -708,10 +707,10 @@ def main():
     with open(os.path.join(BASE_LOG_DIR, "config_testing_summary.json"), 'w') as f:
         json.dump(summary, f, indent=2)
     
-    print("\n\n=== BIAS TESTING COMPLETE ===")
+    print("\n\n=== CONFIG TESTING COMPLETE ===")
     print(f"Completed {summary['completed_combinations']}/{summary['total_combinations']} combinations")
     print(f"Total duration: {summary['total_duration_seconds']/3600:.2f} hours")
-    print(f"Full results saved to {os.path.join(BASE_LOG_DIR, 'bias_testing_summary.json')}")
+    print(f"Full results saved to {os.path.join(BASE_LOG_DIR, 'config_testing_summary.json')}")
 
 
 if __name__ == "__main__":
