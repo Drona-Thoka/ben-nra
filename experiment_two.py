@@ -14,7 +14,7 @@ MODEL_NAME = "gpt-4.1"
 
 # --- Simulation Configuration Constants ---
 AGENT_DATASET = "MedQA"  # Start with MedQA as requested
-NUM_SCENARIOS = 25       # Minimum 50 scenarios per bias-dataset combo
+NUM_SCENARIOS = 10       # Minimum 50 scenarios per bias-dataset combo
 TOTAL_INFERENCES = 10
 CONSULTATION_TURNS = 5
 
@@ -683,7 +683,7 @@ def main():
         
         try:
             completed = run_experiment_two(
-                dataset, TOTAL_INFERENCES, CONSULTATION_TURNS, 1
+                dataset, TOTAL_INFERENCES, CONSULTATION_TURNS, 10
             )                
         except Exception as e:
             import traceback

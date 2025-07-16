@@ -14,7 +14,7 @@ MODEL_NAME = "gpt-4.1"
 
 # --- Simulation Configuration Constants ---
 AGENT_DATASET = "MedQA"  # Start with MedQA as requested
-NUM_SCENARIOS = 25       # Minimum 50 scenarios per config-dataset combo
+NUM_SCENARIOS = 10       # Minimum 50 scenarios per config-dataset combo
 TOTAL_INFERENCES = 10
 CONSULTATION_TURNS = 5
 
@@ -664,7 +664,7 @@ def main():
         
         try:
             completed = run_experiment_three(
-                dataset, TOTAL_INFERENCES, CONSULTATION_TURNS, 1
+                dataset, TOTAL_INFERENCES, CONSULTATION_TURNS, 10
             )                
         except Exception as e:
             import traceback
@@ -686,7 +686,7 @@ def main():
                 with open(log_file, 'r') as f:
                     results = json.load(f)
                     correct_count = sum(1 for entry in results if entry.get("is_correct", False))
-                    total_count = len(results);
+                    total_count = len(results)
                     
                     summary["results_by_combination"][combination_key] = {
                         "completed": completed,
