@@ -44,10 +44,10 @@ def compare_results(diagnosis, correct_diagnosis):
     answer = query_model(prompt, system_prompt)
     return answer.strip().lower() == "yes"
 
-def get_log_file(dataset, config_name):
+def get_log_file(dataset, filter_name):
     """Create a log file name based on dataset and bias"""
     os.makedirs(BASE_LOG_DIR, exist_ok=True)
-    return os.path.join(BASE_LOG_DIR, f"{dataset}_{config_name}_log.json")
+    return os.path.join(BASE_LOG_DIR, f"{dataset}_{filter_name}_log.json")
 
 def log_scenario_data(data, log_file):
     """Log data to a specific log file"""
@@ -171,8 +171,8 @@ class ScenarioMedQA(BaseScenario):
     def filter_exam_info(self):
         filtered = {}
 
-        # --- Return unchanged if no fiter (expression for exam info) --- 
-        if self.test_fiter is None:
+        # --- Return unchanged if no filter (expression for exam info) --- 
+        if self.test_filter is None:
             return {**self.physical_exams, "tests": self.tests}
 
         for key in self.physical_exams:
@@ -280,7 +280,7 @@ class DoctorAgent(Agent):
         self.infs = 0
         self.specialist_type = None
         self.consultation_turns = 0
-        self.system_prompt_template = f"\n\nBelow is all of the information you have. {self.presentation}. \n\n Remember, you must discover their disease by asking them questions. You are also able to provide exams."
+        self.system_prompt_template = "You are a doctor named Dr. Agent who only responds in the form of dialogue. You are inspecting a patient who you will ask questions in order to understand their disease. You are only allowed to ask {self.MAX_INFS} questions total before you must make a decision. You have asked {self.infs} questions so far. You can request test results using the format \"REQUEST TEST: [test]\". For example, \"REQUEST TEST: Chest_X-Ray\". You will be given a chance to consult with a specialist doctor during the session. Your dialogue will only be 1-3 sentences in length. Once you have decided to make a diagnosis please type \"DIAGNOSIS READY: [diagnosis here]\""
  
         super().__init__(scenario)
     
@@ -550,7 +550,7 @@ def run_single_scenario(scenario, dataset, total_inferences, max_consultation_tu
     return run_log, run_log.get("is_correct", False)
 
 def run_experiment_two(dataset, total_inferences, consultation_turns, max_scenarios=1):
-    """Run a single config-dataset combination test"""
+    """Run a single filter-dataset combination test"""
  
     # Create a list of scenarios to run
     filters_to_process = [
@@ -565,11 +565,10 @@ def run_experiment_two(dataset, total_inferences, consultation_turns, max_scenar
         
     total_simulated_current_session = 0 
     total_correct_current_session = 0
-    
-    scenario_idx = 0
-    
+        
     for filter in filters_to_process:
         filter_name = filter
+
 
         log_file = get_log_file(dataset, filter_name)
         completed_scenario_ids = get_completed_scenarios(log_file)
@@ -578,9 +577,10 @@ def run_experiment_two(dataset, total_inferences, consultation_turns, max_scenar
         print(f"Log file: {log_file}")
         print(f"Already completed scenario IDs: {len(completed_scenario_ids)}")
         print(f"Scenarios to run in this session: {len(filters_to_process)} of {scenarios_to_run} total planned")
-        print(f"\n--- Running Scenario {scenario_idx + 1}/{scenarios_to_run} with {filter_name} filter ---")
 
         for scenario_idx in range(min(NUM_SCENARIOS, max_scenarios)):
+            print(f"\n--- Running Scenario {scenario_idx + 1}/{scenarios_to_run} with {filter_name} filter ---")
+    
             if scenario_idx in completed_scenario_ids:
                 print(f"Completed, skipping scenario: {scenario_idx}", scenario_idx)
                 continue
@@ -594,7 +594,7 @@ def run_experiment_two(dataset, total_inferences, consultation_turns, max_scenar
             
             total_simulated_current_session += 1
             run_log, is_correct = run_single_scenario(
-                scenario, dataset, total_inferences, consultation_turns, scenario_idx, config 
+                scenario, dataset, total_inferences, consultation_turns, scenario_idx, filter=filter 
             )
 
             if is_correct:
@@ -606,14 +606,14 @@ def run_experiment_two(dataset, total_inferences, consultation_turns, max_scenar
         # Update progress
         if total_simulated_current_session > 0:
             accuracy_current_session = (total_correct_current_session / total_simulated_current_session) * 100
-            print(f"\nCurrent Accuracy for this session ({config_name} filter  on {dataset}): {accuracy_current_session:.2f}% ({total_correct_current_session}/{total_simulated_current_session})")
+            print(f"\nCurrent Accuracy for this session ({filter_name} filter  on {dataset}): {accuracy_current_session:.2f}% ({total_correct_current_session}/{total_simulated_current_session})")
             
             # Calculate overall progress including previously completed scenarios
             overall_completed_count = len(completed_scenario_ids) + total_simulated_current_session
             overall_correct_count = total_correct_current_session
             
             overall_accuracy_so_far = (overall_correct_count / overall_completed_count) * 100 if overall_completed_count > 0 else 0
-            print(f"Overall Progress for {config_name} on {dataset}: {overall_completed_count}/{scenarios_to_run} scenarios completed. Overall Accuracy: {overall_accuracy_so_far:.2f}% ({overall_correct_count}/{overall_completed_count})")
+            print(f"Overall Progress for {filter_name} on {dataset}: {overall_completed_count}/{scenarios_to_run} scenarios completed. Overall Accuracy: {overall_accuracy_so_far:.2f}% ({overall_correct_count}/{overall_completed_count})")
     
     # Calculate final statistics for this combination
     final_completed_count = len(completed_scenario_ids) + total_simulated_current_session
@@ -658,11 +658,13 @@ def main():
     #datasets_to_test = ['MedQA', 'NEJM'] if args.dataset == 'all' else [args.dataset]
     datasets_to_test = ['MedQA'] if args.dataset == 'all' else [args.dataset]
     
-    # Determine which configs to test
-    scenarios_to_process = [{"name": "Base-Case", "use_measurement": True, "use_specialist": True, "prompt_type": "BASELINE_PROMPT"}, 
-                            {"name": "Augmented-Doctor", "use_measurement": True, "use_specialist": False, "prompt_type": "AUGMENTED_DOCTOR_PROMPT"}, 
-                            {"name": "Doctoral-Team", "use_measurement": False, "use_specialist": True, "prompt_type": "DOCTOR_TEAM_PROMPT"}, 
-                            {"name": "Minimalist", "use_measurement": False, "use_specialist": False, "prompt_type": "MINIMALIST_PROMPT"}]
+    # Determine which filters
+    filters_to_process = [
+        ["EKG"], 
+        ["EKG", "Blood Tests"], 
+        ["EKG", "Blood Tests", "Physical"],
+        ["EKG", "Blood Tests", "Physical", "Vitals"],        
+    ] 
 
 
     #print(f"Starting comprehensive bias testing across {len(datasets_to_test)} datasets and {len(biases_to_test)} biases")
@@ -672,7 +674,7 @@ def main():
     summary = {
         "start_time": datetime.now().isoformat(),
         "completed_combinations": 0,
-        "total_combinations": len(datasets_to_test), #* len(biases_to_test),
+        "total_combinations": len(datasets_to_test) * len(filters_to_process),
         "results_by_combination": {}
     }
     
@@ -685,19 +687,19 @@ def main():
             )                
         except Exception as e:
             import traceback
-            print(f"Error running {dataset} with config: {e}")
+            print(f"Error running {dataset} with filter: {e}")
             traceback.print_exc()                
             # Continue with next combination even if this one fails
 
-        for config in scenarios_to_process:
+        for test_filter in filters_to_process:
 
             print(f"\n\n{'='*80}")
-            print(f"TESTING: Dataset={dataset}, Config={config["name"]}")
+            print(f"TESTING: Dataset={dataset}, Filter={test_filter}")
             print(f"{'='*80}")
 
             # Update summary
-            combination_key = f"{dataset}_{config}"
-            log_file = get_log_file(dataset, config)
+            combination_key = f"{dataset}_{test_filter}"
+            log_file = get_log_file(dataset, test_filter)
             
             if os.path.exists(log_file):
                 with open(log_file, 'r') as f:
@@ -721,13 +723,13 @@ def main():
     summary["total_duration_seconds"] = (datetime.fromisoformat(summary["end_time"]) - 
                                         datetime.fromisoformat(summary["start_time"])).total_seconds()
     
-    with open(os.path.join(BASE_LOG_DIR, "config_testing_summary.json"), 'w') as f:
+    with open(os.path.join(BASE_LOG_DIR, "filter_testing_summary.json"), 'w') as f:
         json.dump(summary, f, indent=2)
     
-    print("\n\n=== BIAS TESTING COMPLETE ===")
+    print("\n\n=== Filter TESTING COMPLETE ===")
     print(f"Completed {summary['completed_combinations']}/{summary['total_combinations']} combinations")
     print(f"Total duration: {summary['total_duration_seconds']/3600:.2f} hours")
-    print(f"Full results saved to {os.path.join(BASE_LOG_DIR, 'bias_testing_summary.json')}")
+    print(f"Full results saved to {os.path.join(BASE_LOG_DIR, 'filter_testing_summary.json')}")
 
 
 if __name__ == "__main__":
