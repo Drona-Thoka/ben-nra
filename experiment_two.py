@@ -154,7 +154,10 @@ class BaseScenario:
 
 # --- Concrete Scenario Classes ---
 class ScenarioMedQA(BaseScenario):
-    def _init_data(self):
+    def _init_data(self, test_filter=None):
+        # --- What we are messing with ---
+        self.test_filter = test_filter
+
         self.tests = self.scenario_dict["OSCE_Examination"]["Test_Results"]
         self.diagnosis = self.scenario_dict["OSCE_Examination"]["Correct_Diagnosis"]
         self.patient_info = self.scenario_dict["OSCE_Examination"]["Patient_Actor"]
@@ -164,6 +167,25 @@ class ScenarioMedQA(BaseScenario):
     
     def get_available_tests(self):
         return list(self.tests.keys())
+
+    def filter_exam_info(self):
+        filtered = {}
+
+        # --- Return unchanged if no fiter (expression for exam info) --- 
+        if self.test_fiter is None:
+            return {**self.physical_exams, "tests": self.tests}
+
+        for key in self.physical_exams:
+            if key in self.test_filter:
+                filtered[key] = self.physical_exams[key]
+
+        filtered_tests = {}
+        for test_name in self.tests:
+            if test_name in self.test_filter:
+                filtered_tests[test_name] = self.tests[test_name]
+        
+        filtered["tests"] = filtered_tests
+        return filtered 
 
 class ScenarioNEJM(BaseScenario):
     def _init_data(self):
@@ -375,12 +397,13 @@ class NullMeasurmentAgent:
         pass
 
 # --- Main Simulation Logic ---
-# --- aggent_activitation [measurement, specialist] -> binary --- 
-def run_single_scenario(scenario, dataset, total_inferences, max_consultation_turns, scenario_idx):
+def run_single_scenario(scenario, dataset, total_inferences, max_consultation_turns, scenario_idx, filter=None):
     patient_agent = PatientAgent(scenario=scenario)
     doctor_agent = DoctorAgent(scenario=scenario, max_infs=total_inferences)
+    
+    scenario.test_filter = filter
+    scenario.filter_exam_info()
 
-    # Instantiation by config
     meas_agent = MeasurementAgent(scenario=scenario)
 
     available_tests = scenario.get_available_tests()
@@ -458,7 +481,7 @@ def run_single_scenario(scenario, dataset, total_inferences, max_consultation_tu
     print(f"Total tests requested during patient interaction: {run_log['tests_requested_count']}")
     print(f"Tests left out: {run_log['tests_left_out']}")
 
-    # --- Specialist Determination Phase, if and only if configured---
+    # --- Specialist Determination Phase ---
     print(f"\n--- Phase 2: Determining Specialist ---")
     specialist_type, specialist_reason = doctor_agent.determine_specialist()
     run_log["determined_specialist"] = specialist_type
@@ -526,31 +549,36 @@ def run_single_scenario(scenario, dataset, total_inferences, max_consultation_tu
 
     return run_log, run_log.get("is_correct", False)
 
-def run_experiment_three(dataset, total_inferences, consultation_turns, max_scenarios=1):
+def run_experiment_two(dataset, total_inferences, consultation_turns, max_scenarios=1):
     """Run a single config-dataset combination test"""
  
     # Create a list of scenarios to run
-    scenarios_to_process = "--- TODO --- " 
+    filters_to_process = [
+        ["EKG"], 
+        ["EKG", "Blood Tests"], 
+        ["EKG", "Blood Tests", "Physical"],
+        ["EKG", "Blood Tests", "Physical", "Vitals"],        
+    ] 
 
     scenario_loader = ScenarioLoader(dataset=dataset)
-    scenarios_to_run = len(scenarios_to_process)    
+    scenarios_to_run = len(filters_to_process)    
         
     total_simulated_current_session = 0 
     total_correct_current_session = 0
     
     scenario_idx = 0
     
-    for config in scenarios_to_process:
-        config_name = config["name"]
+    for filter in filters_to_process:
+        filter_name = filter
 
-        log_file = get_log_file(dataset, config_name)
+        log_file = get_log_file(dataset, filter_name)
         completed_scenario_ids = get_completed_scenarios(log_file)
 
-        print(f"\n=== Testing {config_name} configuration on {dataset} dataset ===")
+        print(f"\n=== Testing {filter_name} filter on {dataset} dataset ===")
         print(f"Log file: {log_file}")
         print(f"Already completed scenario IDs: {len(completed_scenario_ids)}")
-        print(f"Scenarios to run in this session: {len(scenarios_to_process)} of {scenarios_to_run} total planned")
-        print(f"\n--- Running Scenario {scenario_idx + 1}/{scenarios_to_run} with {config_name} configuration ---")
+        print(f"Scenarios to run in this session: {len(filters_to_process)} of {scenarios_to_run} total planned")
+        print(f"\n--- Running Scenario {scenario_idx + 1}/{scenarios_to_run} with {filter_name} filter ---")
 
         for scenario_idx in range(min(NUM_SCENARIOS, max_scenarios)):
             if scenario_idx in completed_scenario_ids:
@@ -578,7 +606,7 @@ def run_experiment_three(dataset, total_inferences, consultation_turns, max_scen
         # Update progress
         if total_simulated_current_session > 0:
             accuracy_current_session = (total_correct_current_session / total_simulated_current_session) * 100
-            print(f"\nCurrent Accuracy for this session ({config_name} configuration on {dataset}): {accuracy_current_session:.2f}% ({total_correct_current_session}/{total_simulated_current_session})")
+            print(f"\nCurrent Accuracy for this session ({config_name} filter  on {dataset}): {accuracy_current_session:.2f}% ({total_correct_current_session}/{total_simulated_current_session})")
             
             # Calculate overall progress including previously completed scenarios
             overall_completed_count = len(completed_scenario_ids) + total_simulated_current_session
@@ -610,7 +638,7 @@ def run_experiment_three(dataset, total_inferences, consultation_turns, max_scen
         
         final_accuracy = (correct_count_total / actual_entries_in_log) * 100 if actual_entries_in_log > 0 else 0
         
-        print(f"\n=== Results for {config_name} configuration on {dataset} dataset ===")
+        print(f"\n=== Results for {filter_name} filter on {dataset} dataset ===")
         print(f"Total Scenarios Logged: {actual_entries_in_log} (planned: {scenarios_to_run}, completed this/prev sessions: {final_completed_count})")
         print(f"Final Accuracy: {final_accuracy:.2f}% ({correct_count_total}/{actual_entries_in_log})")
     
@@ -652,7 +680,7 @@ def main():
     for dataset in datasets_to_test:
         
         try:
-            completed = run_experiment_three(
+            completed = run_experiment_two(
                 dataset, TOTAL_INFERENCES, CONSULTATION_TURNS, 1
             )                
         except Exception as e:
