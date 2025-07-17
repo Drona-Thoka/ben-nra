@@ -679,8 +679,8 @@ def main():
             print(f"{'='*80}")
 
             # Update summary
-            combination_key = f"{dataset}_{config}"
-            log_file = get_log_file(dataset, config)
+            combination_key = f"{dataset}_{config["name"]}"
+            log_file = get_log_file(dataset, config["name"])
             
             if os.path.exists(log_file):
                 with open(log_file, 'r') as f:
