@@ -14,9 +14,10 @@ MODEL_NAME = "gpt-4.1"
 
 # --- Simulation Configuration Constants ---
 AGENT_DATASET = "MedQA"  # Start with MedQA as requested
-NUM_SCENARIOS = 10       # Minimum 50 scenarios per config-dataset combo
+NUM_SCENARIOS = 1       # Minimum 50 scenarios per config-dataset combo
 TOTAL_INFERENCES = 10
 CONSULTATION_TURNS = 5
+TOP_K = 3
 
 # --- Agent Choice Abalation Constants, 6 valid combos including base case, base case initally depicted ---
 USE_DOCTOR = True
@@ -24,10 +25,10 @@ USE_MEASUREMENT = True
 USE_SPECIALIST = True
 
 #-- Prompts for each A-D situtation --
-MINIMALIST_PROMPT = "You are a doctor named Dr. Agent who only responds in the form of dialogue. You are inspecting a patient who you will ask questions in order to understand their disease. You are only allowed to ask {self.MAX_INFS} questions total before you must make a decision. You have asked {self.infs} questions so far. Your dialogue will only be 1-3 sentences in length. Once you have decided to make a diagnosis please type \"DIAGNOSIS READY: [diagnosis here]\""
-AUGMENTED_DOCTOR_PROMPT = "You are a doctor named Dr. Agent who only responds in the form of dialogue. You are inspecting a patient who you will ask questions in order to understand their disease. You are only allowed to ask {self.MAX_INFS} questions total before you must make a decision. You have asked {self.infs} questions so far. You can request test results using the format \"REQUEST TEST: [test]\". For example, \"REQUEST TEST: Chest_X-Ray\". Your dialogue will only be 1-3 sentences in length. Once you have decided to make a diagnosis please type \"DIAGNOSIS READY: [diagnosis here]\""
-DOCTOR_TEAM_PROMPT = "You are a doctor named Dr. Agent who only responds in the form of dialogue. You are inspecting a patient who you will ask questions in order to understand their disease. You are only allowed to ask {self.MAX_INFS} questions total before you must make a decision. You have asked {self.infs} questions so far. You will be given a chance to consult with a specialist doctor during the session. Your dialogue will only be 1-3 sentences in length. Once you have decided to make a diagnosis please type \"DIAGNOSIS READY: [diagnosis here]\""
-BASELINE_PROMPT = "You are a doctor named Dr. Agent who only responds in the form of dialogue. You are inspecting a patient who you will ask questions in order to understand their disease. You are only allowed to ask {self.MAX_INFS} questions total before you must make a decision. You have asked {self.infs} questions so far. You can request test results using the format \"REQUEST TEST: [test]\". For example, \"REQUEST TEST: Chest_X-Ray\". You will be given a chance to consult with a specialist doctor during the session. Your dialogue will only be 1-3 sentences in length. Once you have decided to make a diagnosis please type \"DIAGNOSIS READY: [diagnosis here]\""
+MINIMALIST_PROMPT = "You are a doctor named Dr. Agent who only responds in the form of dialogue. You are inspecting a patient who you will ask questions in order to understand their disease. You are only allowed to ask {self.MAX_INFS} questions total before you must make a decision. You have asked {self.infs} questions so far. Your dialogue will only be 1-3 sentences in length. Once you have decided to make a diagnosis please type \"DIAGNOSIS READY: [diagnosis here]\" You must include {TOP_K} different diagnoses; do not provide more than {TOP_K} or provide less than {TOP_K}. Delimit your diagnosis if > 1 by the pipe character \"|\". Do not add any explanation, comments, or other text outside of this format. For example: DIAGNOSIS READY: diagnosis1 | diagnosis2 | ... diagnosis{TOP_K}" 
+AUGMENTED_DOCTOR_PROMPT = "You are a doctor named Dr. Agent who only responds in the form of dialogue. You are inspecting a patient who you will ask questions in order to understand their disease. You are only allowed to ask {self.MAX_INFS} questions total before you must make a decision. You have asked {self.infs} questions so far. You can request test results using the format \"REQUEST TEST: [test]\". For example, \"REQUEST TEST: Chest_X-Ray\". Your dialogue will only be 1-3 sentences in length. Once you have decided to make a diagnosis please type \"DIAGNOSIS READY: [diagnosis here]\" You must include {TOP_K} different diagnoses; do not provide more than {TOP_K} or provide less than {TOP_K}. Delimit your diagnosis if > 1 by the pipe character \"|\". Do not add any explanation, comments, or other text outside of this format. For example: DIAGNOSIS READY: diagnosis1 | diagnosis2 | ... diagnosis{TOP_K}" 
+DOCTOR_TEAM_PROMPT = "You are a doctor named Dr. Agent who only responds in the form of dialogue. You are inspecting a patient who you will ask questions in order to understand their disease. You are only allowed to ask {self.MAX_INFS} questions total before you must make a decision. You have asked {self.infs} questions so far. You will be given a chance to consult with a specialist doctor during the session. Your dialogue will only be 1-3 sentences in length. Once you have decided to make a diagnosis please type \"DIAGNOSIS READY: [diagnosis here]\" You must include {TOP_K} different diagnoses; do not provide more than {TOP_K} or provide less than {TOP_K}. Delimit your diagnosis if > 1 by the pipe character \"|\". Do not add any explanation, comments, or other text outside of this format. For example: DIAGNOSIS READY: diagnosis1 | diagnosis2 | ... diagnosis{TOP_K}" 
+BASELINE_PROMPT = "You are a doctor named Dr. Agent who only responds in the form of dialogue. You are inspecting a patient who you will ask questions in order to understand their disease. You are only allowed to ask {self.MAX_INFS} questions total before you must make a decision. You have asked {self.infs} questions so far. You can request test results using the format \"REQUEST TEST: [test]\". For example, \"REQUEST TEST: Chest_X-Ray\". You will be given a chance to consult with a specialist doctor during the session. Your dialogue will only be 1-3 sentences in length. Once you have decided to make a diagnosis please type \"DIAGNOSIS READY: [diagnosis here]\" You must include {TOP_K} different diagnoses; do not provide more than {TOP_K} or provide less than {TOP_K}. Delimit your diagnosis if > 1 by the pipe character \"|\". Do not add any explanation, comments, or other text outside of this format. For example: DIAGNOSIS READY: diagnosis1 | diagnosis2 | ... diagnosis{TOP_K}" 
 
 DOCTOR_PROMPTS = {"MINIMALIST_PROMPT": MINIMALIST_PROMPT, "AUGMENTED_DOCTOR_PROMPT": AUGMENTED_DOCTOR_PROMPT, "DOCTOR_TEAM_PROMPT": DOCTOR_TEAM_PROMPT, "BASELINE_PROMPT" : BASELINE_PROMPT}
 
@@ -50,11 +51,15 @@ def query_model(prompt, system_prompt, max_tokens=200):
     answer = response.choices[0].message.content.strip()
     return re.sub(r"\s+", " ", answer)
 
-def compare_results(diagnosis, correct_diagnosis):
-    prompt = f"Here is the correct diagnosis: {correct_diagnosis}\nHere was the doctor dialogue/diagnosis: {diagnosis}\nAre these referring to the same underlying medical condition? Please respond only with Yes or No."
-    system_prompt = "You are an expert medical evaluator. Determine if the provided doctor's diagnosis matches the correct diagnosis in meaning, even if phrased differently. Respond only with 'Yes' or 'No'."
+def compare_results(diagnoses, correct_diagnosis):
+    prompt = f"Here is the correct diagnosis: {correct_diagnosis}\n The doctor was allowed to provide {TOP_K} different diagnoses. Here was the doctor dialogue/diagnoses: {diagnoses}\nAre any of these referring to the same underlying medical condition as the given correct diagnosis? Please respond with 'Yes: [matching diagnosis exactly as written]' or 'No'. Only respond in this manner"
+    system_prompt = f"You are an expert medical evaluator. Determine if any of the provided doctor's {TOP_K} diagnoses match the correct diagnosis in meaning, even if phrased differently. Respond only with 'Yes: [matching diagnosis exactly as written]' or 'No'."
     answer = query_model(prompt, system_prompt)
-    return answer.strip().lower() == "yes"
+
+    if answer.lower().startswith("yes:"):
+        matched_diag = answer.split(":", 1)[-1].strip()
+        return True, matched_diag
+    return False, None
 
 def get_log_file(dataset, config_name):
     """Create a log file name based on dataset and config"""
@@ -277,7 +282,7 @@ class DoctorAgent(Agent):
         self.presentation = self.scenario.examiner_information()
 
     def get_system_prompt(self):
-        return self.system_prompt_template.format(infs=self.infs, MAX_INFS=self.MAX_INFS, self=self)
+        return self.system_prompt_template.format(infs=self.infs, MAX_INFS=self.MAX_INFS, self=self, TOP_K=TOP_K)
     
     def system_prompt(self):
         presentation = f"\n\nBelow is all of the information you have. {self.presentation}. \n\n Remember, you must discover their disease by asking them questions. You are also able to provide exams."
@@ -382,6 +387,7 @@ class NullMeasurmentAgent:
         pass
 
 # --- Main Simulation Logic ---
+# --- aggent_activitation [measurement, specialist] -> binary --- 
 def run_single_scenario(scenario, dataset, total_inferences, max_consultation_turns, scenario_idx, AGENT_CONFIG):
     patient_agent = PatientAgent(scenario=scenario)
 
@@ -406,6 +412,8 @@ def run_single_scenario(scenario, dataset, total_inferences, max_consultation_tu
         "determined_specialist": None,
         "consultation_analysis": {},
         "final_doctor_diagnosis": None,
+        "diagnoses_considered1": None,
+        "diagnoses_considered_count1": TOP_K,
         "is_correct": None,
     }
 
@@ -501,18 +509,22 @@ def run_single_scenario(scenario, dataset, total_inferences, max_consultation_tu
     # --- Final Diagnosis Phase ---
     print("\n--- Phase 4: Final Diagnosis ---")
     final_diagnosis_full = doctor_agent.get_final_diagnosis()
+    print(f"FINAL DIAGNOSES FULL RAW: {final_diagnosis_full} ")
     if "DIAGNOSIS READY:" in final_diagnosis_full:
          final_diagnosis_text = final_diagnosis_full.split("DIAGNOSIS READY:", 1)[-1].strip()
+         diagnoses = [d.strip() for d in final_diagnosis_text.split("|") if d.strip()][:TOP_K]   
+         print(f"FULL DIAGNOSIS LIST: {diagnoses}")
+         run_log["diagnoses_considered1"] = diagnoses
     else:
          final_diagnosis_text = "No diagnosis provided in correct format."
 
-    print(f"\nFinal Diagnosis by Doctor: {final_diagnosis_text}")
+    print(f"\nFinal Diagnoses by Doctor: {diagnoses}")
     print(f"Correct Diagnosis: {scenario.diagnosis_information()}")
 
-    is_correct = compare_results(final_diagnosis_text, scenario.diagnosis_information())
+    is_correct, final_diagnosis = compare_results(diagnoses, scenario.diagnosis_information())
     print(f"Scenario {scenario_idx}: Diagnosis was {'CORRECT' if is_correct else 'INCORRECT'}")
 
-    run_log["final_doctor_diagnosis"] = final_diagnosis_text
+    run_log["final_doctor_diagnosis"] = final_diagnosis
     run_log["is_correct"] = is_correct
 
     # --- Consultation Analysis Phase (Moved here) ---
@@ -520,7 +532,7 @@ def run_single_scenario(scenario, dataset, total_inferences, max_consultation_tu
     consultation_history_text = "\n".join([f"{entry['speaker']}: {entry['text']}" for entry in run_log["dialogue_history"] if entry["phase"] == "consultation"])
     if consultation_history_text:
         consultation_analysis_results = analyze_consultation(consultation_history_text)
-        run_log["consultation_analysis"] = consultation_analysis_results
+        #run_log["consultation_analysis"] = consultation_analysis_results
         print("Consultation Analysis Results:")
         if consultation_analysis_results:
             for key, value in consultation_analysis_results.items():
@@ -663,7 +675,7 @@ def main():
         
         try:
             completed = run_experiment_three(
-                dataset, TOTAL_INFERENCES, CONSULTATION_TURNS, 10
+                dataset, TOTAL_INFERENCES, CONSULTATION_TURNS, 1
             )                
         except Exception as e:
             import traceback
