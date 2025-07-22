@@ -1,6 +1,6 @@
 [
   {
-    "timestamp": "2025-07-21T16:07:35.490266",
+    "timestamp": "2025-07-21T20:39:30.714500",
     "model": "gpt-4.1",
     "dataset": "MedQA",
     "scenario_id": 0,
@@ -24,109 +24,109 @@
         "speaker": "Doctor",
         "turn": 1,
         "phase": "patient",
-        "text": "Have you noticed any difficulty swallowing, speaking, or breathing, especially when you feel weak?"
+        "text": "Have you noticed any difficulty swallowing, speaking, or breathing, especially when your symptoms are worse?"
       },
       {
         "speaker": "Patient",
         "turn": 2,
         "phase": "patient",
-        "text": "I haven\u2019t had any trouble swallowing or breathing, but sometimes my speech gets a bit slurred when I\u2019m really tired. It usually gets better after I rest."
+        "text": "I haven\u2019t had any trouble breathing, but sometimes my speech gets a bit slurred when I\u2019m really tired. Swallowing has been mostly fine, though."
       },
       {
         "speaker": "Doctor",
         "turn": 2,
         "phase": "patient",
-        "text": "Have you noticed any drooping of your eyelids, or do your eyes feel more tired as the day goes on?"
+        "text": "Have you noticed any changes in your facial expressions, such as difficulty smiling or closing your eyes tightly?"
       },
       {
         "speaker": "Patient",
         "turn": 3,
         "phase": "patient",
-        "text": "Yes, my eyelids do seem to droop, especially later in the day or after I\u2019ve been using my eyes a lot. They feel heavier and more tired as the day goes on."
+        "text": "Yes, sometimes I feel like my smile is weaker on one side, and I do have a bit of trouble keeping my eyes tightly shut, especially when I'm tired."
       },
       {
         "speaker": "Doctor",
         "turn": 3,
         "phase": "patient",
-        "text": "Have you experienced any recent infections, fevers, or other illnesses before these symptoms started?"
+        "text": "Have you noticed any drooping of your eyelids, or do your eyelids feel heavier as the day goes on?"
       },
       {
         "speaker": "Patient",
         "turn": 4,
+        "phase": "patient",
+        "text": "Yes, my eyelids do feel heavier, especially later in the day, and sometimes they look a bit droopy when I'm tired."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 4,
+        "phase": "patient",
+        "text": "Have you experienced any numbness, tingling, or loss of sensation in your arms or legs?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 5,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any numbness or tingling in my arms or legs. My main issue is just the weakness, especially after using my muscles for a while."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 5,
+        "phase": "patient",
+        "text": "Have you had any recent infections, fevers, or illnesses before your symptoms started?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 6,
         "phase": "patient",
         "text": "No, I haven't had any recent infections, fevers, or illnesses before these symptoms began."
       },
       {
         "speaker": "Doctor",
-        "turn": 4,
-        "phase": "patient",
-        "text": "Have you noticed any changes in your sense of taste, numbness, tingling, or other unusual sensations in your face or limbs?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 5,
-        "phase": "patient",
-        "text": "No, I haven\u2019t noticed any changes in my sense of taste or any numbness or tingling in my face or limbs. It\u2019s mostly just the weakness and double vision that bother me."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 5,
-        "phase": "patient",
-        "text": "Have you noticed any muscle twitching, cramping, or muscle pain along with the weakness?"
-      },
-      {
-        "speaker": "Patient",
         "turn": 6,
         "phase": "patient",
-        "text": "No, I haven\u2019t noticed any twitching, cramping, or muscle pain\u2014just the weakness, especially after using my muscles for a while."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 6,
-        "phase": "patient",
-        "text": "Have you ever been diagnosed with any autoimmune diseases, thyroid problems, or had any recent vaccinations?"
+        "text": "Have you noticed any changes in your vision besides double vision, such as blurry vision or difficulty focusing?"
       },
       {
         "speaker": "Patient",
         "turn": 7,
         "phase": "patient",
-        "text": "No, I\u2019ve never been diagnosed with any autoimmune diseases or thyroid problems, and I haven\u2019t had any recent vaccinations."
+        "text": "No, I haven't noticed any blurriness or trouble focusing\u2014it's mainly just seeing double, especially when I'm tired or after using my eyes for a while."
       },
       {
         "speaker": "Doctor",
         "turn": 7,
         "phase": "patient",
-        "text": "Have you noticed any changes in your weight, appetite, or energy levels aside from the muscle weakness?"
+        "text": "Have you noticed any muscle twitching, cramping, or changes in your reflexes?"
       },
       {
         "speaker": "Patient",
         "turn": 8,
         "phase": "patient",
-        "text": "No, I haven\u2019t noticed any changes in my weight or appetite. My energy levels seem okay, except for the muscle weakness that gets worse with activity."
+        "text": "No, I haven\u2019t noticed any muscle twitching or cramping. My reflexes seem normal to me as well."
       },
       {
         "speaker": "Doctor",
         "turn": 8,
         "phase": "patient",
-        "text": "Have you ever experienced similar symptoms in the past, or does anyone in your family have a history of neurological or muscle disorders?"
+        "text": "Have you or any family members ever been diagnosed with autoimmune diseases or neurological conditions?"
       },
       {
         "speaker": "Patient",
         "turn": 9,
         "phase": "patient",
-        "text": "No, this is the first time I\u2019ve had these symptoms, and as far as I know, no one in my family has had any neurological or muscle disorders."
+        "text": "No, neither I nor my family members have been diagnosed with any autoimmune or neurological conditions that I know of."
       },
       {
         "speaker": "Doctor",
         "turn": 9,
         "phase": "patient",
-        "text": "Have you noticed any rashes, hair loss, joint pain, or other symptoms elsewhere in your body that started around the same time as your muscle weakness?"
+        "text": "Have you noticed any changes in your weight, appetite, or experienced any unusual fatigue beyond the muscle weakness?"
       },
       {
         "speaker": "Patient",
         "turn": 10,
         "phase": "patient",
-        "text": "No, I haven\u2019t noticed any rashes, hair loss, or joint pain. The main issues have just been the weakness and double vision."
+        "text": "No, my weight and appetite have been normal. I do feel tired, but it seems mostly related to the muscle weakness rather than a general fatigue."
       },
       {
         "speaker": "Doctor",
@@ -138,67 +138,67 @@
         "speaker": "System",
         "turn": 11,
         "phase": "consultation",
-        "text": "Consultation started with Neurologist. Reason: A Neurologist is the most appropriate specialist because the patient's symptoms\u2014fluctuating muscle weakness, double vision, ptosis, and fatigability without sensory changes or systemic symptoms\u2014strongly suggest a neuromuscular junction disorder such as myasthenia gravis, which falls under the expertise of neurology."
+        "text": "Consultation started with Neurologist. Reason: DIAGNOSIS READY: Myasthenia Gravis | Lambert-Eaton Myasthenic Syndrome | Oculopharyngeal Muscular Dystrophy"
       },
       {
         "speaker": "Doctor",
         "turn": 11,
         "phase": "consultation",
-        "text": "Thank you for reviewing the case. Based on the history, I am concerned about a disorder of neuromuscular transmission, particularly **myasthenia gravis (MG)**. The key features supporting this are: - **Fluctuating muscle weakness** that worsens with activity and improves with rest. - **Ocular involvement**: double vision (diplopia) and eyelid drooping (ptosis), especially later in the day. - **Bulbar symptoms**: mild, with occasional slurred speech when fatigued, but no dysphagia or respiratory involvement. - **No sensory symptoms**: no numbness, tingling, or pain. - **No muscle atrophy, fasciculations, or cramping.** - **No systemic symptoms**: no fever, weight loss, or recent illness. - **No family history or prior similar episodes.** **Differential diagnoses I am considering:** 1. **Myasthenia gravis** (most"
+        "text": "Thank you for reviewing the case. Based on the history, I am concerned about a disorder of neuromuscular transmission, given the following features: - **Fluctuating muscle weakness** that worsens with activity and improves with rest - **Ocular involvement**: diplopia and ptosis, both worsening with fatigue - **Bulbar symptoms**: mild slurred speech when fatigued, some facial weakness - **No sensory symptoms**: no numbness or tingling - **No muscle atrophy, fasciculations, or cramping** - **No recent infection or systemic illness** - **No family history of autoimmune or neurological disease** The pattern of fatigable weakness, especially involving ocular and bulbar muscles, is highly suggestive of **myasthenia gravis (MG)**. The absence of sensory symptoms and the improvement with rest further support this. **Differential diagnoses I am considering:** 1. **Myasthenia gravis** (most"
       },
       {
         "speaker": "Specialist (Neurologist)",
         "turn": 11,
         "phase": "consultation",
-        "text": "I agree that myasthenia gravis is the leading diagnosis given the classic fatigable weakness, ocular and mild bulbar involvement, and absence of sensory or systemic symptoms. Next steps should include bedside tests (ice pack test, edrophonium if available), acetylcholine receptor antibody testing, and EMG with repetitive nerve stimulation; also consider chest imaging to rule out thymoma."
+        "text": "I agree that myasthenia gravis is the leading diagnosis given the classic pattern of fatigable, fluctuating weakness with ocular and mild bulbar involvement and no sensory findings. Next steps should include bedside tests (ice pack test, edrophonium if available), acetylcholine receptor and MuSK antibody testing, and chest imaging to assess for thymoma. EMG with repetitive nerve stimulation or single-fiber EMG can further confirm the diagnosis."
       },
       {
         "speaker": "Doctor",
         "turn": 12,
         "phase": "consultation",
-        "text": "Thank you for your input. I agree that the clinical picture is highly suggestive of myasthenia gravis, particularly with the prominent ocular symptoms and clear fatigability. I have a few follow-up questions and thoughts to further refine our approach: 1. **Seronegative MG and MuSK Antibodies:** If acetylcholine receptor (AChR) antibodies are negative, would you recommend testing for muscle-specific kinase (MuSK) antibodies, given the occasional bulbar involvement? Are there any clinical features that would make you suspect MuSK-positive MG in this patient? 2. **Electrodiagnostic Testing:** Would you prioritize single-fiber EMG over repetitive nerve stimulation if initial tests are inconclusive, especially given the subtle bulbar symptoms? 3. **Thymoma Screening:** For chest imaging, do you prefer CT or MRI for thymoma screening in this context? Would you recommend this for all new MG diagnoses, even if the patient is relatively young and"
+        "text": "Thank you for your input. I agree that the clinical picture is highly suggestive of myasthenia gravis, particularly with the prominent ocular and mild bulbar involvement, and the absence of sensory or systemic symptoms. A few points to clarify and discuss further: 1. **Onset and Progression:** - The patient reports about a month of symptoms, with no acute or rapidly progressive deterioration. Would you consider this a typical subacute presentation for MG, or should we be more concerned about a possible myasthenic crisis or impending respiratory involvement, even in the absence of current breathing difficulties? 2. **Seronegative MG:** - If acetylcholine receptor and MuSK antibodies are negative, would you recommend further antibody testing (e.g., LRP4) or proceed primarily with electrophysiological studies? 3. **Differential Diagnosis:** - Are there any features here that would prompt you to consider alternative diagnoses, such as Lambert-Eaton myasthen"
       },
       {
         "speaker": "Specialist (Neurologist)",
         "turn": 12,
         "phase": "consultation",
-        "text": "1. Yes, if AChR antibodies are negative, MuSK antibody testing is indicated, especially with bulbar symptoms; MuSK-MG often presents with prominent bulbar and facial weakness, sometimes with neck or respiratory involvement, but less ocular-only disease. 2. If repetitive nerve stimulation is inconclusive, single-fiber EMG is more sensitive and should be prioritized, particularly for subtle or predominantly ocular/bulbar cases. 3. Chest CT is preferred for thymoma screening due to better sensitivity for small lesions; I recommend imaging for all new MG diagnoses regardless of age, as thymoma can occur in younger patients."
+        "text": "1. The subacute, non-rapid progression is typical for MG; however, ongoing monitoring for respiratory or bulbar worsening is essential, as crisis can develop insidiously. 2. If AChR and MuSK antibodies are negative, I recommend both LRP4 antibody testing and electrophysiological studies, as seronegative MG is possible. 3. The absence of autonomic symptoms, proximal leg > arm weakness, and areflexia makes Lambert-Eaton less likely, but if weakness becomes more proximal/leg-predominant or reflexes decrease, reconsider this and screen for malignancy."
       },
       {
         "speaker": "Doctor",
         "turn": 13,
         "phase": "consultation",
-        "text": "Thank you for your detailed responses. I agree with your recommendations regarding antibody testing, electrodiagnostics, and imaging. I have a few additional questions and thoughts to further clarify the diagnosis and management: 1. **Ocular vs. Generalized MG:** Given that the patient\u2019s symptoms started with ocular involvement and now include mild bulbar features (slurred speech with fatigue), but no limb weakness at rest or respiratory involvement, do you think this represents early generalized MG, or could it still be classified as ocular MG with minimal bulbar spread? Would this distinction influence your initial treatment approach (e.g., starting with pyridostigmine alone vs. early immunosuppression)? 2. **Role of Other Autoimmune Screening:** Would you recommend routine screening for other autoimmune conditions (e.g., thyroid function, ANA) at this stage, even in the absence of symptoms or family history, given the association with MG? 3. **Monitoring for Respiratory Involvement:**"
+        "text": "Thank you for your detailed response. I agree that ongoing monitoring for respiratory and bulbar function is crucial, even in the absence of current symptoms, given the risk of insidious progression to myasthenic crisis. A few additional points and questions for further clarification: 1. **Ocular vs. Generalized MG:** - Given the patient\u2019s prominent ocular symptoms (diplopia, ptosis) and mild bulbar involvement, but no limb weakness at rest, would you classify this as ocular MG with early generalization, or as generalized MG with predominantly ocular/bulbar features? - Does this distinction influence your initial treatment approach (e.g., symptomatic therapy alone vs. early immunosuppression)? 2. **Role of Thymoma Screening:** - Would you recommend chest imaging (CT or MRI) at this stage for all patients, even in the absence of systemic symptoms, or only if antibody testing is positive? 3. **Initiation of Therapy:**"
       },
       {
         "speaker": "Specialist (Neurologist)",
         "turn": 13,
         "phase": "consultation",
-        "text": "1. The presence of bulbar symptoms, even if mild and fatigable, suggests early generalized MG rather than purely ocular MG, which would influence me to monitor closely for further generalization and consider early immunosuppression if symptoms progress or are functionally limiting. 2. Yes, I recommend routine screening for thyroid dysfunction and ANA, as MG is associated with other autoimmune diseases even in asymptomatic patients. 3. For respiratory monitoring, regular assessment of vital capacity and negative inspiratory force is important, especially if symptoms worsen or new bulbar/respiratory complaints arise."
+        "text": "1. The presence of bulbar symptoms (even if mild) alongside ocular findings suggests early generalized MG rather than purely ocular MG, which does influence management\u2014early immunosuppression is generally favored over symptomatic therapy alone in generalized cases. 2. I recommend chest imaging (CT preferred) for all newly diagnosed MG patients regardless of antibody status, as thymoma can occur even in seronegative cases. 3. For therapy initiation, start with pyridostigmine for symptomatic relief and consider early corticosteroids or steroid-sparing immunosuppressants given the generalized features."
       },
       {
         "speaker": "Doctor",
         "turn": 14,
         "phase": "consultation",
-        "text": "Thank you for your thorough guidance. I agree that the presence of bulbar symptoms, even if mild, points toward early generalized MG and warrants close monitoring for progression. A few additional points and questions for your input: 1. **Initiation of Immunosuppression:** Given the current symptom profile\u2014ocular involvement with mild, intermittent bulbar symptoms but no limb weakness at rest or respiratory compromise\u2014would you recommend starting immunosuppressive therapy (e.g., low-dose prednisone) at this stage, or would you trial pyridostigmine monotherapy first and reserve immunosuppression for inadequate response or progression? Are there specific clinical thresholds you use to guide this decision? 2. **Patient Education and Red Flags:** What key symptoms or red flags do you advise patients to watch for at home that would prompt urgent reassessment (e.g., new onset dysphagia, shortness of breath, inability to count to 20 in one breath)? Do you recommend providing patients with a"
+        "text": "Thank you for your clear recommendations. I agree that the presence of bulbar symptoms, even if mild and only apparent with fatigue, tips the balance toward early generalized MG and warrants a more proactive approach. A few follow-up points for your input: 1. **Monitoring and Escalation:** - Given the current absence of respiratory involvement, would you recommend routine bedside spirometry (e.g., FVC, NIF) at each visit, or only if new symptoms arise? - Are there specific thresholds (e.g., FVC <20 mL/kg) at which you would recommend hospital admission or more intensive monitoring, even in a patient who is otherwise stable? 2. **Steroid Initiation:** - In your experience, do you prefer starting with low-dose corticosteroids and titrating up to minimize the risk of transient worsening, or do you initiate at a moderate dose given the early generalized features? - Would you consider inpatient initiation of steroids in this patient, or"
       },
       {
         "speaker": "Specialist (Neurologist)",
         "turn": 14,
         "phase": "consultation",
-        "text": "1. I would typically start with pyridostigmine monotherapy in mild, non-progressive cases, reserving immunosuppression for inadequate response, functional impairment, or symptom progression (especially bulbar/respiratory involvement or significant impact on daily life). 2. Key red flags for urgent reassessment include new or worsening dysphagia, shortness of breath (especially at rest or when lying flat), inability to count to 20 in one breath, or rapidly worsening weakness; I recommend providing patients with clear written instructions on these symptoms and when to seek immediate care."
+        "text": "1. I recommend routine bedside spirometry (FVC, NIF) at each visit for early generalized MG, as subtle declines can precede overt symptoms; FVC <20 mL/kg or NIF <\u201330 cm H2O are thresholds for hospital admission or close monitoring. 2. I typically start with low-dose corticosteroids and titrate up to reduce the risk of transient worsening, especially in patients with bulbar involvement; inpatient initiation is considered if there are significant bulbar symptoms, poor social support, or concern for rapid deterioration."
       },
       {
         "speaker": "Doctor",
         "turn": 15,
         "phase": "consultation",
-        "text": "Thank you for your clear recommendations. I agree that starting with pyridostigmine monotherapy is appropriate given the current mild and non-progressive nature of the patient\u2019s symptoms, with close monitoring for any signs of progression or inadequate response. A few additional points for your input: 1. **Frequency and Follow-up:** - How soon after initiating pyridostigmine would you recommend reassessing the patient, both clinically and with objective measures (e.g., bedside forced vital capacity, quantitative MG scores)? - Would you recommend a specific frequency for follow-up visits in the first few months, given the risk of early generalization? 2. **Steroid-Sparing Agents:** - If immunosuppression becomes necessary, do you have a preferred steroid-sparing agent (e.g., azathioprine, mycophenolate mofetil) in this clinical scenario, or do you typically start with corticosteroids alone and add a steroid-sparing agent later? 3."
+        "text": "Thank you for your thorough guidance. I agree with your recommendations regarding routine spirometry and cautious steroid initiation. To further refine our approach and ensure optimal management, I have a few additional questions and points for discussion: 1. **Role of IVIG or Plasma Exchange:** - In the event that the patient develops worsening bulbar symptoms or early signs of respiratory compromise during steroid initiation, would you favor early use of IVIG or plasma exchange as a bridge, or reserve these for more severe cases or myasthenic crisis? 2. **Choice of Steroid-Sparing Agents:** - If the patient requires long-term immunosuppression, do you have a preferred first-line steroid-sparing agent (e.g., azathioprine vs. mycophenolate mofetil), particularly in early generalized MG? Are there specific factors (age, comorbidities, antibody status) that influence your choice? 3. **Monitoring for Treatment Side Effects:** - Given the"
       },
       {
         "speaker": "Specialist (Neurologist)",
         "turn": 15,
         "phase": "consultation",
-        "text": "1. I recommend reassessing the patient within 1\u20132 weeks of starting pyridostigmine, using both clinical evaluation and objective measures (e.g., bedside FVC, quantitative MG scores), then every 2\u20134 weeks for the first few months due to the risk of early generalization. 2. If immunosuppression is needed, I typically start with corticosteroids and add a steroid-sparing agent (azathioprine is my first choice unless contraindicated) early, as it takes months to become effective; mycophenolate is an alternative if azathioprine is not tolerated. Do you have access to quantitative MG scoring tools in your clinic for standardized monitoring?"
+        "text": "1. I recommend early use of IVIG or plasma exchange as a bridge if there is any worsening bulbar or respiratory involvement during steroid initiation, not just in overt crisis, to prevent deterioration. 2. Azathioprine is my typical first-line steroid-sparing agent unless contraindicated; mycophenolate is an alternative, especially if there are concerns about liver function or intolerance\u2014age, comorbidities, and pregnancy potential all influence choice. 3. Regularly monitor for steroid and immunosuppressant side effects (CBC, LFTs, glucose, infection risk), and consider bone protection and GI prophylaxis as appropriate."
       }
     ],
     "requested_tests": [],
@@ -210,17 +210,19 @@
     ],
     "determined_specialist": "Neurologist",
     "consultation_analysis": {},
-    "final_doctor_diagnosis": "Myasthenia Gravis (early generalized type, acetylcholine receptor antibody-mediated suspected)",
+    "final_doctor_diagnosis": "Myasthenia gravis",
     "diagnoses_considered1": [
-      "Myasthenia Gravis (early generalized type, acetylcholine receptor antibody-mediated suspected)"
+      "Myasthenia gravis",
+      "Early generalized myasthenia gravis (ocular and mild bulbar involvement)",
+      "Rule out thymoma"
     ],
     "diagnoses_considered_count1": 3,
     "is_correct": true,
     "tests_left_out": [
-      "Imaging",
+      "Electromyography",
       "Blood_Tests",
-      "Electromyography"
+      "Imaging"
     ],
-    "specialist_reason": "A Neurologist is the most appropriate specialist because the patient's symptoms\u2014fluctuating muscle weakness, double vision, ptosis, and fatigability without sensory changes or systemic symptoms\u2014strongly suggest a neuromuscular junction disorder such as myasthenia gravis, which falls under the expertise of neurology."
+    "specialist_reason": "DIAGNOSIS READY: Myasthenia Gravis | Lambert-Eaton Myasthenic Syndrome | Oculopharyngeal Muscular Dystrophy"
   }
 ]
