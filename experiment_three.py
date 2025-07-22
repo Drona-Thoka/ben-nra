@@ -4,6 +4,8 @@ import argparse
 import glob
 from dotenv import load_dotenv
 import os
+import numpy as np
+from openai import OpenAI
 
 load_dotenv()
 
@@ -146,6 +148,16 @@ def get_completed_scenarios(log_file):
         except json.JSONDecodeError:
             print(f"Warning: Could not parse log file {log_file}. Starting from scratch.")
             return []
+
+client=OpenAI()
+
+def get_embedding(text, model = "text-embedding-3-large"):
+    text = text.replace("\n", " ")
+    resp = client.embeddings.create(input=[text], model=model, encoding_format="float")
+    return np.array(resp.data[0].embedding)
+
+def cosine_similarity(v1, v2) -> float:
+    return float(np.dot(v1, v2) / (np.linalg.norm(v1) * np.linalg.norm(v2)))
 
 # --- Base Scenario Class ---
 class BaseScenario:
@@ -404,6 +416,8 @@ def run_single_scenario(scenario, dataset, total_inferences, max_consultation_tu
         "scenario_id": scenario_idx,
         "max_patient_turns": total_inferences,
         "max_consultation_turns": max_consultation_turns,
+        "patient_interaction_turns" : 0,
+        "doctor_questions": 0,
         "correct_diagnosis": scenario.diagnosis_information(),
         "dialogue_history": [],
         "requested_tests": [],
@@ -415,6 +429,8 @@ def run_single_scenario(scenario, dataset, total_inferences, max_consultation_tu
         "diagnoses_considered1": None,
         "diagnoses_considered_count1": TOP_K,
         "is_correct": None,
+        "embedding_similarity": None,
+        "best_embedding_similarity": None
     }
 
     # --- Patient Interaction Phase ---
@@ -526,6 +542,22 @@ def run_single_scenario(scenario, dataset, total_inferences, max_consultation_tu
 
     run_log["final_doctor_diagnosis"] = final_diagnosis
     run_log["is_correct"] = is_correct
+
+    try:
+        pred_embed = [get_embedding(diagnosis.strip().lower()) for diagnosis in diagnoses]
+        true_embed = get_embedding(scenario.diagnosis_information().strip().lower())
+        embed_sim = [cosine_similarity(pred, true_embed) for pred in pred_embed]
+
+        run_log["embedding_similarity"] = embed_sim
+        run_log["best_embedding_similarity"] = max(embed_sim) if embed_sim else None
+
+    except Exception as e:
+        print(f"Embedding error: {e}")
+        run_log["embedding_similarity"] = None
+        run_log["best_embedding_similarity"] = None
+
+    run_log["patient_interaction_turns"] = len([entry for entry in run_log["dialogue_history"] if entry["phase"] == "patient" and entry["speaker"] == "Patient"]) 
+    run_log["doctor_questions"] = len([entry for entry in run_log["dialogue_history"] if entry["speaker"] == "Doctor" and "?" in entry["text"] and "REQUEST TEST" not in entry["text"]])
 
     # --- Consultation Analysis Phase (Moved here) ---
     print("\n--- Phase 5: Consultation Analysis ---")
