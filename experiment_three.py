@@ -564,7 +564,7 @@ def run_single_scenario(scenario, dataset, total_inferences, max_consultation_tu
     consultation_history_text = "\n".join([f"{entry['speaker']}: {entry['text']}" for entry in run_log["dialogue_history"] if entry["phase"] == "consultation"])
     if consultation_history_text:
         consultation_analysis_results = analyze_consultation(consultation_history_text)
-        #run_log["consultation_analysis"] = consultation_analysis_results
+        run_log["consultation_analysis"] = consultation_analysis_results
         print("Consultation Analysis Results:")
         if consultation_analysis_results:
             for key, value in consultation_analysis_results.items():
