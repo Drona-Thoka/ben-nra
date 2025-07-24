@@ -9,14 +9,13 @@ from openai import OpenAI
 
 load_dotenv()
 
-
 # --- Constants ---
 BASE_LOG_DIR = "logs"
 MODEL_NAME = "gpt-4.1" 
 
 # --- Simulation Configuration Constants ---
 AGENT_DATASET = "MedQA"  # Start with MedQA as requested
-NUM_SCENARIOS = 1       # Minimum 50 scenarios per config-dataset combo
+NUM_SCENARIOS = 150       # Minimum 50 scenarios per config-dataset combo
 TOTAL_INFERENCES = 10
 CONSULTATION_TURNS = 5
 TOP_K = 3
@@ -426,8 +425,8 @@ def run_single_scenario(scenario, dataset, total_inferences, max_consultation_tu
         "determined_specialist": None,
         "consultation_analysis": {},
         "final_doctor_diagnosis": None,
-        "diagnoses_considered1": None,
-        "diagnoses_considered_count1": TOP_K,
+        "top_K diagnoses": None,
+        "top_K": TOP_K,
         "is_correct": None,
         "embedding_similarity": None,
         "best_embedding_similarity": None
@@ -530,7 +529,7 @@ def run_single_scenario(scenario, dataset, total_inferences, max_consultation_tu
          final_diagnosis_text = final_diagnosis_full.split("DIAGNOSIS READY:", 1)[-1].strip()
          diagnoses = [d.strip() for d in final_diagnosis_text.split("|") if d.strip()][:TOP_K]   
          print(f"FULL DIAGNOSIS LIST: {diagnoses}")
-         run_log["diagnoses_considered1"] = diagnoses
+         run_log["top_K diagnoses"] = diagnoses
     else:
          final_diagnosis_text = "No diagnosis provided in correct format."
 
