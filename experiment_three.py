@@ -18,7 +18,8 @@ AGENT_DATASET = "MedQA"  # Start with MedQA as requested
 NUM_SCENARIOS = 150       # Minimum 50 scenarios per config-dataset combo
 TOTAL_INFERENCES = 10
 CONSULTATION_TURNS = 5
-TOP_K = 3
+TOP_K = 10
+K_Values = [1,3,5,7, 10]
 
 # --- Agent Choice Abalation Constants, 6 valid combos including base case, base case initally depicted ---
 USE_DOCTOR = True
@@ -26,10 +27,10 @@ USE_MEASUREMENT = True
 USE_SPECIALIST = True
 
 #-- Prompts for each A-D situtation --
-MINIMALIST_PROMPT = "You are a doctor named Dr. Agent who only responds in the form of dialogue. You are inspecting a patient who you will ask questions in order to understand their disease. You are only allowed to ask {self.MAX_INFS} questions total before you must make a decision. You have asked {self.infs} questions so far. Your dialogue will only be 1-3 sentences in length. Once you have decided to make a diagnosis please type \"DIAGNOSIS READY: [diagnosis here]\" You must include {TOP_K} different diagnoses; do not provide more than {TOP_K} or provide less than {TOP_K}. Delimit your diagnosis if > 1 by the pipe character \"|\". Do not add any explanation, comments, or other text outside of this format. If you at all deviate from this format, you have failed. For example: DIAGNOSIS READY: diagnosis1 | diagnosis2 | ... diagnosis{TOP_K} " 
-AUGMENTED_DOCTOR_PROMPT = "You are a doctor named Dr. Agent who only responds in the form of dialogue. You are inspecting a patient who you will ask questions in order to understand their disease. You are only allowed to ask {self.MAX_INFS} questions total before you must make a decision. You have asked {self.infs} questions so far. You can request test results using the format \"REQUEST TEST: [test]\". For example, \"REQUEST TEST: Chest_X-Ray\". Your dialogue will only be 1-3 sentences in length. Once you have decided to make a diagnosis please type \"DIAGNOSIS READY: [diagnosis here]\" You must include {TOP_K} different diagnoses; do not provide more than {TOP_K} or provide less than {TOP_K}. Delimit your diagnosis if > 1 by the pipe character \"|\". Do not add any explanation, comments, or other text outside of this format. If you at all deviate from this format, you have failed. For example: DIAGNOSIS READY: diagnosis1 | diagnosis2 | ... diagnosis{TOP_K}" 
-DOCTOR_TEAM_PROMPT = "You are a doctor named Dr. Agent who only responds in the form of dialogue. You are inspecting a patient who you will ask questions in order to understand their disease. You are only allowed to ask {self.MAX_INFS} questions total before you must make a decision. You have asked {self.infs} questions so far. You will be given a chance to consult with a specialist doctor during the session. Your dialogue will only be 1-3 sentences in length. Once you have decided to make a diagnosis please type \"DIAGNOSIS READY: [diagnosis here]\" You must include {TOP_K} different diagnoses; do not provide more than {TOP_K} or provide less than {TOP_K}. Delimit your diagnosis if > 1 by the pipe character \"|\". Do not add any explanation, comments, or other text outside of this format. If you at all deviate from this format, you have failed. For example: DIAGNOSIS READY: diagnosis1 | diagnosis2 | ... diagnosis{TOP_K}" 
-BASELINE_PROMPT = "You are a doctor named Dr. Agent who only responds in the form of dialogue. You are inspecting a patient who you will ask questions in order to understand their disease. You are only allowed to ask {self.MAX_INFS} questions total before you must make a decision. You have asked {self.infs} questions so far. You can request test results using the format \"REQUEST TEST: [test]\". For example, \"REQUEST TEST: Chest_X-Ray\". You will be given a chance to consult with a specialist doctor during the session. Your dialogue will only be 1-3 sentences in length. Once you have decided to make a diagnosis please type \"DIAGNOSIS READY: [diagnosis here]\" You must include {TOP_K} different diagnoses; do not provide more than {TOP_K} or provide less than {TOP_K}. Delimit your diagnosis if > 1 by the pipe character \"|\". Do not add any explanation, comments, or other text outside of this format. If you at all deviate from this format, you have failed. For example: DIAGNOSIS READY: diagnosis1 | diagnosis2 | ... diagnosis{TOP_K}" 
+MINIMALIST_PROMPT = "You are a doctor named Dr. Agent who only responds in the form of dialogue. You are inspecting a patient who you will ask questions in order to understand their disease. You are only allowed to ask {self.MAX_INFS} questions total before you must make a decision. You have asked {self.infs} questions so far. Your dialogue will only be 1-3 sentences in length. Once you have decided to make a diagnosis please type \"DIAGNOSIS READY: [diagnosis here]\" You must include {TOP_K} different diagnoses in descending order of likelihood; do not provide more than {TOP_K} or provide less than {TOP_K}. Pay very close attention to the order in which you rank the diagnoses. Delimit your diagnosis if > 1 by the pipe character \"|\". Do not add any explanation, comments, or other text outside of this format. If you at all deviate from this format, you have failed. For example: DIAGNOSIS READY: diagnosis1 | diagnosis2 | ... diagnosis{TOP_K} "  
+AUGMENTED_DOCTOR_PROMPT = "You are a doctor named Dr. Agent who only responds in the form of dialogue. You are inspecting a patient who you will ask questions in order to understand their disease. You are only allowed to ask {self.MAX_INFS} questions total before you must make a decision. You have asked {self.infs} questions so far. You can request test results using the format \"REQUEST TEST: [test]\". For example, \"REQUEST TEST: Chest_X-Ray\". Your dialogue will only be 1-3 sentences in length. Once you have decided to make a diagnosis please type \"DIAGNOSIS READY: [diagnosis here]\" You must include {TOP_K} different diagnoses in descending order of likelihood; do not provide more than {TOP_K} or provide less than {TOP_K}. Pay very close attention to the order in which you rank the diagnoses. Delimit your diagnosis if > 1 by the pipe character \"|\". Do not add any explanation, comments, or other text outside of this format. If you at all deviate from this format, you have failed. For example: DIAGNOSIS READY: diagnosis1 | diagnosis2 | ... diagnosis{TOP_K}" 
+DOCTOR_TEAM_PROMPT = "You are a doctor named Dr. Agent who only responds in the form of dialogue. You are inspecting a patient who you will ask questions in order to understand their disease. You are only allowed to ask {self.MAX_INFS} questions total before you must make a decision. You have asked {self.infs} questions so far. You will be given a chance to consult with a specialist doctor during the session. Your dialogue will only be 1-3 sentences in length. Once you have decided to make a diagnosis please type \"DIAGNOSIS READY: [diagnosis here]\" You must include {TOP_K} different diagnoses in descending order of likelihood; do not provide more than {TOP_K} or provide less than {TOP_K}. Pay very close attention to the order in which you rank the diagnoses. Delimit your diagnosis if > 1 by the pipe character \"|\". Do not add any explanation, comments, or other text outside of this format. If you at all deviate from this format, you have failed. For example: DIAGNOSIS READY: diagnosis1 | diagnosis2 | ... diagnosis{TOP_K}" 
+BASELINE_PROMPT = "You are a doctor named Dr. Agent who only responds in the form of dialogue. You are inspecting a patient who you will ask questions in order to understand their disease. You are only allowed to ask {self.MAX_INFS} questions total before you must make a decision. You have asked {self.infs} questions so far. You can request test results using the format \"REQUEST TEST: [test]\". For example, \"REQUEST TEST: Chest_X-Ray\". You will be given a chance to consult with a specialist doctor during the session. Your dialogue will only be 1-3 sentences in length. Once you have decided to make a diagnosis please type \"DIAGNOSIS READY: [diagnosis here]\" You must include {TOP_K} different diagnoses in descending order of likelihood; do not provide more than {TOP_K} or provide less than {TOP_K}. Pay very close attention to the order in which you rank the diagnoses. Delimit your diagnosis if > 1 by the pipe character \"|\". Do not add any explanation, comments, or other text outside of this format. If you at all deviate from this format, you have failed. For example: DIAGNOSIS READY: diagnosis1 | diagnosis2 | ... diagnosis{TOP_K}" 
 
 DOCTOR_PROMPTS = {"MINIMALIST_PROMPT": MINIMALIST_PROMPT, "AUGMENTED_DOCTOR_PROMPT": AUGMENTED_DOCTOR_PROMPT, "DOCTOR_TEAM_PROMPT": DOCTOR_TEAM_PROMPT, "BASELINE_PROMPT" : BASELINE_PROMPT}
 
@@ -52,9 +53,10 @@ def query_model(prompt, system_prompt, max_tokens=200):
     answer = response.choices[0].message.content.strip()
     return re.sub(r"\s+", " ", answer)
 
-def compare_results(diagnoses, correct_diagnosis):
-    prompt = f"Here is the correct diagnosis: {correct_diagnosis}\n The doctor was allowed to provide {TOP_K} different diagnoses. Here was the doctor dialogue/diagnoses: {diagnoses}\nAre any of these referring to the same underlying medical condition as the given correct diagnosis? Please respond with 'Yes: [matching diagnosis exactly as written]' or 'No'. Only respond in this manner"
-    system_prompt = f"You are an expert medical evaluator. Determine if any of the provided doctor's {TOP_K} diagnoses match the correct diagnosis in meaning, even if phrased differently. Respond only with 'Yes: [matching diagnosis exactly as written]' or 'No'."
+def compare_results(diagnoses, correct_diagnosis, k=TOP_K):
+    
+    prompt = f"Here is the correct diagnosis: {correct_diagnosis}\n The doctor was allowed to provide {k} different diagnoses. Here was the doctor dialogue/diagnoses: {diagnoses[:k]}\nAre any of these referring to the same underlying medical condition as the given correct diagnosis? Please respond with 'Yes: [matching diagnosis exactly as written]' or 'No'. Only respond in this manner"
+    system_prompt = f"You are an expert medical evaluator. Determine if any of the provided doctor's {k} diagnoses match the correct diagnosis in meaning, even if phrased differently. If multiple diagnoses are plausible, decide definitivly which ONE is best. Respond only with 'Yes: [matching diagnosis exactly as written]' or 'No'."
     answer = query_model(prompt, system_prompt)
 
     if answer.lower().startswith("yes:"):
@@ -536,11 +538,19 @@ def run_single_scenario(scenario, dataset, total_inferences, max_consultation_tu
     print(f"\nFinal Diagnoses by Doctor: {diagnoses}")
     print(f"Correct Diagnosis: {scenario.diagnosis_information()}")
 
-    is_correct, final_diagnosis = compare_results(diagnoses, scenario.diagnosis_information())
-    print(f"Scenario {scenario_idx}: Diagnosis was {'CORRECT' if is_correct else 'INCORRECT'}")
+    for k in K_Values:
+        sliced = diagnoses[:min(k, len(diagnoses))]
+        is_correct, final_diagnosis = compare_results(sliced, scenario.diagnosis_information(), k)
 
-    run_log["final_doctor_diagnosis"] = final_diagnosis
-    run_log["is_correct"] = is_correct
+        print(f"Scenario {scenario_idx} | Top-{k} Diagnosis was {'CORRECT' if is_correct else 'INCORRECT'}")
+        run_log[f"Top_{k}"] = sliced
+        run_log[f"Top_{k} is_correct"] = is_correct
+        if is_correct and final_diagnosis in sliced:
+            run_log[f"Top_{k} correct rank"] = sliced.index(final_diagnosis) + 1
+
+        if k == TOP_K:
+            run_log["final_doctor_diagnosis"] = final_diagnosis
+            run_log["is_correct"] = is_correct
 
     try:
         pred_embed = [get_embedding(diagnosis.strip().lower()) for diagnosis in diagnoses]
