@@ -1,0 +1,310 @@
+[
+  {
+    "timestamp": "2025-07-26T12:44:00.587492",
+    "model": "gpt-4.1",
+    "dataset": "MedQA",
+    "scenario_id": 0,
+    "max_patient_turns": 10,
+    "max_consultation_turns": 5,
+    "patient_interaction_turns": 0,
+    "doctor_questions": 0,
+    "correct_diagnosis": "Myasthenia gravis",
+    "dialogue_history": [
+      {
+        "speaker": "Doctor",
+        "turn": 0,
+        "phase": "patient",
+        "text": "Can you describe your main symptoms and how long you have been experiencing them?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 1,
+        "phase": "patient",
+        "text": "I've been having double vision and muscle weakness for about a month now. It gets harder to climb stairs or brush my hair, especially after I've been active, but I feel better after resting for a while."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 1,
+        "phase": "patient",
+        "text": "Have you noticed any difficulty swallowing, speaking, or breathing, especially when you feel weak?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Sometimes I feel like my voice gets a bit softer or I have trouble speaking clearly when I'm tired, but I haven't had any trouble swallowing or breathing."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Have you noticed any changes in your facial expressions, such as difficulty smiling or closing your eyes tightly?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 3,
+        "phase": "patient",
+        "text": "Yes, sometimes I feel like my face feels a bit heavy, especially when I try to smile for a long time or close my eyes tightly. It gets harder the more I do it, but after I rest, it feels better."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 3,
+        "phase": "patient",
+        "text": "Have you noticed any drooping of your eyelids, or do your eyelids feel heavier as the day goes on?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 4,
+        "phase": "patient",
+        "text": "Yes, my eyelids do feel heavier, especially later in the day, and sometimes they look a bit droopy when I\u2019m tired."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 4,
+        "phase": "patient",
+        "text": "Have you experienced any numbness, tingling, or loss of sensation in your arms or legs?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 5,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any numbness or tingling, and I haven\u2019t lost any sensation in my arms or legs."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 5,
+        "phase": "patient",
+        "text": "Have you had any recent infections, fevers, or illnesses before these symptoms started?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 6,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any recent infections, fevers, or illnesses before these symptoms began."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 6,
+        "phase": "patient",
+        "text": "Have you noticed any changes in your vision besides double vision, such as blurry vision or trouble focusing?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 7,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any blurriness or trouble focusing\u2014just the double vision, especially when I\u2019m tired."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 7,
+        "phase": "patient",
+        "text": "Have you noticed any muscle twitching, cramping, or involuntary movements in your arms or legs?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 8,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any twitching, cramping, or involuntary movements in my arms or legs. It\u2019s mostly just the weakness that gets worse when I use my muscles a lot."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 8,
+        "phase": "patient",
+        "text": "Have you ever been diagnosed with any autoimmune diseases, thyroid problems, or had any recent changes in medications?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 9,
+        "phase": "patient",
+        "text": "No, I\u2019ve never been diagnosed with any autoimmune diseases or thyroid problems, and I haven\u2019t had any recent changes in my medications."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 9,
+        "phase": "patient",
+        "text": "Have you noticed any recent weight loss, night sweats, or lumps/masses in your neck, chest, or elsewhere on your body?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 10,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any weight loss, night sweats, or any lumps or masses anywhere on my body."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 10,
+        "phase": "patient",
+        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
+      },
+      {
+        "speaker": "System",
+        "turn": 11,
+        "phase": "consultation",
+        "text": "Consultation started with Neurologist. Reason: A Neurologist is the most appropriate specialist because the patient's symptoms\u2014fluctuating muscle weakness, double vision, ptosis, and fatigability without sensory loss\u2014strongly suggest a neuromuscular junction disorder such as myasthenia gravis, which falls under the expertise of neurology."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 11,
+        "phase": "consultation",
+        "text": "Thank you for reviewing the case. Based on the history, the key features are: - **Fluctuating muscle weakness** that worsens with activity and improves with rest - **Ocular symptoms**: double vision (diplopia), eyelid drooping (ptosis), heaviness of eyelids, especially later in the day - **Bulbar symptoms**: mild dysarthria (voice gets softer, trouble speaking clearly when tired), but no dysphagia or respiratory involvement - **Facial weakness**: heaviness when smiling or closing eyes tightly, worsens with use - **No sensory symptoms**: no numbness, tingling, or loss of sensation - **No recent infection, fever, or illness** - **No muscle twitching, cramping, or involuntary movements** - **No history of autoimmune disease or thyroid disorder** - **No systemic symptoms (weight loss, night sweats, masses)** **My initial impression is that this"
+      },
+      {
+        "speaker": "Specialist (Neurologist)",
+        "turn": 11,
+        "phase": "consultation",
+        "text": "The history is highly suggestive of myasthenia gravis, given the fatigable, fluctuating weakness with ocular and mild bulbar involvement, and absence of sensory or systemic symptoms. I recommend confirming the diagnosis with bedside tests (ice pack test, edrophonium if available), acetylcholine receptor antibody testing, and electrophysiological studies (repetitive nerve stimulation or single-fiber EMG). Chest imaging to evaluate for thymoma should also be considered."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 12,
+        "phase": "consultation",
+        "text": "Thank you for your input. I agree that the clinical picture is most consistent with myasthenia gravis, particularly given the classic fatigability, ocular involvement, and absence of sensory or systemic features. A few points to clarify and discuss further: 1. **Seronegative Myasthenia**: If acetylcholine receptor (AChR) antibodies are negative, would you recommend testing for MuSK (muscle-specific kinase) antibodies, especially if the clinical suspicion remains high? 2. **Electrophysiological Testing**: In your experience, is single-fiber EMG more sensitive than repetitive nerve stimulation in cases with predominantly ocular or mild generalized symptoms? Would you prioritize one over the other in this scenario? 3. **Thymoma Screening**: Given the absence of systemic symptoms or palpable masses, do you recommend a CT scan of the chest for all new myasthenia gravis diagnoses, or only if there are additional risk factors or findings? 4. **Differ"
+      },
+      {
+        "speaker": "Specialist (Neurologist)",
+        "turn": 12,
+        "phase": "consultation",
+        "text": "1. Yes, if AChR antibodies are negative and suspicion remains high, MuSK antibody testing is indicated, as MuSK-positive MG can present similarly but may require different management. 2. Single-fiber EMG is more sensitive than repetitive nerve stimulation, especially in mild or purely ocular cases, so I would prioritize single-fiber EMG if available. 3. Chest CT is recommended for all new MG diagnoses to screen for thymoma, regardless of symptoms, as thymomas can be asymptomatic. 4. Please clarify your fourth point regarding differential diagnosis or management."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 13,
+        "phase": "consultation",
+        "text": "Thank you for your detailed responses. To further refine our diagnostic approach and ensure we are not missing alternative or coexisting conditions, I\u2019d like to discuss the following: 4. **Differential Diagnosis**: While the presentation is classic for myasthenia gravis, are there any features in this case that would prompt you to consider alternative diagnoses, such as Lambert-Eaton myasthenic syndrome (LEMS), mitochondrial myopathies, or other neuromuscular junction disorders? For example, the absence of autonomic symptoms and the clear fatigability seem less consistent with LEMS, but I\u2019d appreciate your thoughts on distinguishing features you look for clinically. 5. **Ocular Myasthenia vs. Generalized Myasthenia**: Given the patient\u2019s symptoms are predominantly ocular and mild bulbar/facial, but with some proximal limb involvement, would you classify this as early generalized MG? Does this influence your initial treatment approach (e.g., starting with pyridostig"
+      },
+      {
+        "speaker": "Specialist (Neurologist)",
+        "turn": 13,
+        "phase": "consultation",
+        "text": "4. The absence of autonomic symptoms, presence of clear fatigability, and lack of improvement with exercise make LEMS unlikely; mitochondrial myopathies typically present with fixed weakness and often have multisystem involvement. 5. Given the proximal limb involvement, I would classify this as early generalized MG, which supports starting pyridostigmine and considering early immunosuppression rather than limiting treatment to symptomatic ocular therapy."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 14,
+        "phase": "consultation",
+        "text": "Thank you for your thorough responses. I agree that the clinical features and your reasoning strongly support a diagnosis of early generalized myasthenia gravis. A few additional points and questions to further refine our approach: **1. Monitoring for Respiratory Involvement:** Although the patient currently denies dyspnea or swallowing difficulties, are there specific bedside assessments or monitoring protocols you recommend to detect early respiratory or bulbar compromise, especially as we initiate treatment? **2. Initiation of Immunosuppression:** Given the mild but generalized symptoms, would you recommend starting corticosteroids immediately alongside pyridostigmine, or do you prefer a trial of symptomatic therapy first? If starting steroids, do you have a preferred dosing regimen or tapering strategy to minimize the risk of steroid-induced worsening? **3. Thymectomy Considerations:** If chest imaging reveals thymic hyperplasia but not a discrete thymoma, would you recommend thymectomy in this patient, given their age and early generalized symptoms"
+      },
+      {
+        "speaker": "Specialist (Neurologist)",
+        "turn": 14,
+        "phase": "consultation",
+        "text": "1. For early detection of respiratory or bulbar compromise, I recommend regular bedside monitoring of forced vital capacity (FVC), negative inspiratory force (NIF), and simple swallowing assessments (e.g., counting aloud, single breath count, and monitoring for dysarthria or cough after swallowing). 2. For mild generalized MG, I typically start pyridostigmine and closely monitor; if symptoms persist or worsen, I add corticosteroids, starting low (e.g., prednisone 10\u201320 mg daily) and titrating up to minimize risk of transient worsening, then taper slowly as symptoms improve. 3. Thymectomy is generally recommended for patients under 60 with generalized MG and thymic hyperplasia, as it can improve long-term outcomes even without a discrete thymoma."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 15,
+        "phase": "consultation",
+        "text": "Thank you for your clear and practical recommendations. I have a few follow-up questions and thoughts to further clarify our management plan and ensure comprehensive care: **1. Monitoring and Escalation:** - How frequently do you recommend monitoring FVC and NIF in the outpatient setting for a patient with mild generalized MG starting treatment? Would you advise more frequent assessments in the first few weeks, or only if symptoms change? - Are there specific thresholds (e.g., FVC <20 mL/kg) that would prompt you to consider hospital admission or more intensive monitoring, even in the absence of overt respiratory distress? **2. Steroid Initiation:** - In your experience, how often do you observe steroid-induced worsening in mild generalized MG, and are there particular risk factors that would make you more cautious about starting corticosteroids? - Do you routinely use steroid-sparing immunosuppressants (e.g., azathioprine, mycophenolate) early in the disease course, or reserve"
+      },
+      {
+        "speaker": "Specialist (Neurologist)",
+        "turn": 15,
+        "phase": "consultation",
+        "text": "1. I recommend monitoring FVC and NIF at least weekly during the first month of treatment, or more frequently if symptoms change; FVC <20 mL/kg or NIF <\u201330 cm H2O are thresholds for hospital admission, even without overt distress. 2. Steroid-induced worsening occurs in up to 20% of cases, especially in older patients or those with significant bulbar/respiratory involvement\u2014so I start low and titrate slowly; I consider early addition of steroid-sparing agents if symptoms are moderate/severe, or if long-term steroid use is anticipated. Do you have concerns about access to pulmonary function testing or immunosuppressants for this patient?"
+      }
+    ],
+    "requested_tests": [],
+    "tests_requested_count": 0,
+    "available_tests": [
+      "Blood_Tests",
+      "Electromyography",
+      "Imaging"
+    ],
+    "determined_specialist": "Neurologist",
+    "consultation_analysis": {
+      "premature_conclusion": false,
+      "diagnoses_considered": [
+        "myasthenia gravis",
+        "seronegative myasthenia gravis",
+        "MuSK-positive myasthenia gravis",
+        "Lambert-Eaton myasthenic syndrome (LEMS)",
+        "mitochondrial myopathies",
+        "other neuromuscular junction disorders"
+      ],
+      "diagnoses_considered_count": 6,
+      "disagreements": 0
+    },
+    "final_doctor_diagnosis": "Early generalized myasthenia gravis",
+    "top_K diagnoses": [
+      "Early generalized myasthenia gravis",
+      "Ocular myasthenia gravis",
+      "Bulbar myasthenia gravis",
+      "Autoimmune neuromuscular junction disorder",
+      "Ptosis",
+      "Diplopia",
+      "Proximal muscle weakness",
+      "Facial muscle weakness",
+      "Mild dysarthria",
+      "Thymic hyperplasia"
+    ],
+    "top_K": 10,
+    "is_correct": true,
+    "embedding_similarity": [
+      0.6871727317081193,
+      0.7252283604244008,
+      0.6710803527753356,
+      0.5622434429914522,
+      0.35214412898935754,
+      0.3301307543754917,
+      0.4910500590221253,
+      0.4846866832110136,
+      0.3551622336322049,
+      0.3447374924723991
+    ],
+    "best_embedding_similarity": 0.7252283604244008,
+    "tests_left_out": [
+      "Blood_Tests",
+      "Imaging",
+      "Electromyography"
+    ],
+    "specialist_reason": "A Neurologist is the most appropriate specialist because the patient's symptoms\u2014fluctuating muscle weakness, double vision, ptosis, and fatigability without sensory loss\u2014strongly suggest a neuromuscular junction disorder such as myasthenia gravis, which falls under the expertise of neurology.",
+    "Top_1": [
+      "Early generalized myasthenia gravis"
+    ],
+    "Top_1 is_correct": true,
+    "Top_1 correct rank": 1,
+    "Top_3": [
+      "Early generalized myasthenia gravis",
+      "Ocular myasthenia gravis",
+      "Bulbar myasthenia gravis"
+    ],
+    "Top_3 is_correct": true,
+    "Top_3 correct rank": 1,
+    "Top_5": [
+      "Early generalized myasthenia gravis",
+      "Ocular myasthenia gravis",
+      "Bulbar myasthenia gravis",
+      "Autoimmune neuromuscular junction disorder",
+      "Ptosis"
+    ],
+    "Top_5 is_correct": true,
+    "Top_5 correct rank": 1,
+    "Top_7": [
+      "Early generalized myasthenia gravis",
+      "Ocular myasthenia gravis",
+      "Bulbar myasthenia gravis",
+      "Autoimmune neuromuscular junction disorder",
+      "Ptosis",
+      "Diplopia",
+      "Proximal muscle weakness"
+    ],
+    "Top_7 is_correct": true,
+    "Top_7 correct rank": 1,
+    "Top_10": [
+      "Early generalized myasthenia gravis",
+      "Ocular myasthenia gravis",
+      "Bulbar myasthenia gravis",
+      "Autoimmune neuromuscular junction disorder",
+      "Ptosis",
+      "Diplopia",
+      "Proximal muscle weakness",
+      "Facial muscle weakness",
+      "Mild dysarthria",
+      "Thymic hyperplasia"
+    ],
+    "Top_10 is_correct": true,
+    "Top_10 correct rank": 1,
+    "final_diagnosis_is_correct": true,
+    "best_embedding_similarity_rank": 2
+  }
+]

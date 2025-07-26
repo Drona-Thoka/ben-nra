@@ -18,8 +18,8 @@ AGENT_DATASET = "MedQA"  # Start with MedQA as requested
 NUM_SCENARIOS = 150       # Minimum 50 scenarios per config-dataset combo
 TOTAL_INFERENCES = 10
 CONSULTATION_TURNS = 5
-TOP_K = 10
-K_Values = [1,3,5,7, 10]
+K_Values = [1,3,5,7,10]
+TOP_K = max(K_Values)
 
 # --- Agent Choice Abalation Constants, 6 valid combos including base case, base case initally depicted ---
 USE_DOCTOR = True
@@ -55,8 +55,8 @@ def query_model(prompt, system_prompt, max_tokens=200):
 
 def compare_results(diagnoses, correct_diagnosis, k=TOP_K):
     
-    prompt = f"Here is the correct diagnosis: {correct_diagnosis}\n The doctor was allowed to provide {k} different diagnoses. Here was the doctor dialogue/diagnoses: {diagnoses[:k]}\nAre any of these referring to the same underlying medical condition as the given correct diagnosis? Please respond with 'Yes: [matching diagnosis exactly as written]' or 'No'. Only respond in this manner"
-    system_prompt = f"You are an expert medical evaluator. Determine if any of the provided doctor's {k} diagnoses match the correct diagnosis in meaning, even if phrased differently. If multiple diagnoses are plausible, decide definitivly which ONE is best. Respond only with 'Yes: [matching diagnosis exactly as written]' or 'No'."
+    prompt = f"Here is the correct diagnosis: {correct_diagnosis}\n The doctor was allowed to provide {k} different diagnoses. Here was the doctor dialogue/diagnoses: {diagnoses[:k]}\nAre any of these referring to the same underlying medical condition as the given correct diagnosis? Please respond with 'Yes: [matching diagnosis exactly as written]' or 'No'. Only respond in this manner."
+    system_prompt = f"You are an expert medical evaluator. Determine if any of the provided doctor's {k} diagnoses match the correct diagnosis in meaning, even if phrased differently. If multiple diagnoses are plausible, decide definitively which ONE is best. Respond only with 'Yes: [matching diagnosis exactly as written]' or 'No'."
     answer = query_model(prompt, system_prompt)
 
     if answer.lower().startswith("yes:"):
@@ -538,6 +538,20 @@ def run_single_scenario(scenario, dataset, total_inferences, max_consultation_tu
     print(f"\nFinal Diagnoses by Doctor: {diagnoses}")
     print(f"Correct Diagnosis: {scenario.diagnosis_information()}")
 
+    # Compute prediction embeddings
+    try:
+        pred_embed = [get_embedding(diagnosis.strip().lower()) for diagnosis in diagnoses[:TOP_K]]
+    except Exception as e:
+        print(f"Embedding error (predictions): {e}")
+        pred_embed = None
+
+    # Compute ground truth embedding
+    try:
+        true_embed = get_embedding(scenario.diagnosis_information().strip().lower())
+    except Exception as e:
+        print(f"Embedding error (correct diagnosis): {e}")
+        true_embed = None
+
     for k in K_Values:
         sliced = diagnoses[:min(k, len(diagnoses))]
         is_correct, final_diagnosis = compare_results(sliced, scenario.diagnosis_information(), k)
@@ -549,24 +563,22 @@ def run_single_scenario(scenario, dataset, total_inferences, max_consultation_tu
             run_log[f"Top_{k} correct rank"] = sliced.index(final_diagnosis) + 1
 
         if k == TOP_K:
-            run_log["final_doctor_diagnosis"] = final_diagnosis
             run_log["is_correct"] = is_correct
+            run_log["final_doctor_diagnosis"] = final_diagnosis
+            run_log["final_diagnosis_is_correct"] = is_correct
 
-    try:
-        pred_embed = [get_embedding(diagnosis.strip().lower()) for diagnosis in diagnoses]
-        true_embed = get_embedding(scenario.diagnosis_information().strip().lower())
+    # Compute embedding similairites 
+    if pred_embed is not None and true_embed is not None:
         embed_sim = [cosine_similarity(pred, true_embed) for pred in pred_embed]
 
         run_log["embedding_similarity"] = embed_sim
         run_log["best_embedding_similarity"] = max(embed_sim) if embed_sim else None
-
-    except Exception as e:
-        print(f"Embedding error: {e}")
+        if embed_sim:
+            run_log["best_embedding_similarity_rank"] = embed_sim.index(run_log["best_embedding_similarity"]) + 1
+    else:
         run_log["embedding_similarity"] = None
         run_log["best_embedding_similarity"] = None
-
-    run_log["patient_interaction_turns"] = len([entry for entry in run_log["dialogue_history"] if entry["phase"] == "patient" and entry["speaker"] == "Patient"]) 
-    run_log["doctor_questions"] = len([entry for entry in run_log["dialogue_history"] if entry["speaker"] == "Doctor" and "?" in entry["text"] and "REQUEST TEST" not in entry["text"]])
+        run_log["best_embedding_similarity_rank"] = None
 
     # --- Consultation Analysis Phase (Moved here) ---
     print("\n--- Phase 5: Consultation Analysis ---")
