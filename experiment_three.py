@@ -714,8 +714,8 @@ def run_experiment_three(dataset, total_inferences, consultation_turns, max_scen
         actual_entries_in_log = len(all_results)
         
         final_accuracy = (correct_count_total / actual_entries_in_log) * 100 if actual_entries_in_log > 0 else 0
-        
-        #print(f"\n=== Results for {config_name} configuration on {dataset} dataset ===")
+
+        #print(f"\n=== Results for {config_name} configuration on {dataset} dataset ==="
         #print(f"Total Scenarios Logged: {actual_entries_in_log} (planned: {scenarios_to_run}, completed this/prev sessions: {final_completed_count})")
         #print(f"Final Accuracy: {final_accuracy:.2f}% ({correct_count_total}/{actual_entries_in_log})")
     
