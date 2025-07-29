@@ -1,0 +1,3213 @@
+[
+  {
+    "timestamp": "2025-07-28T20:43:15.139110",
+    "model": "gpt-4.1",
+    "dataset": "MedQA",
+    "scenario_id": 0,
+    "max_patient_turns": 10,
+    "max_consultation_turns": 5,
+    "patient_interaction_turns": 0,
+    "doctor_questions": 0,
+    "correct_diagnosis": "Myasthenia gravis",
+    "dialogue_history": [
+      {
+        "speaker": "Doctor",
+        "turn": 0,
+        "phase": "patient",
+        "text": "Can you describe your main symptoms and how long you have been experiencing them?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 1,
+        "phase": "patient",
+        "text": "I've been having double vision and muscle weakness for about a month now. It gets worse when I'm active, like climbing stairs or brushing my hair, but I feel better after resting for a while."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 1,
+        "phase": "patient",
+        "text": "Have you noticed any difficulty swallowing, speaking, or breathing, especially when your symptoms are worse?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 2,
+        "phase": "patient",
+        "text": "I haven\u2019t had any trouble swallowing or breathing, but sometimes my speech feels a bit slurred when I\u2019m really tired or after a long day. It usually gets better after I rest."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Have you noticed any drooping of your eyelids, changes in facial expressions, or difficulty making facial movements?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 3,
+        "phase": "patient",
+        "text": "Yes, I have noticed that sometimes my eyelids feel heavy and seem to droop, especially later in the day. I haven\u2019t really noticed any major changes in my facial expressions, but sometimes my face feels a bit tired."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 3,
+        "phase": "patient",
+        "text": "Have you experienced any numbness, tingling, or loss of sensation in your arms, legs, or face?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 4,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any numbness or tingling anywhere. My main issue is just the weakness and double vision."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 4,
+        "phase": "patient",
+        "text": "Have you had any recent infections, fevers, or illnesses before your symptoms started?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 5,
+        "phase": "patient",
+        "text": "No, I haven't had any recent infections, fevers, or illnesses before these symptoms began."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 5,
+        "phase": "patient",
+        "text": "Have you noticed any changes in your ability to grip objects, or have you dropped things unexpectedly due to weakness in your hands?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 6,
+        "phase": "patient",
+        "text": "Yes, I have noticed that my grip feels weaker, especially after using my hands for a while, but I haven\u2019t really dropped anything unexpectedly. The weakness seems to get better if I rest for a bit."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 6,
+        "phase": "patient",
+        "text": "Have you or anyone in your family ever been diagnosed with any autoimmune diseases or neuromuscular disorders?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 7,
+        "phase": "patient",
+        "text": "No, as far as I know, no one in my family has had any autoimmune diseases or neuromuscular disorders."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 7,
+        "phase": "patient",
+        "text": "Have you noticed any changes in your vision besides double vision, such as blurry vision, loss of vision, or pain in your eyes?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 8,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any blurry vision, loss of vision, or pain in my eyes\u2014just the double vision."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 8,
+        "phase": "patient",
+        "text": "Have you noticed any muscle twitching, cramping, or involuntary movements in your arms, legs, or face?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 9,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any twitching, cramping, or involuntary movements. It\u2019s mostly just the weakness and double vision that bother me."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 9,
+        "phase": "patient",
+        "text": "Have you noticed any recent weight loss, night sweats, or lumps in your neck, chest, or elsewhere on your body?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 10,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any weight loss, night sweats, or lumps anywhere on my body."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 10,
+        "phase": "patient",
+        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
+      }
+    ],
+    "requested_tests": [],
+    "tests_requested_count": 0,
+    "available_tests": [
+      "Blood_Tests",
+      "Electromyography",
+      "Imaging"
+    ],
+    "determined_specialist": null,
+    "consultation_analysis": {
+      "error": "No consultation dialogue recorded"
+    },
+    "final_doctor_diagnosis": "Myasthenia gravis",
+    "top_K diagnoses": [
+      "Myasthenia gravis",
+      "Lambert-Eaton myasthenic syndrome",
+      "Multiple sclerosis",
+      "Oculopharyngeal muscular dystrophy",
+      "Mitochondrial myopathy",
+      "Botulism",
+      "Chronic progressive external ophthalmoplegia",
+      "Thyroid eye disease",
+      "Amyotrophic lateral sclerosis",
+      "Brainstem tumor"
+    ],
+    "top_K": 10,
+    "is_correct": true,
+    "embedding_similarity": [
+      0.9999999999999998,
+      0.5168236625179005,
+      0.5229796206691425,
+      0.46681889220231165,
+      0.4708656562131936,
+      0.3375570443232993,
+      0.3956585418114021,
+      0.39980153279285857,
+      0.4376231387899645,
+      0.21977339969288026
+    ],
+    "best_embedding_similarity": 0.9999999999999998,
+    "tests_left_out": [
+      "Electromyography",
+      "Imaging",
+      "Blood_Tests"
+    ],
+    "Top_1": [
+      "Myasthenia gravis"
+    ],
+    "Top_1 is_correct": true,
+    "Top_1 correct rank": 1,
+    "Top_3": [
+      "Myasthenia gravis",
+      "Lambert-Eaton myasthenic syndrome",
+      "Multiple sclerosis"
+    ],
+    "Top_3 is_correct": true,
+    "Top_3 correct rank": 1,
+    "Top_5": [
+      "Myasthenia gravis",
+      "Lambert-Eaton myasthenic syndrome",
+      "Multiple sclerosis",
+      "Oculopharyngeal muscular dystrophy",
+      "Mitochondrial myopathy"
+    ],
+    "Top_5 is_correct": true,
+    "Top_5 correct rank": 1,
+    "Top_7": [
+      "Myasthenia gravis",
+      "Lambert-Eaton myasthenic syndrome",
+      "Multiple sclerosis",
+      "Oculopharyngeal muscular dystrophy",
+      "Mitochondrial myopathy",
+      "Botulism",
+      "Chronic progressive external ophthalmoplegia"
+    ],
+    "Top_7 is_correct": true,
+    "Top_7 correct rank": 1,
+    "Top_10": [
+      "Myasthenia gravis",
+      "Lambert-Eaton myasthenic syndrome",
+      "Multiple sclerosis",
+      "Oculopharyngeal muscular dystrophy",
+      "Mitochondrial myopathy",
+      "Botulism",
+      "Chronic progressive external ophthalmoplegia",
+      "Thyroid eye disease",
+      "Amyotrophic lateral sclerosis",
+      "Brainstem tumor"
+    ],
+    "Top_10 is_correct": true,
+    "Top_10 correct rank": 1,
+    "final_diagnosis_is_correct": true,
+    "best_embedding_similarity_rank": 1,
+    "info_density_score": 0.5567428469657898
+  },
+  {
+    "timestamp": "2025-07-28T20:43:53.897605",
+    "model": "gpt-4.1",
+    "dataset": "MedQA",
+    "scenario_id": 1,
+    "max_patient_turns": 10,
+    "max_consultation_turns": 5,
+    "patient_interaction_turns": 0,
+    "doctor_questions": 0,
+    "correct_diagnosis": "Progressive multifocal encephalopathy (PML)",
+    "dialogue_history": [
+      {
+        "speaker": "Doctor",
+        "turn": 0,
+        "phase": "patient",
+        "text": "Can you describe your main symptoms and how long you have been experiencing them?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 1,
+        "phase": "patient",
+        "text": "I've been having trouble walking for about a week now\u2014my friends say I look like I'm drunk when I try to walk. My balance feels off, and I sometimes stumble or sway."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 1,
+        "phase": "patient",
+        "text": "Have you noticed any other symptoms, such as headaches, double vision, weakness, numbness, or changes in speech?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 2,
+        "phase": "patient",
+        "text": "I haven\u2019t had headaches or double vision, but I have noticed my right arm feels weaker than usual. I haven\u2019t had any numbness or changes in my speech."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Have you experienced any recent fevers, weight loss, or night sweats?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 3,
+        "phase": "patient",
+        "text": "No, I haven't had any fevers, weight loss, or night sweats recently."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 3,
+        "phase": "patient",
+        "text": "Have you had any recent head injuries, falls, or accidents before your symptoms started?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 4,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any head injuries, falls, or accidents recently. The trouble with my walking just started on its own."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 4,
+        "phase": "patient",
+        "text": "Have you noticed any changes in your vision, such as blurred vision or difficulty focusing, even if you haven't had double vision?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 5,
+        "phase": "patient",
+        "text": "No, I haven't noticed any changes in my vision\u2014no blurriness or trouble focusing. My main issue has really just been with my walking and coordination."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 5,
+        "phase": "patient",
+        "text": "Have you noticed any changes in your bladder or bowel control, such as incontinence or difficulty urinating?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 6,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any changes in my bladder or bowel control. Everything seems normal in that regard."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 6,
+        "phase": "patient",
+        "text": "Have you had any recent infections, such as a cold, flu, or stomach bug, in the past few weeks?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 7,
+        "phase": "patient",
+        "text": "No, I haven't had any recent infections or illnesses like a cold or stomach bug lately."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 7,
+        "phase": "patient",
+        "text": "Have you ever experienced anything like this before, or do you have any history of neurological or autoimmune conditions?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 8,
+        "phase": "patient",
+        "text": "No, I\u2019ve never had anything like this before. My only major health issue has been Crohn\u2019s disease."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 8,
+        "phase": "patient",
+        "text": "Have you noticed any changes in your speech, swallowing, or facial movements, such as slurred speech or difficulty swallowing?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 9,
+        "phase": "patient",
+        "text": "I haven\u2019t noticed any problems with swallowing or facial movements, but my speech has been a bit slurred lately. It\u2019s something my friends have pointed out to me."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 9,
+        "phase": "patient",
+        "text": "Have you noticed any recent changes in your mood, memory, or ability to concentrate?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 10,
+        "phase": "patient",
+        "text": "I haven\u2019t really noticed any changes in my mood or memory. I do feel a bit more clumsy and sometimes it\u2019s hard to focus, but nothing too dramatic."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 10,
+        "phase": "patient",
+        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
+      }
+    ],
+    "requested_tests": [],
+    "tests_requested_count": 0,
+    "available_tests": [
+      "MRI_Brain"
+    ],
+    "determined_specialist": null,
+    "consultation_analysis": {
+      "error": "No consultation dialogue recorded"
+    },
+    "final_doctor_diagnosis": null,
+    "top_K diagnoses": [
+      "Cerebellar ataxia",
+      "Multiple sclerosis",
+      "Stroke (cerebellar or brainstem)",
+      "Brain tumor",
+      "Wernicke's encephalopathy",
+      "Acute demyelinating encephalomyelitis",
+      "Drug or toxin-induced ataxia",
+      "Paraneoplastic cerebellar degeneration",
+      "Chronic inflammatory demyelinating polyneuropathy",
+      "Functional neurological disorder"
+    ],
+    "top_K": 10,
+    "is_correct": false,
+    "embedding_similarity": [
+      0.28463768304543613,
+      0.4550859490023649,
+      0.3126527251556749,
+      0.34123800200088655,
+      0.46472429335456783,
+      0.4831600750081134,
+      0.22352264293940358,
+      0.4238746435694924,
+      0.3856047030450198,
+      0.29375214159161656
+    ],
+    "best_embedding_similarity": 0.4831600750081134,
+    "tests_left_out": [
+      "MRI_Brain"
+    ],
+    "Top_1": [
+      "Cerebellar ataxia"
+    ],
+    "Top_1 is_correct": false,
+    "Top_3": [
+      "Cerebellar ataxia",
+      "Multiple sclerosis",
+      "Stroke (cerebellar or brainstem)"
+    ],
+    "Top_3 is_correct": false,
+    "Top_5": [
+      "Cerebellar ataxia",
+      "Multiple sclerosis",
+      "Stroke (cerebellar or brainstem)",
+      "Brain tumor",
+      "Wernicke's encephalopathy"
+    ],
+    "Top_5 is_correct": false,
+    "Top_7": [
+      "Cerebellar ataxia",
+      "Multiple sclerosis",
+      "Stroke (cerebellar or brainstem)",
+      "Brain tumor",
+      "Wernicke's encephalopathy",
+      "Acute demyelinating encephalomyelitis",
+      "Drug or toxin-induced ataxia"
+    ],
+    "Top_7 is_correct": false,
+    "Top_10": [
+      "Cerebellar ataxia",
+      "Multiple sclerosis",
+      "Stroke (cerebellar or brainstem)",
+      "Brain tumor",
+      "Wernicke's encephalopathy",
+      "Acute demyelinating encephalomyelitis",
+      "Drug or toxin-induced ataxia",
+      "Paraneoplastic cerebellar degeneration",
+      "Chronic inflammatory demyelinating polyneuropathy",
+      "Functional neurological disorder"
+    ],
+    "Top_10 is_correct": false,
+    "final_diagnosis_is_correct": false,
+    "best_embedding_similarity_rank": 6,
+    "info_density_score": 0.5539558529853821
+  },
+  {
+    "timestamp": "2025-07-28T20:44:33.350971",
+    "model": "gpt-4.1",
+    "dataset": "MedQA",
+    "scenario_id": 2,
+    "max_patient_turns": 10,
+    "max_consultation_turns": 5,
+    "patient_interaction_turns": 0,
+    "doctor_questions": 0,
+    "correct_diagnosis": "Hirschsprung disease",
+    "dialogue_history": [
+      {
+        "speaker": "Doctor",
+        "turn": 0,
+        "phase": "patient",
+        "text": "Can you describe your main symptoms and how long you have been experiencing them?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 1,
+        "phase": "patient",
+        "text": "I've been really fussy for the past few days, and my tummy seems to hurt, especially when you touch it. I haven't wanted to eat as much, but my mom says I'm still gaining weight."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 1,
+        "phase": "patient",
+        "text": "Have you had any vomiting, diarrhea, constipation, or changes in your stool recently?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 2,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any vomiting or diarrhea. I\u2019m not sure about my stool, but my mom hasn\u2019t noticed anything unusual."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Have you had any fever, chills, or sweats in the past few days?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 3,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any fever, chills, or sweats. I just seem really uncomfortable and cry a lot, especially when my tummy is touched."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 3,
+        "phase": "patient",
+        "text": "Have you noticed any swelling, redness, or a lump in your tummy area, or does your tummy look bigger than usual?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 4,
+        "phase": "patient",
+        "text": "My tummy does look bigger than usual, and when you touch it, I cry a lot because it hurts. I haven\u2019t noticed any redness or a lump, though."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 4,
+        "phase": "patient",
+        "text": "Have you had any recent injuries or falls, or has anyone noticed any bruising on your body?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 5,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any injuries or falls, and my mom hasn\u2019t noticed any bruising on my body."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 5,
+        "phase": "patient",
+        "text": "Have you noticed any changes in your urine, such as blood, dark color, or decreased amount?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 6,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any changes in my urine. It seems to be the usual color and amount."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 6,
+        "phase": "patient",
+        "text": "Have you had any recent respiratory symptoms, like coughing, difficulty breathing, or a runny nose?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 7,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any coughing or trouble breathing, and my nose hasn\u2019t been runny."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 7,
+        "phase": "patient",
+        "text": "Have you noticed any yellowing of your skin or eyes, or any unusual rashes?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 8,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any yellowing of my skin or eyes, and there haven\u2019t been any rashes that my mom has noticed."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 8,
+        "phase": "patient",
+        "text": "Have you had any recent changes in your appetite, energy level, or sleep patterns besides being fussy and eating less?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 9,
+        "phase": "patient",
+        "text": "I\u2019ve been sleeping a bit less because I get fussy and uncomfortable, but otherwise, nothing else has really changed except not wanting to eat as much."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 9,
+        "phase": "patient",
+        "text": "Have you ever had any similar episodes in the past, or is this the first time you\u2019ve felt this way?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 10,
+        "phase": "patient",
+        "text": "This is the first time I\u2019ve felt like this. I haven\u2019t had any problems like this before."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 10,
+        "phase": "patient",
+        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
+      }
+    ],
+    "requested_tests": [],
+    "tests_requested_count": 0,
+    "available_tests": [
+      "Blood_Test",
+      "Abdominal_X-ray",
+      "Barium_Enema"
+    ],
+    "determined_specialist": null,
+    "consultation_analysis": {
+      "error": "No consultation dialogue recorded"
+    },
+    "final_doctor_diagnosis": null,
+    "top_K diagnoses": [
+      "Functional abdominal pain",
+      "Constipation",
+      "Gastroenteritis (early or mild)",
+      "Intussusception",
+      "Mesenteric lymphadenitis",
+      "Urinary tract infection",
+      "Food intolerance/allergy",
+      "Abdominal migraine",
+      "Early appendicitis",
+      "Lactose intolerance"
+    ],
+    "top_K": 10,
+    "is_correct": false,
+    "embedding_similarity": [
+      0.3311472089194986,
+      0.4348465202250825,
+      0.27520507829173635,
+      0.4218701058469394,
+      0.3763697701129282,
+      0.24034333477757827,
+      0.3000183482162759,
+      0.304614049209955,
+      0.34965116941344165,
+      0.37049172310250855
+    ],
+    "best_embedding_similarity": 0.4348465202250825,
+    "tests_left_out": [
+      "Barium_Enema",
+      "Abdominal_X-ray",
+      "Blood_Test"
+    ],
+    "Top_1": [
+      "Functional abdominal pain"
+    ],
+    "Top_1 is_correct": false,
+    "Top_3": [
+      "Functional abdominal pain",
+      "Constipation",
+      "Gastroenteritis (early or mild)"
+    ],
+    "Top_3 is_correct": false,
+    "Top_5": [
+      "Functional abdominal pain",
+      "Constipation",
+      "Gastroenteritis (early or mild)",
+      "Intussusception",
+      "Mesenteric lymphadenitis"
+    ],
+    "Top_5 is_correct": false,
+    "Top_7": [
+      "Functional abdominal pain",
+      "Constipation",
+      "Gastroenteritis (early or mild)",
+      "Intussusception",
+      "Mesenteric lymphadenitis",
+      "Urinary tract infection",
+      "Food intolerance/allergy"
+    ],
+    "Top_7 is_correct": false,
+    "Top_10": [
+      "Functional abdominal pain",
+      "Constipation",
+      "Gastroenteritis (early or mild)",
+      "Intussusception",
+      "Mesenteric lymphadenitis",
+      "Urinary tract infection",
+      "Food intolerance/allergy",
+      "Abdominal migraine",
+      "Early appendicitis",
+      "Lactose intolerance"
+    ],
+    "Top_10 is_correct": false,
+    "final_diagnosis_is_correct": false,
+    "best_embedding_similarity_rank": 2,
+    "info_density_score": 0.609817385673523
+  },
+  {
+    "timestamp": "2025-07-28T20:45:12.042351",
+    "model": "gpt-4.1",
+    "dataset": "MedQA",
+    "scenario_id": 3,
+    "max_patient_turns": 10,
+    "max_consultation_turns": 5,
+    "patient_interaction_turns": 0,
+    "doctor_questions": 0,
+    "correct_diagnosis": "Diffuse large B-cell lymphoma",
+    "dialogue_history": [
+      {
+        "speaker": "Doctor",
+        "turn": 0,
+        "phase": "patient",
+        "text": "Can you describe your main symptoms and how long you have been experiencing them?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 1,
+        "phase": "patient",
+        "text": "I've been feeling really tired and have had worsening pain in my abdomen for about a month now. Over the last four weeks, I've also noticed night sweats and have lost around 12 pounds without trying."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 1,
+        "phase": "patient",
+        "text": "Have you noticed any changes in your bowel habits, such as diarrhea, constipation, or blood in your stool?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 2,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any changes in my bowel habits\u2014no diarrhea, constipation, or blood in my stool. Everything seems about the same as usual in that regard."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Have you had any fevers, chills, or noticed any lumps or swelling in your abdomen or elsewhere on your body?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 3,
+        "phase": "patient",
+        "text": "I haven\u2019t had any fevers or chills, but I did notice some swelling in my neck over the past few days. My belly also feels unusually full, and I can feel some sort of lumpiness there."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 3,
+        "phase": "patient",
+        "text": "Have you experienced any itching, unexplained bruising, or bleeding recently?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 4,
+        "phase": "patient",
+        "text": "No, I haven't noticed any itching, bruising, or unusual bleeding lately."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 4,
+        "phase": "patient",
+        "text": "Have you had any recent infections, travel, or exposure to anyone who is sick?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 5,
+        "phase": "patient",
+        "text": "No, I haven\u2019t traveled recently and I haven\u2019t been around anyone who\u2019s been sick. I also haven\u2019t had any recent infections that I know of."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 5,
+        "phase": "patient",
+        "text": "Have you ever been diagnosed with cancer or any chronic illnesses in the past?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 6,
+        "phase": "patient",
+        "text": "No, I\u2019ve never been diagnosed with cancer or any chronic illnesses before. I\u2019ve generally been pretty healthy until recently."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 6,
+        "phase": "patient",
+        "text": "Have you noticed any difficulty swallowing, persistent cough, or shortness of breath?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 7,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any trouble swallowing or a persistent cough. I also haven\u2019t noticed any shortness of breath."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 7,
+        "phase": "patient",
+        "text": "Have you noticed any pain or swelling in your joints, or any rashes on your skin?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 8,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any joint pain or swelling, and I haven\u2019t noticed any rashes on my skin."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 8,
+        "phase": "patient",
+        "text": "Have you noticed any changes in your appetite, nausea, or vomiting?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 9,
+        "phase": "patient",
+        "text": "My appetite has definitely decreased over the past few weeks, but I haven\u2019t had any nausea or vomiting. I just feel full really quickly when I try to eat."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 9,
+        "phase": "patient",
+        "text": "Have you noticed any swelling in your legs or ankles, or yellowing of your skin or eyes?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 10,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any swelling in my legs or ankles, and my skin and eyes look normal to me\u2014no yellowing."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 10,
+        "phase": "patient",
+        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
+      }
+    ],
+    "requested_tests": [],
+    "tests_requested_count": 0,
+    "available_tests": [
+      "Blood_Work",
+      "Imaging",
+      "Biopsy"
+    ],
+    "determined_specialist": null,
+    "consultation_analysis": {
+      "error": "No consultation dialogue recorded"
+    },
+    "final_doctor_diagnosis": "Non-Hodgkin lymphoma",
+    "top_K diagnoses": [
+      "Non-Hodgkin lymphoma",
+      "Hodgkin lymphoma",
+      "Chronic lymphocytic leukemia",
+      "Metastatic abdominal malignancy",
+      "Tuberculosis (extrapulmonary)",
+      "Infectious mononucleosis",
+      "Sarcoidosis",
+      "Castleman disease",
+      "Autoimmune lymphoproliferative syndrome",
+      "Abdominal lymphoma"
+    ],
+    "top_K": 10,
+    "is_correct": true,
+    "embedding_similarity": [
+      0.6242516665140841,
+      0.587426225524902,
+      0.5242358343548574,
+      0.35419327817853213,
+      0.2958244338920667,
+      0.27735106933270426,
+      0.3171096232490605,
+      0.38998152815237186,
+      0.44433644517251625,
+      0.5852858455762714
+    ],
+    "best_embedding_similarity": 0.6242516665140841,
+    "tests_left_out": [
+      "Biopsy",
+      "Blood_Work",
+      "Imaging"
+    ],
+    "Top_1": [
+      "Non-Hodgkin lymphoma"
+    ],
+    "Top_1 is_correct": false,
+    "Top_3": [
+      "Non-Hodgkin lymphoma",
+      "Hodgkin lymphoma",
+      "Chronic lymphocytic leukemia"
+    ],
+    "Top_3 is_correct": true,
+    "Top_3 correct rank": 1,
+    "Top_5": [
+      "Non-Hodgkin lymphoma",
+      "Hodgkin lymphoma",
+      "Chronic lymphocytic leukemia",
+      "Metastatic abdominal malignancy",
+      "Tuberculosis (extrapulmonary)"
+    ],
+    "Top_5 is_correct": true,
+    "Top_5 correct rank": 1,
+    "Top_7": [
+      "Non-Hodgkin lymphoma",
+      "Hodgkin lymphoma",
+      "Chronic lymphocytic leukemia",
+      "Metastatic abdominal malignancy",
+      "Tuberculosis (extrapulmonary)",
+      "Infectious mononucleosis",
+      "Sarcoidosis"
+    ],
+    "Top_7 is_correct": true,
+    "Top_7 correct rank": 1,
+    "Top_10": [
+      "Non-Hodgkin lymphoma",
+      "Hodgkin lymphoma",
+      "Chronic lymphocytic leukemia",
+      "Metastatic abdominal malignancy",
+      "Tuberculosis (extrapulmonary)",
+      "Infectious mononucleosis",
+      "Sarcoidosis",
+      "Castleman disease",
+      "Autoimmune lymphoproliferative syndrome",
+      "Abdominal lymphoma"
+    ],
+    "Top_10 is_correct": true,
+    "Top_10 correct rank": 1,
+    "final_diagnosis_is_correct": true,
+    "best_embedding_similarity_rank": 1,
+    "info_density_score": 0.5485018491744995
+  },
+  {
+    "timestamp": "2025-07-28T20:45:49.419352",
+    "model": "gpt-4.1",
+    "dataset": "MedQA",
+    "scenario_id": 4,
+    "max_patient_turns": 10,
+    "max_consultation_turns": 5,
+    "patient_interaction_turns": 0,
+    "doctor_questions": 0,
+    "correct_diagnosis": "Acute interstitial nephritis",
+    "dialogue_history": [
+      {
+        "speaker": "Doctor",
+        "turn": 0,
+        "phase": "patient",
+        "text": "Can you describe your main symptoms and how long you have been experiencing them?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 1,
+        "phase": "patient",
+        "text": "I've been feeling very tired, having pain in my flank area, and running a fever for about two weeks now. These symptoms started while I was being treated for sinusitis, but the sinus symptoms have gone away."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 1,
+        "phase": "patient",
+        "text": "Have you noticed any changes in your urination, such as pain, increased frequency, blood in the urine, or foul odor?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 2,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any pain, changes in frequency, blood, or unusual odor in my urine. Everything seems normal in that regard."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Have you experienced any unintentional weight loss, night sweats, or chills along with your fever and fatigue?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 3,
+        "phase": "patient",
+        "text": "I haven\u2019t noticed any weight loss or night sweats, but I do get chills from time to time with the fever."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 3,
+        "phase": "patient",
+        "text": "Have you had any recent travel, exposure to sick contacts, or history of tick bites?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 4,
+        "phase": "patient",
+        "text": "No, I haven\u2019t traveled recently, and I don\u2019t recall any tick bites or being around anyone who was sick."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 4,
+        "phase": "patient",
+        "text": "Have you noticed any swelling in your legs, ankles, or around your eyes, or any rashes on your skin?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 5,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any swelling in my legs, ankles, or around my eyes. The rash I had went away after my antibiotics were changed."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 5,
+        "phase": "patient",
+        "text": "Have you experienced any nausea, vomiting, or changes in your appetite since your symptoms began?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 6,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any nausea or vomiting, and my appetite has been about the same as usual."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 6,
+        "phase": "patient",
+        "text": "Have you noticed any joint pain, muscle aches, or headaches along with your other symptoms?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 7,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any joint pain or muscle aches, and I haven\u2019t noticed any headaches either. My main issues have just been the fatigue, fever, and this dull pain in my flank."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 7,
+        "phase": "patient",
+        "text": "Have you noticed any lumps, masses, or tenderness when you press on your abdomen or flank area?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 8,
+        "phase": "patient",
+        "text": "Yes, I do feel some tenderness on my left flank when I press there, but I haven\u2019t noticed any lumps or masses."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 8,
+        "phase": "patient",
+        "text": "Have you had any recent dental procedures, urinary tract infections in the past, or any known history of kidney stones?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 9,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any dental work done recently, and I don\u2019t have a history of kidney stones or urinary tract infections."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 9,
+        "phase": "patient",
+        "text": "Have you noticed any heart palpitations, chest pain, or shortness of breath during this illness?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 10,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any chest pain, palpitations, or trouble breathing. My main issues have just been the fatigue, fever, and this dull pain in my side."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 10,
+        "phase": "patient",
+        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
+      }
+    ],
+    "requested_tests": [],
+    "tests_requested_count": 0,
+    "available_tests": [
+      "Serum_Biochemistry",
+      "Urinalysis"
+    ],
+    "determined_specialist": null,
+    "consultation_analysis": {
+      "error": "No consultation dialogue recorded"
+    },
+    "final_doctor_diagnosis": null,
+    "top_K diagnoses": [
+      "Pyelonephritis",
+      "Renal abscess",
+      "Subacute bacterial infection",
+      "Drug-induced fever",
+      "Post-infectious fatigue syndrome",
+      "Perinephric abscess",
+      "Occult malignancy",
+      "Viral infection",
+      "Autoimmune disorder",
+      "Musculoskeletal pain"
+    ],
+    "top_K": 10,
+    "is_correct": false,
+    "embedding_similarity": [
+      0.5182495305815131,
+      0.3834884650884375,
+      0.46742803477002737,
+      0.4460021945275176,
+      0.3293159823535614,
+      0.4248922780763777,
+      0.25735679494050917,
+      0.3050275680605841,
+      0.3270239542648453,
+      0.22296048597647586
+    ],
+    "best_embedding_similarity": 0.5182495305815131,
+    "tests_left_out": [
+      "Serum_Biochemistry",
+      "Urinalysis"
+    ],
+    "Top_1": [
+      "Pyelonephritis"
+    ],
+    "Top_1 is_correct": false,
+    "Top_3": [
+      "Pyelonephritis",
+      "Renal abscess",
+      "Subacute bacterial infection"
+    ],
+    "Top_3 is_correct": false,
+    "Top_5": [
+      "Pyelonephritis",
+      "Renal abscess",
+      "Subacute bacterial infection",
+      "Drug-induced fever",
+      "Post-infectious fatigue syndrome"
+    ],
+    "Top_5 is_correct": false,
+    "Top_7": [
+      "Pyelonephritis",
+      "Renal abscess",
+      "Subacute bacterial infection",
+      "Drug-induced fever",
+      "Post-infectious fatigue syndrome",
+      "Perinephric abscess",
+      "Occult malignancy"
+    ],
+    "Top_7 is_correct": false,
+    "Top_10": [
+      "Pyelonephritis",
+      "Renal abscess",
+      "Subacute bacterial infection",
+      "Drug-induced fever",
+      "Post-infectious fatigue syndrome",
+      "Perinephric abscess",
+      "Occult malignancy",
+      "Viral infection",
+      "Autoimmune disorder",
+      "Musculoskeletal pain"
+    ],
+    "Top_10 is_correct": false,
+    "final_diagnosis_is_correct": false,
+    "best_embedding_similarity_rank": 1,
+    "info_density_score": 0.566834568977356
+  },
+  {
+    "timestamp": "2025-07-28T20:46:29.484454",
+    "model": "gpt-4.1",
+    "dataset": "MedQA",
+    "scenario_id": 5,
+    "max_patient_turns": 10,
+    "max_consultation_turns": 5,
+    "patient_interaction_turns": 0,
+    "doctor_questions": 0,
+    "correct_diagnosis": "Pes anserine bursitis",
+    "dialogue_history": [
+      {
+        "speaker": "Doctor",
+        "turn": 0,
+        "phase": "patient",
+        "text": "Can you describe your main symptoms and how long you have been experiencing them?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 1,
+        "phase": "patient",
+        "text": "My knee started hurting yesterday, and the pain has been getting worse since then. It's mostly on the inside, just below my kneecap."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 1,
+        "phase": "patient",
+        "text": "Did you have any recent injury, fall, or unusual activity involving your knee before the pain started?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 2,
+        "phase": "patient",
+        "text": "I didn\u2019t have any falls or direct injuries, but I did play volleyball recently and there was a lot of twisting and pivoting. The pain started after that."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Is your knee swollen, red, or warm to the touch, and have you noticed any locking, catching, or instability when you move it?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 3,
+        "phase": "patient",
+        "text": "No, my knee isn\u2019t swollen, red, or warm, and I haven\u2019t noticed any locking, catching, or instability. It just hurts on the inside below my kneecap, especially after playing volleyball."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 3,
+        "phase": "patient",
+        "text": "Have you noticed any bruising or discoloration around your knee, or does the pain get worse when you walk, run, or go up and down stairs?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 4,
+        "phase": "patient",
+        "text": "No, I haven\u2019t seen any bruising or discoloration. The pain definitely gets worse when I walk, especially going up and down stairs."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 4,
+        "phase": "patient",
+        "text": "Have you ever had knee pain like this before, or do you have any history of knee problems or surgeries?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 5,
+        "phase": "patient",
+        "text": "No, I\u2019ve never had knee pain like this before, and I haven\u2019t had any knee problems or surgeries in the past."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 5,
+        "phase": "patient",
+        "text": "Have you noticed any popping or snapping sounds in your knee when you move it, or does the pain radiate to other parts of your leg?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 6,
+        "phase": "patient",
+        "text": "I haven\u2019t noticed any popping or snapping sounds, and the pain seems to stay just below my kneecap on the inside of my leg. It doesn\u2019t really radiate anywhere else."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 6,
+        "phase": "patient",
+        "text": "Have you tried any treatments like ice, rest, or over-the-counter pain medication, and if so, has anything helped relieve the pain?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 7,
+        "phase": "patient",
+        "text": "I tried putting some ice on it last night and rested it, but it still hurts today. I haven\u2019t taken any pain medication yet."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 7,
+        "phase": "patient",
+        "text": "Have you noticed any weakness in your leg or difficulty bearing weight on the affected knee since the pain started?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 8,
+        "phase": "patient",
+        "text": "I haven\u2019t noticed any weakness, but it does hurt more when I put weight on that leg or try to walk for a while."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 8,
+        "phase": "patient",
+        "text": "Have you noticed any changes in your ability to fully straighten or bend your knee since the pain began?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 9,
+        "phase": "patient",
+        "text": "No, I can still fully straighten and bend my knee, but it does feel a bit uncomfortable when I do so. The pain is more noticeable when I walk or go up and down stairs."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 9,
+        "phase": "patient",
+        "text": "Have you noticed any tenderness when you press on the area just below your kneecap on the inside of your knee, or does it hurt more with certain movements or activities?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 10,
+        "phase": "patient",
+        "text": "Yes, it feels tender when I press on that spot below my kneecap on the inside, and it definitely hurts more when I\u2019m moving around or playing volleyball."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 10,
+        "phase": "patient",
+        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
+      }
+    ],
+    "requested_tests": [],
+    "tests_requested_count": 0,
+    "available_tests": [
+      "X-Ray_Knee",
+      "MRI_Knee"
+    ],
+    "determined_specialist": null,
+    "consultation_analysis": {
+      "error": "No consultation dialogue recorded"
+    },
+    "final_doctor_diagnosis": "Pes anserine bursitis",
+    "top_K diagnoses": [
+      "Pes anserine bursitis",
+      "Medial collateral ligament sprain",
+      "Patellofemoral pain syndrome",
+      "Medial meniscus injury",
+      "Patellar tendinitis",
+      "Osteoarthritis (early)",
+      "Synovitis",
+      "Stress fracture of proximal tibia",
+      "Referred pain from hip pathology",
+      "Infrapatellar fat pad impingement"
+    ],
+    "top_K": 10,
+    "is_correct": true,
+    "embedding_similarity": [
+      1.0,
+      0.3428661874828362,
+      0.43994161826484907,
+      0.369938335836967,
+      0.45582394918136065,
+      0.3194753137530682,
+      0.37373609862136103,
+      0.3493509411171434,
+      0.3759274963280324,
+      0.40715633716962546
+    ],
+    "best_embedding_similarity": 1.0,
+    "tests_left_out": [
+      "X-Ray_Knee",
+      "MRI_Knee"
+    ],
+    "Top_1": [
+      "Pes anserine bursitis"
+    ],
+    "Top_1 is_correct": true,
+    "Top_1 correct rank": 1,
+    "Top_3": [
+      "Pes anserine bursitis",
+      "Medial collateral ligament sprain",
+      "Patellofemoral pain syndrome"
+    ],
+    "Top_3 is_correct": true,
+    "Top_3 correct rank": 1,
+    "Top_5": [
+      "Pes anserine bursitis",
+      "Medial collateral ligament sprain",
+      "Patellofemoral pain syndrome",
+      "Medial meniscus injury",
+      "Patellar tendinitis"
+    ],
+    "Top_5 is_correct": true,
+    "Top_5 correct rank": 1,
+    "Top_7": [
+      "Pes anserine bursitis",
+      "Medial collateral ligament sprain",
+      "Patellofemoral pain syndrome",
+      "Medial meniscus injury",
+      "Patellar tendinitis",
+      "Osteoarthritis (early)",
+      "Synovitis"
+    ],
+    "Top_7 is_correct": true,
+    "Top_7 correct rank": 1,
+    "Top_10": [
+      "Pes anserine bursitis",
+      "Medial collateral ligament sprain",
+      "Patellofemoral pain syndrome",
+      "Medial meniscus injury",
+      "Patellar tendinitis",
+      "Osteoarthritis (early)",
+      "Synovitis",
+      "Stress fracture of proximal tibia",
+      "Referred pain from hip pathology",
+      "Infrapatellar fat pad impingement"
+    ],
+    "Top_10 is_correct": true,
+    "Top_10 correct rank": 1,
+    "final_diagnosis_is_correct": true,
+    "best_embedding_similarity_rank": 1,
+    "info_density_score": 0.4992680549621582
+  },
+  {
+    "timestamp": "2025-07-28T20:47:09.183968",
+    "model": "gpt-4.1",
+    "dataset": "MedQA",
+    "scenario_id": 6,
+    "max_patient_turns": 10,
+    "max_consultation_turns": 5,
+    "patient_interaction_turns": 0,
+    "doctor_questions": 0,
+    "correct_diagnosis": "Situational syncope",
+    "dialogue_history": [
+      {
+        "speaker": "Doctor",
+        "turn": 0,
+        "phase": "patient",
+        "text": "Can you describe your main symptoms and how long you have been experiencing them?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 1,
+        "phase": "patient",
+        "text": "I fainted about an hour ago right after I finished urinating. It lasted less than a minute, and I felt fine right after\u2014no confusion or memory loss."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 1,
+        "phase": "patient",
+        "text": "Did you experience any chest pain, palpitations, shortness of breath, or sweating before or after you fainted?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 2,
+        "phase": "patient",
+        "text": "No, I didn't have any chest pain, palpitations, shortness of breath, or sweating before or after I fainted. I felt completely fine before it happened."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Did you notice any warning signs before you fainted, such as lightheadedness, nausea, blurred vision, or ringing in your ears?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 3,
+        "phase": "patient",
+        "text": "I remember feeling a bit lightheaded and maybe a little dizzy right before I passed out, but it happened pretty quickly. I didn\u2019t have any nausea or ringing in my ears."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 3,
+        "phase": "patient",
+        "text": "Have you ever fainted before, or do you have any history of heart problems, high blood pressure, or neurological conditions?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 4,
+        "phase": "patient",
+        "text": "No, this is the first time I\u2019ve ever fainted. I don\u2019t have any history of heart problems, high blood pressure, or neurological issues."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 4,
+        "phase": "patient",
+        "text": "Did anyone witness your fainting episode, and if so, did they notice any abnormal movements, such as shaking or stiffening, or did you lose control of your bladder or bowels?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 5,
+        "phase": "patient",
+        "text": "My wife found me on the bathroom floor, but she didn\u2019t see it happen. She said I was just lying there, and I didn\u2019t have any shaking, stiffening, or loss of bladder or bowel control."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 5,
+        "phase": "patient",
+        "text": "Did you injure yourself when you fell, or do you have any pain, bruising, or cuts since the episode?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 6,
+        "phase": "patient",
+        "text": "No, I didn\u2019t injure myself when I fell. I don\u2019t have any pain, bruising, or cuts since the episode."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 6,
+        "phase": "patient",
+        "text": "Have you recently started any new medications or changed the dose of any medications you take regularly?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 7,
+        "phase": "patient",
+        "text": "No, I haven\u2019t started any new medications or changed any doses. I\u2019m not on any regular medications at all."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 7,
+        "phase": "patient",
+        "text": "Have you had any recent illnesses, fevers, or symptoms of infection such as cough, sore throat, or urinary symptoms?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 8,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any recent illnesses, fevers, cough, sore throat, or urinary symptoms. I\u2019ve been feeling well otherwise."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 8,
+        "phase": "patient",
+        "text": "Did you eat or drink anything unusual today, or were you fasting or dehydrated before the episode?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 9,
+        "phase": "patient",
+        "text": "No, I had a normal breakfast and drank my usual amount of water. I wasn\u2019t fasting or feeling dehydrated before it happened."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 9,
+        "phase": "patient",
+        "text": "Did you experience any tongue biting, confusion after waking up, or weakness in any part of your body following the fainting episode?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 10,
+        "phase": "patient",
+        "text": "No, I didn\u2019t bite my tongue, and I wasn\u2019t confused when I woke up. I didn\u2019t notice any weakness in my body afterward either."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 10,
+        "phase": "patient",
+        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
+      }
+    ],
+    "requested_tests": [],
+    "tests_requested_count": 0,
+    "available_tests": [
+      "Blood_Tests",
+      "Electrocardiogram"
+    ],
+    "determined_specialist": null,
+    "consultation_analysis": {
+      "error": "No consultation dialogue recorded"
+    },
+    "final_doctor_diagnosis": "Situational syncope (micturition syncope)",
+    "top_K diagnoses": [
+      "Situational syncope (micturition syncope)",
+      "Vasovagal syncope",
+      "Orthostatic hypotension",
+      "Cardiac arrhythmia",
+      "Seizure disorder",
+      "Transient ischemic attack",
+      "Hypoglycemia",
+      "Dehydration",
+      "Medication-induced syncope",
+      "Structural heart disease"
+    ],
+    "top_K": 10,
+    "is_correct": true,
+    "embedding_similarity": [
+      0.789655193769274,
+      0.707954734562953,
+      0.44679883980448054,
+      0.30520707241881356,
+      0.31075912446613674,
+      0.3763332030046404,
+      0.31966642016585933,
+      0.2886134325210792,
+      0.6395880482645224,
+      0.2662554951474746
+    ],
+    "best_embedding_similarity": 0.789655193769274,
+    "tests_left_out": [
+      "Electrocardiogram",
+      "Blood_Tests"
+    ],
+    "Top_1": [
+      "Situational syncope (micturition syncope)"
+    ],
+    "Top_1 is_correct": true,
+    "Top_1 correct rank": 1,
+    "Top_3": [
+      "Situational syncope (micturition syncope)",
+      "Vasovagal syncope",
+      "Orthostatic hypotension"
+    ],
+    "Top_3 is_correct": true,
+    "Top_3 correct rank": 1,
+    "Top_5": [
+      "Situational syncope (micturition syncope)",
+      "Vasovagal syncope",
+      "Orthostatic hypotension",
+      "Cardiac arrhythmia",
+      "Seizure disorder"
+    ],
+    "Top_5 is_correct": true,
+    "Top_5 correct rank": 1,
+    "Top_7": [
+      "Situational syncope (micturition syncope)",
+      "Vasovagal syncope",
+      "Orthostatic hypotension",
+      "Cardiac arrhythmia",
+      "Seizure disorder",
+      "Transient ischemic attack",
+      "Hypoglycemia"
+    ],
+    "Top_7 is_correct": true,
+    "Top_7 correct rank": 1,
+    "Top_10": [
+      "Situational syncope (micturition syncope)",
+      "Vasovagal syncope",
+      "Orthostatic hypotension",
+      "Cardiac arrhythmia",
+      "Seizure disorder",
+      "Transient ischemic attack",
+      "Hypoglycemia",
+      "Dehydration",
+      "Medication-induced syncope",
+      "Structural heart disease"
+    ],
+    "Top_10 is_correct": true,
+    "Top_10 correct rank": 1,
+    "final_diagnosis_is_correct": true,
+    "best_embedding_similarity_rank": 1,
+    "info_density_score": 0.5856935977935791
+  },
+  {
+    "timestamp": "2025-07-28T20:47:48.950943",
+    "model": "gpt-4.1",
+    "dataset": "MedQA",
+    "scenario_id": 7,
+    "max_patient_turns": 10,
+    "max_consultation_turns": 5,
+    "patient_interaction_turns": 0,
+    "doctor_questions": 0,
+    "correct_diagnosis": "Congenital Rubella Infection",
+    "dialogue_history": [
+      {
+        "speaker": "Doctor",
+        "turn": 0,
+        "phase": "patient",
+        "text": "Can you describe your main symptoms and how long you have been experiencing them?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 1,
+        "phase": "patient",
+        "text": "I\u2019ve had a constant whooshing sound in my chest since birth, and my skin has some bluish spots that don\u2019t go away when pressed. I also haven\u2019t been able to see or hear well since I was born."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 1,
+        "phase": "patient",
+        "text": "Have you ever experienced difficulty breathing, frequent lung infections, or episodes of fainting?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 2,
+        "phase": "patient",
+        "text": "I haven\u2019t had any trouble breathing or fainting, and my mom hasn\u2019t noticed any coughing or lung infections."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Have you noticed any problems with your growth or development compared to other children your age?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 3,
+        "phase": "patient",
+        "text": "I\u2019m just a newborn, so it\u2019s hard to say about my growth or development yet. My mom hasn\u2019t noticed anything unusual besides what the doctors have found."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 3,
+        "phase": "patient",
+        "text": "Have any doctors mentioned a heart murmur or any concerns about your heart structure on physical exam or imaging?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 4,
+        "phase": "patient",
+        "text": "Yes, the doctors said they heard a continuous heart murmur when they listened to my chest. They seemed concerned and wanted to do more tests."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 4,
+        "phase": "patient",
+        "text": "Have you had any imaging studies done, such as an echocardiogram or chest X-ray, and if so, do you know what the results showed?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 5,
+        "phase": "patient",
+        "text": "I haven\u2019t had any imaging studies done yet, as far as I know. No one has mentioned any results to my mother."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 5,
+        "phase": "patient",
+        "text": "Have you or your family noticed any swelling in your legs, abdomen, or around your eyes?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 6,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any swelling in my legs, tummy, or around my eyes that anyone has noticed."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 6,
+        "phase": "patient",
+        "text": "Have you or your family members been diagnosed with any genetic conditions, or do you know of any relatives with similar symptoms such as bluish skin spots, hearing or vision problems, or heart issues?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 7,
+        "phase": "patient",
+        "text": "I don\u2019t know of any family members with these kinds of problems, but my mom didn\u2019t have any prenatal care, so she\u2019s not sure about our family history."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 7,
+        "phase": "patient",
+        "text": "Have you noticed any bleeding or bruising easily, or any unusual marks on your skin besides the bluish spots?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 8,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any bleeding or bruising, just these bluish spots that don\u2019t go away when pressed."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 8,
+        "phase": "patient",
+        "text": "Have you noticed any changes in your feeding, such as difficulty sucking, poor weight gain, or sweating during feeds?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 9,
+        "phase": "patient",
+        "text": "I haven\u2019t had any trouble feeding so far, and my mother hasn\u2019t noticed any sweating or problems with weight gain."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 9,
+        "phase": "patient",
+        "text": "Have you noticed any abnormal movements, seizures, or unusual eye movements since birth?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 10,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any abnormal movements or seizures, and my eyes seem to move normally."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 10,
+        "phase": "patient",
+        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
+      }
+    ],
+    "requested_tests": [],
+    "tests_requested_count": 0,
+    "available_tests": [
+      "TORCH_Screen",
+      "Echocardiogram",
+      "Ophthalmologic_Consult",
+      "Hearing_Test"
+    ],
+    "determined_specialist": null,
+    "consultation_analysis": {
+      "error": "No consultation dialogue recorded"
+    },
+    "final_doctor_diagnosis": null,
+    "top_K diagnoses": [
+      "Congenital arteriovenous malformation",
+      "Capillary malformation (port-wine stain)",
+      "Congenital sensorineural hearing loss",
+      "Congenital vision impairment",
+      "Sturge-Weber syndrome",
+      "Congenital heart defect (possible patent ductus arteriosus or arteriovenous fistula)",
+      "Phakomatosis pigmentovascularis",
+      "Blue rubber bleb nevus syndrome",
+      "Hereditary hemorrhagic telangiectasia",
+      "Congenital vascular malformation syndrome"
+    ],
+    "top_K": 10,
+    "is_correct": false,
+    "embedding_similarity": [
+      0.43944124227469333,
+      0.29304301842606717,
+      0.5068158577955492,
+      0.49059059829221957,
+      0.3423450309256511,
+      0.43984621320079187,
+      0.24338035502334793,
+      0.36933388616442314,
+      0.27658966266555157,
+      0.4184675932712185
+    ],
+    "best_embedding_similarity": 0.5068158577955492,
+    "tests_left_out": [
+      "Echocardiogram",
+      "Ophthalmologic_Consult",
+      "Hearing_Test",
+      "TORCH_Screen"
+    ],
+    "Top_1": [
+      "Congenital arteriovenous malformation"
+    ],
+    "Top_1 is_correct": false,
+    "Top_3": [
+      "Congenital arteriovenous malformation",
+      "Capillary malformation (port-wine stain)",
+      "Congenital sensorineural hearing loss"
+    ],
+    "Top_3 is_correct": false,
+    "Top_5": [
+      "Congenital arteriovenous malformation",
+      "Capillary malformation (port-wine stain)",
+      "Congenital sensorineural hearing loss",
+      "Congenital vision impairment",
+      "Sturge-Weber syndrome"
+    ],
+    "Top_5 is_correct": false,
+    "Top_7": [
+      "Congenital arteriovenous malformation",
+      "Capillary malformation (port-wine stain)",
+      "Congenital sensorineural hearing loss",
+      "Congenital vision impairment",
+      "Sturge-Weber syndrome",
+      "Congenital heart defect (possible patent ductus arteriosus or arteriovenous fistula)",
+      "Phakomatosis pigmentovascularis"
+    ],
+    "Top_7 is_correct": false,
+    "Top_10": [
+      "Congenital arteriovenous malformation",
+      "Capillary malformation (port-wine stain)",
+      "Congenital sensorineural hearing loss",
+      "Congenital vision impairment",
+      "Sturge-Weber syndrome",
+      "Congenital heart defect (possible patent ductus arteriosus or arteriovenous fistula)",
+      "Phakomatosis pigmentovascularis",
+      "Blue rubber bleb nevus syndrome",
+      "Hereditary hemorrhagic telangiectasia",
+      "Congenital vascular malformation syndrome"
+    ],
+    "Top_10 is_correct": false,
+    "final_diagnosis_is_correct": false,
+    "best_embedding_similarity_rank": 3,
+    "info_density_score": 0.6170251369476318
+  },
+  {
+    "timestamp": "2025-07-28T20:48:29.358604",
+    "model": "gpt-4.1",
+    "dataset": "MedQA",
+    "scenario_id": 8,
+    "max_patient_turns": 10,
+    "max_consultation_turns": 5,
+    "patient_interaction_turns": 0,
+    "doctor_questions": 0,
+    "correct_diagnosis": "Phyllodes tumor",
+    "dialogue_history": [
+      {
+        "speaker": "Doctor",
+        "turn": 0,
+        "phase": "patient",
+        "text": "Can you describe your main symptoms and how long you have been experiencing them?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 1,
+        "phase": "patient",
+        "text": "About four weeks ago, I found a lump in my left breast, and it\u2019s been getting bigger pretty quickly. I haven\u2019t had any pain, skin changes, or nipple changes."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 1,
+        "phase": "patient",
+        "text": "Have you noticed any swelling in your armpit or elsewhere, or any unexplained weight loss, fever, or night sweats?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 2,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any swelling in my armpit or anywhere else. I also haven\u2019t had any weight loss, fever, or night sweats."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Have you ever had a breast lump before, or do you have any family history of breast or ovarian cancer?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 3,
+        "phase": "patient",
+        "text": "No, I\u2019ve never had a breast lump before, and there\u2019s no family history of breast or ovarian cancer that I know of."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 3,
+        "phase": "patient",
+        "text": "Have you noticed any changes in the size of the lump during your menstrual cycle, or is it consistently growing regardless of your cycle?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 4,
+        "phase": "patient",
+        "text": "I haven\u2019t noticed any changes related to my menstrual cycle\u2014the lump just keeps getting bigger regardless of the time of month."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 4,
+        "phase": "patient",
+        "text": "Have you experienced any trauma or injury to your breast recently, or any recent infections or illnesses?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 5,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any trauma or injuries to my breast, and I haven\u2019t had any recent infections or illnesses either."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 5,
+        "phase": "patient",
+        "text": "Have you noticed any lumps or swelling in your other breast, or is it only in the left breast?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 6,
+        "phase": "patient",
+        "text": "It\u2019s only in my left breast; I haven\u2019t noticed any lumps or swelling in my right breast."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 6,
+        "phase": "patient",
+        "text": "Have you noticed any changes in the texture or firmness of the lump, such as it feeling hard, rubbery, or mobile under the skin?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 7,
+        "phase": "patient",
+        "text": "Yes, the lump feels quite firm to me, but I can move it around a little under the skin. It doesn\u2019t feel rubbery, just solid."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 7,
+        "phase": "patient",
+        "text": "Have you noticed any discharge from your nipple, or any changes in the color or appearance of the skin over the lump?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 8,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any discharge from my nipple, and the skin over the lump looks the same as usual. There haven\u2019t been any changes in color or appearance."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 8,
+        "phase": "patient",
+        "text": "Have you started any new medications, supplements, or hormonal therapies recently?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 9,
+        "phase": "patient",
+        "text": "No, I haven\u2019t started any new medications, supplements, or hormonal therapies recently."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 9,
+        "phase": "patient",
+        "text": "Have you ever had a breast ultrasound or mammogram before, and would you be willing to undergo imaging now to help us better understand the nature of this lump?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 10,
+        "phase": "patient",
+        "text": "No, I\u2019ve never had a breast ultrasound or mammogram before. Yes, I\u2019m willing to have imaging done now if it will help figure out what\u2019s going on."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 10,
+        "phase": "patient",
+        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
+      }
+    ],
+    "requested_tests": [],
+    "tests_requested_count": 0,
+    "available_tests": [
+      "Mammography",
+      "Biopsy"
+    ],
+    "determined_specialist": null,
+    "consultation_analysis": {
+      "error": "No consultation dialogue recorded"
+    },
+    "final_doctor_diagnosis": "Phyllodes tumor",
+    "top_K diagnoses": [
+      "Breast carcinoma",
+      "Fibroadenoma",
+      "Phyllodes tumor",
+      "Breast cyst",
+      "Fat necrosis",
+      "Sclerosing adenosis",
+      "Intraductal papilloma",
+      "Lipoma of the breast",
+      "Hamartoma of the breast",
+      "Breast abscess"
+    ],
+    "top_K": 10,
+    "is_correct": true,
+    "embedding_similarity": [
+      0.4773088293902614,
+      0.5890791168161296,
+      1.0,
+      0.5184607915267895,
+      0.3455025746042242,
+      0.5129770930514312,
+      0.5009708193498922,
+      0.5224244689563597,
+      0.5372326826838981,
+      0.42429466423264467
+    ],
+    "best_embedding_similarity": 1.0,
+    "tests_left_out": [
+      "Biopsy",
+      "Mammography"
+    ],
+    "Top_1": [
+      "Breast carcinoma"
+    ],
+    "Top_1 is_correct": false,
+    "Top_3": [
+      "Breast carcinoma",
+      "Fibroadenoma",
+      "Phyllodes tumor"
+    ],
+    "Top_3 is_correct": true,
+    "Top_3 correct rank": 3,
+    "Top_5": [
+      "Breast carcinoma",
+      "Fibroadenoma",
+      "Phyllodes tumor",
+      "Breast cyst",
+      "Fat necrosis"
+    ],
+    "Top_5 is_correct": true,
+    "Top_5 correct rank": 3,
+    "Top_7": [
+      "Breast carcinoma",
+      "Fibroadenoma",
+      "Phyllodes tumor",
+      "Breast cyst",
+      "Fat necrosis",
+      "Sclerosing adenosis",
+      "Intraductal papilloma"
+    ],
+    "Top_7 is_correct": true,
+    "Top_7 correct rank": 3,
+    "Top_10": [
+      "Breast carcinoma",
+      "Fibroadenoma",
+      "Phyllodes tumor",
+      "Breast cyst",
+      "Fat necrosis",
+      "Sclerosing adenosis",
+      "Intraductal papilloma",
+      "Lipoma of the breast",
+      "Hamartoma of the breast",
+      "Breast abscess"
+    ],
+    "Top_10 is_correct": true,
+    "Top_10 correct rank": 3,
+    "final_diagnosis_is_correct": true,
+    "best_embedding_similarity_rank": 3,
+    "info_density_score": 0.571614146232605
+  },
+  {
+    "timestamp": "2025-07-28T20:49:07.726482",
+    "model": "gpt-4.1",
+    "dataset": "MedQA",
+    "scenario_id": 9,
+    "max_patient_turns": 10,
+    "max_consultation_turns": 5,
+    "patient_interaction_turns": 0,
+    "doctor_questions": 0,
+    "correct_diagnosis": "Endometritis",
+    "dialogue_history": [
+      {
+        "speaker": "Doctor",
+        "turn": 0,
+        "phase": "patient",
+        "text": "Can you describe your main symptoms and how long you have been experiencing them?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 1,
+        "phase": "patient",
+        "text": "I\u2019ve been having some pain and tenderness in my lower belly, especially around my uterus, and I\u2019ve noticed I need to pee more often. These symptoms started a day or two after I gave birth."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 1,
+        "phase": "patient",
+        "text": "Have you had any fever, chills, or foul-smelling vaginal discharge since your symptoms began?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Yes, I have had a fever, but I haven\u2019t noticed any foul-smelling vaginal discharge or chills."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Have you noticed any difficulty or pain when urinating, or any blood in your urine?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 3,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any pain or blood when I urinate. It\u2019s just that I need to go more often than usual."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 3,
+        "phase": "patient",
+        "text": "Have you experienced any heavy vaginal bleeding, clots, or dizziness since giving birth?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 4,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any heavy vaginal bleeding or clots, and I haven\u2019t felt dizzy."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 4,
+        "phase": "patient",
+        "text": "Have you had any pain or tenderness in your breasts, or noticed any redness or swelling there?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 5,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any pain, redness, or swelling in my breasts. They feel normal to me."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 5,
+        "phase": "patient",
+        "text": "Have you had any surgery or procedures during or after your delivery, such as a cesarean section or manual removal of the placenta?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 6,
+        "phase": "patient",
+        "text": "No, I didn\u2019t have any surgery or procedures\u2014my delivery was vaginal and there weren\u2019t any interventions like that."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 6,
+        "phase": "patient",
+        "text": "Have you noticed any redness, swelling, or pain in your legs, or any shortness of breath or chest pain since giving birth?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 7,
+        "phase": "patient",
+        "text": "I\u2019ve had a little bit of difficulty breathing, but I haven\u2019t noticed any redness, swelling, or pain in my legs, and I don\u2019t have chest pain."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 7,
+        "phase": "patient",
+        "text": "Have you noticed any cough, sputum production, or recent contact with anyone who has been sick with a respiratory infection?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 8,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any cough or sputum, and I haven\u2019t been around anyone who\u2019s been sick with a respiratory infection."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 8,
+        "phase": "patient",
+        "text": "Have you noticed any pain or tenderness in your lower legs when you walk, or any swelling in your feet or ankles?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 9,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any pain or swelling in my legs or ankles when I walk. My main discomfort is in my lower abdomen."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 9,
+        "phase": "patient",
+        "text": "Have you had any issues with bowel movements, such as constipation, diarrhea, or abdominal bloating since giving birth?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 10,
+        "phase": "patient",
+        "text": "I haven\u2019t had diarrhea or vomiting, but my bowel movements have been less frequent than usual, and I feel a bit bloated."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 10,
+        "phase": "patient",
+        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
+      }
+    ],
+    "requested_tests": [],
+    "tests_requested_count": 0,
+    "available_tests": [
+      "Complete_Blood_Count",
+      "Urinalysis",
+      "Vital_Signs_at_Presentation"
+    ],
+    "determined_specialist": null,
+    "consultation_analysis": {
+      "error": "No consultation dialogue recorded"
+    },
+    "final_doctor_diagnosis": "Endometritis",
+    "top_K diagnoses": [
+      "Endometritis",
+      "Urinary tract infection",
+      "Postpartum urinary retention",
+      "Normal postpartum uterine involution",
+      "Postpartum cystitis",
+      "Postpartum fever of unknown origin",
+      "Constipation",
+      "Postpartum urinary frequency",
+      "Postpartum bloating",
+      "Mild postpartum dyspnea"
+    ],
+    "top_K": 10,
+    "is_correct": true,
+    "embedding_similarity": [
+      0.9999987858399814,
+      0.39145031814679215,
+      0.37666485859912996,
+      0.4250474442209115,
+      0.4938120682235231,
+      0.41977365910806436,
+      0.2781543201495189,
+      0.33421001127897376,
+      0.3635162396700787,
+      0.27255860570250473
+    ],
+    "best_embedding_similarity": 0.9999987858399814,
+    "tests_left_out": [
+      "Complete_Blood_Count",
+      "Vital_Signs_at_Presentation",
+      "Urinalysis"
+    ],
+    "Top_1": [
+      "Endometritis"
+    ],
+    "Top_1 is_correct": true,
+    "Top_1 correct rank": 1,
+    "Top_3": [
+      "Endometritis",
+      "Urinary tract infection",
+      "Postpartum urinary retention"
+    ],
+    "Top_3 is_correct": true,
+    "Top_3 correct rank": 1,
+    "Top_5": [
+      "Endometritis",
+      "Urinary tract infection",
+      "Postpartum urinary retention",
+      "Normal postpartum uterine involution",
+      "Postpartum cystitis"
+    ],
+    "Top_5 is_correct": true,
+    "Top_5 correct rank": 1,
+    "Top_7": [
+      "Endometritis",
+      "Urinary tract infection",
+      "Postpartum urinary retention",
+      "Normal postpartum uterine involution",
+      "Postpartum cystitis",
+      "Postpartum fever of unknown origin",
+      "Constipation"
+    ],
+    "Top_7 is_correct": true,
+    "Top_7 correct rank": 1,
+    "Top_10": [
+      "Endometritis",
+      "Urinary tract infection",
+      "Postpartum urinary retention",
+      "Normal postpartum uterine involution",
+      "Postpartum cystitis",
+      "Postpartum fever of unknown origin",
+      "Constipation",
+      "Postpartum urinary frequency",
+      "Postpartum bloating",
+      "Mild postpartum dyspnea"
+    ],
+    "Top_10 is_correct": true,
+    "Top_10 correct rank": 1,
+    "final_diagnosis_is_correct": true,
+    "best_embedding_similarity_rank": 1,
+    "info_density_score": 0.5947630405426025
+  },
+  {
+    "timestamp": "2025-07-28T20:49:46.630341",
+    "model": "gpt-4.1",
+    "dataset": "MedQA",
+    "scenario_id": 10,
+    "max_patient_turns": 10,
+    "max_consultation_turns": 5,
+    "patient_interaction_turns": 0,
+    "doctor_questions": 0,
+    "correct_diagnosis": "Hemorrhoids",
+    "dialogue_history": [
+      {
+        "speaker": "Doctor",
+        "turn": 0,
+        "phase": "patient",
+        "text": "Can you describe your main symptoms and how long you have been experiencing them?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 1,
+        "phase": "patient",
+        "text": "I've been having rectal bleeding every day when I have a bowel movement for the past two weeks. I haven't noticed any pain when this happens."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 1,
+        "phase": "patient",
+        "text": "Have you noticed any changes in your stool, such as color, consistency, or the presence of mucus?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 2,
+        "phase": "patient",
+        "text": "No, my stools look normal to me\u2014no changes in color or consistency, and I haven\u2019t seen any mucus."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Have you noticed any blood on the toilet paper, in the toilet bowl, or mixed with the stool? Is the blood bright red or a darker color?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 3,
+        "phase": "patient",
+        "text": "Yes, the blood is bright red and I usually see it on the toilet paper and sometimes in the toilet bowl. I haven\u2019t noticed it mixed with the stool."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 3,
+        "phase": "patient",
+        "text": "Have you experienced any itching, swelling, or a lump around your anus?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 4,
+        "phase": "patient",
+        "text": "No, I haven't noticed any itching, swelling, or lumps around my anus."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 4,
+        "phase": "patient",
+        "text": "Have you experienced any recent weight loss, fatigue, or changes in appetite?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 5,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any weight loss, fatigue, or changes in my appetite. I feel otherwise well."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 5,
+        "phase": "patient",
+        "text": "Have you ever had similar episodes of rectal bleeding in the past, or is this the first time this has happened?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 6,
+        "phase": "patient",
+        "text": "This is the first time I\u2019ve experienced rectal bleeding like this. It started about two weeks ago and has been happening every day since."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 6,
+        "phase": "patient",
+        "text": "Have you recently experienced any constipation, straining during bowel movements, or hard stools?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 7,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any constipation or needed to strain, and my stools have been normal."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 7,
+        "phase": "patient",
+        "text": "Have you noticed any family history of colon cancer, polyps, or inflammatory bowel disease?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 8,
+        "phase": "patient",
+        "text": "No, I\u2019m not aware of any family history of colon cancer, polyps, or inflammatory bowel disease."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 8,
+        "phase": "patient",
+        "text": "Have you noticed any recent trauma, injury, or insertion of objects into the rectal area?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 9,
+        "phase": "patient",
+        "text": "No, I haven't had any trauma or injury, and I haven't inserted anything into the rectal area."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 9,
+        "phase": "patient",
+        "text": "Have you noticed any other symptoms such as abdominal pain, diarrhea, fever, or urgency to have a bowel movement?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 10,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any abdominal pain, diarrhea, fever, or urgency. My bowel habits have stayed the same."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 10,
+        "phase": "patient",
+        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
+      }
+    ],
+    "requested_tests": [],
+    "tests_requested_count": 0,
+    "available_tests": [
+      "Complete_Blood_Count",
+      "Anoscopy"
+    ],
+    "determined_specialist": null,
+    "consultation_analysis": {
+      "error": "No consultation dialogue recorded"
+    },
+    "final_doctor_diagnosis": "hemorrhoids",
+    "top_K diagnoses": [
+      "hemorrhoids",
+      "anal fissure",
+      "rectal polyps",
+      "colorectal cancer",
+      "proctitis",
+      "solitary rectal ulcer syndrome",
+      "angiodysplasia of the colon",
+      "infectious colitis",
+      "inflammatory bowel disease",
+      "rectal varices"
+    ],
+    "top_K": 10,
+    "is_correct": true,
+    "embedding_similarity": [
+      0.9999988848705516,
+      0.4739053446134553,
+      0.5088586481193906,
+      0.36199465926909374,
+      0.4538494966838064,
+      0.38812927673356357,
+      0.3471003307939243,
+      0.2895311582852545,
+      0.3023860333685081,
+      0.5797765555043514
+    ],
+    "best_embedding_similarity": 0.9999988848705516,
+    "tests_left_out": [
+      "Anoscopy",
+      "Complete_Blood_Count"
+    ],
+    "Top_1": [
+      "hemorrhoids"
+    ],
+    "Top_1 is_correct": true,
+    "Top_1 correct rank": 1,
+    "Top_3": [
+      "hemorrhoids",
+      "anal fissure",
+      "rectal polyps"
+    ],
+    "Top_3 is_correct": true,
+    "Top_3 correct rank": 1,
+    "Top_5": [
+      "hemorrhoids",
+      "anal fissure",
+      "rectal polyps",
+      "colorectal cancer",
+      "proctitis"
+    ],
+    "Top_5 is_correct": true,
+    "Top_5 correct rank": 1,
+    "Top_7": [
+      "hemorrhoids",
+      "anal fissure",
+      "rectal polyps",
+      "colorectal cancer",
+      "proctitis",
+      "solitary rectal ulcer syndrome",
+      "angiodysplasia of the colon"
+    ],
+    "Top_7 is_correct": true,
+    "Top_7 correct rank": 1,
+    "Top_10": [
+      "hemorrhoids",
+      "anal fissure",
+      "rectal polyps",
+      "colorectal cancer",
+      "proctitis",
+      "solitary rectal ulcer syndrome",
+      "angiodysplasia of the colon",
+      "infectious colitis",
+      "inflammatory bowel disease",
+      "rectal varices"
+    ],
+    "Top_10 is_correct": true,
+    "Top_10 correct rank": 1,
+    "final_diagnosis_is_correct": true,
+    "best_embedding_similarity_rank": 1,
+    "info_density_score": 0.604736328125
+  },
+  {
+    "timestamp": "2025-07-28T20:50:24.637954",
+    "model": "gpt-4.1",
+    "dataset": "MedQA",
+    "scenario_id": 11,
+    "max_patient_turns": 10,
+    "max_consultation_turns": 5,
+    "patient_interaction_turns": 0,
+    "doctor_questions": 0,
+    "correct_diagnosis": "Complex partial seizure",
+    "dialogue_history": [
+      {
+        "speaker": "Doctor",
+        "turn": 0,
+        "phase": "patient",
+        "text": "Can you describe your main symptoms and how long you have been experiencing them?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 1,
+        "phase": "patient",
+        "text": "I've been having these weird episodes for about a month now. My face feels funny and I just stare off, and I don't remember what happens during them. They last a few minutes and I feel really tired and confused afterwards."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 1,
+        "phase": "patient",
+        "text": "Do these episodes happen at any particular time of day, or are they triggered by anything specific?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 2,
+        "phase": "patient",
+        "text": "I don\u2019t think there\u2019s a specific time\u2014they can happen during the day or when I wake up. I haven\u2019t noticed anything that makes them start."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Have anyone witnessed these episodes, and if so, have they described any movements or behaviors you do during them, like lip smacking, hand movements, or eye fluttering?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 3,
+        "phase": "patient",
+        "text": "Yes, my brother saw one of the episodes\u2014he said I woke up, stared, and made some hand movements. I don\u2019t remember doing it myself."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 3,
+        "phase": "patient",
+        "text": "Have you ever experienced any convulsions, loss of bladder control, or bitten your tongue during these episodes?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 4,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any shaking, lost control of my bladder, or bitten my tongue during these episodes."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 4,
+        "phase": "patient",
+        "text": "Have you noticed any changes in your mood, memory, or ability to concentrate since these episodes started?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 5,
+        "phase": "patient",
+        "text": "I feel a bit more tired and sometimes it\u2019s hard to pay attention in class after these episodes, but I haven\u2019t noticed any big changes in my mood or memory."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 5,
+        "phase": "patient",
+        "text": "Have you ever had a head injury, recent illness, or fever before these episodes started?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 6,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any head injuries, recent illnesses, or fevers before these episodes started."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 6,
+        "phase": "patient",
+        "text": "Have you ever been diagnosed with any neurological conditions, or do you have a family history of seizures or epilepsy?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 7,
+        "phase": "patient",
+        "text": "No, I\u2019ve never been diagnosed with any neurological problems, and no one in my family has seizures or epilepsy that I know of."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 7,
+        "phase": "patient",
+        "text": "Have you noticed any unusual smells, tastes, or feelings right before these episodes start?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 8,
+        "phase": "patient",
+        "text": "Yes, right before these episodes, I get a weird muddy taste in my mouth. It happens every time before I start staring and making faces."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 8,
+        "phase": "patient",
+        "text": "Have you noticed any weakness, numbness, or difficulty speaking after these episodes, or do you feel completely back to normal after some rest?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 9,
+        "phase": "patient",
+        "text": "I don\u2019t have any weakness or numbness, and I can talk fine after the episodes. I just feel really tired and a bit confused for a while, but then I go back to normal."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 9,
+        "phase": "patient",
+        "text": "Have you ever experienced similar episodes in the past, or is this the first time you've had anything like this happen?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 10,
+        "phase": "patient",
+        "text": "This is the first time I\u2019ve had anything like this happen. I haven\u2019t had any episodes like this before last month."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 10,
+        "phase": "patient",
+        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
+      }
+    ],
+    "requested_tests": [],
+    "tests_requested_count": 0,
+    "available_tests": [
+      "Electroencephalogram",
+      "MRI_Brain",
+      "Complete_Blood_Count",
+      "Serum_Electrolytes"
+    ],
+    "determined_specialist": null,
+    "consultation_analysis": {
+      "error": "No consultation dialogue recorded"
+    },
+    "final_doctor_diagnosis": "Complex partial seizures",
+    "top_K diagnoses": [
+      "Focal impaired awareness seizures (temporal lobe epilepsy)",
+      "Complex partial seizures",
+      "Epilepsy, unspecified",
+      "Transient global amnesia",
+      "Absence seizures (atypical)",
+      "Psychogenic non-epileptic seizures",
+      "Migraine with aura",
+      "Syncope",
+      "Transient ischemic attack",
+      "Metabolic encephalopathy"
+    ],
+    "top_K": 10,
+    "is_correct": true,
+    "embedding_similarity": [
+      0.6028693368758041,
+      0.932262192571885,
+      0.5084841107632663,
+      0.37498335778542635,
+      0.5827889711801617,
+      0.5051741650558581,
+      0.44910955408144765,
+      0.30238145383307174,
+      0.3708525760023624,
+      0.3174270165334394
+    ],
+    "best_embedding_similarity": 0.932262192571885,
+    "tests_left_out": [
+      "Serum_Electrolytes",
+      "MRI_Brain",
+      "Complete_Blood_Count",
+      "Electroencephalogram"
+    ],
+    "Top_1": [
+      "Focal impaired awareness seizures (temporal lobe epilepsy)"
+    ],
+    "Top_1 is_correct": true,
+    "Top_1 correct rank": 1,
+    "Top_3": [
+      "Focal impaired awareness seizures (temporal lobe epilepsy)",
+      "Complex partial seizures",
+      "Epilepsy, unspecified"
+    ],
+    "Top_3 is_correct": true,
+    "Top_3 correct rank": 2,
+    "Top_5": [
+      "Focal impaired awareness seizures (temporal lobe epilepsy)",
+      "Complex partial seizures",
+      "Epilepsy, unspecified",
+      "Transient global amnesia",
+      "Absence seizures (atypical)"
+    ],
+    "Top_5 is_correct": true,
+    "Top_5 correct rank": 2,
+    "Top_7": [
+      "Focal impaired awareness seizures (temporal lobe epilepsy)",
+      "Complex partial seizures",
+      "Epilepsy, unspecified",
+      "Transient global amnesia",
+      "Absence seizures (atypical)",
+      "Psychogenic non-epileptic seizures",
+      "Migraine with aura"
+    ],
+    "Top_7 is_correct": true,
+    "Top_7 correct rank": 2,
+    "Top_10": [
+      "Focal impaired awareness seizures (temporal lobe epilepsy)",
+      "Complex partial seizures",
+      "Epilepsy, unspecified",
+      "Transient global amnesia",
+      "Absence seizures (atypical)",
+      "Psychogenic non-epileptic seizures",
+      "Migraine with aura",
+      "Syncope",
+      "Transient ischemic attack",
+      "Metabolic encephalopathy"
+    ],
+    "Top_10 is_correct": true,
+    "Top_10 correct rank": 2,
+    "final_diagnosis_is_correct": true,
+    "best_embedding_similarity_rank": 2,
+    "info_density_score": 0.5697501301765442
+  },
+  {
+    "timestamp": "2025-07-28T20:51:06.815640",
+    "model": "gpt-4.1",
+    "dataset": "MedQA",
+    "scenario_id": 12,
+    "max_patient_turns": 10,
+    "max_consultation_turns": 5,
+    "patient_interaction_turns": 0,
+    "doctor_questions": 0,
+    "correct_diagnosis": "Posterior hip dislocation",
+    "dialogue_history": [
+      {
+        "speaker": "Doctor",
+        "turn": 0,
+        "phase": "patient",
+        "text": "Can you describe your main symptoms and how long you have been experiencing them?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 1,
+        "phase": "patient",
+        "text": "Right after the car accident, I felt severe pain in my right groin and both of my knees started hurting as well. The pain in my right groin is much worse than in my knees."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 1,
+        "phase": "patient",
+        "text": "Did you notice any swelling, bruising, or inability to move your right leg or knees after the accident?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Yes, my right groin and both knees started swelling pretty quickly, and I haven\u2019t been able to move my right leg at all since the accident. It hurts a lot if I try."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Did you hear or feel a popping or snapping sound in your right hip or knees at the time of the accident?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 3,
+        "phase": "patient",
+        "text": "I didn\u2019t hear any popping or snapping, but I felt a sharp, intense pain in my right groin right away. My knees also started hurting immediately after the crash."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 3,
+        "phase": "patient",
+        "text": "Have you noticed any numbness, tingling, or weakness in your right leg or feet since the accident?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 4,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any numbness or tingling, but it really hurts to move my right leg. I don\u2019t feel any weakness, just a lot of pain."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 4,
+        "phase": "patient",
+        "text": "Have you noticed any changes in the length or appearance of your right leg compared to the left, such as it looking shorter or turned outward?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 5,
+        "phase": "patient",
+        "text": "Yes, my right leg looks a bit shorter than the left, and it feels like it\u2019s turned inward. It\u2019s really painful to try to move it."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 5,
+        "phase": "patient",
+        "text": "Have you had any previous injuries or surgeries to your right hip or knees before this accident?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 6,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any injuries or surgeries to my right hip or knees before. This pain started right after the accident."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 6,
+        "phase": "patient",
+        "text": "Have you noticed any open wounds, bleeding, or bone protruding through the skin in your right hip or knees?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 7,
+        "phase": "patient",
+        "text": "No, I haven\u2019t seen any open wounds or bleeding, and there\u2019s nothing poking through the skin. It just hurts a lot, especially in my right groin."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 7,
+        "phase": "patient",
+        "text": "Have you been able to bear any weight on your right leg since the accident, or does the pain prevent you from standing or walking at all?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 8,
+        "phase": "patient",
+        "text": "I haven\u2019t been able to put any weight on my right leg at all\u2014the pain is just too severe whenever I try to move or stand."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 8,
+        "phase": "patient",
+        "text": "Have you noticed any pain or difficulty when moving your knees, or is the pain and immobility mainly focused in your right hip and groin?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 9,
+        "phase": "patient",
+        "text": "The pain in my knees is there, but it's not as bad as the pain in my right hip and groin. I really can't move my right leg much at all because of how much it hurts."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 9,
+        "phase": "patient",
+        "text": "REQUEST TEST: Right hip and pelvis X-ray"
+      },
+      {
+        "speaker": "Measurement",
+        "turn": 10,
+        "phase": "patient",
+        "text": ""
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 10,
+        "phase": "patient",
+        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
+      }
+    ],
+    "requested_tests": [
+      "Right hip and pelvis X-ray"
+    ],
+    "tests_requested_count": 1,
+    "available_tests": [
+      "Imaging"
+    ],
+    "determined_specialist": null,
+    "consultation_analysis": {
+      "error": "No consultation dialogue recorded"
+    },
+    "final_doctor_diagnosis": "Right hip dislocation",
+    "top_K diagnoses": [
+      "Right hip fracture (likely femoral neck or intertrochanteric)",
+      "Right hip dislocation",
+      "Right groin contusion",
+      "Right knee contusion",
+      "Bilateral knee soft tissue injury",
+      "Right lower extremity immobility secondary to trauma",
+      "Right hip hemarthrosis",
+      "Right hip joint effusion",
+      "Acute pain syndrome",
+      "Post-traumatic swelling"
+    ],
+    "top_K": 10,
+    "is_correct": true,
+    "embedding_similarity": [
+      0.5569593832718507,
+      0.7780356141235812,
+      0.40470763543770183,
+      0.36027691609092943,
+      0.35669288960323675,
+      0.4685838680298177,
+      0.527168880064312,
+      0.46261189546913684,
+      0.2545359306038391,
+      0.35893761768165455
+    ],
+    "best_embedding_similarity": 0.7780356141235812,
+    "tests_left_out": [
+      "Imaging"
+    ],
+    "Top_1": [
+      "Right hip fracture (likely femoral neck or intertrochanteric)"
+    ],
+    "Top_1 is_correct": false,
+    "Top_3": [
+      "Right hip fracture (likely femoral neck or intertrochanteric)",
+      "Right hip dislocation",
+      "Right groin contusion"
+    ],
+    "Top_3 is_correct": true,
+    "Top_3 correct rank": 2,
+    "Top_5": [
+      "Right hip fracture (likely femoral neck or intertrochanteric)",
+      "Right hip dislocation",
+      "Right groin contusion",
+      "Right knee contusion",
+      "Bilateral knee soft tissue injury"
+    ],
+    "Top_5 is_correct": true,
+    "Top_5 correct rank": 2,
+    "Top_7": [
+      "Right hip fracture (likely femoral neck or intertrochanteric)",
+      "Right hip dislocation",
+      "Right groin contusion",
+      "Right knee contusion",
+      "Bilateral knee soft tissue injury",
+      "Right lower extremity immobility secondary to trauma",
+      "Right hip hemarthrosis"
+    ],
+    "Top_7 is_correct": true,
+    "Top_7 correct rank": 2,
+    "Top_10": [
+      "Right hip fracture (likely femoral neck or intertrochanteric)",
+      "Right hip dislocation",
+      "Right groin contusion",
+      "Right knee contusion",
+      "Bilateral knee soft tissue injury",
+      "Right lower extremity immobility secondary to trauma",
+      "Right hip hemarthrosis",
+      "Right hip joint effusion",
+      "Acute pain syndrome",
+      "Post-traumatic swelling"
+    ],
+    "Top_10 is_correct": true,
+    "Top_10 correct rank": 2,
+    "final_diagnosis_is_correct": true,
+    "best_embedding_similarity_rank": 2,
+    "info_density_score": 0.5442261099815369
+  },
+  {
+    "timestamp": "2025-07-28T20:51:46.464597",
+    "model": "gpt-4.1",
+    "dataset": "MedQA",
+    "scenario_id": 13,
+    "max_patient_turns": 10,
+    "max_consultation_turns": 5,
+    "patient_interaction_turns": 0,
+    "doctor_questions": 0,
+    "correct_diagnosis": "Hirschsprung\u00e2\u20ac\u2122s disease",
+    "dialogue_history": [
+      {
+        "speaker": "Doctor",
+        "turn": 0,
+        "phase": "patient",
+        "text": "Can you describe your main symptoms and how long you have been experiencing them?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 1,
+        "phase": "patient",
+        "text": "I've been vomiting a greenish fluid since shortly after birth, and my tummy looks swollen. I haven't been able to poop at all yet."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 1,
+        "phase": "patient",
+        "text": "Were you born at full term or prematurely, and was your delivery complicated in any way?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 2,
+        "phase": "patient",
+        "text": "I was born at full term, and my delivery was not complicated."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 2,
+        "phase": "patient",
+        "text": "Have you noticed any blood in your vomit or stool, or have you had any episodes of fever?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 3,
+        "phase": "patient",
+        "text": "No, there hasn\u2019t been any blood in my vomit or stool. I haven\u2019t had any fevers either."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 3,
+        "phase": "patient",
+        "text": "Have you had any trouble feeding, such as refusing feeds or spitting up everything you eat?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 4,
+        "phase": "patient",
+        "text": "Yes, I spit up everything I try to eat, and it looks green. I haven't been able to keep anything down since birth."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 4,
+        "phase": "patient",
+        "text": "Have you noticed any changes in your urine output, such as fewer wet diapers than expected?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 5,
+        "phase": "patient",
+        "text": "I don\u2019t think my diapers have been very wet\u2014maybe less than what my mom expected. She\u2019s been worried about that too."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 5,
+        "phase": "patient",
+        "text": "Have you noticed any yellowing of your skin or eyes (jaundice) since birth?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 6,
+        "phase": "patient",
+        "text": "No, I haven\u2019t noticed any yellowing of my skin or eyes. My skin color seems normal."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 6,
+        "phase": "patient",
+        "text": "Have you had any abdominal X-rays or other imaging done since birth? If so, do you know what the results showed?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 7,
+        "phase": "patient",
+        "text": "No, I haven\u2019t had any imaging done yet since I was born at home. My mom brought me here because I kept vomiting and my belly looks swollen."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 7,
+        "phase": "patient",
+        "text": "Have you or anyone in your family ever had any bowel or digestive problems as a baby, or required surgery soon after birth?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 8,
+        "phase": "patient",
+        "text": "No, as far as my family knows, no one has had bowel or digestive problems as a baby or needed surgery right after birth."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 8,
+        "phase": "patient",
+        "text": "Have you noticed any changes in your activity level, such as being unusually sleepy or less responsive than usual?"
+      },
+      {
+        "speaker": "Patient",
+        "turn": 9,
+        "phase": "patient",
+        "text": "He seems a bit more sleepy and less active than before. He doesn't cry as much, and he looks uncomfortable."
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 9,
+        "phase": "patient",
+        "text": "REQUEST TEST: Abdominal X-ray"
+      },
+      {
+        "speaker": "Measurement",
+        "turn": 10,
+        "phase": "patient",
+        "text": ""
+      },
+      {
+        "speaker": "Doctor",
+        "turn": 10,
+        "phase": "patient",
+        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
+      }
+    ],
+    "requested_tests": [
+      "Abdominal X-ray"
+    ],
+    "tests_requested_count": 1,
+    "available_tests": [
+      "Abdominal_X-ray",
+      "Rectal_Biopsy"
+    ],
+    "determined_specialist": null,
+    "consultation_analysis": {
+      "error": "No consultation dialogue recorded"
+    },
+    "final_doctor_diagnosis": "Hirschsprung disease",
+    "top_K diagnoses": [
+      "duodenal atresia",
+      "jejunal atresia",
+      "malrotation with volvulus",
+      "Hirschsprung disease",
+      "meconium ileus",
+      "annular pancreas",
+      "intestinal duplication cyst",
+      "pyloric stenosis",
+      "neonatal sepsis",
+      "congenital hypothyroidism"
+    ],
+    "top_K": 10,
+    "is_correct": true,
+    "embedding_similarity": [
+      0.4503691875714783,
+      0.4123595924651002,
+      0.37160276832836026,
+      0.9422098363389386,
+      0.47331816211526356,
+      0.3120294611756355,
+      0.3862948484510617,
+      0.4150073774367492,
+      0.2642558811622221,
+      0.4059639822677514
+    ],
+    "best_embedding_similarity": 0.9422098363389386,
+    "tests_left_out": [
+      "Abdominal_X-ray",
+      "Rectal_Biopsy"
+    ],
+    "Top_1": [
+      "duodenal atresia"
+    ],
+    "Top_1 is_correct": false,
+    "Top_3": [
+      "duodenal atresia",
+      "jejunal atresia",
+      "malrotation with volvulus"
+    ],
+    "Top_3 is_correct": false,
+    "Top_5": [
+      "duodenal atresia",
+      "jejunal atresia",
+      "malrotation with volvulus",
+      "Hirschsprung disease",
+      "meconium ileus"
+    ],
+    "Top_5 is_correct": true,
+    "Top_5 correct rank": 4,
+    "Top_7": [
+      "duodenal atresia",
+      "jejunal atresia",
+      "malrotation with volvulus",
+      "Hirschsprung disease",
+      "meconium ileus",
+      "annular pancreas",
+      "intestinal duplication cyst"
+    ],
+    "Top_7 is_correct": true,
+    "Top_7 correct rank": 4,
+    "Top_10": [
+      "duodenal atresia",
+      "jejunal atresia",
+      "malrotation with volvulus",
+      "Hirschsprung disease",
+      "meconium ileus",
+      "annular pancreas",
+      "intestinal duplication cyst",
+      "pyloric stenosis",
+      "neonatal sepsis",
+      "congenital hypothyroidism"
+    ],
+    "Top_10 is_correct": true,
+    "Top_10 correct rank": 4,
+    "final_diagnosis_is_correct": true,
+    "best_embedding_similarity_rank": 4,
+    "info_density_score": 0.6962443590164185
+  }
+]
