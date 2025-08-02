@@ -1,33 +1,33 @@
 {
-  "start_time": "2025-07-26T15:19:49.981145",
+  "start_time": "2025-08-02T12:22:49.433325",
   "completed_combinations": 4,
   "total_combinations": 4,
   "results_by_combination": {
     "MedQA_Base-Case": {
       "completed": true,
-      "scenarios_run": 1,
-      "correct_diagnoses": 1,
-      "accuracy": 100.0
+      "scenarios_run": 150,
+      "correct_diagnoses": 111,
+      "accuracy": 74.0
     },
     "MedQA_Augmented-Doctor": {
       "completed": true,
-      "scenarios_run": 10,
-      "correct_diagnoses": 6,
-      "accuracy": 60.0
+      "scenarios_run": 150,
+      "correct_diagnoses": 108,
+      "accuracy": 72.0
     },
     "MedQA_Doctoral-Team": {
       "completed": true,
-      "scenarios_run": 25,
-      "correct_diagnoses": 15,
-      "accuracy": 60.0
+      "scenarios_run": 150,
+      "correct_diagnoses": 102,
+      "accuracy": 68.0
     },
     "MedQA_Minimalist": {
       "completed": true,
-      "scenarios_run": 10,
-      "correct_diagnoses": 4,
-      "accuracy": 40.0
+      "scenarios_run": 150,
+      "correct_diagnoses": 103,
+      "accuracy": 68.66666666666667
     }
   },
-  "end_time": "2025-07-26T15:21:13.283253",
-  "total_duration_seconds": 83.302108
+  "end_time": "2025-08-02T12:26:24.153825",
+  "total_duration_seconds": 214.7205
 }
