@@ -373,7 +373,7 @@ class DoctorAgent(Agent):
     def get_final_diagnosis(self):
         """Generates the final diagnosis prompt after all interactions."""
         prompt = f"\nHere is the complete history of your dialogue with the patient and the specialist ({self.specialist_type}):\n{self.agent_hist}\nBased on this entire consultation, please provide exactly {TOP_K} final diagnoses now. Do not provide any more than {TOP_K} nor less diagnoses. Provide your {TOP_K} diagnoses in the format 'DIAGNOSIS READY: diagnosis1 | diagnosis2 | ... diagnosis{TOP_K}'. Do not deviate from this format or else you have failed. Do not actually include the number. Do not include any other text, commets, or reasoning. If any of those afformentioned things happen, you have failed."
-        system_prompt = f"You are Dr. Agent. You have finished interviewing the patient and consulting with a {self.specialist_type}. Review the entire history and provide your most likely final diagnoses in the required format."
+        system_prompt = f"You are Dr. Agent. You have finished interviewing the patient and consulting with a {self.specialist_type}. Review the entire history and provide your most likely final {TOP_K} diagnoses in the required format."
         response = query_model(prompt, system_prompt)
 
         if "DIAGNOSIS READY:" not in response:

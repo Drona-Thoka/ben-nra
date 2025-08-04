@@ -4,6 +4,9 @@ import argparse
 import glob
 from dotenv import load_dotenv
 import os
+import numpy as np
+from openai import OpenAI
+from sentence_transformers import SentenceTransformer
 
 load_dotenv()
 
@@ -14,9 +17,12 @@ MODEL_NAME = "gpt-4.1"
 
 # --- Simulation Configuration Constants ---
 AGENT_DATASET = "MedQA"  # Start with MedQA as requested
-NUM_SCENARIOS = 10       # Minimum 50 scenarios per bias-dataset combo
+NUM_SCENARIOS = 10       # Minimum 50 scenarios per filter-dataset combo
 TOTAL_INFERENCES = 10
 CONSULTATION_TURNS = 5
+
+K_Values = [1,3,5,7,10]
+TOP_K = max(K_Values)
 
 
 # --- Utility Functions ---
@@ -38,14 +44,19 @@ def query_model(prompt, system_prompt, max_tokens=200):
     answer = response.choices[0].message.content.strip()
     return re.sub(r"\s+", " ", answer)
 
-def compare_results(diagnosis, correct_diagnosis):
-    prompt = f"Here is the correct diagnosis: {correct_diagnosis}\nHere was the doctor dialogue/diagnosis: {diagnosis}\nAre these referring to the same underlying medical condition? Please respond only with Yes or No."
-    system_prompt = "You are an expert medical evaluator. Determine if the provided doctor's diagnosis matches the correct diagnosis in meaning, even if phrased differently. Respond only with 'Yes' or 'No'."
+def compare_results(diagnoses, correct_diagnosis, k=TOP_K):
+    
+    prompt = f"Here is the correct diagnosis: {correct_diagnosis}\n The doctor was allowed to provide {k} different diagnoses. Here was the doctor dialogue/diagnoses: {diagnoses[:k]}\nAre any of these referring to the same underlying medical condition as the given correct diagnosis? Please respond with 'Yes: [matching diagnosis exactly as written]' or 'No'. Only respond in this manner."
+    system_prompt = f"You are an expert medical evaluator. Determine if any of the provided doctor's {k} diagnoses match the correct diagnosis in meaning, even if phrased differently. If multiple diagnoses are plausible, decide definitively which ONE is best. Respond only with 'Yes: [matching diagnosis exactly as written]' or 'No'."
     answer = query_model(prompt, system_prompt)
-    return answer.strip().lower() == "yes"
+
+    if answer.lower().startswith("yes:"):
+        matched_diag = answer.split(":", 1)[-1].strip()
+        return True, matched_diag
+    return False, None
 
 def get_log_file(dataset, filter_name):
-    """Create a log file name based on dataset and bias"""
+    """Create a log file name based on dataset and filter"""
     os.makedirs(BASE_LOG_DIR, exist_ok=True)
     return os.path.join(BASE_LOG_DIR, f"{dataset}_{filter_name}_log.json")
 
@@ -129,6 +140,43 @@ def get_completed_scenarios(log_file):
         except json.JSONDecodeError:
             print(f"Warning: Could not parse log file {log_file}. Starting from scratch.")
             return []
+
+
+client=OpenAI()
+
+def get_embedding(text, model = "text-embedding-3-large"):
+    text = text.replace("\n", " ")
+    resp = client.embeddings.create(input=[text], model=model, encoding_format="float")
+    return np.array(resp.data[0].embedding)
+
+def cosine_similarity(v1, v2) -> float:
+    return float(np.dot(v1, v2) / (np.linalg.norm(v1) * np.linalg.norm(v2)))
+
+INFO_DENSITY_MODEL = SentenceTransformer("all-MiniLM-L6-v2")
+
+def calculate_info_density_score(dialogue_history):
+    doctor_utterances = [entry["text"] for entry in dialogue_history if entry["speaker"] == "Doctor" and entry["phase"] == "patient"]
+    if len(doctor_utterances) > 1:
+        try:
+            embeddings = INFO_DENSITY_MODEL.encode(doctor_utterances)
+            norms = np.linalg.norm(embeddings, axis=1)
+
+            sims = np.triu(np.inner(embeddings, embeddings) /
+                        (norms[:, None] * norms), 1)
+            
+            denom = len(doctor_utterances) * (len(doctor_utterances) - 1) / 2
+            if denom == 0:
+                return 1.0
+            
+            avg_sim = np.sum(sims) / denom
+
+            score = 1 - avg_sim
+            return score if np.isfinite(score) else 1.0
+        except Exception as e:
+            print(f"[INFO_DENSITY_ERROR]: {e}")
+            return 1.0
+    return 1.0
+
 
 # --- Base Scenario Class ---
 class BaseScenario:
@@ -280,7 +328,8 @@ class DoctorAgent(Agent):
         self.infs = 0
         self.specialist_type = None
         self.consultation_turns = 0
-        self.system_prompt_template = "You are a doctor named Dr. Agent who only responds in the form of dialogue. You are inspecting a patient who you will ask questions in order to understand their disease. You are only allowed to ask {self.MAX_INFS} questions total before you must make a decision. You have asked {self.infs} questions so far. You can request test results using the format \"REQUEST TEST: [test]\". For example, \"REQUEST TEST: Chest_X-Ray\". You will be given a chance to consult with a specialist doctor during the session. Your dialogue will only be 1-3 sentences in length. Once you have decided to make a diagnosis please type \"DIAGNOSIS READY: [diagnosis here]\""
+        self.system_prompt_template = "You are a doctor named Dr. Agent who only responds in the form of dialogue. You are inspecting a patient who you will ask questions in order to understand their disease. You are only allowed to ask {self.MAX_INFS} questions total before you must make a decision. You have asked {self.infs} questions so far. You can request test results using the format \"REQUEST TEST: [test]\". For example, \"REQUEST TEST: Chest_X-Ray\". You will be given a chance to consult with a specialist doctor during the session. Your dialogue will only be 1-3 sentences in length. Once you have decided to make a diagnosis please type \"DIAGNOSIS READY: [diagnosis here]\" You must include {TOP_K} different diagnoses in descending order of likelihood; do not provide more than {TOP_K} or provide less than {TOP_K}. Pay very close attention to the order in which you rank the diagnoses. Delimit your diagnosis if > 1 by the pipe character \"|\". Do not add any explanation, comments, or other text outside of this format. If you at all deviate from this format, you have failed. For example: DIAGNOSIS READY: diagnosis1 | diagnosis2 | ... diagnosis{TOP_K}" 
+
  
         super().__init__(scenario)
     
@@ -338,8 +387,8 @@ class DoctorAgent(Agent):
 
     def get_final_diagnosis(self):
         """Generates the final diagnosis prompt after all interactions."""
-        prompt = f"\nHere is the complete history of your dialogue with the patient and the specialist ({self.specialist_type}):\n{self.agent_hist}\nBased on this entire consultation, please provide your final diagnosis now in the format 'DIAGNOSIS READY: [Your Diagnosis Here]'."
-        system_prompt = f"You are Dr. Agent. You have finished interviewing the patient and consulting with a {self.specialist_type}. Review the entire history and provide your single, most likely final diagnosis in the required format."
+        prompt = f"\nHere is the complete history of your dialogue with the patient and the specialist ({self.specialist_type}):\n{self.agent_hist}\nBased on this entire consultation, please provide exactly {TOP_K} final diagnoses now. Do not provide any more than {TOP_K} nor less diagnoses. Provide your {TOP_K} diagnoses in the format 'DIAGNOSIS READY: diagnosis1 | diagnosis2 | ... diagnosis{TOP_K}'. Do not deviate from this format or else you have failed. Do not actually include the number. Do not include any other text, commets, or reasoning. If any of those afformentioned things happen, you have failed."
+        system_prompt = f"You are Dr. Agent. You have finished interviewing the patient and consulting with a {self.specialist_type}. Review the entire history and provide your most likely final {TOP_K} diagnoses in the required format."
         response = query_model(prompt, system_prompt)
 
         if "DIAGNOSIS READY:" not in response:
@@ -347,10 +396,6 @@ class DoctorAgent(Agent):
         diagnosis_text = response.split("DIAGNOSIS READY:", 1)[-1].strip()
         return f"DIAGNOSIS READY: {diagnosis_text}"
 
-# --- DEAL WITH -- 
-####
-#
-#
 class MeasurementAgent(Agent):
     def _init_data(self):
         self.information = self.scenario.exam_information()
@@ -388,13 +433,6 @@ class SpecialistAgent(Agent):
         self.add_hist(f"Specialist ({self.specialty}): {answer}")
         return answer
 
-# --- Somthing to aviod repetitve manual checks, make measurer useless
-class NullMeasurmentAgent:
-    def inference_measurement(self, *args, **kwargs):
-        return ""
-    
-    def add_hist(self, *args, **kwargs):
-        pass
 
 # --- Main Simulation Logic ---
 def run_single_scenario(scenario, dataset, total_inferences, max_consultation_turns, scenario_idx, filter=None):
@@ -407,6 +445,7 @@ def run_single_scenario(scenario, dataset, total_inferences, max_consultation_tu
     meas_agent = MeasurementAgent(scenario=scenario)
 
     available_tests = scenario.get_available_tests()
+
     run_log = {
         "timestamp": datetime.now(),
         "model": MODEL_NAME,
@@ -414,6 +453,8 @@ def run_single_scenario(scenario, dataset, total_inferences, max_consultation_tu
         "scenario_id": scenario_idx,
         "max_patient_turns": total_inferences,
         "max_consultation_turns": max_consultation_turns,
+        "patient_interaction_turns" : 0,
+        "doctor_questions": 0,
         "correct_diagnosis": scenario.diagnosis_information(),
         "dialogue_history": [],
         "requested_tests": [],
@@ -422,7 +463,11 @@ def run_single_scenario(scenario, dataset, total_inferences, max_consultation_tu
         "determined_specialist": None,
         "consultation_analysis": {},
         "final_doctor_diagnosis": None,
+        "top_K diagnoses": None,
+        "top_K": TOP_K,
         "is_correct": None,
+        "embedding_similarity": None,
+        "best_embedding_similarity": None
     }
 
     # --- Patient Interaction Phase ---
@@ -514,21 +559,62 @@ def run_single_scenario(scenario, dataset, total_inferences, max_consultation_tu
         time.sleep(0.5)
 
     # --- Final Diagnosis Phase ---
-    print("\n--- Phase 4: Final Diagnosis ---")
+    #print("\n--- Phase 4: Final Diagnosis ---")
     final_diagnosis_full = doctor_agent.get_final_diagnosis()
+    #print(f"FINAL DIAGNOSES FULL RAW: {final_diagnosis_full} ")
     if "DIAGNOSIS READY:" in final_diagnosis_full:
          final_diagnosis_text = final_diagnosis_full.split("DIAGNOSIS READY:", 1)[-1].strip()
+         diagnoses = [d.strip() for d in final_diagnosis_text.split("|") if d.strip()][:TOP_K]   
+         #print(f"FULL DIAGNOSIS LIST: {diagnoses}")
+         run_log["top_K diagnoses"] = diagnoses
     else:
          final_diagnosis_text = "No diagnosis provided in correct format."
 
-    print(f"\nFinal Diagnosis by Doctor: {final_diagnosis_text}")
-    print(f"Correct Diagnosis: {scenario.diagnosis_information()}")
+    #print(f"\nFinal Diagnoses by Doctor: {diagnoses}")
+    #print(f"Correct Diagnosis: {scenario.diagnosis_information()}")
 
-    is_correct = compare_results(final_diagnosis_text, scenario.diagnosis_information())
-    print(f"Scenario {scenario_idx}: Diagnosis was {'CORRECT' if is_correct else 'INCORRECT'}")
+    # Compute prediction embeddings
+    try:
+        pred_embed = [get_embedding(diagnosis.strip().lower()) for diagnosis in diagnoses[:TOP_K]]
+    except Exception as e:
+        #print(f"Embedding error (predictions): {e}")
+        pred_embed = None
 
-    run_log["final_doctor_diagnosis"] = final_diagnosis_text
-    run_log["is_correct"] = is_correct
+    # Compute ground truth embedding
+    try:
+        true_embed = get_embedding(scenario.diagnosis_information().strip().lower())
+    except Exception as e:
+        #print(f"Embedding error (correct diagnosis): {e}")
+        true_embed = None
+
+    for k in K_Values:
+        sliced = diagnoses[:min(k, len(diagnoses))]
+        is_correct, final_diagnosis = compare_results(sliced, scenario.diagnosis_information(), k)
+
+        #print(f"Scenario {scenario_idx} | Top-{k} Diagnosis was {'CORRECT' if is_correct else 'INCORRECT'}")
+        run_log[f"Top_{k}"] = sliced
+        run_log[f"Top_{k} is_correct"] = is_correct
+        if is_correct and final_diagnosis in sliced:
+            run_log[f"Top_{k} correct rank"] = sliced.index(final_diagnosis) + 1
+
+        if k == TOP_K:
+            run_log["is_correct"] = is_correct
+            run_log["final_doctor_diagnosis"] = final_diagnosis
+            run_log["final_diagnosis_is_correct"] = is_correct
+
+    # Compute embedding similairites 
+    if pred_embed is not None and true_embed is not None:
+        embed_sim = [cosine_similarity(pred, true_embed) for pred in pred_embed]
+
+        run_log["embedding_similarity"] = embed_sim
+        run_log["best_embedding_similarity"] = max(embed_sim) if embed_sim else None
+        if embed_sim:
+            run_log["best_embedding_similarity_rank"] = embed_sim.index(run_log["best_embedding_similarity"]) + 1
+    else:
+        run_log["embedding_similarity"] = None
+        run_log["best_embedding_similarity"] = None
+        run_log["best_embedding_similarity_rank"] = None
+
 
     # --- Consultation Analysis Phase (Moved here) ---
     print("\n--- Phase 5: Consultation Analysis ---")
@@ -568,7 +654,6 @@ def run_experiment_two(dataset, total_inferences, consultation_turns, max_scenar
         
     for filter in filters_to_process:
         filter_name = filter
-
 
         log_file = get_log_file(dataset, filter_name)
         completed_scenario_ids = get_completed_scenarios(log_file)
