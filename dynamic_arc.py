@@ -20,8 +20,13 @@ AGENT_DATASET = "MedQA"  # Start with MedQA as requested
 NUM_SCENARIOS = 150       # Minimum 50 scenarios per config-dataset combo
 TOTAL_INFERENCES = 10
 CONSULTATION_TURNS = 5
+
 K_Values = [1,3,5,7,10] # Can be any natural number
 TOP_K = max(K_Values)
+
+SWITCH_CAP = 4
+NUM_SWITCHES = 0
+CONFIDENCE_EPSILON = 0.5
 
 # --- Dynamic Doctor Prompt --- 
 PROMPTS = {"DYNAMIC_DOCTOR_PROMPT": "You are a doctor named Dr. Agent who only responds in the form of dialogue. You are inspecting a patient whom you will ask questions in order to understand their disease. You are only allowed to ask {self.MAX_INFS} questions total before you must make a decision. You have asked {self.infs} questions so far. You can request test results using the format \"REQUEST TEST: [test]\". For example, \"REQUEST TEST: Chest_X-Ray\". You will have the opportunity to consult with a specialist doctor during the session. During that specialist consultation, you can decide to either heed their advice or reassign your patient to that specialist by typing: \"SWITCH\" exactly as written in quotes. This switch will relieve you of your duties. Additionally, do not concern yourself with the quality of the specialist. The specialist is assured to be accredited, knowledgeable, experienced, and already versed in the necessary context. If you do not decide to switch, follow the remaining instructions. Your dialogue will only be 1-3 sentences in length. Once you have decided to make a diagnosis, please type \"DIAGNOSIS READY: [diagnosis here]\" You must include {TOP_K} different diagnoses in descending order of likelihood; do not provide more than {TOP_K} or provide less than {TOP_K}. Pay very close attention to the order in which you rank the diagnoses. Delimit your diagnosis if > 1 by the pipe character \"|\". Do not add any explanation, comments, or other text outside of this format. If you at all deviate from this format, you have failed. For example: DIAGNOSIS READY: diagnosis1 | diagnosis2 | ... diagnosis{TOP_K}",

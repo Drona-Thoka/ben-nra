@@ -1,11 +1,13 @@
 [
   {
-    "timestamp": "2025-07-16T15:47:13.095442",
+    "timestamp": "2025-08-04T17:41:25.553806",
     "model": "gpt-4.1",
     "dataset": "MedQA",
     "scenario_id": 0,
     "max_patient_turns": 10,
     "max_consultation_turns": 5,
+    "patient_interaction_turns": 0,
+    "doctor_questions": 0,
     "correct_diagnosis": "Myasthenia gravis",
     "dialogue_history": [
       {
@@ -18,7 +20,7 @@
         "speaker": "Patient",
         "turn": 1,
         "phase": "patient",
-        "text": "I've been having double vision and muscle weakness, especially when I try to climb stairs or brush my hair. These problems started about a month ago and seem to get worse when I'm active, but they get better after I rest for a while."
+        "text": "I've been having double vision and muscle weakness for about a month now. It gets worse when I do things like climb stairs or brush my hair, but I feel better after resting for a while."
       },
       {
         "speaker": "Doctor",
@@ -30,19 +32,19 @@
         "speaker": "Patient",
         "turn": 2,
         "phase": "patient",
-        "text": "Yes, sometimes by the end of the day I feel like my speech gets a bit slurred, and I occasionally have trouble swallowing, especially when I'm tired. I haven\u2019t had any issues with breathing, though."
+        "text": "Yes, sometimes I feel like my speech gets a bit slurred when I\u2019m tired, and I occasionally have trouble swallowing, especially later in the day. I haven\u2019t had any issues with breathing, though."
       },
       {
         "speaker": "Doctor",
         "turn": 2,
         "phase": "patient",
-        "text": "Have you noticed any drooping of your eyelids, or do your eyelids feel heavier as the day goes on?"
+        "text": "Have you noticed any drooping of your eyelids or changes in your facial expressions, such as difficulty smiling or frowning?"
       },
       {
         "speaker": "Patient",
         "turn": 3,
         "phase": "patient",
-        "text": "Yes, my eyelids do feel heavier, especially later in the day, and sometimes they look a bit droopy when I'm tired."
+        "text": "Yes, I have noticed that sometimes my eyelids feel heavy and seem to droop, especially later in the day. I haven't really had trouble with smiling or frowning, though."
       },
       {
         "speaker": "Doctor",
@@ -54,79 +56,79 @@
         "speaker": "Patient",
         "turn": 4,
         "phase": "patient",
-        "text": "No, I haven't had any recent infections, fevers, or illnesses before these symptoms began."
+        "text": "No, I haven\u2019t had any recent infections, fevers, or illnesses before these symptoms began."
       },
       {
         "speaker": "Doctor",
         "turn": 4,
         "phase": "patient",
-        "text": "Have you noticed any changes in your sense of taste, numbness, tingling, or weakness in your arms or legs that persists even after rest?"
+        "text": "Have you noticed any numbness, tingling, or loss of sensation in your arms, legs, or face?"
       },
       {
         "speaker": "Patient",
         "turn": 5,
         "phase": "patient",
-        "text": "No, I haven\u2019t noticed any changes in my sense of taste or any numbness or tingling. The weakness in my arms and legs usually gets better after I rest for a while."
+        "text": "No, I haven\u2019t had any numbness or tingling anywhere. My main issue is just the weakness and double vision."
       },
       {
         "speaker": "Doctor",
         "turn": 5,
         "phase": "patient",
-        "text": "Have you noticed any muscle twitching, cramping, or pain, or is it mainly just weakness and fatigue?"
+        "text": "Have you noticed any muscle wasting or twitching, or have you experienced any changes in your bladder or bowel control?"
       },
       {
         "speaker": "Patient",
         "turn": 6,
         "phase": "patient",
-        "text": "It's mainly just weakness and fatigue, especially after I've been active. I haven't really noticed any twitching, cramping, or pain."
+        "text": "No, I haven\u2019t noticed any muscle wasting or twitching. My bladder and bowel control are normal."
       },
       {
         "speaker": "Doctor",
         "turn": 6,
         "phase": "patient",
-        "text": "Have you ever been diagnosed with any autoimmune diseases, thyroid problems, or had any issues with your thymus gland in the past?"
+        "text": "Have you or any family members ever been diagnosed with autoimmune diseases or neuromuscular disorders?"
       },
       {
         "speaker": "Patient",
         "turn": 7,
         "phase": "patient",
-        "text": "No, I\u2019ve never been told I have any autoimmune diseases or thyroid problems, and I haven\u2019t had any issues with my thymus gland that I know of."
+        "text": "No, neither I nor any of my family members have been diagnosed with autoimmune diseases or neuromuscular disorders as far as I know."
       },
       {
         "speaker": "Doctor",
         "turn": 7,
         "phase": "patient",
-        "text": "Have you noticed if your symptoms are worse at certain times of day, such as in the evening, or after specific activities?"
+        "text": "Have you noticed any changes in your vision other than double vision, such as blurry vision, loss of vision, or pain in your eyes?"
       },
       {
         "speaker": "Patient",
         "turn": 8,
         "phase": "patient",
-        "text": "Yes, my symptoms definitely get worse later in the day or after I\u2019ve been active for a while. If I rest for a bit, I start to feel better."
+        "text": "No, I haven\u2019t had any blurry vision, loss of vision, or pain in my eyes\u2014just the double vision. It gets worse when I\u2019m tired."
       },
       {
         "speaker": "Doctor",
         "turn": 8,
         "phase": "patient",
-        "text": "Have you noticed any recent weight loss, night sweats, or persistent cough?"
+        "text": "Have you noticed any recent weight loss, night sweats, or fevers?"
       },
       {
         "speaker": "Patient",
         "turn": 9,
         "phase": "patient",
-        "text": "No, I haven\u2019t had any weight loss, night sweats, or a persistent cough. I\u2019ve mostly just been bothered by the weakness and double vision."
+        "text": "No, I haven\u2019t had any weight loss, night sweats, or fevers recently. I\u2019ve generally felt well aside from the weakness and double vision."
       },
       {
         "speaker": "Doctor",
         "turn": 9,
         "phase": "patient",
-        "text": "Have you noticed any improvement in your symptoms after taking any medications, such as over-the-counter pain relievers or anything prescribed for another reason?"
+        "text": "Have you noticed any improvement in your symptoms after taking any medications, such as pyridostigmine or after receiving intravenous immunoglobulin (IVIG) or steroids in the past?"
       },
       {
         "speaker": "Patient",
         "turn": 10,
         "phase": "patient",
-        "text": "I haven\u2019t taken any medications for these symptoms yet, so I\u2019m not sure if anything would help. Rest seems to be the only thing that makes me feel better so far."
+        "text": "I haven\u2019t taken any of those medications before, so I\u2019m not sure if they would help my symptoms. I usually just rest, and that seems to make things better for a while."
       },
       {
         "speaker": "Doctor",
@@ -138,67 +140,67 @@
         "speaker": "System",
         "turn": 11,
         "phase": "consultation",
-        "text": "Consultation started with Neurologist. Reason: A Neurologist is the most appropriate specialist because the patient\u2019s symptoms\u2014fluctuating muscle weakness, double vision, ptosis (droopy eyelids), and worsening with activity but improvement with rest\u2014are classic for a neuromuscular junction disorder such as myasthenia gravis. These symptoms are not explained by primary muscle, infectious, or systemic disease, and there are no sensory changes or pain, making a neurological cause most likely. A Neurologist specializes in diagnosing and managing disorders of the nervous system, including neuromuscular junction diseases, making them the best choice for further evaluation and management."
+        "text": "Consultation started with Neurologist. Reason: A Neurologist is the most appropriate specialist because the patient's symptoms\u2014fluctuating muscle weakness, double vision, ptosis, and worsening with activity\u2014are classic for a neuromuscular junction disorder such as myasthenia gravis, which falls under the expertise of neurology."
       },
       {
         "speaker": "Doctor",
         "turn": 11,
         "phase": "consultation",
-        "text": "Thank you for reviewing the case. Based on the history, several key features stand out: - **Fluctuating muscle weakness** that worsens with activity and improves with rest - **Ocular symptoms**: double vision and ptosis, especially later in the day - **Bulbar involvement**: intermittent dysarthria and dysphagia, worse with fatigue - **No sensory symptoms** (no numbness, tingling) - **No muscle pain, cramping, or twitching** - **No recent infection or systemic symptoms** - **No known autoimmune or thyroid disease** - **No persistent weakness\u2014symptoms are reversible with rest** Given this, my leading diagnosis is **myasthenia gravis (MG)**, likely generalized, with prominent ocular and bulbar involvement. The classic pattern of fatigable weakness, ocular and bulbar symptoms, and improvement with rest is highly suggestive. **Differential diagnoses to consider:** 1. **Lambert-Eaton"
+        "text": "Thank you for reviewing the case. Based on the history, I am concerned about a disorder of neuromuscular transmission, particularly **myasthenia gravis (MG)**. The key features supporting this are: - **Fluctuating muscle weakness** that worsens with activity and improves with rest. - **Ocular involvement**: double vision (diplopia) and ptosis, both worsening later in the day. - **Bulbar symptoms**: intermittent dysarthria and dysphagia, especially with fatigue. - **No sensory symptoms**: no numbness, tingling, or pain. - **No muscle wasting, fasciculations, or autonomic involvement**. - **No recent infection or systemic symptoms**. The absence of respiratory involvement is reassuring at this stage, but the bulbar symptoms are concerning for possible progression. **Differential diagnoses** I am considering include: - **Myasthenia gravis** (most likely) - **Lambert-E"
       },
       {
         "speaker": "Specialist (Neurologist)",
         "turn": 11,
         "phase": "consultation",
-        "text": "I agree that myasthenia gravis is the most likely diagnosis given the fatigable weakness, ocular and bulbar involvement, and absence of sensory symptoms. Next steps should include bedside tests (ice pack test, edrophonium if available), acetylcholine receptor and MuSK antibody testing, and chest imaging to assess for thymoma. Consider EMG with repetitive nerve stimulation if diagnosis remains uncertain."
+        "text": "I agree that myasthenia gravis is the leading diagnosis given the fatigable weakness, ocular and bulbar involvement, and absence of sensory or autonomic symptoms. Next steps should include bedside tests (ice pack test, edrophonium if available), acetylcholine receptor and MuSK antibody testing, and electrophysiological studies (repetitive nerve stimulation or single-fiber EMG). Please also screen for thymoma with chest imaging."
       },
       {
         "speaker": "Doctor",
         "turn": 12,
         "phase": "consultation",
-        "text": "Thank you for your input. I agree that the clinical picture is highly suggestive of myasthenia gravis, and your recommendations for confirmatory testing are appropriate. A few points to clarify and discuss further: 1. **Onset and Progression:** The patient\u2019s symptoms have developed over about a month and appear to be gradually worsening. Would you consider this subacute progression typical for MG, or does it raise any concern for alternative or coexisting diagnoses? 2. **Bulbar Involvement:** Given the presence of dysarthria and dysphagia, albeit intermittent and fatigue-related, would you recommend any immediate precautions regarding swallowing assessment or respiratory monitoring, even in the absence of current breathing difficulties? 3. **Differential Diagnosis:** - **Lambert-Eaton Myasthenic Syndrome (LEMS):** The absence of autonomic symptoms and the presence of ocular/bulbar involvement make LEMS less likely, but would you recommend any specific screening for"
+        "text": "Thank you for your input and recommendations. I agree that the clinical picture is highly suggestive of myasthenia gravis, and I will proceed with the investigations you outlined. A few points and questions to further refine our approach: 1. **Ocular vs. Generalized MG**: Given the presence of both ocular (ptosis, diplopia) and bulbar symptoms (dysarthria, dysphagia), do you think this presentation is more consistent with early generalized MG rather than purely ocular MG? Would you recommend starting treatment as for generalized MG at this stage, or would you prefer to wait for confirmatory testing? 2. **Risk of Myasthenic Crisis**: The patient currently denies respiratory symptoms, but given the bulbar involvement, would you recommend any specific monitoring or precautions to reduce the risk of impending myasthenic crisis while awaiting test results? 3. **Antibody Testing**: If acetylcholine receptor antibodies are negative"
       },
       {
         "speaker": "Specialist (Neurologist)",
         "turn": 12,
         "phase": "consultation",
-        "text": "1. Subacute progression over weeks is typical for MG and does not necessarily suggest an alternative diagnosis, though rapid worsening warrants close monitoring. 2. Given bulbar symptoms, I recommend a formal swallowing assessment and baseline spirometry (FVC, NIF) to monitor for impending respiratory compromise, even if current breathing is unaffected. 3. For LEMS, consider voltage-gated calcium channel antibody testing and a search for underlying malignancy if clinical suspicion arises, but the current presentation is more consistent with MG."
+        "text": "1. The presence of bulbar symptoms alongside ocular findings suggests early generalized MG rather than purely ocular MG, so I would recommend initiating treatment as for generalized MG while awaiting confirmatory tests. 2. Given bulbar involvement, closely monitor for signs of respiratory compromise (vital capacity, negative inspiratory force) and consider inpatient observation if symptoms worsen. 3. If acetylcholine receptor antibodies are negative, proceed with MuSK and LRP4 antibody testing, and prioritize electrophysiological studies for diagnosis."
       },
       {
         "speaker": "Doctor",
         "turn": 13,
         "phase": "consultation",
-        "text": "Thank you for your thorough response. I agree that the clinical features and subacute progression are most consistent with myasthenia gravis, and I will proceed with the recommended investigations and monitoring. A few additional points for discussion: 1. **Antibody Testing:** In your experience, how often do you encounter seronegative MG (negative for both AChR and MuSK antibodies), and would you recommend proceeding to single-fiber EMG in all such cases if clinical suspicion remains high? 2. **Thymic Imaging:** Given the patient\u2019s age and lack of known thymic disease, would you recommend a CT or MRI of the chest as the initial imaging modality to assess for thymoma, or is one preferred over the other in your practice? 3. **Early Treatment:** Pending confirmatory testing, would you consider initiating symptomatic therapy (e.g., pyridostigmine) at this stage, or do you prefer to wait for antibody results? Are there any specific factors in this"
+        "text": "Thank you for your clear recommendations. I agree that the constellation of symptoms\u2014ocular and bulbar involvement with fatigable weakness and no sensory or autonomic findings\u2014strongly supports early generalized myasthenia gravis. A few follow-up points for your input: 1. **Initiation of Therapy**: Would you recommend starting with pyridostigmine alone initially, or would you advocate for early introduction of immunosuppressive therapy (such as corticosteroids), given the presence of bulbar symptoms? If so, do you have a preferred steroid regimen or adjunctive immunosuppressant at this stage? 2. **Monitoring and Admission Criteria**: Given the current absence of respiratory symptoms but the presence of bulbar involvement, would you recommend baseline pulmonary function testing (FVC, NIF) in the outpatient setting, or should we consider admission for close monitoring while starting therapy? Are there specific thresholds (e.g., FVC <20 mL/kg) you use to guide"
       },
       {
         "speaker": "Specialist (Neurologist)",
         "turn": 13,
         "phase": "consultation",
-        "text": "1. Seronegative MG occurs in about 10-15% of cases; if clinical suspicion remains high, I recommend proceeding to single-fiber EMG, as it is highly sensitive. 2. I typically prefer a contrast-enhanced CT of the chest for initial thymic imaging, as it is widely available and sensitive for thymoma, but MRI is an alternative if CT is contraindicated. 3. I would start pyridostigmine empirically if symptoms are functionally limiting, even before antibody results, while monitoring for response and side effects."
+        "text": "1. Given bulbar involvement, I recommend starting both pyridostigmine and low-to-moderate dose corticosteroids (e.g., prednisone 20\u201330 mg daily, titrating up as tolerated), as immunosuppression may be needed for adequate control; consider adding a steroid-sparing agent (e.g., azathioprine) if long-term therapy is anticipated. 2. Baseline FVC and NIF should be obtained; admit for close monitoring if FVC <20 mL/kg, NIF <\u201330 cm H2O, or if there is worsening bulbar or respiratory function\u2014otherwise, outpatient management with strict return precautions may be reasonable if stable. Do you have access to rapid pulmonary function testing and close outpatient follow-up?"
       },
       {
         "speaker": "Doctor",
         "turn": 14,
         "phase": "consultation",
-        "text": "Thank you for your detailed recommendations. I have a few follow-up questions and points for further discussion: 1. **Single-Fiber EMG:** In your experience, are there particular muscle groups you prefer to target for single-fiber EMG in cases with prominent ocular and bulbar symptoms? Would you recommend focusing on facial muscles, or do you find limb muscles equally sensitive in these presentations? 2. **Initiation of Immunotherapy:** If the patient demonstrates a clear clinical response to pyridostigmine but continues to have significant bulbar symptoms or functional impairment, at what point would you consider initiating corticosteroids or other immunosuppressive therapy? Do you have a preferred initial immunosuppressive agent in this scenario? 3. **Monitoring for Myasthenic Crisis:** Given the patient\u2019s intermittent bulbar symptoms, would you recommend inpatient observation during the initiation of therapy, or is outpatient management reasonable if baseline respiratory function and swallowing assessment are reassuring? 4. **Thymectomy Considerations:**"
+        "text": "Thank you for your detailed recommendations. To address your questions and further refine our management plan: 1. **Access to Pulmonary Function Testing and Follow-up:** We do have access to rapid pulmonary function testing (FVC and NIF) in our facility, and I can arrange for same-day assessment. Outpatient follow-up can be scheduled within 48\u201372 hours, and the patient has reliable transportation and support at home. I will ensure the patient is educated on red flag symptoms (increasing difficulty swallowing, speaking, or breathing) and provided with clear instructions for urgent return if these develop. 2. **Initiation of Immunosuppression:** I agree with your recommendation to start both pyridostigmine and a moderate dose of prednisone, given the bulbar symptoms. I will monitor closely for steroid-induced worsening of weakness, especially in the first 1\u20132 weeks. If the patient requires long-term immunosuppression, I will discuss the addition of a steroid"
       },
       {
         "speaker": "Specialist (Neurologist)",
         "turn": 14,
         "phase": "consultation",
-        "text": "1. For single-fiber EMG in cases with prominent ocular/bulbar symptoms, I prioritize facial muscles (e.g., orbicularis oculi, frontalis) as they are more sensitive in these presentations; limb muscles are less sensitive in purely ocular/bulbar MG. 2. If significant bulbar symptoms persist despite pyridostigmine, I initiate corticosteroids (prednisone) early, with azathioprine as my preferred steroid-sparing agent if long-term immunosuppression is needed. 3. Outpatient management is reasonable if baseline FVC/NIF and swallowing are reassuring, but admit for observation if there is any concern for rapid progression or aspiration risk. 4. Please clarify the patient\u2019s age and antibody status to guide thymectomy recommendations, as this is generally considered in younger, AChR-positive patients or if thymoma is present."
+        "text": "Your plan is appropriate\u2014rapid pulmonary function testing and close outpatient follow-up are key, and patient education on red flags is essential. If steroid-induced worsening occurs, consider temporary hospitalization and/or IVIG or plasmapheresis. Please keep me updated on antibody and electrophysiology results, and let me know if symptoms progress or if you need guidance on steroid-sparing agents."
       },
       {
         "speaker": "Doctor",
         "turn": 15,
         "phase": "consultation",
-        "text": "Thank you for your detailed guidance. To clarify, the patient is a 38-year-old female. We have not yet received antibody results, but I have ordered AChR and MuSK antibody testing, as well as a contrast-enhanced CT of the chest to evaluate for thymoma. A few additional points for your input: 1. **Thymectomy Consideration:** Given the patient\u2019s age (38), if she is found to be AChR antibody positive and imaging does not reveal a thymoma, would you still recommend thymectomy based on the MGTX trial data, or do you reserve this for patients with more severe or refractory symptoms? 2. **Steroid Initiation:** If we proceed with corticosteroids, do you have a preferred starting dose and tapering schedule in this scenario? Are there any precautions you recommend to minimize the risk of steroid-induced worsening (e.g., inpatient initiation, slow titration, or concurrent use of plasma exchange/IVIG in"
+        "text": "Thank you for your guidance and support. I have a few additional questions and points for discussion as we proceed: 1. **Role of Thymectomy:** Given the patient\u2019s age (which I will clarify if not already documented) and the likely diagnosis of generalized MG, would you recommend early referral for thymic imaging and consideration of thymectomy, even if no thymoma is detected? Are there specific clinical features or antibody profiles that would influence your recommendation for surgery? 2. **Choice and Timing of Steroid-Sparing Agents:** If the patient requires long-term immunosuppression, do you have a preferred first-line steroid-sparing agent (e.g., azathioprine vs. mycophenolate mofetil), and at what point would you typically initiate this, especially if the patient responds well to steroids initially? 3. **Monitoring for Treatment Side Effects:** Are there particular side effects or complications you find most important to monitor for in the early phase of treatment with both"
       },
       {
         "speaker": "Specialist (Neurologist)",
         "turn": 15,
         "phase": "consultation",
-        "text": "1. For a 38-year-old AChR-positive patient without thymoma, I recommend thymectomy based on MGTX trial data, as it can improve outcomes even in non-thymomatous generalized MG, regardless of initial severity. 2. For steroid initiation, I typically start prednisone at 0.5\u20131 mg/kg/day (max 60\u201380 mg), with a slow titration (increase every 1\u20132 weeks) to minimize risk of transient worsening; consider inpatient initiation or concurrent IVIG/plasma exchange if significant bulbar symptoms or respiratory compromise are present. Would you like guidance on specific tapering protocols or monitoring parameters?"
+        "text": "1. Thymic imaging (CT or MRI) is indicated for all generalized MG patients; thymectomy is recommended for AChR antibody-positive patients under ~60 years, even without thymoma, as it can improve outcomes\u2014MuSK-positive or seronegative patients generally do not benefit. 2. Azathioprine is my preferred first-line steroid-sparing agent, typically started if steroid taper is anticipated or if steroid side effects emerge; mycophenolate is an alternative if azathioprine is contraindicated or not tolerated. 3. Early monitoring should focus on steroid-induced myopathy, hyperglycemia, infection risk, GI symptoms, and azathioprine-related cytopenias or hepatotoxicity (with regular CBC and LFTs). Please clarify the patient\u2019s age and antibody status when available."
       }
     ],
     "requested_tests": [],
@@ -213,2116 +215,92 @@
       "premature_conclusion": false,
       "diagnoses_considered": [
         "myasthenia gravis",
-        "Lambert-Eaton Myasthenic Syndrome (LEMS)"
+        "Lambert-Eaton myasthenic syndrome"
       ],
       "diagnoses_considered_count": 2,
       "disagreements": 0
     },
-    "final_doctor_diagnosis": "Myasthenia Gravis (generalized, with ocular and bulbar involvement)",
+    "final_doctor_diagnosis": "Myasthenia gravis",
+    "top_K diagnoses": [
+      "Myasthenia gravis",
+      "Early generalized myasthenia gravis",
+      "Ocular myasthenia gravis",
+      "Bulbar myasthenia gravis",
+      "Lambert-Eaton myasthenic syndrome",
+      "Mitochondrial myopathy",
+      "Botulism",
+      "Thyroid eye disease",
+      "Multiple sclerosis",
+      "Brainstem stroke"
+    ],
+    "top_K": 10,
     "is_correct": true,
+    "embedding_similarity": [
+      0.9999999999999998,
+      0.6871940083794593,
+      0.7252111647694014,
+      0.6710370338484236,
+      0.5167983131535806,
+      0.4708656562131936,
+      0.33718654641822127,
+      0.39981666121522813,
+      0.5229796206691425,
+      0.23226588185550387
+    ],
+    "best_embedding_similarity": 0.9999999999999998,
     "tests_left_out": [
-      "Blood_Tests",
       "Imaging",
+      "Blood_Tests",
       "Electromyography"
     ],
-    "specialist_reason": "A Neurologist is the most appropriate specialist because the patient\u2019s symptoms\u2014fluctuating muscle weakness, double vision, ptosis (droopy eyelids), and worsening with activity but improvement with rest\u2014are classic for a neuromuscular junction disorder such as myasthenia gravis. These symptoms are not explained by primary muscle, infectious, or systemic disease, and there are no sensory changes or pain, making a neurological cause most likely. A Neurologist specializes in diagnosing and managing disorders of the nervous system, including neuromuscular junction diseases, making them the best choice for further evaluation and management."
-  },
-  {
-    "timestamp": "2025-07-16T18:29:27.077992",
-    "model": "gpt-4.1",
-    "dataset": "MedQA",
-    "scenario_id": 1,
-    "max_patient_turns": 10,
-    "max_consultation_turns": 5,
-    "correct_diagnosis": "Progressive multifocal encephalopathy (PML)",
-    "dialogue_history": [
-      {
-        "speaker": "Doctor",
-        "turn": 0,
-        "phase": "patient",
-        "text": "Can you describe your main symptoms and how long you have been experiencing them?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 1,
-        "phase": "patient",
-        "text": "I've been having trouble walking for about a week now\u2014my friends say I look like I'm drunk when I try to walk. My balance feels off, and sometimes my right arm feels weaker than usual."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 1,
-        "phase": "patient",
-        "text": "Have you noticed any changes in your vision, speech, or headaches recently?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 2,
-        "phase": "patient",
-        "text": "No, I haven't noticed any changes in my vision or speech, and I haven't had any headaches recently."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 2,
-        "phase": "patient",
-        "text": "Have you experienced any numbness, tingling, or loss of sensation anywhere in your body?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 3,
-        "phase": "patient",
-        "text": "No, I haven't noticed any numbness or tingling. I just feel unsteady and weak, especially on my right side."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 3,
-        "phase": "patient",
-        "text": "Have you had any recent fevers, infections, or illnesses before these symptoms started?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 4,
-        "phase": "patient",
-        "text": "No, I haven't had any recent fevers or infections before these symptoms started. I just noticed the walking problems getting worse over the past few weeks."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 4,
-        "phase": "patient",
-        "text": "Have you ever experienced anything like this before, or do you have any history of neurological or autoimmune conditions?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 5,
-        "phase": "patient",
-        "text": "No, I\u2019ve never had anything like this before. My only major health issue has been Crohn\u2019s disease."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 5,
-        "phase": "patient",
-        "text": "Have you noticed any changes in your bowel or bladder control, such as incontinence or difficulty urinating, since these symptoms began?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 6,
-        "phase": "patient",
-        "text": "No, I haven't noticed any changes in my bowel or bladder control. Everything seems normal in that regard."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 6,
-        "phase": "patient",
-        "text": "Have you noticed any changes in your mental status, such as confusion, memory problems, or difficulty concentrating?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 7,
-        "phase": "patient",
-        "text": "I haven\u2019t really noticed any confusion or memory problems, but I do feel a bit more clumsy and unsteady than usual. My thinking seems clear otherwise."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 7,
-        "phase": "patient",
-        "text": "Have you noticed any changes in your coordination, such as difficulty with tasks that require fine motor skills, like buttoning a shirt or writing?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 8,
-        "phase": "patient",
-        "text": "Yes, I've noticed that my hands feel clumsier, especially on the right side\u2014it's harder to do things like button my shirt or hold a pen steadily."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 8,
-        "phase": "patient",
-        "text": "Have you noticed any changes in your speech, such as slurring, or difficulty swallowing food or liquids?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 9,
-        "phase": "patient",
-        "text": "I haven\u2019t really noticed any slurring in my speech, and I haven\u2019t had trouble swallowing food or drinks."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 9,
-        "phase": "patient",
-        "text": "Have you recently started or changed any medications, especially for your Crohn\u2019s disease, or received any new treatments such as biologic infusions?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 10,
-        "phase": "patient",
-        "text": "I haven\u2019t started any new medications recently, but I have been on natalizumab for about a year now for my Crohn\u2019s disease. I haven\u2019t had any new infusions or changes to my treatment plan."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 10,
-        "phase": "patient",
-        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
-      },
-      {
-        "speaker": "System",
-        "turn": 11,
-        "phase": "consultation",
-        "text": "Consultation started with Neurologist. Reason: A Neurologist is the most appropriate specialist because the patient is experiencing progressive gait instability, right-sided weakness, and clumsiness without sensory loss, headache, or systemic symptoms. These are focal neurological deficits suggesting a central nervous system process. Additionally, the patient is on natalizumab, which is associated with progressive multifocal leukoencephalopathy (PML), a serious neurological complication. A Neurologist is best equipped to evaluate, diagnose, and manage such neurological symptoms and complications."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 11,
-        "phase": "consultation",
-        "text": "Thank you for reviewing the case. Here\u2019s a summary of the key findings: - **Subacute onset (over 1-2 weeks) of gait ataxia and right-sided weakness/clumsiness** - **No sensory loss, no cranial nerve involvement, no visual or speech changes, no headache** - **No bowel/bladder involvement, no mental status changes** - **History of Crohn\u2019s disease, currently on natalizumab for about a year** - **No recent infections, medication changes, or new treatments** **My initial thoughts on the differential diagnosis:** 1. **Progressive Multifocal Leukoencephalopathy (PML):** - The subacute progression, focal neurological deficits (ataxia, right-sided weakness/clumsiness), and the use of natalizumab (a known risk factor for PML) are highly concerning. - Absence of fever, headache, or systemic symptoms makes infectious or inflammatory causes less likely. - No sensory"
-      },
-      {
-        "speaker": "Specialist (Neurologist)",
-        "turn": 11,
-        "phase": "consultation",
-        "text": "I agree that PML should be high on the differential given the subacute focal deficits and natalizumab exposure. I recommend urgent brain MRI with and without contrast to look for characteristic white matter lesions, and if suspicious, CSF JC virus PCR for confirmation. Please also consider stopping natalizumab pending further workup."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 12,
-        "phase": "consultation",
-        "text": "Thank you for your input. I agree that PML is the leading concern given the clinical context and natalizumab exposure. I will arrange for an urgent brain MRI with and without contrast, and if findings are suggestive, proceed with CSF analysis for JC virus PCR. A few points and questions to further refine our differential and management: 1. **Alternative Diagnoses:** - While PML is most likely, are there other conditions we should consider or rule out at this stage? For example, could this represent a demyelinating process such as MS, or a vascular event, given the focal deficits? The lack of sensory involvement and absence of acute onset make stroke less likely, but would you recommend any additional workup for these? - Should we consider CNS lymphoma or other opportunistic infections, given the patient\u2019s immunosuppressed state, even though there are no systemic symptoms? 2. **MRI Findings:** - Are there specific MRI sequences or findings you would prioritize"
-      },
-      {
-        "speaker": "Specialist (Neurologist)",
-        "turn": 12,
-        "phase": "consultation",
-        "text": "In addition to PML, I would consider MS (though less likely given age and presentation), CNS lymphoma, and other opportunistic infections (e.g., toxoplasmosis, fungal abscess), especially given immunosuppression. For MRI, prioritize FLAIR, DWI, and T2-weighted sequences to assess for demyelination, restricted diffusion, and mass effect; PML lesions are typically non-enhancing, asymmetric, and involve subcortical white matter. If MRI is inconclusive, further workup (including CSF cytology and infectious panels) may be warranted."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 13,
-        "phase": "consultation",
-        "text": "Thank you for your detailed recommendations. I agree that the clinical context and risk factors make PML the leading diagnosis, but it\u2019s important to keep a broad differential given the patient\u2019s immunosuppressed state. A few follow-up points and questions: 1. **Clinical Course and Red Flags:** - The patient\u2019s symptoms have progressed over 1-2 weeks, which is somewhat rapid but not hyperacute. Would you expect PML to progress at this rate, or does this time course raise suspicion for other etiologies (e.g., CNS lymphoma or abscess)? - Are there any subtle clinical features that might help distinguish PML from CNS lymphoma or other opportunistic infections at this stage, or is imaging the only way to differentiate? 2. **Imaging and Additional Workup:** - If the MRI shows ring-enhancing lesions or mass effect, would you prioritize lymphoma or abscess over PML, and would you recommend early neurosurgical consultation for biopsy?"
-      },
-      {
-        "speaker": "Specialist (Neurologist)",
-        "turn": 13,
-        "phase": "consultation",
-        "text": "PML can progress over weeks to months, so this time course is compatible, but CNS lymphoma or abscess can also present subacutely, especially in immunosuppressed patients. Clinically, PML often lacks systemic symptoms and mass effect, while abscess may have fever and lymphoma may cause raised ICP or constitutional symptoms, but these distinctions are not always clear\u2014imaging is key. If MRI shows ring enhancement or mass effect, prioritize lymphoma or abscess and consult neurosurgery early for possible biopsy and definitive diagnosis."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 14,
-        "phase": "consultation",
-        "text": "Thank you for clarifying the clinical distinctions and emphasizing the importance of imaging in this context. I agree that the absence of systemic symptoms and mass effect makes PML more likely, but we must remain vigilant for other possibilities given the patient\u2019s immunosuppressed state. A few additional points and questions to further refine our approach: 1. **CSF Analysis:** If the MRI is inconclusive or shows atypical findings, would you recommend proceeding with a lumbar puncture for broader CSF analysis (including cytology, flow cytometry, and infectious PCR panels), even if there is no overt evidence of raised intracranial pressure? Are there specific markers or findings you would prioritize in this scenario? 2. **Natalizumab Rebound:** Given the plan to hold natalizumab, is there a risk of rebound inflammatory activity or IRIS (immune reconstitution inflammatory syndrome) that we should monitor for, especially if PML is confirmed or highly suspected? Would you recommend any prophylactic or"
-      },
-      {
-        "speaker": "Specialist (Neurologist)",
-        "turn": 14,
-        "phase": "consultation",
-        "text": "Yes, if MRI is inconclusive or atypical, I recommend lumbar puncture for comprehensive CSF analysis\u2014including cytology, flow cytometry, JC virus PCR, and panels for other pathogens (HSV, VZV, EBV, fungi, toxoplasma). Regarding natalizumab, stopping it can trigger IRIS, especially if PML is present; monitor closely for clinical worsening and consider corticosteroids if IRIS develops, but prophylactic steroids are not routinely recommended unless IRIS is suspected."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 15,
-        "phase": "consultation",
-        "text": "Thank you for your guidance regarding CSF analysis and the management of potential IRIS following natalizumab cessation. A few additional points and questions to further refine our diagnostic and management approach: 1. **Clinical Monitoring and Early Signs of IRIS:** - Are there particular clinical features or early warning signs of IRIS that you recommend we monitor for in this patient, especially in the first few weeks after stopping natalizumab? - Would you suggest any baseline labs or imaging prior to natalizumab withdrawal to help distinguish IRIS from PML progression if the patient deteriorates? 2. **Role of Brain Biopsy:** - If both MRI and CSF studies are inconclusive but clinical suspicion for PML or CNS lymphoma remains high, at what point would you consider a brain biopsy? - Are there specific radiological or clinical features that would prompt you to expedite neurosurgical evaluation? 3. **Infection Prophylaxis and Supportive Care:**"
-      },
-      {
-        "speaker": "Specialist (Neurologist)",
-        "turn": 15,
-        "phase": "consultation",
-        "text": "For IRIS, monitor for new or worsening neurological deficits, fever, or radiological signs of increased lesion size with contrast enhancement\u2014these may indicate inflammatory reconstitution rather than PML progression. Baseline MRI and labs (CBC, CRP, ESR) before stopping natalizumab can help distinguish IRIS from PML if deterioration occurs. If MRI and CSF are inconclusive but suspicion remains high, consider brain biopsy if there is clinical progression or if imaging shows mass effect, ring enhancement, or atypical features; early neurosurgical input is warranted in these scenarios. For infection prophylaxis, ensure standard measures for immunosuppressed patients and tailor based on specific risks identified during workup."
-      }
+    "specialist_reason": "A Neurologist is the most appropriate specialist because the patient's symptoms\u2014fluctuating muscle weakness, double vision, ptosis, and worsening with activity\u2014are classic for a neuromuscular junction disorder such as myasthenia gravis, which falls under the expertise of neurology.",
+    "Top_1": [
+      "Myasthenia gravis"
     ],
-    "requested_tests": [],
-    "tests_requested_count": 0,
-    "available_tests": [
-      "MRI_Brain"
+    "Top_1 is_correct": true,
+    "Top_1 correct rank": 1,
+    "Top_3": [
+      "Myasthenia gravis",
+      "Early generalized myasthenia gravis",
+      "Ocular myasthenia gravis"
     ],
-    "determined_specialist": "Neurologist",
-    "consultation_analysis": {
-      "premature_conclusion": false,
-      "diagnoses_considered": [
-        "Progressive Multifocal Leukoencephalopathy (PML)",
-        "Multiple Sclerosis (MS)",
-        "CNS lymphoma",
-        "Opportunistic infections",
-        "Toxoplasmosis",
-        "Fungal abscess",
-        "Vascular event (stroke)",
-        "Brain abscess"
-      ],
-      "diagnoses_considered_count": 8,
-      "disagreements": 0
-    },
-    "final_doctor_diagnosis": "Progressive Multifocal Leukoencephalopathy (PML)",
-    "is_correct": false,
-    "tests_left_out": [
-      "MRI_Brain"
+    "Top_3 is_correct": true,
+    "Top_3 correct rank": 1,
+    "Top_5": [
+      "Myasthenia gravis",
+      "Early generalized myasthenia gravis",
+      "Ocular myasthenia gravis",
+      "Bulbar myasthenia gravis",
+      "Lambert-Eaton myasthenic syndrome"
     ],
-    "specialist_reason": "A Neurologist is the most appropriate specialist because the patient is experiencing progressive gait instability, right-sided weakness, and clumsiness without sensory loss, headache, or systemic symptoms. These are focal neurological deficits suggesting a central nervous system process. Additionally, the patient is on natalizumab, which is associated with progressive multifocal leukoencephalopathy (PML), a serious neurological complication. A Neurologist is best equipped to evaluate, diagnose, and manage such neurological symptoms and complications."
-  },
-  {
-    "timestamp": "2025-07-16T18:30:41.856788",
-    "model": "gpt-4.1",
-    "dataset": "MedQA",
-    "scenario_id": 2,
-    "max_patient_turns": 10,
-    "max_consultation_turns": 5,
-    "correct_diagnosis": "Hirschsprung disease",
-    "dialogue_history": [
-      {
-        "speaker": "Doctor",
-        "turn": 0,
-        "phase": "patient",
-        "text": "Hello, can you please describe your main symptoms and how long you have been experiencing them?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 1,
-        "phase": "patient",
-        "text": "I\u2019ve been really fussy for the past few days and cry a lot, especially when my tummy is touched. I haven\u2019t been eating as much as usual, but my mom says I still seem to be gaining weight."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 1,
-        "phase": "patient",
-        "text": "Have you noticed any vomiting, changes in your stool (like diarrhea or constipation), or blood in your stool or vomit?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 2,
-        "phase": "patient",
-        "text": "No, I haven\u2019t had any vomiting or diarrhea, and there hasn\u2019t been any blood in my stool or vomit."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 2,
-        "phase": "patient",
-        "text": "Have you had any fevers, or do you feel warm to the touch? Have you noticed any swelling or a lump in your tummy area?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 3,
-        "phase": "patient",
-        "text": "No, I haven\u2019t had any fevers and I don\u2019t feel warm. My tummy does look bigger than usual, and I get really upset when it\u2019s touched."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 3,
-        "phase": "patient",
-        "text": "Have you noticed any changes in your urine, such as less urine, darker color, or difficulty urinating?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 4,
-        "phase": "patient",
-        "text": "I haven\u2019t had any trouble peeing, and my diapers are still getting wet like usual. I haven\u2019t noticed any darker color or changes in my urine."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 4,
-        "phase": "patient",
-        "text": "Have you had any recent illnesses, injuries, or vaccinations? Has anyone else in your household been sick recently?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 5,
-        "phase": "patient",
-        "text": "No, I haven\u2019t been sick recently, and no one else at home has been ill either. I haven\u2019t had any injuries or vaccinations lately."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 5,
-        "phase": "patient",
-        "text": "Have you noticed any changes in your bowel movements, such as going less often, straining, or your stools being harder than usual?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 6,
-        "phase": "patient",
-        "text": "I haven\u2019t been having as many dirty diapers as usual, and when I do, it seems like I have to push harder. My mom says my tummy looks bigger too."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 6,
-        "phase": "patient",
-        "text": "Have you noticed any redness, bulging, or tenderness around your belly button or groin area? Has your mom noticed any unusual movements or sounds coming from your tummy?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 7,
-        "phase": "patient",
-        "text": "My mom says my tummy looks bigger than usual, but she hasn\u2019t seen any redness or bulging near my belly button or groin. Sometimes my tummy makes loud gurgling noises, and I cry a lot when you touch it."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 7,
-        "phase": "patient",
-        "text": "Have you noticed any recent changes in your activity level, such as being more tired, less playful, or sleeping more than usual?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 8,
-        "phase": "patient",
-        "text": "Yes, I\u2019ve been more tired and less playful than usual. I just don\u2019t seem to have as much energy lately."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 8,
-        "phase": "patient",
-        "text": "Have you noticed any yellowing of your skin or eyes, or any unusual bruising or bleeding?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 9,
-        "phase": "patient",
-        "text": "No, I haven\u2019t noticed any yellowing of my skin or eyes, and there hasn\u2019t been any unusual bruising or bleeding."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 9,
-        "phase": "patient",
-        "text": "Thank you for your answers. To help us understand what\u2019s causing your symptoms, I\u2019d like to check inside your tummy. REQUEST TEST: Abdominal_Ultrasound"
-      },
-      {
-        "speaker": "Measurement",
-        "turn": 10,
-        "phase": "patient",
-        "text": "NORMAL READINGS"
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 10,
-        "phase": "patient",
-        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
-      },
-      {
-        "speaker": "System",
-        "turn": 11,
-        "phase": "consultation",
-        "text": "Consultation started with Gastroenterologist. Reason: A Gastroenterologist is the most appropriate specialist because the patient\u2019s main symptoms\u2014abdominal distension, pain on palpation, decreased appetite, constipation, and abnormal bowel sounds\u2014are all centered on the gastrointestinal (GI) tract. The absence of urinary, infectious, or systemic symptoms, along with a normal abdominal ultrasound, further narrows the concern to functional or motility issues of the GI system, which are best evaluated and managed by a Gastroenterologist."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 11,
-        "phase": "consultation",
-        "text": "Thank you for reviewing the case. To summarize, we have a pediatric patient (presumably an infant or young child) with several days of increased fussiness, abdominal distension, and tenderness to palpation. The child is eating less but still gaining weight, has no vomiting or diarrhea, no blood in stool or vomit, no fever, and no urinary changes. There is a decrease in stool frequency and increased straining, with harder stools. No jaundice, bruising, or bleeding. Abdominal ultrasound is normal. **My initial thoughts and questions:** ### Differential Diagnosis 1. **Functional Constipation:** - The history of decreased stool frequency, harder stools, straining, and abdominal distension is highly suggestive. The absence of alarming features (vomiting, blood, fever, abnormal ultrasound) supports this. 2. **Encopresis/Fecal Impaction:** - Possible if there is significant stool burden, but the ultrasound was normal, which"
-      },
-      {
-        "speaker": "Specialist (Gastroenterologist)",
-        "turn": 11,
-        "phase": "consultation",
-        "text": "I agree that functional constipation is most likely given the clinical picture and normal ultrasound. I recommend a trial of dietary modifications (increased fluids, fiber if age-appropriate), and possibly a short course of osmotic laxatives (e.g., polyethylene glycol) if dietary changes are insufficient. Please monitor for any red flag symptoms (vomiting, persistent pain, blood in stool, failure to thrive) and consider further evaluation if symptoms persist or worsen."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 12,
-        "phase": "consultation",
-        "text": "Thank you for your input and recommendations. I agree that functional constipation is the leading diagnosis, especially given the absence of red flag symptoms and a normal abdominal ultrasound. A few points and questions to further refine our approach: 1. **Duration and Severity:** - Would you recommend any further workup at this stage if the constipation has only been present for a few days, or would you reserve additional testing for cases persisting beyond a certain duration (e.g., >2 weeks or recurrent episodes)? 2. **Red Flags and Follow-up:** - Are there any subtle signs or symptoms you would consider particularly concerning in this age group that might prompt earlier referral or imaging, even with a normal ultrasound (e.g., persistent severe abdominal distension, failure to thrive, or family history of Hirschsprung disease)? 3. **Laxative Choice and Dosing:** - For infants or toddlers, do you have a preferred starting dose and duration for polyethylene glycol, and do you recommend"
-      },
-      {
-        "speaker": "Specialist (Gastroenterologist)",
-        "turn": 12,
-        "phase": "consultation",
-        "text": "1. For constipation of only a few days\u2019 duration without red flags, further workup is not needed; reserve additional testing for symptoms persisting >2 weeks, recurrent episodes, or if red flags develop. 2. Subtle concerning signs include persistent/severe distension, poor weight gain, delayed meconium passage, ribbon-like stools, or family history of Hirschsprung disease\u2014these warrant earlier referral. 3. For toddlers, start polyethylene glycol at 0.4 g/kg/day (max 17g/day), titrate to effect, and continue for at least 2 weeks after symptom resolution; for infants, dosing is similar but start at the lower end and monitor closely for tolerance."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 13,
-        "phase": "consultation",
-        "text": "Thank you for your clear recommendations. I agree with your approach and will proceed with conservative management for now, given the short duration and absence of red flags. A few follow-up points for your input: 1. **Dietary Modifications:** - For infants who are not yet on solids, would you recommend any specific changes (e.g., adjusting formula, offering small amounts of water or juice), or is it best to focus on laxatives if dietary changes are not feasible? - For toddlers, do you have preferred dietary strategies (types of fiber, fruits, or juices) that you find most effective? 2. **Monitoring and Follow-up:** - What is your preferred follow-up interval for reassessment in these cases? Would you recommend a phone check-in within a week, or is in-person follow-up after 2 weeks sufficient if symptoms are improving? - If symptoms persist despite initial management, would you recommend repeating the abdominal ultrasound, or would you proceed directly to referral"
-      },
-      {
-        "speaker": "Specialist (Gastroenterologist)",
-        "turn": 13,
-        "phase": "consultation",
-        "text": "For infants not yet on solids, avoid juice/water under 6 months unless advised; if formula-fed, ensure proper mixing\u2014otherwise, focus on laxatives if dietary changes aren\u2019t feasible. For toddlers, increase fiber with fruits (prunes, pears, plums), vegetables, whole grains, and offer water regularly. I recommend follow-up within 1\u20132 weeks (phone or in-person based on severity); if no improvement after 2 weeks or if symptoms worsen, refer to a specialist rather than repeat ultrasound unless new findings arise."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 14,
-        "phase": "consultation",
-        "text": "Thank you for your detailed recommendations. I agree with your approach and will tailor management based on the child\u2019s age and feeding status. A few additional points for your input: 1. **Stool Withholding Behaviors:** - In your experience, how often do you see behavioral stool withholding as a contributing factor in toddlers, and are there specific strategies you recommend for parents to address this (e.g., scheduled toileting, positive reinforcement)? 2. **Role of Probiotics:** - Do you find any benefit in recommending probiotics for functional constipation in infants or toddlers, or is the evidence still insufficient to support their routine use? 3. **Red Flags\u2014Subtle Neurologic Signs:** - Are there any subtle neurologic findings (e.g., abnormal lower limb tone, sacral dimple, or tuft of hair) that you routinely screen for in cases of constipation, given the rare possibility of underlying spinal dysraphism? 4. **Long-term Management:**"
-      },
-      {
-        "speaker": "Specialist (Gastroenterologist)",
-        "turn": 14,
-        "phase": "consultation",
-        "text": "1. Stool withholding is very common in toddlers and often perpetuates constipation; I recommend scheduled toileting after meals, positive reinforcement, and avoiding punishment. 2. Evidence for probiotics in pediatric constipation is limited and inconsistent, so I do not routinely recommend them. 3. Yes, I screen for subtle neurologic signs such as abnormal lower limb tone, reflexes, sacral dimples, or tufts of hair, as these may indicate spinal dysraphism. 4. For long-term management, maintain adequate fiber/fluid intake, regular toileting habits, and continue laxatives as needed, with gradual weaning only after sustained symptom resolution."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 15,
-        "phase": "consultation",
-        "text": "Thank you for your comprehensive answers and practical recommendations. I agree that functional constipation remains the most likely diagnosis, and your suggestions for behavioral interventions and long-term management are very helpful. A few additional points and questions to further refine our approach and ensure we\u2019re not missing any less common causes: 1. **Physical Exam Nuances:** - In your experience, are there any subtle abdominal exam findings (e.g., palpable stool, specific areas of tenderness, or abdominal wall rigidity) that would prompt you to reconsider the diagnosis or expedite further workup, even in the absence of red flags on history and ultrasound? 2. **Hirschsprung Disease Considerations:** - Given that the child is still gaining weight and has no history of delayed meconium passage, do you feel comfortable excluding Hirschsprung disease at this stage, or would you consider a rectal exam or referral for contrast enema if symptoms persist? 3. **Medication Review:** - Are there any medications"
-      },
-      {
-        "speaker": "Specialist (Gastroenterologist)",
-        "turn": 15,
-        "phase": "consultation",
-        "text": "1. On exam, true abdominal wall rigidity, focal peritonitis, or a mass not consistent with stool would prompt expedited workup; diffuse tenderness or palpable stool alone is common in constipation. 2. With normal growth and no delayed meconium, Hirschsprung is unlikely, but if symptoms persist or there is refractory constipation, a rectal exam and/or referral for contrast enema is reasonable. 3. Medications such as anticholinergics, opioids, iron supplements, and some antiepileptics can contribute to constipation\u2014review the medication list if symptoms are persistent or unexplained."
-      }
+    "Top_5 is_correct": true,
+    "Top_5 correct rank": 1,
+    "Top_7": [
+      "Myasthenia gravis",
+      "Early generalized myasthenia gravis",
+      "Ocular myasthenia gravis",
+      "Bulbar myasthenia gravis",
+      "Lambert-Eaton myasthenic syndrome",
+      "Mitochondrial myopathy",
+      "Botulism"
     ],
-    "requested_tests": [
-      "Abdominal_Ultrasound"
+    "Top_7 is_correct": true,
+    "Top_7 correct rank": 1,
+    "Top_10": [
+      "Myasthenia gravis",
+      "Early generalized myasthenia gravis",
+      "Ocular myasthenia gravis",
+      "Bulbar myasthenia gravis",
+      "Lambert-Eaton myasthenic syndrome",
+      "Mitochondrial myopathy",
+      "Botulism",
+      "Thyroid eye disease",
+      "Multiple sclerosis",
+      "Brainstem stroke"
     ],
-    "tests_requested_count": 1,
-    "available_tests": [
-      "Blood_Test",
-      "Abdominal_X-ray",
-      "Barium_Enema"
-    ],
-    "determined_specialist": "Gastroenterologist",
-    "consultation_analysis": {
-      "premature_conclusion": false,
-      "diagnoses_considered": [
-        "Functional Constipation",
-        "Encopresis/Fecal Impaction",
-        "Hirschsprung Disease",
-        "Spinal Dysraphism"
-      ],
-      "diagnoses_considered_count": 4,
-      "disagreements": 0
-    },
-    "final_doctor_diagnosis": "Functional Constipation",
-    "is_correct": false,
-    "tests_left_out": [
-      "Blood_Test",
-      "Barium_Enema",
-      "Abdominal_X-ray"
-    ],
-    "specialist_reason": "A Gastroenterologist is the most appropriate specialist because the patient\u2019s main symptoms\u2014abdominal distension, pain on palpation, decreased appetite, constipation, and abnormal bowel sounds\u2014are all centered on the gastrointestinal (GI) tract. The absence of urinary, infectious, or systemic symptoms, along with a normal abdominal ultrasound, further narrows the concern to functional or motility issues of the GI system, which are best evaluated and managed by a Gastroenterologist."
-  },
-  {
-    "timestamp": "2025-07-16T18:31:56.227875",
-    "model": "gpt-4.1",
-    "dataset": "MedQA",
-    "scenario_id": 3,
-    "max_patient_turns": 10,
-    "max_consultation_turns": 5,
-    "correct_diagnosis": "Diffuse large B-cell lymphoma",
-    "dialogue_history": [
-      {
-        "speaker": "Doctor",
-        "turn": 0,
-        "phase": "patient",
-        "text": "Hello, can you please describe your main symptoms and how long you have been experiencing them?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 1,
-        "phase": "patient",
-        "text": "I've been feeling really tired and have had worsening pain in my abdomen for about four weeks now. I've also noticed some swelling in my neck over the past few days."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 1,
-        "phase": "patient",
-        "text": "Have you experienced any weight loss, night sweats, or fevers during this time?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 2,
-        "phase": "patient",
-        "text": "Yes, I've lost about 12 pounds recently and have been having a lot of night sweats, but I haven't had any fevers."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 2,
-        "phase": "patient",
-        "text": "Have you noticed any changes in your appetite, or any issues with nausea, vomiting, or changes in your bowel movements?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 3,
-        "phase": "patient",
-        "text": "My appetite has definitely decreased, and I feel full pretty quickly when I try to eat. I haven\u2019t had any nausea or vomiting, but my bowel movements have been pretty normal."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 3,
-        "phase": "patient",
-        "text": "Have you noticed any lumps or bumps elsewhere on your body, such as under your arms or in your groin? Have you had any recent infections or illnesses before these symptoms started?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 4,
-        "phase": "patient",
-        "text": "I haven\u2019t noticed any lumps anywhere else besides my neck, and I haven\u2019t had any recent infections or illnesses before all this started. The neck swelling is new for me."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 4,
-        "phase": "patient",
-        "text": "Have you experienced any itching, unusual bruising, or bleeding? Also, is the neck swelling tender or painful to touch?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 5,
-        "phase": "patient",
-        "text": "I haven\u2019t noticed any itching, bruising, or bleeding. The swelling in my neck isn\u2019t really painful, but it does feel a bit uncomfortable and tight."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 5,
-        "phase": "patient",
-        "text": "Have you had any recent travel, exposure to chemicals, or family history of cancer or blood disorders?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 6,
-        "phase": "patient",
-        "text": "No, I haven\u2019t traveled recently, and I don\u2019t know of any family history of cancer or blood disorders. I do work around chemicals sometimes at the construction site, but nothing out of the ordinary."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 6,
-        "phase": "patient",
-        "text": "Have you noticed any difficulty breathing, coughing, or chest discomfort along with your other symptoms?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 7,
-        "phase": "patient",
-        "text": "No, I haven\u2019t had any trouble breathing or coughing, and I haven\u2019t felt any chest discomfort. It\u2019s mostly the abdominal pain, fatigue, and the swelling in my neck that are bothering me."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 7,
-        "phase": "patient",
-        "text": "Have you noticed if the swelling in your neck has been getting larger, and is it on one side or both sides? Also, have you had any recent dental issues or sore throat?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 8,
-        "phase": "patient",
-        "text": "The swelling in my neck seems to be getting a bit bigger, and it feels like it\u2019s mostly on both sides. I haven\u2019t had any dental problems or a sore throat recently."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 8,
-        "phase": "patient",
-        "text": "Have you noticed any drenching sweats during the day, or do you feel feverish even if you haven\u2019t measured a temperature? Also, have you had any recent rashes or joint pain?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 9,
-        "phase": "patient",
-        "text": "The sweats mostly happen at night and I wake up soaked, but I haven\u2019t really felt feverish during the day. I haven\u2019t had any rashes or joint pain either."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 9,
-        "phase": "patient",
-        "text": "Thank you for your answers. Have you noticed any changes in your urine color, or any yellowing of your skin or eyes?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 10,
-        "phase": "patient",
-        "text": "No, I haven\u2019t noticed any changes in my urine color, and I haven\u2019t seen any yellowing of my skin or eyes."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 10,
-        "phase": "patient",
-        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
-      },
-      {
-        "speaker": "System",
-        "turn": 11,
-        "phase": "consultation",
-        "text": "Consultation started with Oncologist. Reason: An Oncologist is the most appropriate specialist because the patient presents with constitutional \"B symptoms\" (night sweats, significant weight loss, fatigue), painless bilateral neck lymphadenopathy, abdominal pain, and decreased appetite\u2014features highly suggestive of a lymphoproliferative disorder such as lymphoma or another malignancy. These symptoms and findings warrant evaluation by a cancer specialist for further diagnostic workup and management."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 11,
-        "phase": "consultation",
-        "text": "Thank you for reviewing the case. Here\u2019s a summary of the key findings: **Summary of Findings:** - **Constitutional symptoms:** Fatigue, significant unintentional weight loss (~12 lbs), drenching night sweats, decreased appetite, early satiety. - **Local symptoms:** Worsening abdominal pain for 4 weeks, new-onset bilateral, non-tender cervical lymphadenopathy (progressively enlarging over days). - **No:** Fever, pruritus, bruising, bleeding, respiratory symptoms, GI changes, jaundice, or recent infections. - **No:** Family history of malignancy or hematologic disorders. - **Occupational exposure:** Construction work, some chemical exposure, but nothing specific. - **No:** Recent travel, dental issues, or sore throat. **Physical findings (from history):** - Bilateral, non-tender, progressively enlarging cervical lymphadenopathy. - Abdominal pain with possible fullness (suggesting possible splen"
-      },
-      {
-        "speaker": "Specialist (Oncologist)",
-        "turn": 11,
-        "phase": "consultation",
-        "text": "This constellation of B symptoms (weight loss, night sweats, fatigue), rapidly progressive bilateral cervical lymphadenopathy, and abdominal pain/fullness is highly concerning for lymphoma (particularly Hodgkin or aggressive non-Hodgkin lymphoma). I recommend urgent imaging (CT neck/chest/abdomen/pelvis) and excisional lymph node biopsy for definitive diagnosis; also obtain CBC, LDH, uric acid, and peripheral smear. Are there any palpable abdominal masses or evidence of hepatosplenomegaly on exam?"
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 12,
-        "phase": "consultation",
-        "text": "Thank you for your assessment. I agree that lymphoma is the leading consideration given the prominent B symptoms, rapidly progressive bilateral cervical lymphadenopathy, and abdominal pain/fullness suggestive of possible nodal or splenic involvement. To answer your question: On physical examination, the patient has a palpable, firm, non-tender mass in the left upper quadrant, consistent with splenomegaly. There is no obvious hepatomegaly, and no discrete abdominal masses are appreciated beyond the splenic enlargement. The cervical lymphadenopathy is bilateral, non-tender, and mobile, with no overlying skin changes. No axillary or inguinal lymphadenopathy is detected on exam. There are no signs of acute infection, and the absence of pruritus, bruising, or bleeding makes acute leukemia or other marrow-infiltrative processes less likely, though not excluded. **Questions for you:** 1. Given the rapid progression and significant B symptoms, would you prioritize excisional biopsy"
-      },
-      {
-        "speaker": "Specialist (Oncologist)",
-        "turn": 12,
-        "phase": "consultation",
-        "text": "Yes, I would prioritize an excisional lymph node biopsy as the next step, as it provides the most diagnostic tissue for lymphoma subtyping and guides management. Concurrently, proceed with staging CT imaging and laboratory workup (CBC, LDH, uric acid, peripheral smear) to assess disease extent and identify any tumor lysis risk. If cytopenias or blasts are present, consider adding a bone marrow biopsy."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 13,
-        "phase": "consultation",
-        "text": "Thank you for your clear recommendations. I agree that an excisional lymph node biopsy is the most definitive next step, and we will proceed with this as a priority. I will also arrange for urgent CT imaging (neck, chest, abdomen, pelvis) and the recommended laboratory workup. A few points and questions to further refine our approach: 1. **Lymphoma Subtype Suspicion:** Given the patient\u2019s age (not specified, but assuming adult), prominent B symptoms, rapidly progressive bilateral cervical lymphadenopathy, and splenomegaly, do you have a higher suspicion for a particular lymphoma subtype (e.g., classical Hodgkin lymphoma vs. aggressive non-Hodgkin lymphoma such as diffuse large B-cell lymphoma)? The absence of pruritus and mediastinal symptoms is noted, but the B symptoms are quite marked. 2. **Tumor Lysis Risk:** If the laboratory workup reveals elevated LDH and uric acid, would you recommend starting"
-      },
-      {
-        "speaker": "Specialist (Oncologist)",
-        "turn": 13,
-        "phase": "consultation",
-        "text": "1. The rapid progression, marked B symptoms, and splenomegaly raise suspicion for an aggressive non-Hodgkin lymphoma (e.g., diffuse large B-cell lymphoma), though classical Hodgkin lymphoma remains possible, especially if Reed-Sternberg cells are seen on biopsy. 2. If LDH and uric acid are elevated, I recommend initiating tumor lysis prophylaxis (IV hydration, allopurinol or rasburicase as indicated) prior to starting therapy, and closely monitoring renal function and electrolytes."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 14,
-        "phase": "consultation",
-        "text": "Thank you for your detailed input. I agree that the clinical picture is most consistent with an aggressive lymphoma, particularly diffuse large B-cell lymphoma (DLBCL), given the rapid progression, prominent B symptoms, and splenomegaly. Hodgkin lymphoma remains in the differential, but the absence of mediastinal involvement and the degree of splenic enlargement may favor DLBCL or another high-grade non-Hodgkin lymphoma. A few points and questions to further refine our diagnostic and management approach: 1. **Additional Laboratory Workup:** - Would you recommend including viral serologies (HIV, hepatitis B/C, EBV) at this stage, given their implications for both etiology and treatment planning? - Should we consider baseline cardiac function assessment (e.g., echocardiogram) in anticipation of potential anthracycline-based chemotherapy? 2. **Bone Marrow Biopsy:** - Given the presence of splenomegaly but no cytopenias"
-      },
-      {
-        "speaker": "Specialist (Oncologist)",
-        "turn": 14,
-        "phase": "consultation",
-        "text": "Yes, I recommend including HIV, hepatitis B/C, and EBV serologies now, as they impact both etiology and treatment safety (e.g., risk of hepatitis B reactivation with immunochemotherapy). Baseline echocardiogram is appropriate before anthracycline-based regimens. Bone marrow biopsy is advisable for accurate staging, even in the absence of cytopenias, given splenic involvement."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 15,
-        "phase": "consultation",
-        "text": "Thank you for your guidance. I will proceed with the recommended viral serologies, baseline echocardiogram, and arrange for a bone marrow biopsy as part of the initial staging workup. A few additional points for your input: 1. **PET-CT for Staging:** Would you recommend a PET-CT over conventional CT for initial staging, given its superior sensitivity for both nodal and extranodal disease in aggressive lymphomas? If so, should we delay the bone marrow biopsy until after PET-CT, or proceed concurrently? 2. **CNS Prophylaxis Consideration:** Given the presence of B symptoms and splenic involvement, do you see any features here that would prompt consideration of CNS prophylaxis at this stage, or would you reserve that decision until after histopathology and full staging? 3. **Supportive Care:** While awaiting tissue diagnosis, would you recommend empiric corticosteroids if the patient\u2019s symptoms worsen, or should we avoid steroids to preserve diagnostic yield? 4"
-      },
-      {
-        "speaker": "Specialist (Oncologist)",
-        "turn": 15,
-        "phase": "consultation",
-        "text": "1. PET-CT is preferred for initial staging in aggressive lymphomas due to its superior sensitivity; bone marrow biopsy can proceed concurrently, as PET-CT may not fully exclude marrow involvement. 2. CNS prophylaxis is not routinely indicated based on current features\u2014reserve this decision until histopathology and full staging, unless high-risk sites (e.g., testicular, renal, adrenal, epidural) or CNS symptoms emerge. 3. Avoid empiric corticosteroids prior to biopsy if possible, as they can obscure histopathology; use only if there is life-threatening compromise or severe symptoms."
-      }
-    ],
-    "requested_tests": [],
-    "tests_requested_count": 0,
-    "available_tests": [
-      "Blood_Work",
-      "Imaging",
-      "Biopsy"
-    ],
-    "determined_specialist": "Oncologist",
-    "consultation_analysis": {
-      "premature_conclusion": false,
-      "diagnoses_considered": [
-        "lymphoma",
-        "Hodgkin lymphoma",
-        "aggressive non-Hodgkin lymphoma",
-        "diffuse large B-cell lymphoma",
-        "malignancy (general)",
-        "acute leukemia",
-        "other marrow-infiltrative processes"
-      ],
-      "diagnoses_considered_count": 6,
-      "disagreements": 0
-    },
-    "final_doctor_diagnosis": "Aggressive non-Hodgkin lymphoma, most likely diffuse large B-cell lymphoma (DLBCL)",
-    "is_correct": true,
-    "tests_left_out": [
-      "Biopsy",
-      "Blood_Work",
-      "Imaging"
-    ],
-    "specialist_reason": "An Oncologist is the most appropriate specialist because the patient presents with constitutional \"B symptoms\" (night sweats, significant weight loss, fatigue), painless bilateral neck lymphadenopathy, abdominal pain, and decreased appetite\u2014features highly suggestive of a lymphoproliferative disorder such as lymphoma or another malignancy. These symptoms and findings warrant evaluation by a cancer specialist for further diagnostic workup and management."
-  },
-  {
-    "timestamp": "2025-07-16T18:33:06.824511",
-    "model": "gpt-4.1",
-    "dataset": "MedQA",
-    "scenario_id": 4,
-    "max_patient_turns": 10,
-    "max_consultation_turns": 5,
-    "correct_diagnosis": "Acute interstitial nephritis",
-    "dialogue_history": [
-      {
-        "speaker": "Doctor",
-        "turn": 0,
-        "phase": "patient",
-        "text": "Can you describe your main symptoms and how long you have been experiencing them?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 1,
-        "phase": "patient",
-        "text": "I\u2019ve been feeling very tired, have had pain in my left flank, and have had a fever for about a week now. These symptoms started while I was being treated for sinusitis, but the sinus symptoms have gone away."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 1,
-        "phase": "patient",
-        "text": "Have you noticed any changes in your urination, such as pain, increased frequency, blood in the urine, or foul odor?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 2,
-        "phase": "patient",
-        "text": "No, I haven\u2019t noticed any pain, changes in frequency, blood, or unusual odor in my urine. Everything seems normal in that regard."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 2,
-        "phase": "patient",
-        "text": "Have you experienced any nausea, vomiting, or loss of appetite along with your other symptoms?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 3,
-        "phase": "patient",
-        "text": "No, I haven\u2019t had any nausea or vomiting, and my appetite has been about the same as usual."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 3,
-        "phase": "patient",
-        "text": "Have you noticed any weight loss, night sweats, or chills along with your fever and fatigue?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 4,
-        "phase": "patient",
-        "text": "I haven\u2019t noticed any weight loss or night sweats, but I do get chills from time to time with the fever."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 4,
-        "phase": "patient",
-        "text": "Have you had any recent injuries, trauma, or strenuous physical activity that could explain the left flank pain?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 5,
-        "phase": "patient",
-        "text": "No, I haven\u2019t had any injuries or done anything strenuous lately. The flank pain just started on its own."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 5,
-        "phase": "patient",
-        "text": "Have you ever had any kidney problems or urinary tract infections in the past?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 6,
-        "phase": "patient",
-        "text": "No, I\u2019ve never had any kidney problems or urinary tract infections before. This is the first time I\u2019ve had these kinds of symptoms."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 6,
-        "phase": "patient",
-        "text": "Have you noticed any swelling in your legs, ankles, or around your eyes recently?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 7,
-        "phase": "patient",
-        "text": "No, I haven\u2019t noticed any swelling in my legs, ankles, or around my eyes."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 7,
-        "phase": "patient",
-        "text": "Have you recently traveled anywhere, been exposed to anyone who was sick, or had any tick bites or animal exposures?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 8,
-        "phase": "patient",
-        "text": "No, I haven\u2019t traveled recently, and I haven\u2019t been around anyone sick or had any tick bites or animal exposures that I know of."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 8,
-        "phase": "patient",
-        "text": "Have you noticed any rashes, joint pain, or unusual bruising anywhere on your body?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 9,
-        "phase": "patient",
-        "text": "I did have a rash while I was taking the first antibiotic, but it went away after my medication was changed. I haven\u2019t noticed any joint pain or unusual bruising."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 9,
-        "phase": "patient",
-        "text": "Have you had any recent blood tests or imaging done since your symptoms began, or would you be willing to have some tests done to help us figure out what\u2019s going on?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 10,
-        "phase": "patient",
-        "text": "I haven\u2019t had any blood tests or imaging done yet since these symptoms started, but I\u2019m willing to have whatever tests you think are necessary."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 10,
-        "phase": "patient",
-        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
-      },
-      {
-        "speaker": "System",
-        "turn": 11,
-        "phase": "consultation",
-        "text": "Consultation started with Infectious Disease. Reason: An Infectious Disease specialist is the most appropriate consultant because the patient presents with persistent fever, fatigue, chills, and flank pain following recent antibiotic treatment for sinusitis, raising concern for an underlying or complicated infection (such as a resistant organism, deep-seated infection, or unusual pathogen). The absence of urinary, gastrointestinal, or trauma-related symptoms, along with the history of antibiotic exposure and transient rash, further suggests the need for expertise in diagnosing and managing atypical, persistent, or complicated infections. An Infectious Disease specialist can guide advanced diagnostic workup and targeted therapy."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 11,
-        "phase": "consultation",
-        "text": "Thank you for reviewing the case. Here\u2019s a summary of the key findings: - **Main symptoms:** 1 week of fever, fatigue, and left flank pain. - **History:** Symptoms began during treatment for sinusitis (now resolved). Developed a rash with the first antibiotic, which resolved after switching medications. - **No urinary symptoms:** No dysuria, frequency, hematuria, or foul odor. - **No GI symptoms:** No nausea, vomiting, or appetite loss. - **No weight loss or night sweats, but chills are present.** - **No trauma, strenuous activity, or prior kidney/UTI history.** - **No edema, travel, sick contacts, tick/animal exposure.** - **No joint pain or unusual bruising.** - **No current rash.** - **No recent labs or imaging.** **My initial thoughts and differential:** 1. **Renal/Perinephric Abscess:** The combination of fever,"
-      },
-      {
-        "speaker": "Specialist (Infectious Disease)",
-        "turn": 11,
-        "phase": "consultation",
-        "text": "Your suspicion for renal or perinephric abscess is reasonable given the fever and flank pain, even in the absence of urinary symptoms. I recommend urgent labs (CBC, creatinine, urinalysis, blood cultures) and imaging (contrast-enhanced CT abdomen/pelvis) to evaluate for abscess or other deep-seated infection. Also consider endocarditis (especially if bacteremia is found) and drug fever as part of the differential."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 12,
-        "phase": "consultation",
-        "text": "Thank you for your input. I agree that urgent labs and imaging are warranted, especially given the persistent fever and localized flank pain. I have a few follow-up questions and thoughts to further refine our differential: 1. **Renal/Perinephric Abscess:** - The absence of urinary symptoms is somewhat atypical, but not unheard of, especially if the infection is localized to the parenchyma or perinephric space. - Would you expect to see pyuria or bacteriuria in the urinalysis in such cases, or can these be absent? 2. **Endocarditis:** - The patient does not report any cardiac history, IV drug use, or known valvular disease. No peripheral stigmata of endocarditis were noted on history. - Would you recommend a screening echocardiogram if blood cultures are positive, even in the absence of cardiac symptoms? 3. **Drug Fever:** - The"
-      },
-      {
-        "speaker": "Specialist (Infectious Disease)",
-        "turn": 12,
-        "phase": "consultation",
-        "text": "1. Pyuria and bacteriuria can be absent in renal or perinephric abscesses, especially if the infection is walled off from the collecting system. 2. Yes, I recommend a screening echocardiogram if blood cultures are positive for typical organisms, even without cardiac symptoms or risk factors, to rule out endocarditis. 3. Please clarify your question regarding drug fever so I can address it specifically."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 13,
-        "phase": "consultation",
-        "text": "Thank you for your clarifications. Here are my follow-up thoughts and questions: **1. Drug Fever:** - The patient did develop a rash with the initial antibiotic, which resolved after switching medications. The fever, however, has persisted for about a week after the change. In your experience, how long after discontinuation of the offending drug would you expect drug fever to resolve? Would you expect any other features (eosinophilia, persistent rash, organ involvement) to be present if this were drug fever? - Are there any specific markers or clinical features that would help distinguish drug fever from an occult infection in this scenario? **2. Imaging and Labs:** - Would you prioritize a contrast-enhanced CT over ultrasound for initial imaging, given the suspicion for a deep-seated abscess? - Are there any additional infectious or non-infectious etiologies you would consider at this stage (e.g., autoimmune, hematologic malignancy), or would you focus primarily on infectious causes until"
-      },
-      {
-        "speaker": "Specialist (Infectious Disease)",
-        "turn": 13,
-        "phase": "consultation",
-        "text": "1. Drug fever typically resolves within 48\u201372 hours after discontinuation of the offending agent; persistent fever beyond this timeframe makes drug fever less likely, especially without ongoing rash, eosinophilia, or organ involvement (e.g., hepatitis, nephritis). No specific markers definitively distinguish drug fever from infection, but lack of systemic features and rapid resolution after stopping the drug are suggestive. 2. I would prioritize contrast-enhanced CT over ultrasound for initial imaging, as it is more sensitive for detecting renal/perinephric abscesses. 3. While infection remains the leading concern, if initial workup is unrevealing, consider autoimmune (e.g., vasculitis) and hematologic malignancy (e.g., lymphoma) in the differential."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 14,
-        "phase": "consultation",
-        "text": "Thank you for your detailed responses. I agree that infection remains the leading concern, and I will proceed with urgent labs and a contrast-enhanced CT as recommended. A few additional points and questions to further refine our approach: **1. Blood Cultures and Empiric Therapy:** - Would you recommend obtaining blood cultures prior to starting empiric antibiotics, or is there a role for immediate empiric therapy given the patient\u2019s stable status (no hypotension, no signs of sepsis)? - If empiric therapy is indicated, do you have a preferred regimen for suspected renal/perinephric abscess in an otherwise healthy adult, pending culture results? **2. Additional Infectious Workup:** - Given the lack of urinary symptoms and the possibility of a hematogenous source, would you recommend any additional infectious workup (e.g., screening for Staphylococcus aureus bacteremia, considering atypical organisms)? - Are there any specific risk factors or exposures I should re-explore with the"
-      },
-      {
-        "speaker": "Specialist (Infectious Disease)",
-        "turn": 14,
-        "phase": "consultation",
-        "text": "1. Blood cultures should be obtained before starting empiric antibiotics, as the patient is stable; empiric therapy can begin immediately after cultures are drawn. For renal/perinephric abscess, I recommend empiric coverage with IV ceftriaxone plus vancomycin (to cover Gram-negatives and MRSA) pending culture results. Given the lack of urinary symptoms and possible hematogenous spread, screen for S. aureus bacteremia and consider asking again about skin infections, dental issues, or IV drug use; also consider atypical organisms if initial workup is negative."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 15,
-        "phase": "consultation",
-        "text": "Thank you for your recommendations. I agree with the plan to obtain blood cultures prior to starting empiric antibiotics and to initiate ceftriaxone plus vancomycin pending results. I will also re-explore the history for possible sources of hematogenous spread, including skin infections, dental issues, or any undisclosed IV drug use. A few additional points for your input: **1. Imaging Findings:** If the CT scan does not reveal an abscess or other focal infection, but the patient continues to have fever and flank pain, would you recommend further imaging (e.g., MRI for possible spinal or psoas involvement), or would you shift focus to non-infectious etiologies at that point? **2. Duration of Empiric Therapy:** Assuming cultures are negative and imaging is unrevealing, how long would you continue empiric antibiotics before considering de-escalation or discontinuation? **3. Additional Laboratory Workup:** Would you recommend any additional baseline labs"
-      },
-      {
-        "speaker": "Specialist (Infectious Disease)",
-        "turn": 15,
-        "phase": "consultation",
-        "text": "1. If CT is unrevealing and symptoms persist, I recommend MRI of the spine and pelvis to assess for occult psoas abscess, vertebral osteomyelitis, or epidural process. 2. If all cultures and imaging remain negative and the patient is clinically stable, empiric antibiotics can generally be discontinued after 48\u201372 hours. 3. Additional baseline labs should include HIV, hepatitis serologies, ANA, and possibly LDH to screen for occult infection, autoimmune, or hematologic etiologies."
-      }
-    ],
-    "requested_tests": [],
-    "tests_requested_count": 0,
-    "available_tests": [
-      "Serum_Biochemistry",
-      "Urinalysis"
-    ],
-    "determined_specialist": "Infectious Disease",
-    "consultation_analysis": {
-      "premature_conclusion": false,
-      "diagnoses_considered": [
-        "renal/perinephric abscess",
-        "deep-seated infection",
-        "resistant organism",
-        "unusual pathogen",
-        "endocarditis",
-        "drug fever",
-        "autoimmune (e.g., vasculitis)",
-        "hematologic malignancy (e.g., lymphoma)",
-        "psoas abscess",
-        "vertebral osteomyelitis",
-        "epidural process"
-      ],
-      "diagnoses_considered_count": 10,
-      "disagreements": 0
-    },
-    "final_doctor_diagnosis": "Renal or perinephric abscess",
-    "is_correct": false,
-    "tests_left_out": [
-      "Urinalysis",
-      "Serum_Biochemistry"
-    ],
-    "specialist_reason": "An Infectious Disease specialist is the most appropriate consultant because the patient presents with persistent fever, fatigue, chills, and flank pain following recent antibiotic treatment for sinusitis, raising concern for an underlying or complicated infection (such as a resistant organism, deep-seated infection, or unusual pathogen). The absence of urinary, gastrointestinal, or trauma-related symptoms, along with the history of antibiotic exposure and transient rash, further suggests the need for expertise in diagnosing and managing atypical, persistent, or complicated infections. An Infectious Disease specialist can guide advanced diagnostic workup and targeted therapy."
-  },
-  {
-    "timestamp": "2025-07-16T18:34:24.649289",
-    "model": "gpt-4.1",
-    "dataset": "MedQA",
-    "scenario_id": 5,
-    "max_patient_turns": 10,
-    "max_consultation_turns": 5,
-    "correct_diagnosis": "Pes anserine bursitis",
-    "dialogue_history": [
-      {
-        "speaker": "Doctor",
-        "turn": 0,
-        "phase": "patient",
-        "text": "Hello, can you please describe your main symptoms and how long you have been experiencing them?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 1,
-        "phase": "patient",
-        "text": "My knee started hurting yesterday, and the pain has been getting worse since then. It\u2019s mostly on the inside, just below my kneecap. I haven\u2019t noticed any swelling or bruising."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 1,
-        "phase": "patient",
-        "text": "Did you experience any injury, twisting, or unusual movement before the pain started, or did it come on without any clear cause?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 2,
-        "phase": "patient",
-        "text": "I didn\u2019t have a specific injury, but I was playing volleyball and did a lot of twisting and pivoting during the game. The pain started after that and has been getting worse since."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 2,
-        "phase": "patient",
-        "text": "Have you noticed any locking, catching, or instability in your knee since the pain started? For example, does it ever feel like your knee might give out or get stuck?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 3,
-        "phase": "patient",
-        "text": "No, I haven\u2019t noticed any locking or catching, and my knee doesn\u2019t feel unstable or like it might give out. It just hurts, especially on the inside below my kneecap."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 3,
-        "phase": "patient",
-        "text": "Have you noticed any redness, warmth, or increased temperature over the painful area of your knee?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 4,
-        "phase": "patient",
-        "text": "No, I haven\u2019t noticed any redness or warmth around my knee. It just feels sore, especially when I move or put weight on it."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 4,
-        "phase": "patient",
-        "text": "Have you had any previous knee injuries or problems with this knee in the past?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 5,
-        "phase": "patient",
-        "text": "No, I haven\u2019t had any previous injuries or problems with this knee before. This pain just started yesterday after playing volleyball."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 5,
-        "phase": "patient",
-        "text": "Does the pain get worse when you go up or down stairs, squat, or kneel? Or is it present even when you are resting?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 6,
-        "phase": "patient",
-        "text": "Yeah, the pain definitely gets worse when I go up or down stairs or when I squat. When I\u2019m just resting, it\u2019s not as noticeable."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 6,
-        "phase": "patient",
-        "text": "Have you noticed any popping sounds or sensations in your knee when you move it, especially during activities that make the pain worse?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 7,
-        "phase": "patient",
-        "text": "No, I haven\u2019t noticed any popping sounds or sensations in my knee, even when I\u2019m moving or playing volleyball. The pain just feels more like a steady ache."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 7,
-        "phase": "patient",
-        "text": "Have you noticed any swelling or difficulty fully straightening or bending your knee since the pain started?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 8,
-        "phase": "patient",
-        "text": "No, I haven\u2019t noticed any swelling, and I can still move my knee fully, but it does hurt when I try to bend it a lot or put weight on it."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 8,
-        "phase": "patient",
-        "text": "Have you tried taking any medications or using ice or heat on your knee, and if so, did it help with the pain?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 9,
-        "phase": "patient",
-        "text": "I tried putting some ice on it last night, but it didn\u2019t seem to help much. I haven\u2019t taken any medications yet."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 9,
-        "phase": "patient",
-        "text": "Have you noticed any pain or tenderness if you press along the inside of your knee, especially just below the joint line?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 10,
-        "phase": "patient",
-        "text": "Yes, it feels quite tender when I press along the inside of my knee, just below the joint line. The pain gets worse if I try to touch or press on that area."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 10,
-        "phase": "patient",
-        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
-      },
-      {
-        "speaker": "System",
-        "turn": 11,
-        "phase": "consultation",
-        "text": "Consultation started with Orthopedist. Reason: An Orthopedist is the most appropriate specialist because the patient\u2019s symptoms\u2014acute knee pain localized to the medial (inside) aspect below the kneecap, tenderness on palpation, worsening pain with activity (stairs, squatting), and a history of recent athletic activity involving twisting\u2014strongly suggest a musculoskeletal injury such as a ligament sprain, meniscal irritation, or pes anserine bursitis. There are no signs of infection (no redness, warmth, or swelling), systemic illness, or neurological involvement, making an orthopedic evaluation for structural knee injury the most relevant next step."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 11,
-        "phase": "consultation",
-        "text": "Thank you for reviewing the case. Based on the history, here are my initial thoughts: **Key findings:** - Acute onset of medial knee pain, localized just below the kneecap (medial/inferior to patella) - No clear traumatic event, but onset after repetitive twisting/pivoting during volleyball - No swelling, bruising, redness, warmth, or instability - Pain is activity-related (worse with stairs, squatting, kneeling), minimal at rest - No locking, catching, or mechanical symptoms - Full range of motion, but pain with deep flexion and palpation over the medial aspect below the joint line - No prior knee issues **Differential diagnosis:** 1. **Pes anserine bursitis** \u2013 Location of pain and tenderness fits well, especially with recent increased activity and pivoting. No swelling or warmth, but this can be subtle. 2. **Medial collateral ligament (MCL) sprain** \u2013"
-      },
-      {
-        "speaker": "Specialist (Orthopedist)",
-        "turn": 11,
-        "phase": "consultation",
-        "text": "Your differential is appropriate\u2014pes anserine bursitis is most likely given the location and activity history, with a mild MCL sprain also possible. I recommend focused exam for MCL laxity (valgus stress test) and pes anserine tenderness/swelling; initial management should include rest, ice, NSAIDs, and activity modification. If symptoms persist beyond 2 weeks or worsen, consider imaging (MRI) to rule out occult meniscal or ligamentous injury."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 12,
-        "phase": "consultation",
-        "text": "Thank you for your input. I agree that pes anserine bursitis is the leading diagnosis, given the focal tenderness just below the medial joint line, the absence of significant swelling or instability, and the history of increased pivoting activity. The lack of mechanical symptoms or significant trauma makes meniscal or significant ligamentous injury less likely, though not impossible. A few points to clarify and further refine the diagnosis: 1. **On Examination:** - The patient reports maximal tenderness just below the medial joint line, over the pes anserine region. There is no joint line tenderness higher up, and no palpable swelling or effusion. - Valgus stress testing at 0 and 30 degrees does not reveal laxity or increased pain, though there is mild discomfort medially with the maneuver. - No tenderness over the MCL itself, and no pain with patellar grind or McMurray\u2019s test. - No warmth or erythema. 2. **Functional Impact:**"
-      },
-      {
-        "speaker": "Specialist (Orthopedist)",
-        "turn": 12,
-        "phase": "consultation",
-        "text": "Your exam findings further support pes anserine bursitis as the primary diagnosis, with no evidence of significant MCL or intra-articular pathology. Continue conservative management (rest, NSAIDs, ice, physical therapy focusing on stretching/strengthening), and reassess in 2 weeks; if pain persists or worsens, consider further imaging or referral."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 13,
-        "phase": "consultation",
-        "text": "Thank you for your confirmation and recommendations. I agree that the clinical picture is most consistent with pes anserine bursitis, especially given the focal tenderness, absence of joint line tenderness, and lack of mechanical or instability symptoms. A few follow-up points for further clarification: 1. **Would you recommend any specific physical therapy modalities or exercises at this stage, or should we focus primarily on rest and gentle stretching initially?** - For example, should we start with hamstring and adductor stretches, or wait until pain subsides further? 2. **Given the absence of swelling or warmth, do you see any value in considering a corticosteroid injection at this early stage, or would you reserve that for refractory cases?** 3. **Are there any red flags or features that would prompt you to consider an alternative diagnosis or expedite imaging sooner than 2 weeks?** - For instance, if the patient develops swelling, night pain, or systemic symptoms. 4. **Would you recommend any br"
-      },
-      {
-        "speaker": "Specialist (Orthopedist)",
-        "turn": 13,
-        "phase": "consultation",
-        "text": "1. Begin with gentle hamstring and adductor stretching as tolerated, along with quadriceps strengthening and ice; avoid aggressive activity until pain improves. 2. Reserve corticosteroid injection for refractory cases not responding to conservative therapy after 2\u20134 weeks. 3. Red flags warranting earlier imaging include rapid swelling, erythema, fever, night pain, inability to bear weight, or new mechanical symptoms (locking/catching). 4. A knee brace is generally not necessary unless there is instability; focus on activity modification and physical therapy."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 14,
-        "phase": "consultation",
-        "text": "Thank you for your clear recommendations. I agree with your approach and will proceed with conservative management, including gentle stretching and strengthening as tolerated, and will educate the patient on red flag symptoms that would warrant earlier reassessment. A few additional points for discussion: 1. **Physical Therapy Referral:** Would you recommend a formal referral to physical therapy at this stage, or should we instruct the patient on a home exercise program initially and reserve PT for cases that do not improve within 2 weeks? 2. **Imaging Threshold:** Given the absence of swelling, mechanical symptoms, or instability, I agree that imaging is not indicated at this time. However, if the patient develops persistent pain despite therapy, would you favor starting with plain radiographs to rule out bony pathology, or proceed directly to MRI to assess for soft tissue injury? 3. **Activity Modification:** Are there specific activities (e.g., running, squatting, pivoting sports) you would advise the patient to avoid entirely during the"
-      },
-      {
-        "speaker": "Specialist (Orthopedist)",
-        "turn": 14,
-        "phase": "consultation",
-        "text": "1. Home exercise program is appropriate initially; reserve formal PT for cases not improving in 2\u20133 weeks or if the patient has difficulty performing exercises correctly. 2. If pain persists, start with plain radiographs to rule out occult bony pathology, then proceed to MRI if radiographs are unremarkable and symptoms suggest soft tissue injury. 3. Advise avoiding running, squatting, pivoting, and high-impact activities until pain resolves; low-impact activities (e.g., walking, cycling) may be allowed as tolerated."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 15,
-        "phase": "consultation",
-        "text": "Thank you for your detailed recommendations. I agree with your approach and will proceed accordingly. A few additional points for clarification and to ensure optimal management: 1. **Duration of Activity Restriction:** - In your experience, how long does it typically take for patients with pes anserine bursitis to return to full activity, assuming they adhere to conservative management? - Are there any specific milestones or criteria you use to guide return to sports or higher-impact activities? 2. **Adjunctive Therapies:** - Would you recommend any adjunctive modalities such as topical NSAIDs, ultrasound therapy, or taping in the early phase, or do you find these have limited benefit? 3. **Risk Factors and Prevention:** - Are there any biomechanical factors (e.g., foot pronation, muscle imbalances) that we should assess or address to reduce recurrence risk? - Would you recommend evaluation of footwear or orthotics at this stage, or only if symptoms"
-      },
-      {
-        "speaker": "Specialist (Orthopedist)",
-        "turn": 15,
-        "phase": "consultation",
-        "text": "1. Most patients improve within 2\u20134 weeks; return to full activity is guided by resolution of pain/tenderness and ability to perform sport-specific movements without discomfort. 2. Topical NSAIDs can be helpful; ultrasound and taping have limited evidence but may be considered adjunctively. 3. Assess for biomechanical factors (e.g., overpronation, muscle imbalances); footwear/orthotic evaluation is reasonable if abnormal mechanics are noted or if symptoms recur."
-      }
-    ],
-    "requested_tests": [],
-    "tests_requested_count": 0,
-    "available_tests": [
-      "X-Ray_Knee",
-      "MRI_Knee"
-    ],
-    "determined_specialist": "Orthopedist",
-    "consultation_analysis": {
-      "premature_conclusion": false,
-      "diagnoses_considered": [
-        "pes anserine bursitis",
-        "medial collateral ligament (MCL) sprain",
-        "meniscal injury",
-        "ligamentous injury",
-        "intra-articular pathology",
-        "bony pathology",
-        "infection",
-        "systemic illness",
-        "neurological involvement"
-      ],
-      "diagnoses_considered_count": 9,
-      "disagreements": 0
-    },
-    "final_doctor_diagnosis": "Pes anserine bursitis",
-    "is_correct": true,
-    "tests_left_out": [
-      "X-Ray_Knee",
-      "MRI_Knee"
-    ],
-    "specialist_reason": "An Orthopedist is the most appropriate specialist because the patient\u2019s symptoms\u2014acute knee pain localized to the medial (inside) aspect below the kneecap, tenderness on palpation, worsening pain with activity (stairs, squatting), and a history of recent athletic activity involving twisting\u2014strongly suggest a musculoskeletal injury such as a ligament sprain, meniscal irritation, or pes anserine bursitis. There are no signs of infection (no redness, warmth, or swelling), systemic illness, or neurological involvement, making an orthopedic evaluation for structural knee injury the most relevant next step."
-  },
-  {
-    "timestamp": "2025-07-16T18:35:34.801478",
-    "model": "gpt-4.1",
-    "dataset": "MedQA",
-    "scenario_id": 6,
-    "max_patient_turns": 10,
-    "max_consultation_turns": 5,
-    "correct_diagnosis": "Situational syncope",
-    "dialogue_history": [
-      {
-        "speaker": "Doctor",
-        "turn": 0,
-        "phase": "patient",
-        "text": "Can you describe your main symptoms and how long you have been experiencing them?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 1,
-        "phase": "patient",
-        "text": "I fainted about an hour ago right after I finished urinating. It lasted less than a minute, and I felt fine right after\u2014I wasn\u2019t confused or anything. This is the first time it\u2019s ever happened to me."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 1,
-        "phase": "patient",
-        "text": "Did you experience any warning signs before you fainted, such as dizziness, nausea, sweating, or blurred vision?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 2,
-        "phase": "patient",
-        "text": "I remember feeling a bit lightheaded and maybe a little sweaty right before I passed out, but it happened pretty quickly. I didn\u2019t notice any nausea or blurred vision."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 2,
-        "phase": "patient",
-        "text": "Did you injure yourself or hit your head when you fainted, and have you had any chest pain, palpitations, or shortness of breath before or after the episode?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 3,
-        "phase": "patient",
-        "text": "No, I didn\u2019t injure myself or hit my head when I fainted. I haven\u2019t had any chest pain, palpitations, or shortness of breath before or after the episode."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 3,
-        "phase": "patient",
-        "text": "Have you ever had any similar episodes of fainting or near-fainting in the past, even if they were less severe?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 4,
-        "phase": "patient",
-        "text": "No, this is the first time something like this has happened to me. I\u2019ve never fainted or felt close to fainting before."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 4,
-        "phase": "patient",
-        "text": "Do you have any medical conditions such as diabetes, high blood pressure, or heart problems, and are you currently taking any medications?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 5,
-        "phase": "patient",
-        "text": "No, I don\u2019t have any medical conditions that I know of, and I\u2019m not taking any regular medications."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 5,
-        "phase": "patient",
-        "text": "Did you notice if you were straining or standing for a long time before you fainted, and were you feeling particularly tired, dehydrated, or hungry at the time?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 6,
-        "phase": "patient",
-        "text": "I was standing while urinating, but I don\u2019t remember straining or standing for a long time. I didn\u2019t feel especially tired, dehydrated, or hungry before it happened."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 6,
-        "phase": "patient",
-        "text": "Did anyone witness your fainting episode, and if so, did they notice any abnormal movements, confusion, or incontinence while you were unconscious?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 7,
-        "phase": "patient",
-        "text": "My wife found me on the bathroom floor, but she didn\u2019t see me actually faint. She said I was just lying there and didn\u2019t notice any shaking, confusion, or incontinence."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 7,
-        "phase": "patient",
-        "text": "Have you had any recent illnesses, fevers, or infections, or have you experienced any significant weight loss or night sweats lately?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 8,
-        "phase": "patient",
-        "text": "No, I haven\u2019t had any recent illnesses, fevers, or infections. I haven\u2019t noticed any weight loss or night sweats either."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 8,
-        "phase": "patient",
-        "text": "Have you ever experienced any numbness, weakness, or difficulty speaking before or after the fainting episode? Also, do you have any family history of heart disease, sudden death, or fainting?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 9,
-        "phase": "patient",
-        "text": "No, I didn\u2019t have any numbness, weakness, or trouble speaking before or after I fainted. I don\u2019t know of any family history of heart disease, sudden death, or fainting."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 9,
-        "phase": "patient",
-        "text": "Have you noticed any changes in your urination lately, such as difficulty starting, weak stream, or needing to urinate more frequently, especially at night?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 10,
-        "phase": "patient",
-        "text": "No, I haven\u2019t noticed any changes like that. My urination has been normal\u2014no trouble starting, no weak stream, and I don\u2019t get up at night to go more often than usual."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 10,
-        "phase": "patient",
-        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
-      },
-      {
-        "speaker": "System",
-        "turn": 11,
-        "phase": "consultation",
-        "text": "Consultation started with Cardiologist. Reason: A Cardiologist is the most appropriate specialist because the patient experienced a syncopal (fainting) episode, which can be caused by underlying cardiac arrhythmias or structural heart disease, even in the absence of chest pain, palpitations, or a known cardiac history. Although the episode occurred after urination (suggesting possible vasovagal or situational syncope), it is essential to rule out potentially life-threatening cardiac causes, especially since this is the patient\u2019s first episode and there are no clear neurological or metabolic triggers. Cardiologists are experts in evaluating and managing syncope of possible cardiac origin, making them the best choice for further assessment."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 11,
-        "phase": "consultation",
-        "text": "Thank you for reviewing the case. Here\u2019s a summary of my assessment so far: **Summary of Presentation:** - 1st episode of syncope, occurred immediately after urination while standing - Brief prodrome: lightheadedness, mild sweating - No confusion, rapid recovery, no post-ictal state - No chest pain, palpitations, dyspnea, or neurological symptoms - No significant past medical history or medications - No family history of cardiac disease or sudden death - No urinary symptoms or evidence of infection - No recent illness, weight loss, or constitutional symptoms - No observed abnormal movements, incontinence, or tongue biting **Initial Impression:** The episode appears to be a classic case of **situational syncope**, specifically **micturition syncope**. The temporal relationship to urination, prodromal symptoms, and rapid recovery are characteristic. There are no red flag features for arrhythmic or structural cardiac syn"
-      },
-      {
-        "speaker": "Specialist (Cardiologist)",
-        "turn": 11,
-        "phase": "consultation",
-        "text": "I agree with your assessment\u2014this presentation is most consistent with benign micturition syncope, especially in the absence of cardiac or neurological red flags. I recommend a baseline ECG to rule out occult arrhythmia, but further cardiac workup is not indicated unless symptoms recur or new concerning features develop. Advise the patient on hydration and to sit while urinating to reduce recurrence risk."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 12,
-        "phase": "consultation",
-        "text": "Thank you for your input and confirmation. I agree that the clinical picture fits classic micturition syncope, and I appreciate your suggestion for a baseline ECG to rule out any occult arrhythmias. A few follow-up points for discussion: 1. **Age and Risk Factors:** While the patient is not elderly and has no known comorbidities, would you recommend any additional screening (e.g., orthostatic blood pressure measurements, echocardiogram) if the ECG is normal, or would you reserve further workup strictly for recurrence or new symptoms? 2. **Vasovagal Predisposition:** Given the clear situational trigger and prodrome, do you see value in formal autonomic testing, or is this unnecessary in a first, isolated episode with a classic trigger? 3. **Patient Counseling:** Besides advising the patient to sit while urinating and maintain hydration, are there any other lifestyle modifications or warning signs you would emphasize for the patient"
-      },
-      {
-        "speaker": "Specialist (Cardiologist)",
-        "turn": 12,
-        "phase": "consultation",
-        "text": "1. If the ECG is normal and there are no concerning features, I would reserve further cardiac workup (including orthostatic BP and echocardiogram) for recurrence or if new symptoms develop. 2. Formal autonomic testing is unnecessary in a first, isolated, classic situational syncope episode. 3. In addition to sitting while urinating and maintaining hydration, I would counsel the patient to avoid sudden standing, recognize prodromal symptoms, and seek prompt evaluation if syncope occurs without a clear trigger, during exertion, or is associated with chest pain, palpitations, or injury."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 13,
-        "phase": "consultation",
-        "text": "Thank you for your clear recommendations. I agree that the clinical scenario is reassuring, and your guidance on limiting further workup is appropriate. A few additional points for consideration: 1. **ECG Interpretation:** If the baseline ECG reveals any subtle abnormalities (e.g., first-degree AV block, QT prolongation, or non-specific T-wave changes), would you suggest any further evaluation at this stage, or would you still recommend observation unless symptoms recur? 2. **Age and Risk Stratification:** Although this patient is relatively young and healthy, are there any specific features on history or examination that would prompt you to reconsider the benign diagnosis, even in a first episode? For example, would you be more concerned if the patient were older, or if there were nocturnal symptoms? 3. **Recurrence Management:** If the patient experiences a second episode, even if again clearly situational (e.g., again after urination), would your threshold for further cardiac or neurological workup change? Would"
-      },
-      {
-        "speaker": "Specialist (Cardiologist)",
-        "turn": 13,
-        "phase": "consultation",
-        "text": "1. If the ECG shows subtle abnormalities (e.g., first-degree AV block, borderline QT prolongation), I would generally recommend observation unless there are high-risk features or symptoms recur, but more significant or dynamic changes would warrant further evaluation (e.g., Holter, echo). 2. Red flags prompting reconsideration include syncope during exertion, while supine/nocturnal, without prodrome, or with associated chest pain, palpitations, or family history of sudden death. 3. Recurrence, even if situational, would lower my threshold for further cardiac (and possibly neurological) workup, especially if any atypical features develop."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 14,
-        "phase": "consultation",
-        "text": "Thank you for your thorough responses and clear risk stratification guidance. A few final points for clarification and to ensure optimal patient safety: 1. **ECG Follow-up:** If the baseline ECG is normal but the patient reports occasional palpitations in the weeks following this episode (without syncope), would you recommend ambulatory monitoring (e.g., Holter or event monitor) at that stage, or would you still prioritize observation unless syncope recurs? 2. **Age Considerations:** Although this patient is relatively young, would your approach differ if the patient were over 60, even with a classic situational trigger and no red flags? For example, would you be more inclined to obtain an echocardiogram or orthostatic BP measurements in an older patient after a first episode? 3. **Patient Education:** Are there any specific warning signs or symptoms you would advise the patient to monitor for in the coming weeks that would prompt urgent re-evaluation (e.g., recurrent"
-      },
-      {
-        "speaker": "Specialist (Cardiologist)",
-        "turn": 14,
-        "phase": "consultation",
-        "text": "1. If the patient develops new palpitations\u2014even without recurrent syncope\u2014I would recommend ambulatory monitoring (Holter or event monitor) to rule out occult arrhythmia. 2. In patients over 60, even with a classic situational trigger, I would have a lower threshold for echocardiogram and orthostatic BP measurements after a first episode, given higher baseline cardiac risk. 3. Advise the patient to seek urgent re-evaluation if they experience syncope without a clear trigger, during exertion or while supine, associated chest pain, palpitations, prolonged confusion, or any injury from a fall."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 15,
-        "phase": "consultation",
-        "text": "Thank you for your detailed and practical recommendations. I agree that the overall risk in this patient appears low, but your points about age-related risk and the importance of monitoring for new symptoms are well taken. A few final clarifications as we conclude the case: 1. **Ambulatory Monitoring Threshold:** If the patient reports only very brief, infrequent palpitations (e.g., a few seconds, once or twice a week), would you still recommend Holter monitoring, or would you reserve this for more frequent or sustained episodes? 2. **Role of Carotid Sinus Hypersensitivity:** Given the situational nature of the syncope (micturition), do you see value in considering carotid sinus hypersensitivity testing, particularly if the patient is older or if there is recurrence, or is this rarely contributory in isolated micturition syncope? 3. **Long-term Prognosis:** For patients with classic situational syncope and no underlying cardiac disease, what is"
-      },
-      {
-        "speaker": "Specialist (Cardiologist)",
-        "turn": 15,
-        "phase": "consultation",
-        "text": "1. For very brief, infrequent palpitations, I would generally observe unless they become more frequent, sustained, or are associated with other symptoms; Holter monitoring is best reserved for more frequent or symptomatic episodes. 2. Carotid sinus hypersensitivity testing is rarely indicated in isolated micturition syncope, but may be considered in older patients or if syncope recurs without a clear situational trigger. 3. Long-term prognosis for classic situational syncope without underlying cardiac disease is excellent, with low risk of morbidity or mortality; recurrence is possible but can often be minimized with lifestyle modifications."
-      }
-    ],
-    "requested_tests": [],
-    "tests_requested_count": 0,
-    "available_tests": [
-      "Blood_Tests",
-      "Electrocardiogram"
-    ],
-    "determined_specialist": "Cardiologist",
-    "consultation_analysis": {
-      "premature_conclusion": false,
-      "diagnoses_considered": [
-        "micturition syncope",
-        "situational syncope",
-        "vasovagal syncope",
-        "cardiac arrhythmia",
-        "structural heart disease",
-        "carotid sinus hypersensitivity",
-        "neurological causes",
-        "metabolic causes"
-      ],
-      "diagnoses_considered_count": 8,
-      "disagreements": 0
-    },
-    "final_doctor_diagnosis": "Micturition syncope (situational vasovagal syncope)",
-    "is_correct": true,
-    "tests_left_out": [
-      "Electrocardiogram",
-      "Blood_Tests"
-    ],
-    "specialist_reason": "A Cardiologist is the most appropriate specialist because the patient experienced a syncopal (fainting) episode, which can be caused by underlying cardiac arrhythmias or structural heart disease, even in the absence of chest pain, palpitations, or a known cardiac history. Although the episode occurred after urination (suggesting possible vasovagal or situational syncope), it is essential to rule out potentially life-threatening cardiac causes, especially since this is the patient\u2019s first episode and there are no clear neurological or metabolic triggers. Cardiologists are experts in evaluating and managing syncope of possible cardiac origin, making them the best choice for further assessment."
-  },
-  {
-    "timestamp": "2025-07-16T18:36:50.286663",
-    "model": "gpt-4.1",
-    "dataset": "MedQA",
-    "scenario_id": 7,
-    "max_patient_turns": 10,
-    "max_consultation_turns": 5,
-    "correct_diagnosis": "Congenital Rubella Infection",
-    "dialogue_history": [
-      {
-        "speaker": "Doctor",
-        "turn": 0,
-        "phase": "patient",
-        "text": "Can you describe your main symptoms and how long you have been experiencing them?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 1,
-        "phase": "patient",
-        "text": "I\u2019ve had a constant whooshing sound in my chest since birth, and my skin has some bluish spots that don\u2019t go away when pressed. I also haven\u2019t been able to see or hear well since I was born."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 1,
-        "phase": "patient",
-        "text": "Have you ever experienced shortness of breath, fatigue with activity, or episodes of fainting?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 2,
-        "phase": "patient",
-        "text": "I haven\u2019t had any episodes of fainting, but I do get tired easily when feeding. My breathing sometimes seems a bit fast, but I haven\u2019t had any obvious trouble catching my breath."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 2,
-        "phase": "patient",
-        "text": "Have you noticed any swelling in your legs, feet, or around your eyes? Also, do you have any family members with similar symptoms or known heart conditions?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 3,
-        "phase": "patient",
-        "text": "I haven\u2019t had any swelling that my mother has noticed. My mother doesn\u2019t know of any family members with similar symptoms or heart problems."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 3,
-        "phase": "patient",
-        "text": "Have you ever had any surgeries or hospitalizations related to your heart or blood vessels? Also, do you have any problems with frequent nosebleeds or easy bruising?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 4,
-        "phase": "patient",
-        "text": "No, I haven\u2019t had any surgeries or hospitalizations before. I haven\u2019t had any nosebleeds or noticed any unusual bruising either."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 4,
-        "phase": "patient",
-        "text": "Have you ever had any trouble gaining weight or growing as expected for your age? Also, do you ever notice your lips or fingertips turning more blue, especially when you cry or are active?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 5,
-        "phase": "patient",
-        "text": "I\u2019m just a newborn, so my mom hasn\u2019t noticed any problems with feeding or growing yet. She hasn\u2019t seen my lips or fingers turn more blue, even when I cry."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 5,
-        "phase": "patient",
-        "text": "Have you noticed any unusual heartbeats or murmurs during routine checkups? Also, do you have any visible veins or unusual markings on your chest or body besides the bluish spots?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 6,
-        "phase": "patient",
-        "text": "I haven\u2019t had any checkups before since my mom didn\u2019t have prenatal care, but the doctors here said they heard a continuous murmur in my heart. Besides the bluish spots, I don\u2019t think there are any unusual veins or markings on my chest."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 6,
-        "phase": "patient",
-        "text": "REQUEST TEST: Echocardiogram"
-      },
-      {
-        "speaker": "Measurement",
-        "turn": 7,
-        "phase": "patient",
-        "text": "RESULTS: Echocardiogram findings show a patent ductus arteriosus."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 7,
-        "phase": "patient",
-        "text": "Have you noticed any difficulty with feeding, such as sweating, rapid breathing, or tiring out quickly during feeds? Also, do you have any swelling or puffiness around your eyes or face?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 8,
-        "phase": "patient",
-        "text": "I haven\u2019t had any swelling or puffiness, but my mother says I sometimes breathe a little fast and get tired while feeding. She hasn\u2019t noticed any sweating."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 8,
-        "phase": "patient",
-        "text": "Have you noticed any changes in the color or temperature of your hands or feet, such as them feeling cold or looking more blue or pale at times? Also, do you have any problems with frequent infections or trouble fighting off illnesses?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 9,
-        "phase": "patient",
-        "text": "My hands and feet sometimes look a bit bluish, but I haven\u2019t had any fevers or frequent infections so far."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 9,
-        "phase": "patient",
-        "text": "Have you ever had any imaging or tests done on your brain, eyes, or ears to check for structural differences, or has anyone mentioned any syndromes or genetic conditions that might explain your vision and hearing problems?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 10,
-        "phase": "patient",
-        "text": "No, I haven\u2019t had any imaging or special tests done yet, and no one has mentioned any syndromes or genetic conditions to my mother. This is my first time being checked for these issues."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 10,
-        "phase": "patient",
-        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
-      },
-      {
-        "speaker": "System",
-        "turn": 11,
-        "phase": "consultation",
-        "text": "Consultation started with Cardiologist. Reason: A Cardiologist is the most appropriate specialist because the patient has a continuous heart murmur, a confirmed patent ductus arteriosus on echocardiogram, and symptoms of mild cyanosis and feeding fatigue\u2014all of which point to a congenital heart defect. The bluish skin spots and intermittent cyanosis further suggest a cardiovascular etiology requiring specialized cardiac evaluation and management. While there are additional concerns about vision and hearing, the immediate clinical priority is the heart defect, making a Cardiologist the best initial consultant."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 11,
-        "phase": "consultation",
-        "text": "Thank you for reviewing the case. To summarize, we have a newborn with: - **Congenital symptoms**: Constant \"whooshing\" chest sound (continuous murmur), bluish skin spots (non-blanching), congenital hearing and vision impairment. - **Physical findings**: No swelling, no family history, no prior hospitalizations, no nosebleeds or bruising, no visible abnormal veins, no cyanosis of lips/fingers with crying, but some peripheral cyanosis (hands/feet). - **Echocardiogram**: Patent ductus arteriosus (PDA). - **Feeding**: Mild tachypnea and fatigue with feeds, but no sweating. - **Growth**: No failure to thrive yet. - **No recurrent infections**. **My initial thoughts and questions:** 1. **The continuous murmur and PDA** are consistent, but the presence of non-blanching bluish skin spots (likely telangiectasias"
-      },
-      {
-        "speaker": "Specialist (Cardiologist)",
-        "turn": 11,
-        "phase": "consultation",
-        "text": "The constellation of PDA, non-blanching bluish skin lesions, and congenital hearing/vision impairment raises suspicion for a syndromic vascular disorder such as hereditary hemorrhagic telangiectasia (HHT) or a genetic syndrome like Alagille or CHARGE. I recommend genetic consultation, brain MRI (to assess for AVMs), and ophthalmologic/ENT evaluation; please clarify the distribution and morphology of the skin lesions and consider screening for other vascular malformations."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 12,
-        "phase": "consultation",
-        "text": "Thank you for your input. I agree that the combination of congenital heart disease (PDA), non-blanching bluish skin lesions, and congenital hearing and vision impairment is highly suggestive of a syndromic etiology, possibly involving vascular and/or neurocutaneous features. To refine the differential, I\u2019d like to clarify a few points and share my thoughts: **1. Skin Lesions:** - The bluish spots are present since birth, non-blanching, and not associated with bruising or bleeding. - Are these lesions clustered in any particular distribution (e.g., face, lips, oral mucosa, fingertips, trunk)? - Are they flat or raised? Any associated warmth or pulsatility? - Any evidence of larger vascular malformations or port-wine stains? **2. Hearing and Vision Impairment:** - Is there any information on the type of hearing loss (sensorineural vs. conductive)? - Any structural eye abnormalities noted on initial"
-      },
-      {
-        "speaker": "Specialist (Cardiologist)",
-        "turn": 12,
-        "phase": "consultation",
-        "text": "Thank you for these clarifications. The distribution, morphology, and characteristics of the skin lesions are critical\u2014please document whether they involve mucosal surfaces or follow a dermatomal pattern, and if there are any associated vascular anomalies (e.g., port-wine stains or AVMs). For the hearing/vision loss, knowing if the deficits are sensorineural or structural will help differentiate between syndromes like HHT, CHARGE, or Sturge-Weber; multidisciplinary evaluation (dermatology, genetics, ophthalmology, ENT) is essential for further workup."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 13,
-        "phase": "consultation",
-        "text": "Thank you for your detailed recommendations. I agree that further characterization of the skin lesions and the nature of the sensory deficits will be key in narrowing the differential. Here are my thoughts and next steps: **1. Skin Lesions:** - I will perform a thorough skin and mucosal exam to document the distribution (face, trunk, extremities, mucosal surfaces), morphology (flat vs. raised, size, borders), and any associated warmth, pulsatility, or underlying vascularity. - I will specifically look for port-wine stains, nevus flammeus, or evidence of larger AVMs. - I will also check for involvement of the oral mucosa, conjunctiva, and nailbeds. **2. Hearing and Vision Impairment:** - I will request audiology and ophthalmology consultations to determine if the hearing loss is sensorineural or conductive, and whether the vision impairment is due to structural anomalies (e.g., coloboma, optic nerve hypoplasia)"
-      },
-      {
-        "speaker": "Specialist (Cardiologist)",
-        "turn": 13,
-        "phase": "consultation",
-        "text": "Your approach is excellent and comprehensive. Please also consider brain/spinal MRI to screen for CNS vascular malformations, and abdominal ultrasound to assess for hepatic or visceral AVMs, as these may be present in syndromic vascular disorders. Early genetic testing (e.g., HHT, CHARGE, Alagille panels) will be valuable for diagnosis and family counseling."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 14,
-        "phase": "consultation",
-        "text": "Thank you for your guidance. I agree that a multidisciplinary approach is essential, and I will coordinate the recommended imaging and specialty consultations. To further refine our differential, I\u2019d like to discuss a few points and ask for your input: **1. Syndromic Considerations:** - **Hereditary Hemorrhagic Telangiectasia (HHT):** While the non-blanching bluish lesions and possible AVMs fit, the congenital hearing and vision impairment are less typical. HHT usually presents later with epistaxis and mucocutaneous telangiectasias, though pediatric cases with AVMs do occur. - **CHARGE Syndrome:** The combination of congenital heart defect (PDA), hearing and vision impairment, and possible vascular skin findings could fit. Coloboma and choanal atresia would be important to assess. - **Sturge-Weber Syndrome:** Port-wine stains (nevus flammeus), especially in the trigeminal distribution, and"
-      },
-      {
-        "speaker": "Specialist (Cardiologist)",
-        "turn": 14,
-        "phase": "consultation",
-        "text": "You are correct\u2014HHT is less likely given the early-onset sensory deficits, while CHARGE syndrome remains high on the differential, especially if coloboma or choanal atresia is present. Sturge-Weber should be considered if there are facial port-wine stains and possible leptomeningeal involvement. Please prioritize detailed ophthalmologic and ENT evaluation, and let me know if any additional cardiac anomalies are detected on imaging."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 15,
-        "phase": "consultation",
-        "text": "Thank you for your thoughtful input. I agree that CHARGE syndrome is currently the leading consideration, given the constellation of congenital heart disease (PDA), hearing and vision impairment, and possible vascular skin findings. I will proceed as follows and would appreciate your further thoughts: **1. Ophthalmologic and ENT Evaluation:** - I have requested urgent ophthalmology and ENT consultations to assess for coloboma, choanal atresia/stenosis, and to characterize the nature of the hearing and vision deficits (sensorineural vs. structural). - I will also ask the ophthalmologist to specifically look for optic nerve or retinal coloboma, and the ENT team to evaluate for choanal patency and possible cranial nerve involvement. **2. Skin Lesion Assessment:** - I am conducting a detailed dermatologic exam to clarify whether the bluish, non-blanching lesions are telangiectasias, capillary malformations (e.g., port-wine stains), or other vascular"
-      },
-      {
-        "speaker": "Specialist (Cardiologist)",
-        "turn": 15,
-        "phase": "consultation",
-        "text": "Your plan is thorough and appropriate. Please also consider renal ultrasound and abdominal imaging to assess for genitourinary anomalies, which are common in CHARGE syndrome, and repeat echocardiography to rule out additional cardiac defects. Early genetic testing for CHD7 mutations will be key for definitive diagnosis and family counseling."
-      }
-    ],
-    "requested_tests": [
-      "Echocardiogram"
-    ],
-    "tests_requested_count": 1,
-    "available_tests": [
-      "TORCH_Screen",
-      "Echocardiogram",
-      "Ophthalmologic_Consult",
-      "Hearing_Test"
-    ],
-    "determined_specialist": "Cardiologist",
-    "consultation_analysis": {
-      "premature_conclusion": false,
-      "diagnoses_considered": [
-        "Patent ductus arteriosus (PDA)",
-        "Hereditary hemorrhagic telangiectasia (HHT)",
-        "Alagille syndrome",
-        "CHARGE syndrome",
-        "Sturge-Weber syndrome",
-        "Congenital heart defect (general)",
-        "Syndromic vascular disorder",
-        "Neurocutaneous syndrome"
-      ],
-      "diagnoses_considered_count": 8,
-      "disagreements": 0
-    },
-    "final_doctor_diagnosis": "CHARGE syndrome",
-    "is_correct": false,
-    "tests_left_out": [
-      "TORCH_Screen",
-      "Hearing_Test",
-      "Ophthalmologic_Consult"
-    ],
-    "specialist_reason": "A Cardiologist is the most appropriate specialist because the patient has a continuous heart murmur, a confirmed patent ductus arteriosus on echocardiogram, and symptoms of mild cyanosis and feeding fatigue\u2014all of which point to a congenital heart defect. The bluish skin spots and intermittent cyanosis further suggest a cardiovascular etiology requiring specialized cardiac evaluation and management. While there are additional concerns about vision and hearing, the immediate clinical priority is the heart defect, making a Cardiologist the best initial consultant."
-  },
-  {
-    "timestamp": "2025-07-16T18:38:16.693874",
-    "model": "gpt-4.1",
-    "dataset": "MedQA",
-    "scenario_id": 8,
-    "max_patient_turns": 10,
-    "max_consultation_turns": 5,
-    "correct_diagnosis": "Phyllodes tumor",
-    "dialogue_history": [
-      {
-        "speaker": "Doctor",
-        "turn": 0,
-        "phase": "patient",
-        "text": "Can you describe your main symptoms and how long you have been experiencing them?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 1,
-        "phase": "patient",
-        "text": "About four weeks ago, I noticed a lump in my left breast, and it\u2019s been getting bigger pretty quickly. I haven\u2019t had any pain, skin changes, or nipple changes."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 1,
-        "phase": "patient",
-        "text": "Have you noticed any swelling in your armpit, unexplained weight loss, fever, or night sweats?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 2,
-        "phase": "patient",
-        "text": "No, I haven\u2019t noticed any swelling in my armpit, and I haven\u2019t had any weight loss, fever, or night sweats."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 2,
-        "phase": "patient",
-        "text": "Have you ever had any breast lumps or breast problems in the past, or a family history of breast or ovarian cancer?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 3,
-        "phase": "patient",
-        "text": "No, I\u2019ve never had any breast lumps or problems before, and there\u2019s no family history of breast or ovarian cancer that I know of."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 3,
-        "phase": "patient",
-        "text": "Have you noticed any changes in the size or shape of your breast, or any new lumps in the other breast?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 4,
-        "phase": "patient",
-        "text": "I\u2019ve only noticed the lump in my left breast, and it\u2019s been getting bigger pretty quickly. I haven\u2019t felt any new lumps or changes in my right breast."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 4,
-        "phase": "patient",
-        "text": "Have you experienced any recent trauma or injury to your left breast, or do you recall any infection or redness in that area?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 5,
-        "phase": "patient",
-        "text": "No, I haven\u2019t had any trauma or injury to my left breast, and I haven\u2019t noticed any infection or redness there either."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 5,
-        "phase": "patient",
-        "text": "Have you noticed any discharge from your nipples, or any changes in the skin over the lump such as dimpling or puckering?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 6,
-        "phase": "patient",
-        "text": "No, I haven\u2019t noticed any discharge from my nipples, and the skin over the lump looks normal\u2014no dimpling or puckering."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 6,
-        "phase": "patient",
-        "text": "How old are you, and do you have any other medical conditions or take any regular medications?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 7,
-        "phase": "patient",
-        "text": "I'm 48 years old. I don't have any other medical conditions and I'm not taking any regular medications."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 7,
-        "phase": "patient",
-        "text": "Have you noticed if the lump feels hard or soft, and is it fixed in place or does it move around under the skin?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 8,
-        "phase": "patient",
-        "text": "It feels quite firm to me, but I can move it around a little under the skin. It doesn\u2019t seem stuck in one place."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 8,
-        "phase": "patient",
-        "text": "Have you noticed any changes in your menstrual cycle, or are you currently on hormone replacement therapy or using any hormonal contraceptives?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 9,
-        "phase": "patient",
-        "text": "No, my menstrual cycles have been regular, and I\u2019m not on any hormone replacement therapy or hormonal contraceptives."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 9,
-        "phase": "patient",
-        "text": "REQUEST TEST: Breast_Ultrasound"
-      },
-      {
-        "speaker": "Measurement",
-        "turn": 10,
-        "phase": "patient",
-        "text": "NORMAL READINGS"
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 10,
-        "phase": "patient",
-        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
-      },
-      {
-        "speaker": "System",
-        "turn": 11,
-        "phase": "consultation",
-        "text": "Consultation started with Oncologist. Reason: An oncologist is the most appropriate specialist in this scenario because the patient is a 48-year-old woman with a rapidly enlarging, firm, and mobile breast lump that has persisted for four weeks. Although the breast ultrasound shows normal readings, the clinical presentation raises concern for a possible malignancy, as breast cancer can sometimes present with a palpable mass even if initial imaging is inconclusive. An oncologist specializes in the diagnosis and management of cancers, including breast cancer, and is best equipped to guide further evaluation (such as biopsy) and treatment if necessary."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 11,
-        "phase": "consultation",
-        "text": "Thank you for reviewing the case. Here\u2019s a summary of the key findings: - 48-year-old woman with a 4-week history of a rapidly enlarging, firm, mobile lump in the left breast. - No pain, skin changes, nipple changes, or discharge. - No axillary swelling, constitutional symptoms, or family history of breast/ovarian cancer. - No history of trauma, infection, or prior breast problems. - No hormonal therapy or contraceptive use; regular menstrual cycles. - Breast ultrasound: Normal readings. **Discussion and Differential Diagnosis:** 1. **Breast Carcinoma:** - The age and rapid growth are concerning, but the absence of skin/nipple changes, axillary lymphadenopathy, and a mobile lump are somewhat reassuring. - However, some breast cancers (e.g., medullary, phyllodes tumor, or even early-stage invasive ductal carcinoma) can present as rapidly growing, mobile masses. - The normal"
-      },
-      {
-        "speaker": "Specialist (Oncologist)",
-        "turn": 11,
-        "phase": "consultation",
-        "text": "Given the clinical concern and rapid growth despite a normal ultrasound, I recommend proceeding with a diagnostic mammogram and, if the lump is still not visualized or characterized, a core needle biopsy for definitive diagnosis. Some lesions (e.g., phyllodes tumor or certain carcinomas) may not be well seen on ultrasound, so tissue diagnosis is essential."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 12,
-        "phase": "consultation",
-        "text": "Thank you for your input. I agree that the rapid growth and firmness of the lump, despite a normal ultrasound, are concerning and warrant further investigation. I have a few follow-up questions and thoughts to help refine our differential and management plan: 1. **Mammogram Utility:** Given the patient\u2019s age (48), breast density may still be a factor. In your experience, are there particular mammographic features that would help distinguish between phyllodes tumor, fibroadenoma, and carcinoma in this age group, especially if the ultrasound is normal? 2. **Biopsy Considerations:** If the mammogram is also inconclusive, would you recommend proceeding directly to a core needle biopsy based on clinical suspicion alone, or would you consider an excisional biopsy given the rapid growth and the possibility of a phyllodes tumor? 3. **Other Differentials:** While carcinoma and phyllodes tumor are high on the list, would you consider any other rare entities (e.g., lymphoma"
-      },
-      {
-        "speaker": "Specialist (Oncologist)",
-        "turn": 12,
-        "phase": "consultation",
-        "text": "1. Mammogram may show well-circumscribed, non-calcified masses for phyllodes and fibroadenoma, while carcinoma often appears as irregular, spiculated, or microcalcified lesions; however, overlap exists, especially with dense breasts. 2. If mammogram is inconclusive, I recommend a core needle biopsy first, as it provides tissue diagnosis and guides management; excisional biopsy is reserved if core is non-diagnostic or phyllodes is strongly suspected. 3. Other rare entities to consider include primary breast lymphoma and metastasis, but these are less likely given the presentation; sarcoma is also rare but possible with rapid growth."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 13,
-        "phase": "consultation",
-        "text": "Thank you for your detailed response. I agree that a tissue diagnosis is essential given the clinical scenario. I have a few follow-up points and questions to further clarify our approach: 1. **Core Needle Biopsy Technique:** - Would you recommend ultrasound-guided core needle biopsy even though the initial ultrasound was normal, or should we consider stereotactic or palpation-guided biopsy given the palpable nature of the lump? - Are there any specific markers or stains you would request from pathology if the initial core is suspicious for phyllodes or sarcoma? 2. **Phyllodes Tumor Considerations:** - If the core biopsy suggests a phyllodes tumor, do you recommend proceeding directly to wide local excision, or would you advocate for additional imaging (e.g., MRI) to assess for multifocality or chest wall involvement? - In your experience, how often do benign-appearing phyllodes tumors on core biopsy turn out to be borderline or malignant"
-      },
-      {
-        "speaker": "Specialist (Oncologist)",
-        "turn": 13,
-        "phase": "consultation",
-        "text": "1. For a palpable lump with a normal ultrasound, palpation-guided core needle biopsy is appropriate; if mammogram shows a correlate, stereotactic guidance can be considered. For suspected phyllodes or sarcoma, request immunohistochemistry for CD34, Ki-67, and vimentin, and assess for stromal overgrowth and atypia. If core suggests phyllodes, proceed to wide local excision with clear margins; MRI is reserved for very large tumors or suspicion of chest wall involvement. Benign-appearing phyllodes on core can be upstaged to borderline/malignant in up to 20\u201330% of cases, so excision with margin is important."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 14,
-        "phase": "consultation",
-        "text": "Thank you for your thorough guidance. I have a few additional points and questions to help ensure we\u2019re not missing anything and to optimize the diagnostic pathway: 1. **Clinical-Pathologic Discordance:** - If the core needle biopsy returns as benign fibroadenoma but the clinical suspicion remains high due to rapid growth and firmness, would you still recommend proceeding to excisional biopsy? - Are there particular histologic features on core that would prompt you to reclassify a presumed fibroadenoma as suspicious for phyllodes or another entity? 2. **Phyllodes Tumor Margins:** - For wide local excision, what margin width do you consider adequate for phyllodes tumors, especially given the risk of upstaging? - Do you routinely recommend re-excision if margins are close but negative, or only if margins are involved? 3. **Follow-up and Surveillance:** - If the final pathology is benign phyllodes or fibroaden"
-      },
-      {
-        "speaker": "Specialist (Oncologist)",
-        "turn": 14,
-        "phase": "consultation",
-        "text": "1. Yes, if clinical suspicion remains high despite a benign fibroadenoma result on core biopsy, excisional biopsy is warranted due to sampling limitations and the risk of missing phyllodes or malignancy. Histologic features such as increased stromal cellularity, mitotic activity, or leaf-like architecture on core should raise suspicion for phyllodes. For phyllodes tumors, a margin of at least 1 cm is generally recommended; re-excision is indicated if margins are involved, but close negative margins may be observed with careful follow-up, especially for benign lesions. For benign phyllodes or fibroadenoma, clinical and imaging follow-up every 6\u201312 months is reasonable."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 15,
-        "phase": "consultation",
-        "text": "Thank you for your clear recommendations. I agree that, given the rapid growth and firmness of the lesion, we need to maintain a low threshold for excisional biopsy even if the core suggests a benign process, especially in the context of possible sampling error. A few further points for clarification: 1. **Role of MRI:** Given the normal ultrasound and the possibility that mammogram may also be inconclusive (especially if the patient has dense breasts), would you consider breast MRI at any point in the diagnostic pathway\u2014either pre-biopsy to better characterize the lesion, or pre-operatively if phyllodes or sarcoma is suspected? Are there specific MRI features that would help differentiate between phyllodes, fibroadenoma, and carcinoma? 2. **Pathology Communication:** Would you recommend any specific communication with pathology to highlight the clinical concern for phyllodes or sarcoma, so that they can perform additional stains or deeper sections up front? In your experience, does this improve diagnostic yield? 3"
-      },
-      {
-        "speaker": "Specialist (Oncologist)",
-        "turn": 15,
-        "phase": "consultation",
-        "text": "1. MRI can be considered if both ultrasound and mammogram are inconclusive, especially in dense breasts or if preoperative mapping is needed for suspected phyllodes or sarcoma; phyllodes often show well-circumscribed, rapidly enhancing masses, while carcinomas are more likely to have irregular margins and washout kinetics, but overlap exists. 2. Yes, proactively communicating clinical suspicion for phyllodes or sarcoma to pathology is important\u2014it prompts additional stains (e.g., Ki-67, CD34, vimentin) and deeper sections, which can improve diagnostic accuracy. Do you have any concerns about access to MRI or pathology resources for this patient?"
-      }
-    ],
-    "requested_tests": [
-      "Breast_Ultrasound"
-    ],
-    "tests_requested_count": 1,
-    "available_tests": [
-      "Mammography",
-      "Biopsy"
-    ],
-    "determined_specialist": "Oncologist",
-    "consultation_analysis": {
-      "premature_conclusion": false,
-      "diagnoses_considered": [
-        "breast carcinoma",
-        "phyllodes tumor",
-        "fibroadenoma",
-        "primary breast lymphoma",
-        "metastasis",
-        "sarcoma"
-      ],
-      "diagnoses_considered_count": 6,
-      "disagreements": 0
-    },
-    "final_doctor_diagnosis": "Phyllodes tumor of the breast",
-    "is_correct": true,
-    "tests_left_out": [
-      "Biopsy",
-      "Mammography"
-    ],
-    "specialist_reason": "An oncologist is the most appropriate specialist in this scenario because the patient is a 48-year-old woman with a rapidly enlarging, firm, and mobile breast lump that has persisted for four weeks. Although the breast ultrasound shows normal readings, the clinical presentation raises concern for a possible malignancy, as breast cancer can sometimes present with a palpable mass even if initial imaging is inconclusive. An oncologist specializes in the diagnosis and management of cancers, including breast cancer, and is best equipped to guide further evaluation (such as biopsy) and treatment if necessary."
-  },
-  {
-    "timestamp": "2025-07-16T18:39:28.814819",
-    "model": "gpt-4.1",
-    "dataset": "MedQA",
-    "scenario_id": 9,
-    "max_patient_turns": 10,
-    "max_consultation_turns": 5,
-    "correct_diagnosis": "Endometritis",
-    "dialogue_history": [
-      {
-        "speaker": "Doctor",
-        "turn": 0,
-        "phase": "patient",
-        "text": "Hello, can you please describe your main symptoms and how long you have been experiencing them?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 1,
-        "phase": "patient",
-        "text": "I've been having some tenderness in my lower abdomen, especially around my uterus, and I've noticed I'm needing to urinate more often. These symptoms started a couple of days after I delivered my baby."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 1,
-        "phase": "patient",
-        "text": "Have you experienced any fever, chills, or foul-smelling vaginal discharge since your delivery?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 2,
-        "phase": "patient",
-        "text": "Yes, I have had a fever, but I haven't noticed any foul-smelling vaginal discharge or chills."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 2,
-        "phase": "patient",
-        "text": "Have you had any pain or burning sensation when you urinate, or noticed any blood in your urine?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 3,
-        "phase": "patient",
-        "text": "No, I haven\u2019t had any pain or burning when I urinate, and I haven\u2019t noticed any blood in my urine."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 3,
-        "phase": "patient",
-        "text": "Have you noticed any increased vaginal bleeding, clots, or a change in the amount or color of your lochia since your symptoms began?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 4,
-        "phase": "patient",
-        "text": "No, I haven't noticed any increased vaginal bleeding or clots, and the color of my lochia seems about the same as before."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 4,
-        "phase": "patient",
-        "text": "Have you had any pain or tenderness when pressing on your lower abdomen, and does the pain get worse when you move or walk?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 5,
-        "phase": "patient",
-        "text": "Yes, my lower abdomen feels quite tender, especially when you press on it, and it does get worse when I move around or walk."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 5,
-        "phase": "patient",
-        "text": "Have you had any issues with your incision or stitches (if you had a C-section or episiotomy), such as redness, swelling, or discharge?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 6,
-        "phase": "patient",
-        "text": "No, I didn\u2019t have a C-section or an episiotomy, so there aren\u2019t any incisions or stitches to worry about."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 6,
-        "phase": "patient",
-        "text": "Have you noticed any unusual odor or color in your urine, or any difficulty starting or stopping your stream?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 7,
-        "phase": "patient",
-        "text": "No, I haven\u2019t noticed any unusual odor or color in my urine, and I haven\u2019t had any trouble starting or stopping when I go."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 7,
-        "phase": "patient",
-        "text": "Have you experienced any pain in your legs, swelling, or shortness of breath since your delivery?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 8,
-        "phase": "patient",
-        "text": "I\u2019ve had some minor difficulty in breathing, but I haven\u2019t noticed any pain or swelling in my legs."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 8,
-        "phase": "patient",
-        "text": "Can you describe the difficulty in breathing\u2014does it come on suddenly, is it constant, and do you feel any chest pain or palpitations along with it?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 9,
-        "phase": "patient",
-        "text": "The difficulty in breathing is pretty mild and feels more like I get short of breath sometimes, but it\u2019s not constant. I don\u2019t have any chest pain or palpitations with it."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 9,
-        "phase": "patient",
-        "text": "Have you noticed any swelling, redness, or warmth in your lower legs, or any pain when you flex your foot upward?"
-      },
-      {
-        "speaker": "Patient",
-        "turn": 10,
-        "phase": "patient",
-        "text": "No, I haven\u2019t noticed any swelling, redness, or warmth in my legs, and it doesn\u2019t hurt when I flex my foot upward."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 10,
-        "phase": "patient",
-        "text": "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist."
-      },
-      {
-        "speaker": "System",
-        "turn": 11,
-        "phase": "consultation",
-        "text": "Consultation started with Obstetrician/Gynecologist (OB/GYN). Reason: An Obstetrician/Gynecologist (OB/GYN) is the most appropriate specialist because the patient is experiencing postpartum symptoms\u2014specifically, lower abdominal (uterine) tenderness, fever, and increased urinary frequency\u2014shortly after delivery. These symptoms raise concern for postpartum complications such as endometritis, a uterine infection, which is best evaluated and managed by an OB/GYN. The absence of urinary symptoms and surgical wound issues further points toward a gynecologic rather than urologic or surgical cause."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 11,
-        "phase": "consultation",
-        "text": "Thank you for reviewing the case. Here\u2019s a summary of the key findings: - **Onset:** Symptoms began a couple of days postpartum. - **Symptoms:** Lower abdominal (uterine) tenderness, increased urinary frequency, fever. No chills. - **No urinary symptoms:** No dysuria, hematuria, or changes in urine color/odor. - **No abnormal lochia:** No increased bleeding, clots, or foul odor. - **No wound issues:** No C-section or episiotomy. - **No DVT signs:** No leg swelling, redness, or pain. - **Mild, intermittent shortness of breath:** No chest pain or palpitations. **My initial thoughts on differential diagnosis:** 1. **Endometritis:** - Most likely, given the timing (2 days postpartum), uterine tenderness, fever, and increased urinary frequency (possibly due to uterine irritation or mild cystitis). - Absence of foul-smelling lo"
-      },
-      {
-        "speaker": "Specialist (Obstetrician/Gynecologist (OB/GYN))",
-        "turn": 11,
-        "phase": "consultation",
-        "text": "I agree that postpartum endometritis is the leading diagnosis given the uterine tenderness and fever, even without foul-smelling lochia. Recommend prompt initiation of broad-spectrum IV antibiotics (e.g., clindamycin plus gentamicin) and close monitoring; consider urinalysis/culture to rule out concurrent UTI, and monitor for any worsening respiratory symptoms."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 12,
-        "phase": "consultation",
-        "text": "Thank you for your input. I agree that postpartum endometritis is the most likely diagnosis, especially given the classic presentation of uterine tenderness and fever in the early postpartum period. I also agree with your recommendations for empiric broad-spectrum IV antibiotics and close monitoring. A few points and questions to further refine our assessment and management: 1. **Urinary Frequency:** While increased urinary frequency could be secondary to endometritis (due to local irritation), I agree that a concurrent urinary tract infection (UTI) should be ruled out, especially since postpartum women are at increased risk. I will order a urinalysis and urine culture. Would you recommend empiric coverage for UTI at this stage, or wait for results unless symptoms develop? 2. **Shortness of Breath:** The patient reports mild, intermittent shortness of breath without chest pain, palpitations, or DVT signs. While this could be related to postpartum physiological changes, I am mindful of the risk of"
-      },
-      {
-        "speaker": "Specialist (Obstetrician/Gynecologist (OB/GYN))",
-        "turn": 12,
-        "phase": "consultation",
-        "text": "1. For urinary frequency, empiric UTI coverage is not necessary unless urinalysis suggests infection or symptoms develop, as endometritis is the more likely cause; continue to monitor closely. 2. For mild, intermittent shortness of breath, assess for anemia, fluid overload, or early pulmonary embolism\u2014consider CBC, pulse oximetry, and, if symptoms worsen or persist, a chest X-ray or further workup for PE."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 13,
-        "phase": "consultation",
-        "text": "Thank you for your recommendations. I agree with your approach regarding both the urinary symptoms and the mild shortness of breath. To further refine our assessment and ensure comprehensive care, I have a few follow-up points and questions: 1. **Endometritis Management:** - I will initiate IV clindamycin and gentamicin as empiric therapy for endometritis. - Would you recommend adding ampicillin for broader coverage (e.g., for enterococci), or do you reserve this for more severe or unresponsive cases? 2. **Monitoring for Complications:** - Given the patient\u2019s mild shortness of breath, I will obtain a CBC to assess for anemia and check pulse oximetry. - If the CBC reveals significant anemia, would you recommend transfusion thresholds in the postpartum setting, or do you prefer conservative management unless symptomatic? 3. **Further Evaluation of Shortness of Breath:** - If the patient\u2019s respiratory symptoms persist or"
-      },
-      {
-        "speaker": "Specialist (Obstetrician/Gynecologist (OB/GYN))",
-        "turn": 13,
-        "phase": "consultation",
-        "text": "1. I reserve adding ampicillin for cases unresponsive to initial therapy or if enterococcal infection is strongly suspected; clindamycin and gentamicin are usually sufficient for most cases. 2. For postpartum anemia, transfusion is generally reserved for symptomatic patients or hemoglobin <7 g/dL; otherwise, conservative management with iron supplementation is preferred. 3. If shortness of breath persists or worsens, escalate workup for pulmonary embolism or cardiac causes with imaging as indicated."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 14,
-        "phase": "consultation",
-        "text": "Thank you for your clear guidance. I agree with your outlined approach. To further refine our management and ensure we are not missing any atypical presentations or complications, I have a few additional questions and considerations: 1. **Duration of Antibiotic Therapy:** - Once the patient is afebrile and clinically improved, what is your preferred total duration of antibiotic therapy for postpartum endometritis? Do you typically transition to oral antibiotics to complete the course, and if so, which agents do you favor? 2. **Monitoring for Sepsis or Complications:** - Are there specific clinical or laboratory parameters you recommend monitoring closely in the first 24\u201348 hours to detect early signs of sepsis or progression to more severe infection (e.g., pelvic abscess, septic pelvic thrombophlebitis)? - Would you recommend any imaging (e.g., pelvic ultrasound) upfront, or only if the patient fails to improve after 48\u201372 hours of therapy? 3. **Pre"
-      },
-      {
-        "speaker": "Specialist (Obstetrician/Gynecologist (OB/GYN))",
-        "turn": 14,
-        "phase": "consultation",
-        "text": "1. IV antibiotics are continued until the patient is afebrile for 24\u201348 hours; total duration is typically 7\u201310 days, with transition to oral agents (e.g., amoxicillin-clavulanate or clindamycin) if clinically improved. 2. Monitor vital signs, WBC, lactate, and clinical status closely for early sepsis; watch for persistent fever, worsening pain, or new symptoms. 3. Imaging (pelvic ultrasound or CT) is reserved for cases not improving after 48\u201372 hours or if abscess or thrombophlebitis is suspected."
-      },
-      {
-        "speaker": "Doctor",
-        "turn": 15,
-        "phase": "consultation",
-        "text": "Thank you for your detailed recommendations. I agree with your outlined management plan and appreciate the clarification regarding duration and transition of antibiotic therapy, as well as the indications for imaging. To further refine our approach and ensure comprehensive care, I have a few additional questions and considerations: 1. **Antibiotic Transition and Choice:** - When transitioning to oral antibiotics, do you have a preference between amoxicillin-clavulanate and clindamycin, or do you base the choice on local resistance patterns or patient tolerance? - Would you recommend obtaining cultures (e.g., endometrial or lochia cultures) to help guide oral antibiotic selection, or is this not routinely necessary if the patient is clinically improving? 2. **Risk Factors and Prevention:** - Are there specific risk factors in this patient\u2019s history (e.g., prolonged labor, multiple vaginal exams, manual removal of placenta) that we should address or counsel her about for future pregnancies? - Would you recommend any additional"
-      },
-      {
-        "speaker": "Specialist (Obstetrician/Gynecologist (OB/GYN))",
-        "turn": 15,
-        "phase": "consultation",
-        "text": "1. I base oral antibiotic choice on local resistance patterns and patient tolerance; both amoxicillin-clavulanate and clindamycin are reasonable if the patient is improving, and routine cultures are not necessary unless the course is atypical or unresponsive. 2. Key risk factors for endometritis include prolonged labor, multiple vaginal exams, internal monitoring, and manual placenta removal\u2014review her delivery history and counsel accordingly for future pregnancies. No additional interventions are needed if she recovers well, but emphasize early postpartum follow-up and infection prevention strategies."
-      }
-    ],
-    "requested_tests": [],
-    "tests_requested_count": 0,
-    "available_tests": [
-      "Complete_Blood_Count",
-      "Urinalysis",
-      "Vital_Signs_at_Presentation"
-    ],
-    "determined_specialist": "Obstetrician/Gynecologist (OB/GYN)",
-    "consultation_analysis": {
-      "premature_conclusion": false,
-      "diagnoses_considered": [
-        "postpartum endometritis",
-        "urinary tract infection (UTI)",
-        "anemia",
-        "fluid overload",
-        "pulmonary embolism",
-        "cardiac causes",
-        "pelvic abscess",
-        "septic pelvic thrombophlebitis"
-      ],
-      "diagnoses_considered_count": 7,
-      "disagreements": 0
-    },
-    "final_doctor_diagnosis": "Postpartum endometritis",
-    "is_correct": true,
-    "tests_left_out": [
-      "Urinalysis",
-      "Vital_Signs_at_Presentation",
-      "Complete_Blood_Count"
-    ],
-    "specialist_reason": "An Obstetrician/Gynecologist (OB/GYN) is the most appropriate specialist because the patient is experiencing postpartum symptoms\u2014specifically, lower abdominal (uterine) tenderness, fever, and increased urinary frequency\u2014shortly after delivery. These symptoms raise concern for postpartum complications such as endometritis, a uterine infection, which is best evaluated and managed by an OB/GYN. The absence of urinary symptoms and surgical wound issues further points toward a gynecologic rather than urologic or surgical cause."
+    "Top_10 is_correct": true,
+    "Top_10 correct rank": 1,
+    "final_diagnosis_is_correct": true,
+    "best_embedding_similarity_rank": 1
   }
 ]
