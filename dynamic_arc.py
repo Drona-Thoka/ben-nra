@@ -17,8 +17,8 @@ MODEL_NAME = "gpt-4.1"
 
 # --- Simulation Configuration Constants + Metrics---
 AGENT_DATASET = "MedQA"  # Start with MedQA as requested
-NUM_SCENARIOS = 150       # Minimum 50 scenarios per config-dataset combo
-TOTAL_INFERENCES = 10
+NUM_SCENARIOS = 1       # Minimum 50 scenarios per dataset combo
+TOTAL_INFERENCES = 10 
 CONSULTATION_TURNS = 5
 
 K_Values = [1,3,5,7,10] # Can be any natural number
@@ -63,10 +63,10 @@ def compare_results(diagnoses, correct_diagnosis, k=TOP_K):
         return True, matched_diag
     return False, None
 
-def get_log_file(dataset, config_name):
-    """Create a log file name based on dataset and config"""
+def get_log_file(dataset, config_name = ""):
+    """Create a log file name based on dataset"""
     os.makedirs(BASE_LOG_DIR, exist_ok=True)
-    return os.path.join(BASE_LOG_DIR, f"{dataset}_{config_name}_log.json")
+    return os.path.join(BASE_LOG_DIR, f"{dataset}_{"Dynamic"}_log.json")
 
 def log_scenario_data(data, log_file):
     """Log data to a specific log file"""
@@ -313,7 +313,7 @@ class DoctorAgent(Agent):
         self.specialist_type = None
         self.consultation_turns = 0
         self.system_prompt_template = ""
-        self.self.current_speciality = "General Medicine"
+        self.current_speciality = "General Medicine"
         super().__init__(scenario)
     
     def _init_data(self):
@@ -444,7 +444,6 @@ class SpecialistAgent(Agent):
         self.add_hist(f"Specialist ({self.specialty}): {answer}")
         return answer
     
-    # in need of metrics
 def run_dynamic_scenario(scenario, dataset, total_inferences, max_consultation_turns, scenario_idx):
     doctors_switched = 0
     patient_agent = PatientAgent(scenario=scenario)
@@ -453,6 +452,9 @@ def run_dynamic_scenario(scenario, dataset, total_inferences, max_consultation_t
     meas_agent = MeasurementAgent(scenario=scenario)
     
     available_tests = scenario.get_available_tests()
+
+    patient_reponse = ""
+
     run_log = {
         "timestamp": datetime.now(),
         "model": MODEL_NAME,
@@ -475,21 +477,23 @@ def run_dynamic_scenario(scenario, dataset, total_inferences, max_consultation_t
         "is_correct": None,
         "embedding_similarity": None,
         "best_embedding_similarity": None,
-        "doctors_switched" : doctors_switched,
+        "doctors_switched" : 0,
+        "switched": []
     }
 
 
-    while doctors_switched <= SWITCH_CAP:
+    while doctors_switched < SWITCH_CAP:
         # --- Phase 1: Patient Interaction ---
         print(f"\n=== Phase 1: Patient Interaction Phase with Doctor (Switch count: {doctors_switched}) ===")
         for turn in range(total_inferences):
+            current_speaker = "Patient"
             # doctor generates question/statement
             doctor_dialogue, state = current_doctor.inference_doctor(
-                last_response="Patient presents with initial information." if turn == 0 else last_response,
+                last_response="Patient presents with initial information." if turn == 0 else patient_reponse,
                 mode="patient"
             )
-            print(f"Doctor [Turn {turn}]: {doctor_output}")
-            run_log["dialogue_history"].append({"speaker": "Doctor", "turn": turn, "text": doctor_output})
+            print(f"Doctor [Turn {turn}]: {doctor_dialogue}")
+            run_log["dialogue_history"].append({"speaker": "Doctor", "turn": turn, "text": doctor_dialogue})
 
             # Patient or Measurement response depending on doctor output
             if "REQUEST TEST" in doctor_dialogue:
@@ -539,45 +543,126 @@ def run_dynamic_scenario(scenario, dataset, total_inferences, max_consultation_t
         run_log["determined_specialist"] = specialist_type
         run_log["specialist_reason"] = specialist_reason
         specialist_agent = SpecialistAgent(scenario=scenario, specialty=specialist_type)
+        last_specialist_response = "I have reviewed the patient's case notes. Please share your thoughts to begin the consultation."
+
 ##############################################################################################################################################d
         # --- Phase 3: Consultation ---
         print(f"\n=== Consultation Phase with Specialist: {specialist_type} ===")
-        last_specialist_response = "I have reviewed the patient's case notes. Please share your thoughts to begin the consultation."
-        for consult_turn in range(max_consultation_turns):
-            doctor_consult_msg, _ = current_doctor.inference_doctor(last_specialist_response, mode="consultation")
+        consultation_dialogue_entries = []
+        for consult_turn in range(1, max_consultation_turns + 1):
+            doctor_consult_msg, state = current_doctor.inference_doctor(last_specialist_response, mode="consultation")
             print(f"Doctor [Consult Turn {consult_turn}]: {doctor_consult_msg}")
+            doctor_entry = {"speaker": "Doctor", "turn": consult_turn, "phase": "consultation", "text": doctor_consult_msg}
             run_log["dialogue_history"].append({"speaker": "Doctor", "turn": consult_turn, "text": doctor_consult_msg, "phase": "consultation"})
+            consultation_dialogue_entries.append(doctor_entry)
+
 
             specialist_response = specialist_agent.inference_specialist(doctor_consult_msg)
             print(f"Specialist ({specialist_type}) [Consult Turn {consult_turn}]: {specialist_response}")
-            run_log["dialogue_history"].append({"speaker": f"Specialist ({specialist_type})", "turn": consult_turn, "text": specialist_response, "phase": "consultation"})
-
+            specialist_entry = {"speaker": f"Specialist ({specialist_type})", "turn": consult_turn, "phase": "consultation", "text": specialist_response}
+            run_log["dialogue_history"].append(specialist_entry)
+            consultation_dialogue_entries.append(specialist_entry)
             last_specialist_response = specialist_response
 
         # --- Phase 4: Query Confidence for Switching ---
         confidence = current_doctor.query_confidence()
         print(f"Confidence in specialist takeover: {confidence}")
 
+        run_log["confidence"] = confidence
         if confidence >= CONFIDENCE_EPSILON and doctors_switched < SWITCH_CAP:
             # Switch doctor to specialist (or instantiate new DoctorAgent with specialist's info)
+            run_log["switched"].append(True)
             doctors_switched += 1
+            run_log["doctors_switched"] = doctors_switched
+            old_doctor_history = current_doctor.agent_hist
             current_doctor = DoctorAgent(scenario=scenario, max_infs=total_inferences, specialist_type=specialist_type)
-            current_doctor.agent_hist = specialist_agent.agent_hist  # carry history over if needed
+            current_doctor.agent_hist = old_doctor_history + specialist_agent.agent_hist  # carry history over if needed
             print(f"Switching to specialist doctor (switch count: {doctors_switched}). Restarting patient interaction.")
+
+            time.sleep(0.5)
             continue  # restart patient interaction phase with new doctor
+        
+        run_log["switched"].append(False)
 
-        # --- Phase 5: Final Diagnosis ---
-        final_diag = current_doctor.get_final_diagnosis()
-        run_log["final_diagnosis"] = final_diag
-        print(f"Final diagnosis: {final_diag}")
-        # Evaluate correctness (you can use existing compare_results or similar)
-        run_log["is_correct"] = evaluate_correctness(final_diag, scenario.diagnosis_information())
+    # --- Phase 5: Final Diagnosis Phase ---
+    print("\n--- Phase 5: Final Diagnosis ---")
+    final_diagnosis_full = current_doctor.get_final_diagnosis()
+    print(f"FINAL DIAGNOSES FULL RAW: {final_diagnosis_full} ")
+    if "DIAGNOSIS READY:" in final_diagnosis_full:
+         final_diagnosis_text = final_diagnosis_full.split("DIAGNOSIS READY:", 1)[-1].strip()
+         diagnoses = [d.strip() for d in final_diagnosis_text.split("|") if d.strip()][:TOP_K]   
+         print(f"FULL DIAGNOSIS LIST: {diagnoses}")
+         run_log["top_K diagnoses"] = diagnoses
+    else:
+         final_diagnosis_text = "No diagnosis provided in correct format."
 
-        break  # no more switches, finish simulation
+    print(f"\nFinal Diagnoses by Doctor: {diagnoses}")
+    print(f"Correct Diagnosis: {scenario.diagnosis_information()}")
 
-    return run_log, run_log["is_correct"]
+    # Compute prediction embeddings
+    try:
+        pred_embed = [get_embedding(diagnosis.strip().lower()) for diagnosis in diagnoses[:TOP_K]]
+    except Exception as e:
+        print(f"Embedding error (predictions): {e}")
+        pred_embed = None
+
+    # Compute ground truth embedding
+    try:
+        true_embed = get_embedding(scenario.diagnosis_information().strip().lower())
+    except Exception as e:
+        print(f"Embedding error (correct diagnosis): {e}")
+        true_embed = None
+
+    for k in K_Values:
+        sliced = diagnoses[:min(k, len(diagnoses))]
+        is_correct, final_diagnosis = compare_results(sliced, scenario.diagnosis_information(), k)
+
+        print(f"Scenario {scenario_idx} | Top-{k} Diagnosis was {'CORRECT' if is_correct else 'INCORRECT'}")
+        run_log[f"Top_{k}"] = sliced
+        run_log[f"Top_{k} is_correct"] = is_correct
+        if is_correct and final_diagnosis in sliced:
+            run_log[f"Top_{k} correct rank"] = sliced.index(final_diagnosis) + 1
+
+        if k == TOP_K:
+            run_log["is_correct"] = is_correct
+            run_log["final_doctor_diagnosis"] = final_diagnosis
+            run_log["final_diagnosis_is_correct"] = is_correct
+
+    # Compute embedding similairites 
+    if pred_embed is not None and true_embed is not None:
+        embed_sim = [cosine_similarity(pred, true_embed) for pred in pred_embed]
+
+        run_log["embedding_similarity"] = embed_sim
+        run_log["best_embedding_similarity"] = max(embed_sim) if embed_sim else None
+        if embed_sim:
+            run_log["best_embedding_similarity_rank"] = embed_sim.index(run_log["best_embedding_similarity"]) + 1
+    else:
+        run_log["embedding_similarity"] = None
+        run_log["best_embedding_similarity"] = None
+        run_log["best_embedding_similarity_rank"] = None
+
+    # --- Consultation Analysis Phase (Moved here) ---
+    print("\n--- Phase 6: Consultation Analysis ---")
+    consultation_history_text = "\n".join([f"{entry['speaker']}: {entry['text']}" for entry in run_log["dialogue_history"] if entry["phase"] == "consultation"])
+    if consultation_history_text:
+        consultation_analysis_results = analyze_consultation(consultation_history_text)
+        run_log["consultation_analysis"] = consultation_analysis_results
+        print("Consultation Analysis Results:")
+        if consultation_analysis_results:
+            for key, value in consultation_analysis_results.items():
+                if key != "test_density":
+                     print(f"- {key.replace('_', ' ').title()}: {value}")
+        else:
+            print("Analysis could not be performed.")
+    else:
+        print("No consultation dialogue to analyze.")
+        run_log["consultation_analysis"] = {"error": "No consultation dialogue recorded"}
 
 
+    run_log["info_density_score"] = float(calculate_info_density_score(run_log["dialogue_history"]))
+    return run_log, run_log.get("is_correct", False)
+
+'''
 # --- Main Simulation Logic ---
 def run_single_scenario(scenario, dataset, total_inferences, max_consultation_turns, scenario_idx):
     patient_agent = PatientAgent(scenario=scenario)
@@ -783,71 +868,64 @@ def run_single_scenario(scenario, dataset, total_inferences, max_consultation_tu
 
     run_log["info_density_score"] = float(calculate_info_density_score(run_log["dialogue_history"]))
     return run_log, run_log.get("is_correct", False)
+'''
 
-def run_experiment_three(dataset, total_inferences, consultation_turns, max_scenarios=1):
-    """Run a single config-dataset combination test"""
- 
-    # Create a list of scenarios to run
-    scenarios_to_process = [{"name": "Base-Case", "use_measurement": True, "use_specialist": True, "prompt_type": "BASELINE_PROMPT"}, 
-                            {"name": "Augmented-Doctor", "use_measurement": True, "use_specialist": False, "prompt_type": "AUGMENTED_DOCTOR_PROMPT"}, 
-                            {"name": "Doctoral-Team", "use_measurement": False, "use_specialist": True, "prompt_type": "DOCTOR_TEAM_PROMPT"}, 
-                            {"name": "Minimalist", "use_measurement": False, "use_specialist": False, "prompt_type": "MINIMALIST_PROMPT"}]
-    
+def run_dynamic_experiment(dataset, total_inferences, consultation_turns, max_scenarios=1):
+    """Run a single dataset combination test"""
+     
     scenario_loader = ScenarioLoader(dataset=dataset)
-    scenarios_to_run = len(scenarios_to_process)    
+    scenarios_to_run = 1    
         
     total_simulated_current_session = 0 
     total_correct_current_session = 0
     
     scenario_idx = 0
     
-    for config in scenarios_to_process:
-        config_name = config["name"]
 
-        log_file = get_log_file(dataset, config_name)
-        completed_scenario_ids = get_completed_scenarios(log_file)
+    log_file = get_log_file(dataset)
+    completed_scenario_ids = get_completed_scenarios(log_file)
 
-        print(f"\n=== Testing {config_name} configuration on {dataset} dataset ===")
-        print(f"Log file: {log_file}")
-        print(f"Already completed scenario IDs: {len(completed_scenario_ids)}")
-        print(f"Scenarios to run in this session: {len(scenarios_to_process)} of {scenarios_to_run} total planned")
-        print(f"\n--- Running Scenario {scenario_idx + 1}/{scenarios_to_run} with {config_name} configuration ---")
+    print(f"\n=== Testing {"Dynamic"} arc on {dataset} dataset ===")
+    print(f"Log file: {log_file}")
+    print(f"Already completed scenario IDs: {len(completed_scenario_ids)}")
+    print(f"Scenarios to run in this session: {1} of {scenarios_to_run} total planned")
+    print(f"\n--- Running Scenario {scenario_idx + 1}/{scenarios_to_run} with {"Dynamic"} configuration ---")
 
-        for scenario_idx in range(min(NUM_SCENARIOS, max_scenarios)):
-            if scenario_idx in completed_scenario_ids:
-                print(f"Completed, skipping scenario: {scenario_idx}", scenario_idx)
-                continue
+    for scenario_idx in range(min(NUM_SCENARIOS, max_scenarios)):
+        if scenario_idx in completed_scenario_ids:
+            print(f"Completed, skipping scenario: {scenario_idx}", scenario_idx)
+            continue
 
-            scenario = scenario_loader.get_scenario(id=scenario_idx)
+        scenario = scenario_loader.get_scenario(id=scenario_idx)
 
-            if scenario is None:
-                print(f"Error loading scenario {scenario_idx}, skipping.")
-                continue
+        if scenario is None:
+            print(f"Error loading scenario {scenario_idx}, skipping.")
+            continue
 
-            
-            total_simulated_current_session += 1
-            run_log, is_correct = run_single_scenario(
-                scenario, dataset, total_inferences, consultation_turns, scenario_idx, config 
-            )
+        
+        total_simulated_current_session += 1
+        run_log, is_correct = run_dynamic_scenario(
+            scenario, dataset, total_inferences, consultation_turns, scenario_idx 
+        )
 
-            if is_correct:
-                total_correct_current_session += 1
+        if is_correct:
+            total_correct_current_session += 1
 
-            log_scenario_data(run_log, log_file)
-            print(f"Tests requested in Scenario {scenario_idx + 1}: {run_log.get('requested_tests', [])}")
-            
-        # Update progress
-        if total_simulated_current_session > 0:
-            accuracy_current_session = (total_correct_current_session / total_simulated_current_session) * 100
-            print(f"\nCurrent Accuracy for this session ({config_name} configuration on {dataset}): {accuracy_current_session:.2f}% ({total_correct_current_session}/{total_simulated_current_session})")
-            
-            # Calculate overall progress including previously completed scenarios
-            overall_completed_count = len(completed_scenario_ids) + total_simulated_current_session
-            overall_correct_count = total_correct_current_session
-            
-            overall_accuracy_so_far = (overall_correct_count / overall_completed_count) * 100 if overall_completed_count > 0 else 0
-            print(f"Overall Progress for {config_name} on {dataset}: {overall_completed_count}/{scenarios_to_run} scenarios completed. Overall Accuracy: {overall_accuracy_so_far:.2f}% ({overall_correct_count}/{overall_completed_count})")
-    
+        log_scenario_data(run_log, log_file)
+        print(f"Tests requested in Scenario {scenario_idx + 1}: {run_log.get('requested_tests', [])}")
+        
+    # Update progress
+    if total_simulated_current_session > 0:
+        accuracy_current_session = (total_correct_current_session / total_simulated_current_session) * 100
+        print(f"\nCurrent Accuracy for this session ({"Dynamic"} configuration on {dataset}): {accuracy_current_session:.2f}% ({total_correct_current_session}/{total_simulated_current_session})")
+        
+        # Calculate overall progress including previously completed scenarios
+        overall_completed_count = len(completed_scenario_ids) + total_simulated_current_session
+        overall_correct_count = total_correct_current_session
+        
+        overall_accuracy_so_far = (overall_correct_count / overall_completed_count) * 100 if overall_completed_count > 0 else 0
+        print(f"Overall Progress for {"Dynamic"} on {dataset}: {overall_completed_count}/{scenarios_to_run} scenarios completed. Overall Accuracy: {overall_accuracy_so_far:.2f}% ({overall_correct_count}/{overall_completed_count})")
+
     # Calculate final statistics for this combination
     final_completed_count = len(completed_scenario_ids) + total_simulated_current_session
     if final_completed_count > 0:
@@ -871,7 +949,7 @@ def run_experiment_three(dataset, total_inferences, consultation_turns, max_scen
         
         final_accuracy = (correct_count_total / actual_entries_in_log) * 100 if actual_entries_in_log > 0 else 0
 
-        print(f"\n=== Results for {config_name} configuration on {dataset} dataset ===")
+        print(f"\n=== Results for Dynamic configuration on {dataset} dataset ===")
         print(f"Total Scenarios Logged: {actual_entries_in_log} (planned: {scenarios_to_run}, completed this/prev sessions: {final_completed_count})")
         print(f"Final Accuracy: {final_accuracy:.2f}% ({correct_count_total}/{actual_entries_in_log})")
     
@@ -890,13 +968,6 @@ def main():
     # Determine which datasets to test
     #datasets_to_test = ['MedQA', 'NEJM'] if args.dataset == 'all' else [args.dataset]
     datasets_to_test = ['MedQA'] if args.dataset == 'all' else [args.dataset]
-    
-    # Determine which configs to test
-    scenarios_to_process = [{"name": "Base-Case", "use_measurement": True, "use_specialist": True, "prompt_type": "BASELINE_PROMPT"}, 
-                            {"name": "Augmented-Doctor", "use_measurement": True, "use_specialist": False, "prompt_type": "AUGMENTED_DOCTOR_PROMPT"}, 
-                            {"name": "Doctoral-Team", "use_measurement": False, "use_specialist": True, "prompt_type": "DOCTOR_TEAM_PROMPT"}, 
-                            {"name": "Minimalist", "use_measurement": False, "use_specialist": False, "prompt_type": "MINIMALIST_PROMPT"}]
-
 
     print(f"Base settings: {args.scenarios} scenarios per combination, {TOTAL_INFERENCES} patient interactions, {CONSULTATION_TURNS} consultation turns")
     
@@ -904,7 +975,7 @@ def main():
     summary = {
         "start_time": datetime.now().isoformat(),
         "completed_combinations": 0,
-        "total_combinations": len(datasets_to_test) * len(scenarios_to_process),
+        "total_combinations": len(datasets_to_test),
         "results_by_combination": {}
     }
     
@@ -912,37 +983,36 @@ def main():
     for dataset in datasets_to_test:
         
         try:
-            completed = run_experiment_three(
+            completed = run_dynamic_experiment(
                 dataset, TOTAL_INFERENCES, CONSULTATION_TURNS, 150
             )                
         except Exception as e:
             import traceback
-            print(f"Error running {dataset} with config: {e}")
+            print(f"Error running {dataset} with dynamic: {e}")
             traceback.print_exc()                
             # Continue with next combination even if this one fails
 
-        for config in scenarios_to_process:
 
-            print(f"\n\n{'='*80}")
-            print(f"TESTING: Dataset={dataset}, Config={config["name"]}")
-            print(f"{'='*80}")
+        print(f"\n\n{'='*80}")
+        print(f"TESTING: Dataset={dataset} Config= \"Dynamic\"")
+        print(f"{'='*80}")
 
-            # Update summary
-            combination_key = f"{dataset}_{config["name"]}"
-            log_file = get_log_file(dataset, config["name"])
-            
-            if os.path.exists(log_file):
-                with open(log_file, 'r') as f:
-                    results = json.load(f)
-                    correct_count = sum(1 for entry in results if entry.get("is_correct", False))
-                    total_count = len(results)
-                    
-                    summary["results_by_combination"][combination_key] = {
-                        "completed": completed,
-                        "scenarios_run": total_count,
-                        "correct_diagnoses": correct_count,
-                        "accuracy": (correct_count / total_count) * 100 if total_count > 0 else 0
-                    }
+        # Update summary
+        combination_key = f"{dataset}_{"Dynamic"}"
+        log_file = get_log_file(dataset)
+        
+        if os.path.exists(log_file):
+            with open(log_file, 'r') as f:
+                results = json.load(f)
+                correct_count = sum(1 for entry in results if entry.get("is_correct", False))
+                total_count = len(results)
+                
+                summary["results_by_combination"][combination_key] = {
+                    "completed": completed,
+                    "scenarios_run": total_count,
+                    "correct_diagnoses": correct_count,
+                    "accuracy": (correct_count / total_count) * 100 if total_count > 0 else 0
+                }
             
             if completed:
                 summary["completed_combinations"] += 1
@@ -953,13 +1023,13 @@ def main():
     summary["total_duration_seconds"] = (datetime.fromisoformat(summary["end_time"]) - 
                                         datetime.fromisoformat(summary["start_time"])).total_seconds()
     
-    with open(os.path.join(BASE_LOG_DIR, "config_testing_summary.json"), 'w') as f:
+    with open(os.path.join(BASE_LOG_DIR, "dynamic_testing_summary.json"), 'w') as f:
         json.dump(summary, f, indent=2)
     
     print("\n\n=== Dynamic TESTING COMPLETE ===")
     print(f"Completed {summary['completed_combinations']}/{summary['total_combinations']} combinations")
     print(f"Total duration: {summary['total_duration_seconds']/3600:.2f} hours")
-    print(f"Full results saved to {os.path.join(BASE_LOG_DIR, 'config_testing_summary.json')}")
+    print(f"Full results saved to {os.path.join(BASE_LOG_DIR, 'dynamic_testing_summary.json')}")
 
 
 if __name__ == "__main__":
