@@ -1,33 +1,33 @@
 {
-  "start_time": "2025-08-04T16:34:03.125105",
+  "start_time": "2025-08-05T21:21:27.360790",
   "completed_combinations": 4,
   "total_combinations": 4,
   "results_by_combination": {
     "MedQA_['EKG']": {
       "completed": true,
-      "scenarios_run": 10,
-      "correct_diagnoses": 5,
-      "accuracy": 50.0
+      "scenarios_run": 150,
+      "correct_diagnoses": 114,
+      "accuracy": 76.0
     },
     "MedQA_['EKG', 'Blood Tests']": {
       "completed": true,
-      "scenarios_run": 10,
-      "correct_diagnoses": 6,
-      "accuracy": 60.0
+      "scenarios_run": 150,
+      "correct_diagnoses": 114,
+      "accuracy": 76.0
     },
     "MedQA_['EKG', 'Blood Tests', 'Physical']": {
       "completed": true,
-      "scenarios_run": 10,
-      "correct_diagnoses": 5,
-      "accuracy": 50.0
+      "scenarios_run": 150,
+      "correct_diagnoses": 110,
+      "accuracy": 73.33333333333333
     },
     "MedQA_['EKG', 'Blood Tests', 'Physical', 'Vitals']": {
       "completed": true,
-      "scenarios_run": 10,
-      "correct_diagnoses": 6,
-      "accuracy": 60.0
+      "scenarios_run": 150,
+      "correct_diagnoses": 114,
+      "accuracy": 76.0
     }
   },
-  "end_time": "2025-08-04T16:34:03.194214",
-  "total_duration_seconds": 0.069109
+  "end_time": "2025-08-06T11:28:24.457041",
+  "total_duration_seconds": 50817.096251
 }

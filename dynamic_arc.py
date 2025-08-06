@@ -25,7 +25,6 @@ K_Values = [1,3,5,7,10] # Can be any natural number
 TOP_K = max(K_Values)
 
 SWITCH_CAP = 4
-NUM_SWITCHES = 0
 CONFIDENCE_EPSILON = 0.5
 
 # --- Dynamic Doctor Prompt --- 
@@ -448,26 +447,44 @@ class SpecialistAgent(Agent):
     # in need of metrics
 def run_dynamic_scenario(scenario, dataset, total_inferences, max_consultation_turns, scenario_idx):
     doctors_switched = 0
-    current_doctor = DoctorAgent(scenario=scenario, max_infs=total_inferences)
-    specialist_agent = None
+    patient_agent = PatientAgent(scenario=scenario)
 
+    current_doctor = DoctorAgent(scenario=scenario, max_infs=total_inferences)
+    meas_agent = MeasurementAgent(scenario=scenario)
+    
+    available_tests = scenario.get_available_tests()
     run_log = {
-        "scenario_id": scenario_idx,
+        "timestamp": datetime.now(),
+        "model": MODEL_NAME,
         "dataset": dataset,
+        "scenario_id": scenario_idx,
+        "max_patient_turns": total_inferences,
+        "max_consultation_turns": max_consultation_turns,
+        "patient_interaction_turns" : 0,
+        "doctor_questions": 0,
+        "correct_diagnosis": scenario.diagnosis_information(),
         "dialogue_history": [],
         "requested_tests": [],
         "tests_requested_count": 0,
-        "doctors_switched": 0,
-        "final_diagnosis": None,
+        "available_tests": available_tests,
+        "determined_specialist": None,
+        "consultation_analysis": {},
+        "final_doctor_diagnosis": None,
+        "top_K diagnoses": None,
+        "top_K": TOP_K,
         "is_correct": None,
+        "embedding_similarity": None,
+        "best_embedding_similarity": None,
+        "doctors_switched" : doctors_switched,
     }
+
 
     while doctors_switched <= SWITCH_CAP:
         # --- Phase 1: Patient Interaction ---
-        print(f"\n=== Patient Interaction Phase with Doctor (Switch count: {doctors_switched}) ===")
+        print(f"\n=== Phase 1: Patient Interaction Phase with Doctor (Switch count: {doctors_switched}) ===")
         for turn in range(total_inferences):
             # doctor generates question/statement
-            doctor_output, state = current_doctor.inference_doctor(
+            doctor_dialogue, state = current_doctor.inference_doctor(
                 last_response="Patient presents with initial information." if turn == 0 else last_response,
                 mode="patient"
             )
@@ -475,32 +492,54 @@ def run_dynamic_scenario(scenario, dataset, total_inferences, max_consultation_t
             run_log["dialogue_history"].append({"speaker": "Doctor", "turn": turn, "text": doctor_output})
 
             # Patient or Measurement response depending on doctor output
-            if "REQUEST TEST" in doctor_output:
-                # process test request, measurement inference
-                test_name = extract_test_name(doctor_output)
-                run_log["requested_tests"].append(test_name)
-                measurement_response = MeasurementAgent(scenario=scenario).inference_measurement(doctor_output)
-                last_response = measurement_response
-                run_log["dialogue_history"].append({"speaker": "Measurement", "turn": turn, "text": measurement_response})
-            else:
-                # patient response
-                patient_response = PatientAgent(scenario=scenario).inference_patient(doctor_output)
-                last_response = patient_response
-                run_log["dialogue_history"].append({"speaker": "Patient", "turn": turn, "text": patient_response})
+            if "REQUEST TEST" in doctor_dialogue:
+                try:
+                    test_name = doctor_dialogue.split("REQUEST TEST:", 1)[1].strip().rstrip('.?!')
+                    if test_name:
+                        run_log["requested_tests"].append(test_name)
+                        print(f"System: Logged test request - {test_name}")
+                except IndexError:
+                    print("Warning: Could not parse test name from doctor request.")
+                    test_name = "Unknown Test"
 
-            if state == "consultation_needed":
-                print("Doctor requests consultation.")
+                result = meas_agent.inference_measurement(doctor_dialogue)
+                print(f"Measurement [Turn {turn}]: {result}")
+                next_input_for_doctor = result
+                run_log["dialogue_history"].append({"speaker": "Measurement", "turn": turn, "phase": "patient", "text": result})
+
+                history_update = f"Doctor: {doctor_dialogue}\n\nMeasurement: {result}"
+                meas_agent.add_hist(history_update)
+                current_speaker = "Measurement"
+                history_update = f"Doctor: {doctor_dialogue}"            
+                patient_agent.add_hist(history_update)
+            else:
+                patient_response = patient_agent.inference_patient(doctor_dialogue)
+                print(f"Patient [Turn {turn}]: {patient_response}")
+                next_input_for_doctor = patient_response
+                run_log["dialogue_history"].append({"speaker": "Patient", "turn": turn, "phase": "patient", "text": patient_response})
+                history_update = f"Patient: {patient_response}"
+                meas_agent.add_hist(f"Doctor: {doctor_dialogue}\n\nPatient: {patient_response}")
+                current_speaker = "Patient"
+
+            if ((state == "consultation_needed") or turn == total_inferences):
+                print("\nPatient interaction phase complete.")
                 break
+
+            time.sleep(0.5)
+
 
         # Update count of requested tests
         run_log["tests_requested_count"] = len(run_log["requested_tests"])
+        run_log["tests_left_out"] = list(set(available_tests) - set(run_log["requested_tests"]))
+        print(f"Total tests requested during patient interaction: {run_log['tests_requested_count']}")
+        print(f"Tests left out: {run_log['tests_left_out']}")
 
         # --- Phase 2: Specialist Determination ---
         specialist_type, specialist_reason = current_doctor.determine_specialist()
         run_log["determined_specialist"] = specialist_type
         run_log["specialist_reason"] = specialist_reason
         specialist_agent = SpecialistAgent(scenario=scenario, specialty=specialist_type)
-
+##############################################################################################################################################d
         # --- Phase 3: Consultation ---
         print(f"\n=== Consultation Phase with Specialist: {specialist_type} ===")
         last_specialist_response = "I have reviewed the patient's case notes. Please share your thoughts to begin the consultation."
