@@ -66,7 +66,7 @@ def compare_results(diagnoses, correct_diagnosis, k=TOP_K):
 def get_log_file(dataset, config_name = ""):
     """Create a log file name based on dataset"""
     os.makedirs(BASE_LOG_DIR, exist_ok=True)
-    return os.path.join(BASE_LOG_DIR, f"{dataset}_{"Dynamic"}_log.json")
+    return os.path.join(BASE_LOG_DIR, f"{dataset}_Dynamic_log.json")
 
 def log_scenario_data(data, log_file):
     """Log data to a specific log file"""
@@ -885,11 +885,11 @@ def run_dynamic_experiment(dataset, total_inferences, consultation_turns, max_sc
     log_file = get_log_file(dataset)
     completed_scenario_ids = get_completed_scenarios(log_file)
 
-    print(f"\n=== Testing {"Dynamic"} arc on {dataset} dataset ===")
+    print(f"\n=== Testing Dynamic Arc on {dataset} dataset ===")
     print(f"Log file: {log_file}")
     print(f"Already completed scenario IDs: {len(completed_scenario_ids)}")
     print(f"Scenarios to run in this session: {1} of {scenarios_to_run} total planned")
-    print(f"\n--- Running Scenario {scenario_idx + 1}/{scenarios_to_run} with {"Dynamic"} configuration ---")
+    print(f"\n--- Running Scenario {scenario_idx + 1}/{scenarios_to_run} with Dynamic configuration ---")
 
     for scenario_idx in range(min(NUM_SCENARIOS, max_scenarios)):
         if scenario_idx in completed_scenario_ids:
@@ -917,14 +917,14 @@ def run_dynamic_experiment(dataset, total_inferences, consultation_turns, max_sc
     # Update progress
     if total_simulated_current_session > 0:
         accuracy_current_session = (total_correct_current_session / total_simulated_current_session) * 100
-        print(f"\nCurrent Accuracy for this session ({"Dynamic"} configuration on {dataset}): {accuracy_current_session:.2f}% ({total_correct_current_session}/{total_simulated_current_session})")
+        print(f"\nCurrent Accuracy for this session (Dynamic configuration on {dataset}): {accuracy_current_session:.2f}% ({total_correct_current_session}/{total_simulated_current_session})")
         
         # Calculate overall progress including previously completed scenarios
         overall_completed_count = len(completed_scenario_ids) + total_simulated_current_session
         overall_correct_count = total_correct_current_session
         
         overall_accuracy_so_far = (overall_correct_count / overall_completed_count) * 100 if overall_completed_count > 0 else 0
-        print(f"Overall Progress for {"Dynamic"} on {dataset}: {overall_completed_count}/{scenarios_to_run} scenarios completed. Overall Accuracy: {overall_accuracy_so_far:.2f}% ({overall_correct_count}/{overall_completed_count})")
+        print(f"Overall Progress for Dynamic on {dataset}: {overall_completed_count}/{scenarios_to_run} scenarios completed. Overall Accuracy: {overall_accuracy_so_far:.2f}% ({overall_correct_count}/{overall_completed_count})")
 
     # Calculate final statistics for this combination
     final_completed_count = len(completed_scenario_ids) + total_simulated_current_session
@@ -998,7 +998,7 @@ def main():
         print(f"{'='*80}")
 
         # Update summary
-        combination_key = f"{dataset}_{"Dynamic"}"
+        combination_key = f"{dataset}_Dynamic"
         log_file = get_log_file(dataset)
         
         if os.path.exists(log_file):
