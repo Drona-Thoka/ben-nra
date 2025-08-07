@@ -633,6 +633,7 @@ def run_single_scenario(scenario, dataset, total_inferences, max_consultation_tu
         #print("No consultation dialogue to analyze.")
         run_log["consultation_analysis"] = {"error": "No consultation dialogue recorded"}
 
+    run_log["info_density_score"] = float(calculate_info_density_score(run_log["dialogue_history"]))
     return run_log, run_log.get("is_correct", False)
 
 def run_experiment_two(dataset, total_inferences, consultation_turns, max_scenarios=1):
