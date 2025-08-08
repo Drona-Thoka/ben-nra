@@ -2,7 +2,7 @@ import json
 import numpy as np
 
 NUM_FILES = 4
-CONFIG_PATHS = ["logs/MedQA_['EKG', 'Blood Tests', 'Physical', 'Vitals']_log.json", "logs/MedQA_['EKG', 'Blood Tests', 'Physical']_log.json", "logs/MedQA_['EKG', 'Blood Tests']_log.json", "logs/MedQA_['EKG']_log.json"]
+CONFIG_PATHS = ["logs/Modified_MedQA_['EKG', 'Blood Tests', 'Physical', 'Vitals']_log.json", "logs/Modified_MedQA_['EKG', 'Blood Tests', 'Physical']_log.json", "logs/Modified_MedQA_['EKG', 'Blood Tests']_log.json", "logs/Modified_MedQA_['EKG']_log.json"]
 
 
 for i in range(NUM_FILES):
@@ -36,39 +36,27 @@ for i in range(NUM_FILES):
         metrics["patient_turns"].append(case["patient_interaction_turns"])
         metrics["doctor_questions"].append(case["doctor_questions"])
         metrics["test_count"].append(case["tests_requested_count"])
-        #metrics["info_density"].append(case["info_density_score"])
+        metrics["info_density"].append(case["info_density"])
         metrics["best_similarity"].append(case["best_embedding_similarity"])
         metrics["embedding_rank"].append(case["best_embedding_similarity_rank"])
 
-        # Accuracies
-        if case.get("final_diagnosis_is_correct"):
-            metrics["final_correct"] += 1
-        if case.get("Top_1 is_correct"):
-            metrics["top1_correct"] += 1
-            metrics["top1_rank"].append(case["Top_1 correct rank"])
-        if case.get("Top_3 is_correct"):
-            metrics["top3_correct"] += 1
-            metrics["top3_rank"].append(case["Top_3 correct rank"])
-        if case.get("Top_5 is_correct"):
-            metrics["top5_correct"] += 1
-#            metrics["top5_rank"].append(case["Top_5 correct rank"])
-        if case.get("Top_7 is_correct"):
-            metrics["top7_correct"] += 1
-            metrics["top7_rank"].append(case["Top_7 correct rank"])
-        if case.get("Top_10 is_correct"):
-            metrics["top10_correct"] += 1
-#            metrics["top10_rank"].append(case["Top_10 correct rank"])
+        for k in [1, 3, 5, 7, 10]:
+            if case.get(f"Top_{k} is_correct"):
+                metrics[f"top{k}_correct"] += 1
+                rank_key = f"Top_{k} correct rank"
+                if rank_key in case:
+                    metrics[f"top{k}_rank"].append(case[rank_key])
 
     # Output
     def avg(arr): return round(np.mean(arr), 3)
     def acc(n): return round(n / N * 100, 2)
 
     print(f"Total Cases: {N}\n")
-    print(f"=== Interaction Stats for === {CONFIG_PATHS[i].replace("logs/MedQA_", "").replace("_log.json", "")}")
+    print(f"=== Interaction Stats for === {CONFIG_PATHS[i].replace("logs/MedQA_", '').replace("_log.json", '')}")
     print(f"Avg. Patient Turns: {avg(metrics['patient_turns'])}")
     print(f"Avg. Doctor Questions: {avg(metrics['doctor_questions'])}")
     print(f"Avg. Tests Requested: {avg(metrics['test_count'])}")
-    #print(f"Avg. Info Density Score: {avg(metrics['info_density'])}")
+    print(f"Avg. Info Density Score: {avg(metrics['info_density'])}")
     print(f"Avg. Best Embedding Similarity: {avg(metrics['best_similarity'])}")
     print(f"Avg. Embedding Similarity Rank: {avg(metrics['embedding_rank'])}")
 
