@@ -350,7 +350,7 @@ class DoctorAgent(Agent):
                  return "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist.", "consultation_needed"
 
             prompt = f"\nHere is a history of your dialogue with the patient:\n{self.agent_hist}\nHere was the patient response:\n{last_response}\nNow please continue your dialogue with the patient. You have {self.MAX_INFS - self.infs} questions remaining for the patient. Use your expertise as a {self.current_speciality} to narrow down the diagnosis. Remember you can REQUEST TEST: [test].\nDoctor: "
-            system_prompt = f"You are a doctor of speciality {self.current_speciality} named Dr. Agent interacting with a patient. You have {self.MAX_INFS - self.infs} questions left. Your goal is to gather information. {self.presentation}"
+            system_prompt = f"You are a doctor of speciality {self.current_speciality} named Dr. Agent interacting with a patient. You have {self.MAX_INFS - self.infs} questions left. Please use your unique skills as a {self.current_speciality} to help your goal of gathering information. {self.presentation}"
             answer = query_model(prompt, self.get_system_prompt())
             self.add_hist(f"Doctor: {answer}")
             self.infs += 1
@@ -379,23 +379,8 @@ class DoctorAgent(Agent):
         diagnosis_text = response.split("DIAGNOSIS READY:", 1)[-1].strip()
         return f"DIAGNOSIS READY: {diagnosis_text}"
     
-    def handoff(self):
-        specialty, explanation = self.determine_specialist()
-
-        new_doctor = DoctorAgent(
-                scenario=self.scenario,
-                max_infs=self.MAX_INFS,
-                current_speciality=specialty
-            )
-        
-        new_doctor.agent_hist = self.agent_hist.copy()
-        new_doctor.current_speciality = specialty
-
-        print(f"[SWITCH] Handoff to {specialty} completed.")
-        return new_doctor, explanation
-    
     def query_confidence(self):
-        system_prompt = f"You are Dr. Agent of speciality: {self.current_speciality}. You have finished interviewing the patient and consulting with a {self.specialist_type}. With the history of the patient in mind, please provide a confidence score 0-1 on allowing afformentioned {self.specialist_type} to take over the case."
+        system_prompt = f"You are Dr. Agent of speciality: {self.current_speciality}. You have finished interviewing the patient and consulting with a {self.specialist_type}. With the history of the patient in mind, please provide a confidence score 0-1 on allowing afformentioned {self.specialist_type} to take over the case. Please do not feel pressured to either switch or stay by any metric other than your judgement. If you think you are most fit, provide a low confidence. If you think the specialist is fit, provide a high confidence. Consider also the productivity of your conversation, in addition to fit."
         prompt = f"Based on the current patient's history and your experience as a {self.current_speciality} determine a confidence score 0-1 that you would have of a {self.specialist_type} trained doctor in taking over this case. Do not worry about the experience or credentials of the new doctor. Please only provide the confidence score in your answer. Keep it to two significant figures, EX: 0.55"
         response = float(query_model(prompt, system_prompt).strip().replace("```", ""))
         
@@ -575,15 +560,20 @@ def run_dynamic_scenario(scenario, dataset, total_inferences, max_consultation_t
             run_log["switched"].append(True)
             doctors_switched += 1
             run_log["doctors_switched"] = doctors_switched
-            old_doctor_history = current_doctor.agent_hist
+
+            ## --- Experimental
             current_doctor = DoctorAgent(scenario=scenario, max_infs=total_inferences, current_speciality=specialist_type)
-            current_doctor.agent_hist = old_doctor_history + specialist_agent.agent_hist  # carry history over if needed
+            current_doctor.agent_hist = patient_agent.agent_hist
+            ##
+
             print(f"Switching to specialist doctor (switch count: {doctors_switched}). Restarting patient interaction.")
 
             time.sleep(0.5)
             continue  # restart patient interaction phase with new doctor
+        else:
+            run_log["switched"].append(False)
+            break # end switches and get to diagnosis
         
-        run_log["switched"].append(False)
 
     # --- Phase 5: Final Diagnosis Phase ---
     print("\n--- Phase 5: Final Diagnosis ---")
