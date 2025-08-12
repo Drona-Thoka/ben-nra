@@ -307,13 +307,13 @@ class PatientAgent(Agent):
         return answer
 
 class DoctorAgent(Agent):
-    def __init__(self, scenario=None, max_infs=20, specialist_type = "General Medicine"):
+    def __init__(self, scenario=None, max_infs=20, current_speciality = "General Medicine"):
         self.MAX_INFS = max_infs
         self.infs = 0
         self.specialist_type = None
         self.consultation_turns = 0
-        self.system_prompt_template = ""
-        self.current_speciality = "General Medicine"
+        self.system_prompt_template = PROMPTS["DYNAMIC_DOCTOR_PROMPT"]
+        self.current_speciality = current_speciality
         super().__init__(scenario)
     
     def _init_data(self):
@@ -349,8 +349,8 @@ class DoctorAgent(Agent):
             if self.infs >= self.MAX_INFS:
                  return "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist.", "consultation_needed"
 
-            prompt = f"\nHere is a history of your dialogue with the patient:\n{self.agent_hist}\nHere was the patient response:\n{last_response}\nNow please continue your dialogue with the patient. You have {self.MAX_INFS - self.infs} questions remaining for the patient. Remember you can REQUEST TEST: [test].\nDoctor: "
-            system_prompt = f"You are a doctor named Dr. Agent interacting with a patient. You have {self.MAX_INFS - self.infs} questions left. Your goal is to gather information. {self.presentation}"
+            prompt = f"\nHere is a history of your dialogue with the patient:\n{self.agent_hist}\nHere was the patient response:\n{last_response}\nNow please continue your dialogue with the patient. You have {self.MAX_INFS - self.infs} questions remaining for the patient. Use your expertise as a {self.current_speciality} to narrow down the diagnosis. Remember you can REQUEST TEST: [test].\nDoctor: "
+            system_prompt = f"You are a doctor of speciality {self.current_speciality} named Dr. Agent interacting with a patient. You have {self.MAX_INFS - self.infs} questions left. Your goal is to gather information. {self.presentation}"
             answer = query_model(prompt, self.get_system_prompt())
             self.add_hist(f"Doctor: {answer}")
             self.infs += 1
@@ -359,8 +359,8 @@ class DoctorAgent(Agent):
             return answer, "patient_interaction"
 
         elif mode == "consultation":
-            prompt = f"\nHere is the full history (Patient interaction followed by consultation):\n{self.agent_hist}\nYou are consulting with a {self.specialist_type}.\nHere was the specialist's latest response:\n{last_response}\nContinue the consultation. Ask questions or share your thoughts to refine the diagnosis.\nDoctor: "
-            system_prompt = f"You are Dr. Agent, consulting with a {self.specialist_type} about a patient case. Discuss the findings and differential diagnoses based on the history provided. Aim to reach a conclusion."
+            prompt = f"\nHere is the full history (Patient interaction followed by consultation):\n{self.agent_hist}\nYou are a doctor of speciality: {self.current_speciality} consulting with a {self.specialist_type}.\nHere was the specialist's latest response:\n{last_response}\nContinue the consultation using your expertise as a {self.current_speciality} specialist. Ask questions or share your thoughts to refine the diagnosis.\nDoctor: "
+            system_prompt = f"You are Dr. Agent of speciality: {self.current_speciality}, consulting with a {self.specialist_type} about a patient case. Discuss the findings and differential diagnoses based on the history provided and your experience as a practitioner of {self.current_speciality}. Aim to reach a conclusion."
             answer = query_model(prompt, system_prompt)
             self.add_hist(f"Doctor: {answer}")
             self.consultation_turns += 1
@@ -370,7 +370,7 @@ class DoctorAgent(Agent):
 
     def get_final_diagnosis(self):
         """Generates the final diagnosis prompt after all interactions."""
-        prompt = f"\nHere is the complete history of your dialogue with the patient and the specialist ({self.specialist_type}):\n{self.agent_hist}\nBased on this entire consultation, please provide exactly {TOP_K} final diagnoses now using your experience as a {self.current_speciality}. Do not provide any more than {TOP_K} nor less diagnoses. Provide your {TOP_K} diagnoses in the format 'DIAGNOSIS READY: diagnosis1 | diagnosis2 | ... diagnosis{TOP_K}'. Do not deviate from this format or else you have failed. Do not actually include the number. Do not include any other text, commets, or reasoning. If any of those afformentioned things happen, you have failed."
+        prompt = f"\nHere is the complete history of your dialogue with the patient and the specialist ({self.specialist_type}):\n{self.agent_hist}\nBased on this entire consultation and your experience as a practitioner of {self.current_speciality}, please provide exactly {TOP_K} final diagnoses now using your experience as a {self.current_speciality}. Do not provide any more than {TOP_K} nor less diagnoses. Provide your {TOP_K} diagnoses in the format 'DIAGNOSIS READY: diagnosis1 | diagnosis2 | ... diagnosis{TOP_K}'. Do not deviate from this format or else you have failed. Do not actually include the number. Do not include any other text, commets, or reasoning. If any of those afformentioned things happen, you have failed."
         system_prompt = f"You are Dr. Agent of speciality: {self.current_speciality}. You have finished interviewing the patient and consulting with a {self.specialist_type}. Review the entire history and provide your most likely final diagnoses in the required format."
         response = query_model(prompt, system_prompt)
 
@@ -385,11 +385,11 @@ class DoctorAgent(Agent):
         new_doctor = DoctorAgent(
                 scenario=self.scenario,
                 max_infs=self.MAX_INFS,
-                specialist_type=specialty
+                current_speciality=specialty
             )
         
         new_doctor.agent_hist = self.agent_hist.copy()
-        new_doctor.specialist_type = specialty
+        new_doctor.current_speciality = specialty
 
         print(f"[SWITCH] Handoff to {specialty} completed.")
         return new_doctor, explanation
@@ -471,6 +471,7 @@ def run_dynamic_scenario(scenario, dataset, total_inferences, max_consultation_t
         "available_tests": available_tests,
         "determined_specialist": [],
         "consultation_analysis": {},
+        "specialist_reason": [],
         "final_doctor_diagnosis": None,
         "top_K diagnoses": None,
         "top_K": TOP_K,
@@ -494,7 +495,7 @@ def run_dynamic_scenario(scenario, dataset, total_inferences, max_consultation_t
                 mode="patient"
             )
             print(f"Doctor [Turn {turn}]: {doctor_dialogue}")
-            run_log["dialogue_history"].append({"speaker": f"Doctor{doctors_switched}", "turn": turn, "text": doctor_dialogue})
+            run_log["dialogue_history"].append({"speaker": f"Doctor_{doctors_switched}", "speciality": current_doctor.current_speciality, "turn": turn, "text": doctor_dialogue})
 
             # Patient or Measurement response depending on doctor output
             if "REQUEST TEST" in doctor_dialogue:
@@ -553,7 +554,7 @@ def run_dynamic_scenario(scenario, dataset, total_inferences, max_consultation_t
             doctor_consult_msg, state = current_doctor.inference_doctor(last_specialist_response, mode="consultation")
             print(f"Doctor [Consult Turn {consult_turn}]: {doctor_consult_msg}")
             doctor_entry = {"speaker": "Doctor", "turn": consult_turn, "phase": "consultation", "text": doctor_consult_msg}
-            run_log["dialogue_history"].append({"speaker": f"Doctor{doctors_switched}", "turn": consult_turn, "text": doctor_consult_msg, "phase": "consultation"})
+            run_log["dialogue_history"].append({"speaker": f"Doctor_{doctors_switched}", "speciality": current_doctor.current_speciality, "turn": consult_turn, "text": doctor_consult_msg, "phase": "consultation"})
             consultation_dialogue_entries.append(doctor_entry)
 
 
@@ -575,7 +576,7 @@ def run_dynamic_scenario(scenario, dataset, total_inferences, max_consultation_t
             doctors_switched += 1
             run_log["doctors_switched"] = doctors_switched
             old_doctor_history = current_doctor.agent_hist
-            current_doctor = DoctorAgent(scenario=scenario, max_infs=total_inferences, specialist_type=specialist_type)
+            current_doctor = DoctorAgent(scenario=scenario, max_infs=total_inferences, current_speciality=specialist_type)
             current_doctor.agent_hist = old_doctor_history + specialist_agent.agent_hist  # carry history over if needed
             print(f"Switching to specialist doctor (switch count: {doctors_switched}). Restarting patient interaction.")
 
