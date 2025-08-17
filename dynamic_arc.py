@@ -17,7 +17,7 @@ MODEL_NAME = "gpt-4.1"
 
 # --- Simulation Configuration Constants + Metrics---
 AGENT_DATASET = "MedQA"  # Start with MedQA as requested
-NUM_SCENARIOS = 11       # Minimum 50 scenarios per dataset combo
+NUM_SCENARIOS = 5     # Minimum 50 scenarios per dataset combo
 TOTAL_INFERENCES = 10 
 CONSULTATION_TURNS = 5
 
@@ -358,9 +358,9 @@ class DoctorAgent(Agent):
             if self.infs >= self.MAX_INFS:
                  return "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist.", "consultation_needed"
             
-            prompt = f"\nHere is a history of your dialogue with the patient along with the history from the previous primary doctor if applicable there have been {doctors_switched} doctors who have worked on this case prior (ignore if 0):\n{self.agent_hist}\nHere was the patient response:\n{last_response}\nNow please continue your dialogue with the patient. You have {self.MAX_INFS - self.infs} questions remaining for the patient. Use your expertise as a {self.current_speciality} to narrow down the diagnosis. Remember you can REQUEST TEST: [test].\nDoctor: " + f"WARNING you are the last doctor, you CANNOT do a handoff, so get to a diagnosis within {self.MAX_INFS - self.infs}" if doctors_switched == SWITCH_CAP else ""
+            prompt = f"\nHere is a history of your dialogue with the patient: {self.agent_hist} along with the history from the previous primary doctor if applicable there have been {doctors_switched} doctors who have worked on this case prior (ignore if 0):\nHere was the patient response:\n{last_response}\nNow please continue your dialogue with the patient. You have {self.MAX_INFS - self.infs} questions remaining for the patient. Use your expertise as a {self.current_speciality} to narrow down the diagnosis. Reminder to consider {self.agent_hist} carefully. Remember you can REQUEST TEST: [test].\nDoctor: " + f"WARNING you are the last doctor, you CANNOT do a handoff, so get to a diagnosis within {self.MAX_INFS - self.infs}" if doctors_switched == SWITCH_CAP else ""
             system_prompt = f"You are a doctor of speciality {self.current_speciality} named Dr. Agent interacting with a patient. You have {self.MAX_INFS - self.infs} questions left. Please use your unique skills as a {self.current_speciality} to help your goal of gathering information. {self.presentation}"
-            answer = query_model(prompt, self.get_system_prompt())
+            answer = query_model(prompt, system_prompt)
             self.add_hist(f"Doctor: {answer}")
             self.infs += 1
             if "DIAGNOSIS READY:" in answer:
