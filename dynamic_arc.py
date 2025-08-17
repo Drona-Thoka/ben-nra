@@ -17,13 +17,15 @@ MODEL_NAME = "gpt-4.1"
 
 # --- Simulation Configuration Constants + Metrics---
 AGENT_DATASET = "MedQA"  # Start with MedQA as requested
-NUM_SCENARIOS = 1       # Minimum 50 scenarios per dataset combo
+NUM_SCENARIOS = 11       # Minimum 50 scenarios per dataset combo
 TOTAL_INFERENCES = 10 
 CONSULTATION_TURNS = 5
+
 
 K_Values = [1,3,5,7,10] # Can be any natural number
 TOP_K = max(K_Values)
 
+doctors_switched = 0
 SWITCH_CAP = 4
 CONFIDENCE_EPSILON = 0.5
 
@@ -32,8 +34,14 @@ PROMPTS = {"DYNAMIC_DOCTOR_PROMPT": "You are a doctor named Dr. Agent who only r
            "BASE_LINE_PROMPT" : "You are a doctor named Dr. Agent who only responds in the form of dialogue. You are inspecting a patient who you will ask questions in order to understand their disease. You are only allowed to ask {self.MAX_INFS} questions total before you must make a decision. You have asked {self.infs} questions so far. You can request test results using the format \"REQUEST TEST: [test]\". For example, \"REQUEST TEST: Chest_X-Ray\". You will be given a chance to consult with a specialist doctor during the session. Your dialogue will only be 1-3 sentences in length. Once you have decided to make a diagnosis please type \"DIAGNOSIS READY: [diagnosis here]\" You must include {TOP_K} different diagnoses in descending order of likelihood; do not provide more than {TOP_K} or provide less than {TOP_K}. Pay very close attention to the order in which you rank the diagnoses. Delimit your diagnosis if > 1 by the pipe character \"|\". Do not add any explanation, comments, or other text outside of this format. If you at all deviate from this format, you have failed. For example: DIAGNOSIS READY: diagnosis1 | diagnosis2 | ... diagnosis{TOP_K}"         
 }
 
+debugg_log = {}
+
 
 # --- Utility Functions ---
+def debug_log(log):
+    with open("logs/debug.json", "w") as f:
+        json.dump(log, f, indent=2)
+
 def query_model(prompt, system_prompt, max_tokens=200):
     api_key = os.environ.get("OPENAI_API_KEY")    
     client = openai.OpenAI(api_key=api_key)
@@ -60,8 +68,9 @@ def compare_results(diagnoses, correct_diagnosis, k=TOP_K):
 
     if answer.lower().startswith("yes:"):
         matched_diag = answer.split(":", 1)[-1].strip()
-        return True, matched_diag
-    return False, None
+        return True
+    
+    return False
 
 def get_log_file(dataset, config_name = ""):
     """Create a log file name based on dataset"""
@@ -328,7 +337,7 @@ class DoctorAgent(Agent):
     
     def determine_specialist(self):
         """Queries the LLM to determine the best specialist based on dialogue history."""
-        prompt = f"Based on the following patient interaction history, what type of medical specialist (e.g., Cardiologist, Neurologist, Pulmonologist, Gastroenterologist, Endocrinologist, Infectious Disease Specialist, Oncologist, etc.) would be most appropriate to consult for a potential diagnosis? Please feel free to get as specialized a doctor as needed, even if rare. The current doctor working on this case is a {self.current_speciality}. If this already suits the case well, find a rarer speciality that fits better. Do not worry about overfitting. Please respond with only the specialist type.\n\nHistory:\n{self.agent_hist}"
+        prompt = f"Based on the following patient interaction history, what type of medical specialist (e.g., Cardiologist, Neurologist, Pulmonologist, Gastroenterologist, Endocrinologist, Infectious Disease Specialist, Oncologist, etc.) would be most appropriate to consult for a potential diagnosis? Please feel free to get as specialized a doctor as needed, even if rare. The current doctor working on this case is a {self.current_speciality}. If this already suits the case well, find a rarer speciality that fits better. Do not worry about overfitting. Consider the patients history VERY CLOSELY when making a choice. Please respond with only the specialist type.\n\nHistory:\n{self.agent_hist}"
         specialist = query_model(prompt, self.get_system_prompt())
         self.specialist_type = specialist.replace("Specialist", "").strip()
         explanation_prompt = f"Explain why a {self.specialist_type} is the most appropriate specialist based on the following dialogue history:\n\n{self.agent_hist}"
@@ -348,8 +357,8 @@ class DoctorAgent(Agent):
         if mode == "patient":
             if self.infs >= self.MAX_INFS:
                  return "Okay, I have gathered enough information from the patient. I need to analyze this and potentially consult a specialist.", "consultation_needed"
-
-            prompt = f"\nHere is a history of your dialogue with the patient:\n{self.agent_hist}\nHere was the patient response:\n{last_response}\nNow please continue your dialogue with the patient. You have {self.MAX_INFS - self.infs} questions remaining for the patient. Use your expertise as a {self.current_speciality} to narrow down the diagnosis. Remember you can REQUEST TEST: [test].\nDoctor: "
+            
+            prompt = f"\nHere is a history of your dialogue with the patient along with the history from the previous primary doctor if applicable there have been {doctors_switched} doctors who have worked on this case prior (ignore if 0):\n{self.agent_hist}\nHere was the patient response:\n{last_response}\nNow please continue your dialogue with the patient. You have {self.MAX_INFS - self.infs} questions remaining for the patient. Use your expertise as a {self.current_speciality} to narrow down the diagnosis. Remember you can REQUEST TEST: [test].\nDoctor: " + f"WARNING you are the last doctor, you CANNOT do a handoff, so get to a diagnosis within {self.MAX_INFS - self.infs}" if doctors_switched == SWITCH_CAP else ""
             system_prompt = f"You are a doctor of speciality {self.current_speciality} named Dr. Agent interacting with a patient. You have {self.MAX_INFS - self.infs} questions left. Please use your unique skills as a {self.current_speciality} to help your goal of gathering information. {self.presentation}"
             answer = query_model(prompt, self.get_system_prompt())
             self.add_hist(f"Doctor: {answer}")
@@ -359,7 +368,7 @@ class DoctorAgent(Agent):
             return answer, "patient_interaction"
 
         elif mode == "consultation":
-            prompt = f"\nHere is the full history (Patient interaction followed by consultation):\n{self.agent_hist}\nYou are a doctor of speciality: {self.current_speciality} consulting with a {self.specialist_type}.\nHere was the specialist's latest response:\n{last_response}\nContinue the consultation using your expertise as a {self.current_speciality} specialist. Ask questions or share your thoughts to refine the diagnosis.\nDoctor: "
+            prompt = f"\nHere is the full history (Patient interaction, {doctors_switched} Previous Doctor Interactions if not 0, followed by consultation):\n{self.agent_hist}\nYou are a doctor of speciality: {self.current_speciality} consulting with a {self.specialist_type}.\nHere was the specialist's latest response:\n{last_response}\nContinue the consultation using your expertise as a {self.current_speciality} specialist. Ask questions or share your thoughts to refine the diagnosis.\nDoctor: "
             system_prompt = f"You are Dr. Agent of speciality: {self.current_speciality}, consulting with a {self.specialist_type} about a patient case. Discuss the findings and differential diagnoses based on the history provided and your experience as a practitioner of {self.current_speciality}. Aim to reach a conclusion."
             answer = query_model(prompt, system_prompt)
             self.add_hist(f"Doctor: {answer}")
@@ -381,16 +390,33 @@ class DoctorAgent(Agent):
     
     def query_confidence(self):
         system_prompt = f"You are Dr. Agent of speciality: {self.current_speciality}. You have finished interviewing the patient and consulting with a {self.specialist_type}. With the history of the patient in mind, please provide a confidence score 0-1 on allowing afformentioned {self.specialist_type} to take over the case. Please do not feel pressured to either switch or stay by any metric other than your judgement. If you think you are most fit, provide a low confidence. If you think the specialist is fit, provide a high confidence. Consider also the productivity of your conversation, in addition to fit."
-        prompt = f"Based on the current patient's history and your experience as a {self.current_speciality} determine a confidence score 0-1 that you would have of a {self.specialist_type} trained doctor in taking over this case. Do not worry about the experience or credentials of the new doctor. Please only provide the confidence score in your answer. Keep it to two significant figures, EX: 0.55"
-        response = float(query_model(prompt, system_prompt).strip().replace("```", ""))
+        prompt = f"Based on the current patient's history and your experience as a {self.current_speciality} determine a confidence score 0-1 that you would have of a {self.specialist_type} trained doctor in taking over this case. Do not worry about the experience or credentials of the new doctor. To evaluate your confidence score consider the following questions, but do not include them in your answer. 1. How do your skills as a {self.current_speciality} usally interact with the sypmtoms of the patient? 2. How do the skills of a {self.specialist_type} typically interact with the sypmtoms of the patient? 3. Is the {self.specialist_type} going to being any new but more importantly accuracte ideas to the case? 4. Have you thorughly considered the most likely {self.specialist_type} for this case. If you think you have NOT do NOT switch. The current confidence threshold for a switch is {CONFIDENCE_EPSILON}, take that into consideration. You may want to internalize a quick justification to your switch but do NOT include this at all in your answer. Please only provide the confidence score in your answer. Keep it to two significant figures, EX: 0.55"
         
         try:
+            response = float(query_model(prompt, system_prompt).strip().replace("```", ""))
             confidence = float(response)
         except ValueError:
-            print(f"[Warning] Could not parse confidence value from: {response}")
+            print(f"[Warning] Could not parse confidence value")
             confidence = 0.0 
         
         return confidence
+    
+    def handoff(self, specialty="General Medicine"):
+            new_doctor = DoctorAgent(
+                    scenario=self.scenario,
+                    max_infs=self.MAX_INFS,
+                    current_speciality=specialty
+                )
+
+            new_doctor.agent_hist = f"""You are a {specialty} specialist receiving this case handoff. Here is the full conversation history of the last doctor, who was a {self.current_speciality}: {self.agent_hist}""" 
+
+            new_doctor.current_speciality = specialty
+
+            print(f"[SWITCH] Handoff to {specialty} completed.")
+            if doctors_switched >= SWITCH_CAP:
+                return self
+            
+            return new_doctor
     
 class MeasurementAgent(Agent):
     def _init_data(self):
@@ -430,6 +456,7 @@ class SpecialistAgent(Agent):
         return answer
     
 def run_dynamic_scenario(scenario, dataset, total_inferences, max_consultation_turns, scenario_idx):
+    global doctors_switched 
     doctors_switched = 0
     patient_agent = PatientAgent(scenario=scenario)
 
@@ -438,7 +465,8 @@ def run_dynamic_scenario(scenario, dataset, total_inferences, max_consultation_t
     
     available_tests = scenario.get_available_tests()
 
-    patient_reponse = ""
+    next_input_for_doctor = ""
+
 
     run_log = {
         "timestamp": datetime.now(),
@@ -476,11 +504,11 @@ def run_dynamic_scenario(scenario, dataset, total_inferences, max_consultation_t
             current_speaker = "Patient"
             # doctor generates question/statement
             doctor_dialogue, state = current_doctor.inference_doctor(
-                last_response="Patient presents with initial information." if turn == 0 else patient_reponse,
+                last_response="Patient presents with initial information." if turn == 0 else next_input_for_doctor,
                 mode="patient"
             )
             print(f"Doctor [Turn {turn}]: {doctor_dialogue}")
-            run_log["dialogue_history"].append({"speaker": f"Doctor_{doctors_switched}", "speciality": current_doctor.current_speciality, "turn": turn, "text": doctor_dialogue})
+            run_log["dialogue_history"].append({"speaker": f"Doctor_{doctors_switched}", "speciality": current_doctor.current_speciality, "turn": turn, "phase": "patient", "text": doctor_dialogue})
 
             # Patient or Measurement response depending on doctor output
             if "REQUEST TEST" in doctor_dialogue:
@@ -496,13 +524,13 @@ def run_dynamic_scenario(scenario, dataset, total_inferences, max_consultation_t
                 result = meas_agent.inference_measurement(doctor_dialogue)
                 print(f"Measurement [Turn {turn}]: {result}")
                 next_input_for_doctor = result
+
                 run_log["dialogue_history"].append({"speaker": "Measurement", "turn": turn, "phase": "patient", "text": result})
 
                 history_update = f"Doctor: {doctor_dialogue}\n\nMeasurement: {result}"
+                patient_agent.add_hist(history_update)
                 meas_agent.add_hist(history_update)
                 current_speaker = "Measurement"
-                history_update = f"Doctor: {doctor_dialogue}"            
-                patient_agent.add_hist(history_update)
             else:
                 patient_response = patient_agent.inference_patient(doctor_dialogue)
                 print(f"Patient [Turn {turn}]: {patient_response}")
@@ -562,8 +590,7 @@ def run_dynamic_scenario(scenario, dataset, total_inferences, max_consultation_t
             run_log["doctors_switched"] = doctors_switched
 
             ## --- Experimental
-            current_doctor = DoctorAgent(scenario=scenario, max_infs=total_inferences, current_speciality=specialist_type)
-            current_doctor.agent_hist = patient_agent.agent_hist
+            current_doctor = current_doctor.handoff(specialty=current_doctor.specialist_type)
             ##
 
             print(f"Switching to specialist doctor (switch count: {doctors_switched}). Restarting patient interaction.")
@@ -574,7 +601,7 @@ def run_dynamic_scenario(scenario, dataset, total_inferences, max_consultation_t
             run_log["switched"].append(False)
             break # end switches and get to diagnosis
         
-
+    diagnoses = []
     # --- Phase 5: Final Diagnosis Phase ---
     print("\n--- Phase 5: Final Diagnosis ---")
     final_diagnosis_full = current_doctor.get_final_diagnosis()
@@ -606,7 +633,8 @@ def run_dynamic_scenario(scenario, dataset, total_inferences, max_consultation_t
 
     for k in K_Values:
         sliced = diagnoses[:min(k, len(diagnoses))]
-        is_correct, final_diagnosis = compare_results(sliced, scenario.diagnosis_information(), k)
+        is_correct =  compare_results(sliced, scenario.diagnosis_information(), k)
+        final_diagnosis = diagnoses[0]
 
         print(f"Scenario {scenario_idx} | Top-{k} Diagnosis was {'CORRECT' if is_correct else 'INCORRECT'}")
         run_log[f"Top_{k}"] = sliced
@@ -653,6 +681,9 @@ def run_dynamic_scenario(scenario, dataset, total_inferences, max_consultation_t
 
 
     run_log["info_density_score"] = float(calculate_info_density_score(run_log["dialogue_history"]))
+    debugg_log["doctor_hist"] = current_doctor.agent_hist
+    debugg_log["patient_hist"] = patient_agent.agent_hist
+    debugg_log["meas_hist"] = meas_agent.agent_hist
     return run_log, run_log.get("is_correct", False)
 
 
@@ -812,6 +843,7 @@ def main():
     with open(os.path.join(BASE_LOG_DIR, "dynamic_testing_summary.json"), 'w') as f:
         json.dump(summary, f, indent=2)
     
+    debug_log(debugg_log)
     print("\n\n=== Dynamic TESTING COMPLETE ===")
     print(f"Completed {summary['completed_combinations']}/{summary['total_combinations']} combinations")
     print(f"Total duration: {summary['total_duration_seconds']/3600:.2f} hours")
