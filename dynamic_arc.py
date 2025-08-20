@@ -17,7 +17,7 @@ MODEL_NAME = "gpt-4.1"
 
 # --- Simulation Configuration Constants + Metrics---
 AGENT_DATASET = "MedQA"  # Start with MedQA as requested
-NUM_SCENARIOS = 5     # Minimum 50 scenarios per dataset combo
+NUM_SCENARIOS = 150     # Minimum 50 scenarios per dataset combo
 TOTAL_INFERENCES = 10 
 CONSULTATION_TURNS = 5
 
@@ -136,13 +136,13 @@ Respond ONLY with the JSON object.
         if all(key in analysis_results for key in required_keys):
             return analysis_results
         else:
-            print(f"Warning: LLM analysis response missing required keys. Response: {analysis_json_str}")
+            #print(f"Warning: LLM analysis response missing required keys. Response: {analysis_json_str}")
             return {}
     except json.JSONDecodeError:
-        print(f"Warning: Failed to parse LLM analysis response as JSON. Response: {analysis_json_str}")
+        #print(f"Warning: Failed to parse LLM analysis response as JSON. Response: {analysis_json_str}")
         return {}
     except Exception as e:
-        print(f"Warning: An error occurred during consultation analysis: {e}")
+        #print(f"Warning: An error occurred during consultation analysis: {e}")
         return {}
 
 def get_completed_scenarios(log_file):
@@ -155,7 +155,7 @@ def get_completed_scenarios(log_file):
             data = json.load(f)
             return [entry.get("scenario_id") for entry in data if entry.get("scenario_id") is not None]
         except json.JSONDecodeError:
-            print(f"Warning: Could not parse log file {log_file}. Starting from scratch.")
+            #print(f"Warning: Could not parse log file {log_file}. Starting from scratch.")
             return []
 
 client=OpenAI()
@@ -189,7 +189,7 @@ def calculate_info_density_score(dialogue_history):
             score = 1 - avg_sim
             return score if np.isfinite(score) else 1.0
         except Exception as e:
-            print(f"[INFO_DENSITY_ERROR]: {e}")
+            #print(f"[INFO_DENSITY_ERROR]: {e}")
             return 1.0
     return 1.0
 
@@ -276,7 +276,7 @@ class ScenarioLoader:
         if 0 <= id < self.num_scenarios:
             return self.scenarios[id]
         else:
-            print(f"Warning: Scenario ID {id} out of range (0-{self.num_scenarios-1}). Returning None.")
+            #print(f"Warning: Scenario ID {id} out of range (0-{self.num_scenarios-1}). Returning None.")
             return None
 
 # --- Agent Classes ---
@@ -342,8 +342,8 @@ class DoctorAgent(Agent):
         self.specialist_type = specialist.replace("Specialist", "").strip()
         explanation_prompt = f"Explain why a {self.specialist_type} is the most appropriate specialist based on the following dialogue history:\n\n{self.agent_hist}"
         explanation = query_model(explanation_prompt, self.get_system_prompt())
-        print(f"Doctor decided to consult: {self.specialist_type}")
-        print(f"Reason for choice: {explanation}")
+        #print(f"Doctor decided to consult: {self.specialist_type}")
+        #print(f"Reason for choice: {explanation}")
         return self.specialist_type, explanation
 
     def inference_doctor(self, last_response, mode="patient"):
@@ -396,7 +396,7 @@ class DoctorAgent(Agent):
             response = float(query_model(prompt, system_prompt).strip().replace("```", ""))
             confidence = float(response)
         except ValueError:
-            print(f"[Warning] Could not parse confidence value")
+            #print(f"[Warning] Could not parse confidence value")
             confidence = 0.0 
         
         return confidence
@@ -412,7 +412,7 @@ class DoctorAgent(Agent):
 
             new_doctor.current_speciality = specialty
 
-            print(f"[SWITCH] Handoff to {specialty} completed.")
+            #print(f"[SWITCH] Handoff to {specialty} completed.")
             if doctors_switched >= SWITCH_CAP:
                 return self
             
@@ -499,7 +499,7 @@ def run_dynamic_scenario(scenario, dataset, total_inferences, max_consultation_t
 
     while doctors_switched < SWITCH_CAP:
         # --- Phase 1: Patient Interaction ---
-        print(f"\n=== Phase 1: Patient Interaction Phase with Doctor (Switch count: {doctors_switched}) ===")
+        #print(f"\n=== Phase 1: Patient Interaction Phase with Doctor (Switch count: {doctors_switched}) ===")
         for turn in range(total_inferences):
             current_speaker = "Patient"
             # doctor generates question/statement
@@ -507,7 +507,7 @@ def run_dynamic_scenario(scenario, dataset, total_inferences, max_consultation_t
                 last_response="Patient presents with initial information." if turn == 0 else next_input_for_doctor,
                 mode="patient"
             )
-            print(f"Doctor [Turn {turn}]: {doctor_dialogue}")
+            #print(f"Doctor [Turn {turn}]: {doctor_dialogue}")
             run_log["dialogue_history"].append({"speaker": f"Doctor_{doctors_switched}", "speciality": current_doctor.current_speciality, "turn": turn, "phase": "patient", "text": doctor_dialogue})
 
             # Patient or Measurement response depending on doctor output
@@ -516,13 +516,13 @@ def run_dynamic_scenario(scenario, dataset, total_inferences, max_consultation_t
                     test_name = doctor_dialogue.split("REQUEST TEST:", 1)[1].strip().rstrip('.?!')
                     if test_name:
                         run_log["requested_tests"].append(test_name)
-                        print(f"System: Logged test request - {test_name}")
+                        #print(f"System: Logged test request - {test_name}")
                 except IndexError:
-                    print("Warning: Could not parse test name from doctor request.")
+                    #print("Warning: Could not parse test name from doctor request.")
                     test_name = "Unknown Test"
 
                 result = meas_agent.inference_measurement(doctor_dialogue)
-                print(f"Measurement [Turn {turn}]: {result}")
+                #print(f"Measurement [Turn {turn}]: {result}")
                 next_input_for_doctor = result
 
                 run_log["dialogue_history"].append({"speaker": "Measurement", "turn": turn, "phase": "patient", "text": result})
@@ -533,7 +533,7 @@ def run_dynamic_scenario(scenario, dataset, total_inferences, max_consultation_t
                 current_speaker = "Measurement"
             else:
                 patient_response = patient_agent.inference_patient(doctor_dialogue)
-                print(f"Patient [Turn {turn}]: {patient_response}")
+                #print(f"Patient [Turn {turn}]: {patient_response}")
                 next_input_for_doctor = patient_response
                 run_log["dialogue_history"].append({"speaker": "Patient", "turn": turn, "phase": "patient", "text": patient_response})
                 history_update = f"Patient: {patient_response}"
@@ -541,7 +541,7 @@ def run_dynamic_scenario(scenario, dataset, total_inferences, max_consultation_t
                 current_speaker = "Patient"
 
             if ((state == "consultation_needed") or turn == total_inferences):
-                print("\nPatient interaction phase complete.")
+                #print("\nPatient interaction phase complete.")
                 break
 
             time.sleep(0.5)
@@ -550,8 +550,8 @@ def run_dynamic_scenario(scenario, dataset, total_inferences, max_consultation_t
         # Update count of requested tests
         run_log["tests_requested_count"] = len(run_log["requested_tests"])
         run_log["tests_left_out"] = list(set(available_tests) - set(run_log["requested_tests"]))
-        print(f"Total tests requested during patient interaction: {run_log['tests_requested_count']}")
-        print(f"Tests left out: {run_log['tests_left_out']}")
+        #print(f"Total tests requested during patient interaction: {run_log['tests_requested_count']}")
+        #print(f"Tests left out: {run_log['tests_left_out']}")
 
         # --- Phase 2: Specialist Determination ---
         specialist_type, specialist_reason = current_doctor.determine_specialist()
@@ -561,18 +561,18 @@ def run_dynamic_scenario(scenario, dataset, total_inferences, max_consultation_t
         last_specialist_response = "I have reviewed the patient's case notes. Please share your thoughts to begin the consultation."
 
         # --- Phase 3: Consultation ---
-        print(f"\n=== Consultation Phase with Specialist: {specialist_type} ===")
+        #print(f"\n=== Consultation Phase with Specialist: {specialist_type} ===")
         consultation_dialogue_entries = []
         for consult_turn in range(1, max_consultation_turns + 1):
             doctor_consult_msg, state = current_doctor.inference_doctor(last_specialist_response, mode="consultation")
-            print(f"Doctor [Consult Turn {consult_turn}]: {doctor_consult_msg}")
+            #print(f"Doctor [Consult Turn {consult_turn}]: {doctor_consult_msg}")
             doctor_entry = {"speaker": "Doctor", "turn": consult_turn, "phase": "consultation", "text": doctor_consult_msg}
             run_log["dialogue_history"].append({"speaker": f"Doctor_{doctors_switched}", "speciality": current_doctor.current_speciality, "turn": consult_turn, "text": doctor_consult_msg, "phase": "consultation"})
             consultation_dialogue_entries.append(doctor_entry)
 
 
             specialist_response = specialist_agent.inference_specialist(doctor_consult_msg)
-            print(f"Specialist ({specialist_type}) [Consult Turn {consult_turn}]: {specialist_response}")
+            #print(f"Specialist ({specialist_type}) [Consult Turn {consult_turn}]: {specialist_response}")
             specialist_entry = {"speaker": f"Specialist ({specialist_type})", "turn": consult_turn, "phase": "consultation", "text": specialist_response}
             run_log["dialogue_history"].append(specialist_entry)
             consultation_dialogue_entries.append(specialist_entry)
@@ -580,7 +580,7 @@ def run_dynamic_scenario(scenario, dataset, total_inferences, max_consultation_t
 
         # --- Phase 4: Query Confidence for Switching ---
         confidence = current_doctor.query_confidence()
-        print(f"Confidence in specialist takeover: {confidence}")
+        #print(f"Confidence in specialist takeover: {confidence}")
 
         run_log["confidence"].append(confidence)
         if confidence >= CONFIDENCE_EPSILON and doctors_switched < SWITCH_CAP:
@@ -593,7 +593,7 @@ def run_dynamic_scenario(scenario, dataset, total_inferences, max_consultation_t
             current_doctor = current_doctor.handoff(specialty=current_doctor.specialist_type)
             ##
 
-            print(f"Switching to specialist doctor (switch count: {doctors_switched}). Restarting patient interaction.")
+            #print(f"Switching to specialist doctor (switch count: {doctors_switched}). Restarting patient interaction.")
 
             time.sleep(0.5)
             continue  # restart patient interaction phase with new doctor
@@ -603,32 +603,32 @@ def run_dynamic_scenario(scenario, dataset, total_inferences, max_consultation_t
         
     diagnoses = []
     # --- Phase 5: Final Diagnosis Phase ---
-    print("\n--- Phase 5: Final Diagnosis ---")
+    #print("\n--- Phase 5: Final Diagnosis ---")
     final_diagnosis_full = current_doctor.get_final_diagnosis()
-    print(f"FINAL DIAGNOSES FULL RAW: {final_diagnosis_full} ")
+    #print(f"FINAL DIAGNOSES FULL RAW: {final_diagnosis_full} ")
     if "DIAGNOSIS READY:" in final_diagnosis_full:
          final_diagnosis_text = final_diagnosis_full.split("DIAGNOSIS READY:", 1)[-1].strip()
          diagnoses = [d.strip() for d in final_diagnosis_text.split("|") if d.strip()][:TOP_K]   
-         print(f"FULL DIAGNOSIS LIST: {diagnoses}")
+         #print(f"FULL DIAGNOSIS LIST: {diagnoses}")
          run_log["top_K diagnoses"] = diagnoses
     else:
          final_diagnosis_text = "No diagnosis provided in correct format."
 
-    print(f"\nFinal Diagnoses by Doctor: {diagnoses}")
-    print(f"Correct Diagnosis: {scenario.diagnosis_information()}")
+    #print(f"\nFinal Diagnoses by Doctor: {diagnoses}")
+    #print(f"Correct Diagnosis: {scenario.diagnosis_information()}")
 
     # Compute prediction embeddings
     try:
         pred_embed = [get_embedding(diagnosis.strip().lower()) for diagnosis in diagnoses[:TOP_K]]
     except Exception as e:
-        print(f"Embedding error (predictions): {e}")
+        #print(f"Embedding error (predictions): {e}")
         pred_embed = None
 
     # Compute ground truth embedding
     try:
         true_embed = get_embedding(scenario.diagnosis_information().strip().lower())
     except Exception as e:
-        print(f"Embedding error (correct diagnosis): {e}")
+        #print(f"Embedding error (correct diagnosis): {e}")
         true_embed = None
 
     for k in K_Values:
@@ -636,7 +636,7 @@ def run_dynamic_scenario(scenario, dataset, total_inferences, max_consultation_t
         is_correct =  compare_results(sliced, scenario.diagnosis_information(), k)
         final_diagnosis = diagnoses[0]
 
-        print(f"Scenario {scenario_idx} | Top-{k} Diagnosis was {'CORRECT' if is_correct else 'INCORRECT'}")
+        #print(f"Scenario {scenario_idx} | Top-{k} Diagnosis was {'CORRECT' if is_correct else 'INCORRECT'}")
         run_log[f"Top_{k}"] = sliced
         run_log[f"Top_{k} is_correct"] = is_correct
         if is_correct and final_diagnosis in sliced:
@@ -661,14 +661,14 @@ def run_dynamic_scenario(scenario, dataset, total_inferences, max_consultation_t
         run_log["best_embedding_similarity_rank"] = None
 
     # --- Consultation Analysis Phase (Moved here) ---
-    print("\n--- Phase 6: Consultation Analysis ---")
+    #print("\n--- Phase 6: Consultation Analysis ---")
 
     consultation_history_text = "\n".join([f"{entry['speaker']}: {entry['text']}" for entry in run_log["dialogue_history"] if entry.get("phase") == "consultation"])
     
     if consultation_history_text:
         consultation_analysis_results = analyze_consultation(consultation_history_text)
         run_log["consultation_analysis"] = consultation_analysis_results
-        print("Consultation Analysis Results:")
+        #print("Consultation Analysis Results:")
         if consultation_analysis_results:
             for key, value in consultation_analysis_results.items():
                 if key != "test_density":
@@ -702,21 +702,21 @@ def run_dynamic_experiment(dataset, total_inferences, consultation_turns, max_sc
     log_file = get_log_file(dataset)
     completed_scenario_ids = get_completed_scenarios(log_file)
 
-    print(f"\n=== Testing Dynamic Arc on {dataset} dataset ===")
-    print(f"Log file: {log_file}")
-    print(f"Already completed scenario IDs: {len(completed_scenario_ids)}")
-    print(f"Scenarios to run in this session: {1} of {scenarios_to_run} total planned")
-    print(f"\n--- Running Scenario {scenario_idx + 1}/{scenarios_to_run} with Dynamic configuration ---")
+    #print(f"\n=== Testing Dynamic Arc on {dataset} dataset ===")
+    #print(f"Log file: {log_file}")
+    #print(f"Already completed scenario IDs: {len(completed_scenario_ids)}")
+    #print(f"Scenarios to run in this session: {1} of {scenarios_to_run} total planned")
+    #print(f"\n--- Running Scenario {scenario_idx + 1}/{scenarios_to_run} with Dynamic configuration ---")
 
     for scenario_idx in range(min(NUM_SCENARIOS, max_scenarios)):
         if scenario_idx in completed_scenario_ids:
-            print(f"Completed, skipping scenario: {scenario_idx}", scenario_idx)
+            #print(f"Completed, skipping scenario: {scenario_idx}", scenario_idx)
             continue
 
         scenario = scenario_loader.get_scenario(id=scenario_idx)
 
         if scenario is None:
-            print(f"Error loading scenario {scenario_idx}, skipping.")
+            #print(f"Error loading scenario {scenario_idx}, skipping.")
             continue
 
         
@@ -729,19 +729,19 @@ def run_dynamic_experiment(dataset, total_inferences, consultation_turns, max_sc
             total_correct_current_session += 1
 
         log_scenario_data(run_log, log_file)
-        print(f"Tests requested in Scenario {scenario_idx + 1}: {run_log.get('requested_tests', [])}")
+        #print(f"Tests requested in Scenario {scenario_idx + 1}: {run_log.get('requested_tests', [])}")
         
     # Update progress
     if total_simulated_current_session > 0:
         accuracy_current_session = (total_correct_current_session / total_simulated_current_session) * 100
-        print(f"\nCurrent Accuracy for this session (Dynamic configuration on {dataset}): {accuracy_current_session:.2f}% ({total_correct_current_session}/{total_simulated_current_session})")
+        #print(f"\nCurrent Accuracy for this session (Dynamic configuration on {dataset}): {accuracy_current_session:.2f}% ({total_correct_current_session}/{total_simulated_current_session})")
         
         # Calculate overall progress including previously completed scenarios
         overall_completed_count = len(completed_scenario_ids) + total_simulated_current_session
         overall_correct_count = total_correct_current_session
         
         overall_accuracy_so_far = (overall_correct_count / overall_completed_count) * 100 if overall_completed_count > 0 else 0
-        print(f"Overall Progress for Dynamic on {dataset}: {overall_completed_count}/{scenarios_to_run} scenarios completed. Overall Accuracy: {overall_accuracy_so_far:.2f}% ({overall_correct_count}/{overall_completed_count})")
+        #print(f"Overall Progress for Dynamic on {dataset}: {overall_completed_count}/{scenarios_to_run} scenarios completed. Overall Accuracy: {overall_accuracy_so_far:.2f}% ({overall_correct_count}/{overall_completed_count})")
 
     # Calculate final statistics for this combination
     final_completed_count = len(completed_scenario_ids) + total_simulated_current_session
@@ -755,7 +755,7 @@ def run_dynamic_experiment(dataset, total_inferences, consultation_turns, max_sc
                     if not isinstance(all_results, list): # Ensure it's a list
                         all_results = []
                 except json.JSONDecodeError:
-                    print(f"Warning: Could not parse final log file {log_file} for final stats. Results may be inaccurate.")
+                    #print(f"Warning: Could not parse final log file {log_file} for final stats. Results may be inaccurate.")
                     all_results = []
 
         correct_count_total = sum(1 for entry in all_results if entry.get("is_correct")) # Ensure entry.get("is_correct") is True
@@ -766,9 +766,9 @@ def run_dynamic_experiment(dataset, total_inferences, consultation_turns, max_sc
         
         final_accuracy = (correct_count_total / actual_entries_in_log) * 100 if actual_entries_in_log > 0 else 0
 
-        print(f"\n=== Results for Dynamic configuration on {dataset} dataset ===")
-        print(f"Total Scenarios Logged: {actual_entries_in_log} (planned: {scenarios_to_run}, completed this/prev sessions: {final_completed_count})")
-        print(f"Final Accuracy: {final_accuracy:.2f}% ({correct_count_total}/{actual_entries_in_log})")
+        #print(f"\n=== Results for Dynamic configuration on {dataset} dataset ===")
+        #print(f"Total Scenarios Logged: {actual_entries_in_log} (planned: {scenarios_to_run}, completed this/prev sessions: {final_completed_count})")
+        #print(f"Final Accuracy: {final_accuracy:.2f}% ({correct_count_total}/{actual_entries_in_log})")
     
     return final_completed_count >= scenarios_to_run
 
@@ -786,7 +786,7 @@ def main():
     #datasets_to_test = ['MedQA', 'NEJM'] if args.dataset == 'all' else [args.dataset]
     datasets_to_test = ['MedQA'] if args.dataset == 'all' else [args.dataset]
 
-    print(f"Base settings: {args.scenarios} scenarios per combination, {TOTAL_INFERENCES} patient interactions, {CONSULTATION_TURNS} consultation turns")
+    #print(f"Base settings: {args.scenarios} scenarios per combination, {TOTAL_INFERENCES} patient interactions, {CONSULTATION_TURNS} consultation turns")
     
     # Create summary report structures
     summary = {
@@ -805,14 +805,14 @@ def main():
             )                
         except Exception as e:
             import traceback
-            print(f"Error running {dataset} with dynamic: {e}")
+            #print(f"Error running {dataset} with dynamic: {e}")
             traceback.print_exc()                
             # Continue with next combination even if this one fails
 
 
-        print(f"\n\n{'='*80}")
-        print(f"TESTING: Dataset={dataset} Config= \"Dynamic\"")
-        print(f"{'='*80}")
+        #print(f"\n\n{'='*80}")
+        #print(f"TESTING: Dataset={dataset} Config= \"Dynamic\"")
+        #print(f"{'='*80}")
 
         # Update summary
         combination_key = f"{dataset}_Dynamic"
@@ -844,10 +844,10 @@ def main():
         json.dump(summary, f, indent=2)
     
     debug_log(debugg_log)
-    print("\n\n=== Dynamic TESTING COMPLETE ===")
-    print(f"Completed {summary['completed_combinations']}/{summary['total_combinations']} combinations")
-    print(f"Total duration: {summary['total_duration_seconds']/3600:.2f} hours")
-    print(f"Full results saved to {os.path.join(BASE_LOG_DIR, 'dynamic_testing_summary.json')}")
+    #print("\n\n=== Dynamic TESTING COMPLETE ===")
+    #print(f"Completed {summary['completed_combinations']}/{summary['total_combinations']} combinations")
+    #print(f"Total duration: {summary['total_duration_seconds']/3600:.2f} hours")
+    #print(f"Full results saved to {os.path.join(BASE_LOG_DIR, 'dynamic_testing_summary.json')}")
 
 
 if __name__ == "__main__":
