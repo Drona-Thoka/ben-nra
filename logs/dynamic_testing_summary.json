@@ -1,15 +1,15 @@
 {
-  "start_time": "2025-08-17T16:05:59.140984",
+  "start_time": "2025-08-21T06:29:02.096315",
   "completed_combinations": 1,
   "total_combinations": 1,
   "results_by_combination": {
     "MedQA_Dynamic": {
       "completed": true,
-      "scenarios_run": 5,
-      "correct_diagnoses": 4,
-      "accuracy": 80.0
+      "scenarios_run": 150,
+      "correct_diagnoses": 115,
+      "accuracy": 76.66666666666667
     }
   },
-  "end_time": "2025-08-17T16:26:35.722010",
-  "total_duration_seconds": 1236.581026
+  "end_time": "2025-08-21T16:50:32.976111",
+  "total_duration_seconds": 37290.879796
 }

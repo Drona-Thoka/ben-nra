@@ -18,6 +18,7 @@ for i in range(NUM_FILES):
         "test_count": [],
         "info_density": [],
         "best_similarity": [],
+        "embedding_similarity": [],
         "embedding_rank": [],
         "final_correct": 0,
         "top1_correct": 0,
@@ -39,6 +40,8 @@ for i in range(NUM_FILES):
         metrics["info_density"].append(case["info_density"])
         metrics["best_similarity"].append(case["best_embedding_similarity"])
         metrics["embedding_rank"].append(case["best_embedding_similarity_rank"])
+        metrics["embedding_similarity"].append(case["embedding_similarity"])
+
 
         for k in [1, 3, 5, 7, 10]:
             if case.get(f"Top_{k} is_correct"):
@@ -59,6 +62,7 @@ for i in range(NUM_FILES):
     print(f"Avg. Info Density Score: {avg(metrics['info_density'])}")
     print(f"Avg. Best Embedding Similarity: {avg(metrics['best_similarity'])}")
     print(f"Avg. Embedding Similarity Rank: {avg(metrics['embedding_rank'])}")
+    print((f"Avg. Embedding Similarity: {avg(avg(metrics['embedding_similarity']))}"))
 
     print("\n=== Accuracy ===")
     print(f"Final Diagnosis Accuracy: {acc(metrics['final_correct'])}%")
