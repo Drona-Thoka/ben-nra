@@ -29,9 +29,9 @@ for i in range(NUM_FILES):
         "top3_rank": [],
         "top5_rank": [],
         "top7_rank": [],
-        "top10_rank": []
+        "top10_rank": [],
+        "avg_doctor_considered": []
     }
-
     for case in data:
         metrics["patient_turns"].append(case["patient_interaction_turns"])
         metrics["doctor_questions"].append(case["doctor_questions"])
@@ -40,6 +40,13 @@ for i in range(NUM_FILES):
         metrics["best_similarity"].append(case["best_embedding_similarity"])
         metrics["embedding_rank"].append(case["best_embedding_similarity_rank"])
         metrics["embedding_similarity"].append(case["embedding_similarity"])
+        if "consultation_analysis" in case and "diagnoses_considered" in case["consultation_analysis"]:
+            metrics["avg_doctor_considered"].append(
+                len(case["consultation_analysis"]["diagnoses_considered"])
+            )
+        else:
+            # handle missing consultation gracefully
+            metrics["avg_doctor_considered"].append(0) 
 
         # Accuracies
         if case.get("final_diagnosis_is_correct"):
@@ -73,6 +80,7 @@ for i in range(NUM_FILES):
     print(f"Avg. Best Embedding Similarity: {avg(metrics['best_similarity'])}")
     print(f"Avg. Embedding Similarity Rank: {avg(metrics['embedding_rank'])}")
     print((f"Avg. Embedding Similarity: {avg(avg(metrics['embedding_similarity']))}"))
+    print(f"Avg. Diagnoses considered Count: {avg(metrics['avg_doctor_considered'])}")
 
     print("\n=== Accuracy ===")
     print(f"Final Diagnosis Accuracy: {acc(metrics['final_correct'])}%")
