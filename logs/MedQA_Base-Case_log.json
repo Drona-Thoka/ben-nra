@@ -45554,7 +45554,7 @@
     "info_density_score": 0.5575705170631409
   },
   {
-    "timestamp": "2025-07-26T19:56:43.962891",
+    "timestamp": "2025-08-29T18:26:09.362182",
     "model": "gpt-4.1",
     "dataset": "MedQA",
     "scenario_id": 148,
@@ -45598,91 +45598,91 @@
         "speaker": "Patient",
         "turn": 3,
         "phase": "patient",
-        "text": "They haven\u2019t really changed much in size or color, and they don\u2019t hurt or feel tender when I touch them. They just sort of showed up and have stayed the same."
+        "text": "They haven\u2019t really changed much in size or color, and they don\u2019t hurt or feel tender when I touch them. They just kind of stay the same."
       },
       {
         "speaker": "Doctor",
         "turn": 3,
         "phase": "patient",
-        "text": "Have you noticed any bumps or rashes appearing anywhere else on your body, or is it only on your left thigh?"
+        "text": "Have you noticed any similar bumps appearing anywhere else on your body, or any changes in your skin such as rashes, discoloration, or sores?"
       },
       {
         "speaker": "Patient",
         "turn": 4,
         "phase": "patient",
-        "text": "It\u2019s only on my left thigh so far\u2014I haven\u2019t seen any bumps or rashes anywhere else."
+        "text": "No, the bumps are only on my left thigh. I haven\u2019t noticed any rashes, discoloration, or sores anywhere else."
       },
       {
         "speaker": "Doctor",
         "turn": 4,
         "phase": "patient",
-        "text": "Have you had any recent injuries, insect bites, or exposure to new soaps, lotions, or chemicals on your left thigh?"
+        "text": "Have you had any recent injuries, insect bites, or exposure to new substances (like soaps, lotions, or plants) on your left thigh?"
       },
       {
         "speaker": "Patient",
         "turn": 5,
         "phase": "patient",
-        "text": "No, I haven\u2019t had any injuries or insect bites, and I haven\u2019t used any new soaps or lotions on my thigh."
+        "text": "No, I haven\u2019t had any injuries or noticed any insect bites. I haven\u2019t changed my soaps, lotions, or come into contact with any new plants either."
       },
       {
         "speaker": "Doctor",
         "turn": 5,
         "phase": "patient",
-        "text": "Have you ever had anything like this before, or do you have any personal or family history of skin conditions, autoimmune diseases, or cancer?"
+        "text": "Have you ever had any similar bumps or skin issues in the past, or do you have any personal or family history of skin conditions or autoimmune diseases?"
       },
       {
         "speaker": "Patient",
         "turn": 6,
         "phase": "patient",
-        "text": "No, I\u2019ve never had anything like this before, and I don\u2019t know of any family history of skin conditions, autoimmune diseases, or cancer."
+        "text": "No, I\u2019ve never had anything like this before, and as far as I know, no one in my family has had skin problems or autoimmune diseases."
       },
       {
         "speaker": "Doctor",
         "turn": 6,
         "phase": "patient",
-        "text": "Have you noticed any changes in your appetite, bowel habits, or experienced any unexplained bleeding or bruising?"
+        "text": "Have you noticed any changes in sensation (such as numbness or tingling) around the bumps or anywhere else on your thigh?"
       },
       {
         "speaker": "Patient",
         "turn": 7,
         "phase": "patient",
-        "text": "No, my appetite and bowel habits have been about the same, and I haven\u2019t noticed any unusual bleeding or bruising."
+        "text": "No, I haven\u2019t noticed any numbness or tingling around the bumps or anywhere else on my thigh. The area just feels normal aside from the bumps themselves."
       },
       {
         "speaker": "Doctor",
         "turn": 7,
         "phase": "patient",
-        "text": "Have you traveled anywhere recently, or had any contact with animals or sick individuals in the past few months?"
+        "text": "Have you traveled anywhere recently, or do you have any pets or close contact with animals?"
       },
       {
         "speaker": "Patient",
         "turn": 8,
         "phase": "patient",
-        "text": "No, I haven\u2019t traveled anywhere recently, and I haven\u2019t been around any sick people or animals that I know of."
+        "text": "No, I haven\u2019t traveled anywhere recently, and I don\u2019t have any pets or close contact with animals."
       },
       {
         "speaker": "Doctor",
         "turn": 8,
         "phase": "patient",
-        "text": "Have you noticed any changes in the appearance of your skin elsewhere, such as discoloration, ulcers, or new moles?"
+        "text": "Have you noticed any changes in your general health, such as new headaches, joint pain, or digestive issues, since the bumps appeared?"
       },
       {
         "speaker": "Patient",
         "turn": 9,
         "phase": "patient",
-        "text": "No, I haven\u2019t noticed any changes like discoloration, ulcers, or new moles anywhere else\u2014just these bumps on my left thigh."
+        "text": "No, I haven\u2019t had any new headaches, joint pain, or digestive problems. Mostly it\u2019s just the bumps, feeling tired, and kind of run down."
       },
       {
         "speaker": "Doctor",
         "turn": 9,
         "phase": "patient",
-        "text": "Have you experienced any joint pain, muscle aches, or swelling in your legs or elsewhere?"
+        "text": "Have the bumps increased in number or spread at all since you first noticed them, or have they remained the same in both number and location?"
       },
       {
         "speaker": "Patient",
         "turn": 10,
         "phase": "patient",
-        "text": "No, I haven\u2019t noticed any joint pain, muscle aches, or swelling in my legs or anywhere else."
+        "text": "They've stayed mostly in the same spot on my left thigh, but I think there might be a couple more than when I first noticed them. They haven't spread anywhere else on my body."
       },
       {
         "speaker": "Doctor",
@@ -45694,67 +45694,67 @@
         "speaker": "System",
         "turn": 11,
         "phase": "consultation",
-        "text": "Consultation started with Dermatologist. Reason: A Dermatologist is the most appropriate specialist because the patient's primary complaint is persistent, non-itchy, non-tender skin bumps localized to the left thigh, with no systemic symptoms or evidence of internal disease, making a skin-focused evaluation essential for diagnosis and management."
+        "text": "Consultation started with Dermatologist. Reason: A Dermatologist is the most appropriate specialist because the patient's primary complaint is persistent, non-itchy, non-tender skin bumps localized to the left thigh, with no systemic symptoms or clear exposure history, and no evidence of internal disease or autoimmune involvement, making a skin-focused evaluation essential."
       },
       {
         "speaker": "Doctor",
         "turn": 11,
         "phase": "consultation",
-        "text": "Thank you for reviewing the case. Here\u2019s a summary of the key findings: - **Chief complaint:** Small, non-itchy, non-tender bumps on the left thigh for 3 weeks. - **Systemic symptoms:** Fatigue and malaise for several months, but no fever, weight loss, night sweats, or lymphadenopathy. - **Skin findings:** Lesions are stable in size and color, localized to the left thigh, with no similar lesions elsewhere. - **No history** of trauma, insect bites, new topical exposures, or travel. - **No personal or family history** of skin conditions, autoimmune disease, or malignancy. - **No other systemic symptoms:** Appetite, bowel habits, and bleeding/bruising are normal. - **No joint or muscle symptoms.** **My initial thoughts on the differential:** - The chronicity and lack of evolution, pain, or pruritus make infectious or inflammatory causes less likely. - The absence of"
+        "text": "Thank you for reviewing the case. Here\u2019s a summary of the key findings: - **Chief complaint:** Small, non-itchy, non-tender bumps on the left thigh for ~3 weeks. - **Systemic symptoms:** Fatigue and feeling generally unwell for a few months, but no fever, weight loss, night sweats, or lymphadenopathy. - **Skin findings:** Bumps are stable in size/color, localized to left thigh, possibly a slight increase in number, no spread elsewhere, no associated sensory changes. - **No history** of trauma, insect bites, new exposures, travel, animal contact, or family/personal history of skin or autoimmune disease. - **No other systemic symptoms** (no headaches, joint pain, GI issues). **My initial differential includes:** - **Cutaneous sarcoidosis** (given the chronicity, fatigue, and stable papules) - **Granuloma annulare** (localized, non-tender papules"
       },
       {
         "speaker": "Specialist (Dermatologist)",
         "turn": 11,
         "phase": "consultation",
-        "text": "Given the chronic, localized, asymptomatic nature of the lesions and associated systemic fatigue, I recommend a thorough skin examination and consider a punch biopsy of a lesion to rule out cutaneous lymphoma or other dermatoses (e.g., sarcoidosis, granulomatous disease). Please describe the morphology (size, color, surface, distribution) of the bumps and consider basic labs (CBC, CMP, LDH) to assess for systemic involvement."
+        "text": "Your differential is appropriate; I would also consider cutaneous lymphoma (e.g., early mycosis fungoides), especially given the mild systemic symptoms, and less likely, a localized infectious process (e.g., atypical mycobacterial infection). I recommend a skin biopsy for histopathology and special stains, as well as basic labs (CBC, ACE, calcium) to evaluate for systemic involvement."
       },
       {
         "speaker": "Doctor",
         "turn": 12,
         "phase": "consultation",
-        "text": "Thank you for your input. I agree that the combination of persistent, localized, asymptomatic skin lesions and systemic fatigue\u2014without clear infectious, inflammatory, or traumatic triggers\u2014raises concern for a possible infiltrative or granulomatous process, including cutaneous lymphoma or sarcoidosis. **To refine the differential, here are my observations and questions:** **1. Morphology of Lesions:** On examination, the bumps are: - Firm, dome-shaped papules, 0.5\u20131 cm in diameter - Skin-colored to slightly erythematous - Smooth surface, no scaling, ulceration, or crusting - Discrete, clustered over a 5x5 cm area on the lateral aspect of the left thigh - No warmth, induration, or fluctuation - No satellite lesions or regional lymphadenopathy **2. Systemic Review:** - No respiratory symptoms (cough, dyspnea) to suggest sarcoidosis -"
+        "text": "Thank you for your input. I agree that a biopsy is warranted, given the persistence and characteristics of the lesions, as well as the associated fatigue. I have a few follow-up questions and thoughts to help refine our differential: 1. **Lesion Morphology:** Would you recommend any specific descriptors or features to look for on closer examination (e.g., surface changes, scale, induration, color, or configuration) that might help distinguish between sarcoidosis, granuloma annulare, and early cutaneous lymphoma? 2. **Distribution and Evolution:** The lesions are localized to the left thigh, with a possible slight increase in number but no spread elsewhere. Does this pattern favor any diagnosis over the others? For example, would mycosis fungoides typically present with more widespread or migratory lesions at this stage? 3. **Systemic Workup:** In addition to CBC, ACE, and calcium, would you recommend any further baseline investigations (e.g.,"
       },
       {
         "speaker": "Specialist (Dermatologist)",
         "turn": 12,
         "phase": "consultation",
-        "text": "Thank you for the detailed description. The morphology and distribution are concerning for a cutaneous lymphoproliferative disorder (e.g., primary cutaneous B- or T-cell lymphoma) or less likely, a granulomatous process such as sarcoidosis. I strongly recommend a punch biopsy for histopathology and immunohistochemistry, and agree with obtaining CBC, CMP, and LDH; consider also serum ACE and calcium to further evaluate for sarcoidosis."
+        "text": "1. For morphology, note surface changes (scaling, ulceration), color (violaceous, erythematous, flesh-colored), induration, and configuration (annular, grouped, linear); sarcoidosis often shows firm, smooth, flesh-to-violaceous papules/plaques, granuloma annulare is usually annular with central clearing, and early mycosis fungoides may have subtle patches/plaques with fine scale. 2. Localized, stable lesions slightly favor granuloma annulare or sarcoidosis over mycosis fungoides, which often starts as patchy, migratory lesions but can be localized early. 3. Consider adding LFTs, renal function, and chest X-ray (for sarcoidosis), and LDH if lymphoma is suspected; infectious workup (e.g., TB, syphilis serology) if clinical suspicion arises."
       },
       {
         "speaker": "Doctor",
         "turn": 13,
         "phase": "consultation",
-        "text": "Thank you for your recommendations. I agree that a punch biopsy is warranted, and I will arrange for this as soon as possible. In the meantime, I have a few follow-up questions and thoughts to further refine our differential: **1. Cutaneous Lymphoma:** Given the chronicity, firm dome-shaped papules, and absence of pruritus or pain, primary cutaneous lymphoma (such as mycosis fungoides or primary cutaneous B-cell lymphoma) is high on the differential. The lack of lymphadenopathy or systemic B symptoms is somewhat reassuring, but I understand that early-stage disease can present in this manner. Are there any specific clinical features or patterns (e.g., poikiloderma, patches, plaques) you would look for on exam to help distinguish between T-cell and B-cell variants at this stage? **2. Sarcoidosis:** While the absence of respiratory symptoms makes sarcoidosis less likely, I agree that it cannot be excluded, especially"
+        "text": "Thank you for your detailed guidance. I have a few follow-up points and questions to help further narrow our differential and optimize the workup: 1. **Clinical Examination:** On closer inspection, the lesions are firm, smooth, flesh-colored papules, without scale, ulceration, or central clearing. They are discrete and not annular or grouped. There is no induration of the surrounding skin, and no overlying erythema or violaceous hue. Does this morphology further favor sarcoidosis over granuloma annulare or mycosis fungoides in your opinion? 2. **Systemic Symptoms:** Given the patient\u2019s chronic fatigue but absence of other systemic symptoms (no cough, dyspnea, arthralgias, or ocular complaints), would you still prioritize sarcoidosis as the leading diagnosis, or does the lack of multi-organ involvement make a cutaneous-limited process more likely? 3. **Biopsy Approach:** Would you recommend a punch biopsy from the"
       },
       {
         "speaker": "Specialist (Dermatologist)",
         "turn": 13,
         "phase": "consultation",
-        "text": "Excellent questions. For cutaneous T-cell lymphoma (e.g., mycosis fungoides), look for patches or plaques with fine scaling, poikiloderma (mottled pigmentation, atrophy, telangiectasia), and possible involvement of non-sun-exposed areas; B-cell lymphomas often present as solitary or clustered, firm, red-to-violaceous nodules or plaques, usually without surface changes. Sarcoidosis lesions are typically firm, non-tender papules or plaques, sometimes with an \"apple jelly\" color on diascopy\u2014systemic workup remains important even in the absence of pulmonary symptoms."
+        "text": "1. The described morphology (firm, smooth, flesh-colored, discrete papules without scale or annularity) is most consistent with cutaneous sarcoidosis, though granuloma annulare remains possible; mycosis fungoides is less likely given the absence of scale and patch/plaque morphology. 2. Sarcoidosis can present as cutaneous-limited disease, especially early, so it remains a leading consideration despite the lack of systemic symptoms. 3. I recommend a punch biopsy from a representative, fully developed lesion (avoid excoriated or early lesions), ideally 4 mm, for histopathology and special stains (AFB, Fite, PAS) to rule out granulomatous infection."
       },
       {
         "speaker": "Doctor",
         "turn": 14,
         "phase": "consultation",
-        "text": "Thank you for clarifying the distinguishing features between cutaneous T-cell and B-cell lymphomas, as well as sarcoidosis. Based on your descriptions and the current clinical findings, I agree that the morphology in this case\u2014firm, dome-shaped, skin-colored to slightly erythematous papules, clustered and localized, with no surface changes\u2014leans more toward a cutaneous B-cell lymphoproliferative process, though sarcoidosis remains in the differential. A few follow-up points and questions to further refine our approach: **1. Additional Clinical Clues:** - On close inspection, I did not observe any poikiloderma, scaling, or atrophy in the affected area or elsewhere, which makes mycosis fungoides less likely at this stage. - The lesions are not violaceous, but rather skin-colored to slightly erythematous. Would you expect early B-cell lymphoma lesions to lack the classic violaceous hue, or does this make another diagnosis more likely"
+        "text": "Thank you for your clear recommendations. I agree that the clinical picture and morphology most strongly suggest cutaneous sarcoidosis, with granuloma annulare as a secondary consideration and mycosis fungoides less likely. A few points and questions to further clarify and optimize our approach: 1. **Biopsy Site and Technique:** - Would you recommend taking a single punch biopsy, or would you consider multiple biopsies if there is any subtle variation among the papules? - Should we send a portion of the specimen for tissue culture (mycobacterial, fungal) in addition to histopathology, or would you reserve this for cases with higher suspicion of infection? 2. **Laboratory and Imaging Workup:** - In addition to CBC, ACE, calcium, LFTs, renal function, and chest X-ray, would you recommend baseline ophthalmologic evaluation, even in the absence of ocular symptoms, given the risk of subclinical sarcoid uveitis?"
       },
       {
         "speaker": "Specialist (Dermatologist)",
         "turn": 14,
         "phase": "consultation",
-        "text": "Early cutaneous B-cell lymphomas can indeed present as skin-colored to erythematous papules or nodules, and the classic violaceous hue is not always present, especially in initial or indolent lesions. The absence of violaceous color does not exclude B-cell lymphoma, but also consider other entities such as pseudolymphoma or granulomatous processes. Histopathology remains essential for definitive diagnosis\u2014please proceed with the biopsy and let me know the results."
+        "text": "If the papules are clinically similar, a single punch biopsy from a representative lesion is sufficient; consider a second biopsy only if there is notable variation. Sending tissue for mycobacterial and fungal cultures is reasonable given the chronicity and granulomatous differential, even if suspicion is low. Baseline ophthalmologic evaluation is recommended for all suspected sarcoidosis cases, as subclinical ocular involvement is common."
       },
       {
         "speaker": "Doctor",
         "turn": 15,
         "phase": "consultation",
-        "text": "Thank you for your guidance and for clarifying the clinical spectrum of early cutaneous B-cell lymphomas. I agree that histopathology is critical at this stage, and I will proceed with a punch biopsy as discussed. To further refine our differential and optimize the diagnostic workup, I have a few additional questions and considerations: **1. Pseudolymphoma:** Given the localized, stable nature of the lesions and absence of systemic symptoms, pseudolymphoma is a reasonable consideration. However, the patient denies any history of trauma, insect bites, or new exposures, which are common triggers. Are there any subtle clinical or histological features that might help distinguish pseudolymphoma from true cutaneous lymphoma, especially in the absence of a clear inciting factor? **2. Granulomatous Processes:** While sarcoidosis remains on the differential, the lack of systemic features (respiratory, ocular, or constitutional symptoms) and the absence of classic \"apple jelly\" nod"
+        "text": "Thank you for your thorough recommendations. I agree with proceeding as you outlined. To further refine our diagnostic approach and management plan, I have a few additional questions and thoughts: 1. **Histopathology Expectations:** - In your experience, are there any histopathologic features that would help distinguish sarcoidosis from other granulomatous conditions (e.g., granuloma annulare, infectious granulomas) if the clinical findings are equivocal? - Would you recommend requesting any specific immunohistochemical stains or molecular studies if the initial biopsy is non-diagnostic? 2. **Follow-up and Monitoring:** - If the biopsy confirms cutaneous sarcoidosis and systemic workup is negative, would you recommend any specific interval for repeat systemic evaluation (labs, imaging, ophthalmology), or is annual follow-up sufficient in asymptomatic patients? - Are there any particular clinical signs or symptoms that should prompt more urgent re-evaluation for systemic involvement? 3. **Therapeutic"
       },
       {
         "speaker": "Specialist (Dermatologist)",
         "turn": 15,
         "phase": "consultation",
-        "text": "Excellent questions. Clinically, pseudolymphoma may be indistinguishable from lymphoma, but histologically, pseudolymphoma often shows a mixed infiltrate with reactive germinal centers, preservation of normal skin architecture, and polyclonal lymphocytes (confirmed by immunohistochemistry and gene rearrangement studies), whereas lymphoma typically shows a monomorphic infiltrate and clonality. For granulomatous processes, absence of systemic features lowers suspicion, but non-caseating granulomas on biopsy would support sarcoidosis\u2014special stains (AFB, fungal) should be performed to exclude infectious causes."
+        "text": "1. Sarcoidosis typically shows well-formed, non-caseating \"naked\" granulomas with minimal lymphocytic cuffing, while granuloma annulare has palisading granulomas with mucin and infectious granulomas often show caseation or organisms on special stains. If initial biopsy is non-diagnostic, consider additional stains (e.g., CD68, CD3, CD20) or PCR for atypical infections. 2. For cutaneous-limited sarcoidosis, annual systemic evaluation (labs, chest imaging, ophthalmology) is generally sufficient unless new symptoms arise; prompt re-evaluation is warranted for cough, dyspnea, visual changes, arthralgias, or constitutional symptoms. 3. Please clarify your therapeutic question so I can address management options."
       }
     ],
     "requested_tests": [],
@@ -45767,97 +45767,96 @@
     "consultation_analysis": {
       "premature_conclusion": false,
       "diagnoses_considered": [
+        "cutaneous sarcoidosis",
+        "granuloma annulare",
         "cutaneous lymphoma",
-        "primary cutaneous B-cell lymphoma",
-        "primary cutaneous T-cell lymphoma (mycosis fungoides)",
-        "sarcoidosis",
-        "granulomatous disease",
-        "pseudolymphoma",
-        "infectious causes"
+        "mycosis fungoides",
+        "localized infectious process",
+        "atypical mycobacterial infection"
       ],
-      "diagnoses_considered_count": 7,
+      "diagnoses_considered_count": 6,
       "disagreements": 0
     },
     "final_doctor_diagnosis": null,
     "top_K diagnoses": [
-      "Primary cutaneous B-cell lymphoma",
-      "Primary cutaneous T-cell lymphoma (mycosis fungoides)",
-      "Cutaneous pseudolymphoma",
       "Cutaneous sarcoidosis",
-      "Granulomatous dermatitis",
-      "Cutaneous metastasis",
-      "Dermatofibroma",
-      "Epidermal inclusion cysts",
+      "Granuloma annulare",
+      "Cutaneous T-cell lymphoma (mycosis fungoides)",
+      "Atypical mycobacterial infection",
+      "Deep fungal infection",
+      "Papular syphilis",
       "Lichen planus",
-      "Cutaneous amyloidosis"
+      "Dermatofibroma",
+      "Eruptive xanthoma",
+      "Papular eczema"
     ],
     "top_K": 10,
     "is_correct": false,
     "embedding_similarity": [
-      0.37305241834527647,
-      0.3867703102465885,
-      0.38871003953475575,
       0.41201607544821045,
-      0.3792425547151497,
-      0.39002228365041597,
-      0.3897439248366534,
-      0.4351961999662027,
+      0.4361490577663846,
+      0.3959508070370168,
+      0.3860433778356625,
+      0.36403071672848053,
+      0.47553177711850225,
       0.4105353920041728,
-      0.3679810602654082
+      0.38973075639482674,
+      0.3479239934260646,
+      0.4706699611382305
     ],
-    "best_embedding_similarity": 0.4351961999662027,
+    "best_embedding_similarity": 0.47553177711850225,
     "tests_left_out": [
-      "Complete_Blood_Count",
-      "HIV_Test"
+      "HIV_Test",
+      "Complete_Blood_Count"
     ],
-    "specialist_reason": "A Dermatologist is the most appropriate specialist because the patient's primary complaint is persistent, non-itchy, non-tender skin bumps localized to the left thigh, with no systemic symptoms or evidence of internal disease, making a skin-focused evaluation essential for diagnosis and management.",
+    "specialist_reason": "A Dermatologist is the most appropriate specialist because the patient's primary complaint is persistent, non-itchy, non-tender skin bumps localized to the left thigh, with no systemic symptoms or clear exposure history, and no evidence of internal disease or autoimmune involvement, making a skin-focused evaluation essential.",
     "Top_1": [
-      "Primary cutaneous B-cell lymphoma"
+      "Cutaneous sarcoidosis"
     ],
     "Top_1 is_correct": false,
     "Top_3": [
-      "Primary cutaneous B-cell lymphoma",
-      "Primary cutaneous T-cell lymphoma (mycosis fungoides)",
-      "Cutaneous pseudolymphoma"
+      "Cutaneous sarcoidosis",
+      "Granuloma annulare",
+      "Cutaneous T-cell lymphoma (mycosis fungoides)"
     ],
     "Top_3 is_correct": false,
     "Top_5": [
-      "Primary cutaneous B-cell lymphoma",
-      "Primary cutaneous T-cell lymphoma (mycosis fungoides)",
-      "Cutaneous pseudolymphoma",
       "Cutaneous sarcoidosis",
-      "Granulomatous dermatitis"
+      "Granuloma annulare",
+      "Cutaneous T-cell lymphoma (mycosis fungoides)",
+      "Atypical mycobacterial infection",
+      "Deep fungal infection"
     ],
     "Top_5 is_correct": false,
     "Top_7": [
-      "Primary cutaneous B-cell lymphoma",
-      "Primary cutaneous T-cell lymphoma (mycosis fungoides)",
-      "Cutaneous pseudolymphoma",
       "Cutaneous sarcoidosis",
-      "Granulomatous dermatitis",
-      "Cutaneous metastasis",
-      "Dermatofibroma"
+      "Granuloma annulare",
+      "Cutaneous T-cell lymphoma (mycosis fungoides)",
+      "Atypical mycobacterial infection",
+      "Deep fungal infection",
+      "Papular syphilis",
+      "Lichen planus"
     ],
     "Top_7 is_correct": false,
     "Top_10": [
-      "Primary cutaneous B-cell lymphoma",
-      "Primary cutaneous T-cell lymphoma (mycosis fungoides)",
-      "Cutaneous pseudolymphoma",
       "Cutaneous sarcoidosis",
-      "Granulomatous dermatitis",
-      "Cutaneous metastasis",
-      "Dermatofibroma",
-      "Epidermal inclusion cysts",
+      "Granuloma annulare",
+      "Cutaneous T-cell lymphoma (mycosis fungoides)",
+      "Atypical mycobacterial infection",
+      "Deep fungal infection",
+      "Papular syphilis",
       "Lichen planus",
-      "Cutaneous amyloidosis"
+      "Dermatofibroma",
+      "Eruptive xanthoma",
+      "Papular eczema"
     ],
     "Top_10 is_correct": false,
     "final_diagnosis_is_correct": false,
-    "best_embedding_similarity_rank": 8,
-    "info_density_score": 0.5774385929107666
+    "best_embedding_similarity_rank": 6,
+    "info_density_score": 0.5656716823577881
   },
   {
-    "timestamp": "2025-07-26T19:58:11.949903",
+    "timestamp": "2025-08-29T18:27:49.374677",
     "model": "gpt-4.1",
     "dataset": "MedQA",
     "scenario_id": 149,
@@ -45877,115 +45876,115 @@
         "speaker": "Patient",
         "turn": 1,
         "phase": "patient",
-        "text": "I've been hearing voices that aren't really there, and it's been happening for about a week now. The voices sometimes talk about me and tell me to hurt myself."
+        "text": "I've been hearing voices that aren't really there, and it's been happening for about a week now. The voices talk about me like I'm not in the room, and sometimes they say really upsetting things. It's been hard to focus on anything since this started."
       },
       {
         "speaker": "Doctor",
         "turn": 1,
         "phase": "patient",
-        "text": "Have you noticed any changes in your mood, such as feeling very sad, anxious, or unusually energetic during this time?"
+        "text": "Have you noticed any changes in your mood, such as feeling unusually sad, elated, or irritable during this time?"
       },
       {
         "speaker": "Patient",
         "turn": 2,
         "phase": "patient",
-        "text": "I\u2019ve been feeling really down and anxious since my dad passed away. Sometimes I feel overwhelmed, but I haven\u2019t felt unusually energetic."
+        "text": "I\u2019ve mostly been feeling really down and overwhelmed since my dad passed away. Sometimes I feel anxious too, but it\u2019s mostly just sadness and confusion."
       },
       {
         "speaker": "Doctor",
         "turn": 2,
         "phase": "patient",
-        "text": "Have you ever experienced anything like this before, or do you have any history of mental health issues or treatment?"
+        "text": "Have you had any trouble with sleep, appetite, or energy levels since these symptoms began?"
       },
       {
         "speaker": "Patient",
         "turn": 3,
         "phase": "patient",
-        "text": "No, I\u2019ve never felt like this before, and I\u2019ve never seen a doctor for anything like this. This all started after my dad passed away."
+        "text": "I haven\u2019t been sleeping well, and my appetite isn\u2019t great lately. I just feel really drained all the time."
       },
       {
         "speaker": "Doctor",
         "turn": 3,
         "phase": "patient",
-        "text": "Have you been using any drugs, alcohol, or new medications recently, or have you stopped any medications suddenly?"
+        "text": "Have you ever experienced anything like this before, or is this the first time you've had these kinds of symptoms?"
       },
       {
         "speaker": "Patient",
         "turn": 4,
         "phase": "patient",
-        "text": "No, I haven\u2019t used any drugs, alcohol, or new medications, and I haven\u2019t stopped any medications either."
+        "text": "No, this is the first time anything like this has happened to me. It all started after my dad passed away last week."
       },
       {
         "speaker": "Doctor",
         "turn": 4,
         "phase": "patient",
-        "text": "Have you noticed any changes in your sleep, appetite, or energy levels since these symptoms began?"
+        "text": "Have you had any thoughts about harming yourself or others since these symptoms began?"
       },
       {
         "speaker": "Patient",
         "turn": 5,
         "phase": "patient",
-        "text": "I haven\u2019t really been sleeping well, and my appetite isn\u2019t great either. I just feel tired all the time, even when I try to rest."
+        "text": "Yes, the voices sometimes tell me to hurt myself, and it scares me. I haven\u2019t acted on it, but it\u2019s hard to ignore them."
       },
       {
         "speaker": "Doctor",
         "turn": 5,
         "phase": "patient",
-        "text": "Have you noticed any problems with your memory, concentration, or ability to perform daily tasks since these symptoms began?"
+        "text": "Have you noticed any changes in your ability to tell what is real and what is not, such as feeling confused about whether things are actually happening or not?"
       },
       {
         "speaker": "Patient",
         "turn": 6,
         "phase": "patient",
-        "text": "Yes, I've been having a really hard time concentrating, and it's been difficult to focus on my schoolwork or even simple things at home. I feel distracted most of the time."
+        "text": "Yes, sometimes I feel unsure if what I'm hearing is real or not, especially when the voices get louder. It can be really confusing and scary."
       },
       {
         "speaker": "Doctor",
         "turn": 6,
         "phase": "patient",
-        "text": "Have you noticed any unusual movements, stiffness, weakness, or changes in sensation in your body since these symptoms began?"
+        "text": "Have you used any drugs or alcohol recently, or started any new medications before these symptoms began?"
       },
       {
         "speaker": "Patient",
         "turn": 7,
         "phase": "patient",
-        "text": "No, I haven\u2019t noticed any unusual movements, stiffness, weakness, or changes in how my body feels. It\u2019s mostly just the voices and the thoughts that are bothering me."
+        "text": "No, I haven\u2019t used any drugs or alcohol, and I haven\u2019t started any new medications recently."
       },
       {
         "speaker": "Doctor",
         "turn": 7,
         "phase": "patient",
-        "text": "Have you had any recent fevers, headaches, confusion, or episodes where you felt disoriented or didn't know where you were?"
+        "text": "Have you had any recent medical illnesses, head injuries, or fevers before these symptoms started?"
       },
       {
         "speaker": "Patient",
         "turn": 8,
         "phase": "patient",
-        "text": "No, I haven\u2019t had any fevers or headaches. I haven\u2019t felt confused or disoriented either\u2014just distracted by the voices and my thoughts."
+        "text": "No, I haven\u2019t had any recent illnesses, head injuries, or fevers before this started. I\u2019ve been physically healthy until now."
       },
       {
         "speaker": "Doctor",
         "turn": 8,
         "phase": "patient",
-        "text": "Have you noticed any beliefs that others are out to get you, or that you have special powers or abilities that others don't recognize?"
+        "text": "Have you noticed any unusual movements, stiffness, or changes in your ability to move or speak since these symptoms began?"
       },
       {
         "speaker": "Patient",
         "turn": 9,
         "phase": "patient",
-        "text": "No, I don\u2019t think anyone is out to get me, and I don\u2019t feel like I have any special powers. It\u2019s mostly just the voices that bother me."
+        "text": "No, I haven\u2019t noticed any unusual movements or stiffness. I don\u2019t think my ability to move or speak has changed."
       },
       {
         "speaker": "Doctor",
         "turn": 9,
         "phase": "patient",
-        "text": "Have you had any recent physical illnesses, head injuries, or significant medical problems in the past few months?"
+        "text": "Have you ever experienced any memory problems, confusion about where you are, or difficulty recognizing people or places during this episode?"
       },
       {
         "speaker": "Patient",
         "turn": 10,
         "phase": "patient",
-        "text": "No, I haven\u2019t had any physical illnesses or injuries recently. I\u2019ve generally been healthy before all of this started."
+        "text": "No, I haven\u2019t had any trouble remembering things or recognizing people or places. I know where I am and who everyone is."
       },
       {
         "speaker": "Doctor",
@@ -45997,67 +45996,67 @@
         "speaker": "System",
         "turn": 11,
         "phase": "consultation",
-        "text": "Consultation started with Psychiatrist. Reason: A Psychiatrist is the most appropriate specialist because the patient is experiencing new-onset auditory hallucinations (hearing voices), mood symptoms (feeling down and anxious), impaired concentration, and functional decline, all without evidence of substance use, medical illness, neurological symptoms, or delirium. These symptoms are most consistent with a primary psychiatric disorder, such as major depressive disorder with psychotic features or a psychotic disorder, which require specialized psychiatric assessment and management."
+        "text": "Consultation started with Psychiatrist. Reason: A Psychiatrist is the most appropriate specialist because the patient is experiencing new-onset auditory hallucinations, mood disturbances (sadness, anxiety), sleep and appetite changes, and passive suicidal ideation without evidence of substance use, medical illness, or neurological symptoms, all of which strongly suggest a primary psychiatric disorder such as major depressive disorder with psychotic features, brief psychotic disorder, or grief-related psychosis."
       },
       {
         "speaker": "Doctor",
         "turn": 11,
         "phase": "consultation",
-        "text": "Thank you for reviewing the case. Here are my initial thoughts: **Summary of Key Findings:** - **Onset:** Acute (about 1 week), following the death of the patient's father. - **Symptoms:** Auditory hallucinations (voices commenting and giving self-harm commands), low mood, anxiety, poor sleep, decreased appetite, low energy, impaired concentration. - **No prior psychiatric history.** - **No substance use, medication changes, or recent medical illness.** - **No neurological symptoms (no confusion, disorientation, fever, or focal deficits).** - **No delusions (paranoid or grandiose), no thought disorder, no mania.** - **No evidence of catatonia or abnormal movements.** **Differential Diagnosis:** 1. **Major Depressive Disorder with Psychotic Features (MDD-PF):** - The patient meets criteria for a major depressive episode (low mood, anhedonia, sleep/appetite disturbance, low energy"
+        "text": "Thank you for reviewing the case. Here are my initial thoughts: **Summary of Findings:** - **Acute onset** of auditory hallucinations (voices talking about the patient, sometimes commanding self-harm), lasting about a week. - **Temporal association** with a significant psychosocial stressor (death of father). - **Mood symptoms:** Predominantly low mood, sadness, anxiety, poor sleep, low appetite, and low energy. - **No prior psychiatric history** or similar episodes. - **No substance use, medical illness, or neurological symptoms.** - **No cognitive impairment** (orientation and memory intact). - **No abnormal movements or speech changes.** **Differential Diagnosis:** 1. **Brief Psychotic Disorder:** Acute onset of psychotic symptoms (hallucinations, possible delusional thinking) in response to a major stressor, lasting less than one month. 2. **Major Depressive Episode with Psychotic Features:** Mood-congruent psychotic symptoms"
       },
       {
         "speaker": "Specialist (Psychiatrist)",
         "turn": 11,
         "phase": "consultation",
-        "text": "I agree that MDD with psychotic features is the leading diagnosis given the acute onset of depressive and psychotic symptoms following bereavement, with no prior psychiatric or medical history. Immediate assessment of suicide risk is critical due to command hallucinations; consider urgent psychiatric intervention, possible hospitalization, and initiation of antidepressant plus antipsychotic therapy. Would you like guidance on specific medication choices or safety planning?"
+        "text": "Your differential is appropriate; the acute onset after bereavement and prominent mood symptoms suggest either brief psychotic disorder or major depressive episode with psychotic features. Given the presence of command auditory hallucinations urging self-harm, urgent safety assessment and possible inpatient admission are warranted. Clarify whether the psychotic symptoms are mood-congruent (e.g., voices reinforcing guilt or worthlessness) to help distinguish between these diagnoses."
       },
       {
         "speaker": "Doctor",
         "turn": 12,
         "phase": "consultation",
-        "text": "Thank you for your input. I agree that the presence of command auditory hallucinations, particularly with self-harm content, raises significant concern for imminent risk and warrants urgent intervention. A few points I\u2019d like to clarify and discuss further: 1. **Bereavement vs. Major Depression with Psychosis:** - Given the temporal relationship to the loss of the patient\u2019s father, do you think this could represent a complicated grief reaction with psychotic features, or does the symptom profile more clearly meet criteria for MDD with psychotic features? - Are there any features that would help us distinguish between bereavement-related psychosis and a primary mood disorder in this context? 2. **Risk Assessment:** - Would you recommend formal suicide risk assessment tools in this setting, or is clinical interview sufficient given the acuity? - If the patient denies intent or plan but continues to experience command hallucinations, would you still advocate for inpatient admission? 3. **Medical Workup"
+        "text": "Thank you for your input. I agree that the distinction between brief psychotic disorder and major depressive episode with psychotic features hinges on the relationship between the mood symptoms and the psychotic symptoms. To clarify further: - The patient describes the voices as \"talking about me like I'm not in the room\" and \"sometimes they say really upsetting things.\" She also reports that the voices sometimes tell her to hurt herself, which she finds frightening. - Her mood symptoms (sadness, low energy, poor sleep, low appetite) have been prominent since her father's death, and the psychotic symptoms began in the same timeframe. - She reports feeling \"really down and overwhelmed,\" but did not mention overt feelings of guilt, worthlessness, or other classic depressive cognitions. **Questions for further clarification:** 1. **Mood-Congruence:** Do we have more detail on the content of the voices? Are they reinforcing negative beliefs about herself (e.g., \"you're worthless,\" \"you deserve this"
       },
       {
         "speaker": "Specialist (Psychiatrist)",
         "turn": 12,
         "phase": "consultation",
-        "text": "1. The presence of pervasive depressive symptoms (anhedonia, impaired function, neurovegetative changes) and psychosis (command hallucinations) beyond typical grief suggests MDD with psychotic features rather than complicated grief, which rarely includes true psychosis. 2. Clinical interview is paramount for risk assessment in acute settings, but formal tools (e.g., Columbia-Suicide Severity Rating Scale) can supplement; persistent command hallucinations warrant strong consideration for inpatient admission regardless of stated intent. 3. For medical workup, basic labs (CBC, CMP, TSH, B12, folate), urine toxicology, and possibly neuroimaging if atypical features arise, are recommended to rule out organic causes."
+        "text": "Thank you for the clarification. If the voices are primarily derogatory or commanding self-harm without explicit reinforcement of depressive cognitions (e.g., guilt, worthlessness), brief psychotic disorder remains likely, especially given the acute onset post-bereavement. Regardless, due to the presence of command hallucinations, urgent psychiatric intervention and consideration of inpatient care for safety are essential; further collateral history and close monitoring are recommended."
       },
       {
         "speaker": "Doctor",
         "turn": 13,
         "phase": "consultation",
-        "text": "Thank you for your detailed response. I agree that the clinical picture most strongly supports MDD with psychotic features, given the severity and breadth of depressive symptoms and the presence of command hallucinations. I have a few follow-up questions and points for further clarification: 1. **Duration and Prognosis:** - Given the acute onset (about one week) and clear precipitant (bereavement), do you anticipate a different prognosis or treatment response compared to more insidious-onset MDD with psychosis? - Are there any specific factors in this context that might predict a more favorable or guarded prognosis? 2. **Psychotic Symptom Monitoring:** - In your experience, how quickly do psychotic symptoms tend to respond to antipsychotic treatment in the context of MDD with psychotic features? - Are there particular antipsychotics you prefer in cases where suicidality is prominent, or would you recommend ECT if symptoms are refractory or risk remains"
+        "text": "Thank you for your guidance. I agree that the acute onset of psychotic symptoms in the context of a significant psychosocial stressor, without a prior psychiatric history or evidence of substance use or medical causes, makes brief psychotic disorder the leading diagnosis at this stage. The absence of clear mood-congruent psychotic content (such as voices reinforcing guilt or worthlessness) also supports this. To further refine the diagnosis and guide management, I have a few additional questions and considerations: **1. Duration and Evolution:** - Given that the symptoms have persisted for about a week, we are still within the timeframe for brief psychotic disorder (<1 month). However, if symptoms persist beyond this, we may need to reconsider the diagnosis (e.g., schizophreniform disorder or mood disorder with psychotic features). - Do you recommend any specific time points for reassessment to monitor for diagnostic evolution? **2. Risk Assessment and Safety:** - The presence of command hallucinations urging self-harm is"
       },
       {
         "speaker": "Specialist (Psychiatrist)",
         "turn": 13,
         "phase": "consultation",
-        "text": "1. Acute onset with a clear psychosocial stressor may predict a more favorable prognosis, especially if there is good premorbid functioning and rapid treatment initiation, but the presence of psychosis and suicidality still indicate a guarded outlook. 2. Psychotic symptoms often begin to improve within days to 1\u20132 weeks of antipsychotic initiation; I typically prefer agents with lower metabolic and extrapyramidal risk (e.g., quetiapine, olanzapine), but ECT should be considered early if suicidality is high or response is inadequate. Would you like recommendations on specific dosing or monitoring strategies?"
+        "text": "I recommend formal reassessment at least weekly, or sooner if symptoms worsen or new features emerge, to monitor for diagnostic evolution beyond brief psychotic disorder. Given the risk associated with command hallucinations, maintain a low threshold for inpatient admission and ensure daily safety checks; involve family or supports in monitoring if managed outpatient."
       },
       {
         "speaker": "Doctor",
         "turn": 14,
         "phase": "consultation",
-        "text": "Thank you for your thoughtful recommendations. I have a few additional questions and points for clarification as we move toward finalizing the management plan: 1. **ECT Consideration:** - Given the patient\u2019s acute presentation and the presence of command hallucinations with self-harm content, would you recommend considering ECT as a first-line intervention, or would you suggest a trial of combined antidepressant and antipsychotic therapy first, provided the patient can be safely managed in an inpatient setting? - Are there particular clinical features (e.g., severity of psychosis, degree of suicidality, catatonia) that would prompt you to favor ECT earlier in the course? 2. **Choice of Antidepressant:** - In the context of MDD with psychotic features, do you have a preference for a particular class of antidepressant (e.g., SSRIs vs. SNRIs vs. mirtazapine), or do you find efficacy to be similar when"
+        "text": "Thank you for your recommendations. I agree that close monitoring is essential, especially given the risk profile. A few points and questions to further refine our approach: **1. Collateral Information:** Would you recommend obtaining collateral history from family members at this stage to clarify any subtle changes in behavior, possible prodromal symptoms, or risk factors that the patient may not have disclosed? This could also help assess the patient\u2019s baseline functioning and support system. **2. Bereavement-Related Psychosis:** Given the temporal association with her father\u2019s death, do you think this presentation could represent a bereavement-related psychotic reaction, or do you view this as a subtype of brief psychotic disorder? Would this distinction influence our management or prognosis? **3. Initial Treatment Approach:** In your experience, do you recommend starting low-dose antipsychotic medication immediately in cases like this, or would you consider a brief period of watchful waiting if the patient\u2019s risk can be managed safely"
       },
       {
         "speaker": "Specialist (Psychiatrist)",
         "turn": 14,
         "phase": "consultation",
-        "text": "1. If the patient is at imminent risk due to command hallucinations or if there is severe psychosis, suicidality, or catatonia, I would favor ECT as a first-line intervention; otherwise, a closely monitored inpatient trial of combined antidepressant and antipsychotic is reasonable. 2. For antidepressants, SSRIs or SNRIs are typically first-line due to tolerability and safety, but mirtazapine can be considered if insomnia or poor appetite predominate; efficacy is generally similar when combined with an antipsychotic. Would you like guidance on ECT consent or specific medication titration protocols?"
+        "text": "1. Yes, collateral history is strongly recommended to clarify baseline, subtle behavioral changes, and risk factors. 2. Bereavement-related psychosis is generally considered a subtype of brief psychotic disorder; while prognosis is often favorable, management does not differ\u2014safety and symptom resolution remain priorities. 3. Given the presence of command hallucinations urging self-harm, I recommend initiating low-dose antipsychotic medication promptly rather than watchful waiting, even if risk appears manageable."
       },
       {
         "speaker": "Doctor",
         "turn": 15,
         "phase": "consultation",
-        "text": "Thank you for your clear recommendations. I have a few additional points to discuss as we refine the management plan and ensure diagnostic clarity: 1. **ECT Decision-Making:** - Given that the patient\u2019s command hallucinations are specifically urging self-harm, but there is no evidence of catatonia or severe agitation, would you recommend an immediate ECT consult, or would you suggest a brief trial (e.g., 48\u201372 hours) of combined pharmacotherapy in a highly supervised inpatient setting before escalating to ECT? - In your experience, are there particular predictors (e.g., rapid symptom escalation, poor insight, lack of response to initial medication) that should prompt us to move more quickly to ECT even in the absence of catatonia? 2. **Monitoring and Safety:** - While awaiting treatment response, do you have specific recommendations for observation protocols (e.g., 1:1 monitoring, frequency of suicide risk assessments) in the inpatient setting for patients"
+        "text": "Thank you for your clear recommendations. I agree that prompt initiation of antipsychotic medication is warranted in this case, given the risk profile. I will also prioritize obtaining collateral information from family to better understand the patient\u2019s baseline and any subtle changes that may not have been captured in the initial assessment. A few further points for discussion: **1. Choice of Antipsychotic and Dosing:** Do you have a preferred antipsychotic and starting dose for brief psychotic disorder in this context, particularly given the patient\u2019s acute distress and lack of prior psychiatric history? Would you favor a medication with a lower side effect burden (e.g., risperidone, olanzapine, or aripiprazole), and do you recommend starting at the lowest effective dose? **2. Duration of Antipsychotic Treatment:** Assuming rapid symptom resolution, what is your usual approach to the duration of antipsychotic therapy in brief psychotic disorder? Do you recommend"
       },
       {
         "speaker": "Specialist (Psychiatrist)",
         "turn": 15,
         "phase": "consultation",
-        "text": "1. In the absence of catatonia or severe agitation, a brief, closely monitored inpatient trial of combined pharmacotherapy (48\u201372 hours) is reasonable, but an ECT consult should be initiated early so the option is readily available if risk escalates or response is inadequate. Predictors for earlier ECT include rapid symptom worsening, persistent command hallucinations despite medication, poor insight, or inability to maintain safety even with intensive supervision. For monitoring, I recommend 1:1 observation until command hallucinations resolve, with suicide risk assessments at least every shift and after any change in mental status or behavior."
+        "text": "For first-episode brief psychotic disorder, I typically start with a second-generation antipsychotic at the lowest effective dose\u2014risperidone 0.5\u20131 mg nightly, olanzapine 2.5\u20135 mg nightly, or aripiprazole 2\u20135 mg daily are all reasonable options. If symptoms resolve rapidly and there are no ongoing risk factors, I generally continue antipsychotic therapy for 1\u20133 months before considering a gradual taper, with close monitoring for relapse."
       }
     ],
     "requested_tests": [],
@@ -46072,92 +46071,98 @@
     "consultation_analysis": {
       "premature_conclusion": false,
       "diagnoses_considered": [
-        "Major Depressive Disorder with Psychotic Features (MDD-PF)",
-        "Psychotic Disorder",
-        "Complicated Grief Reaction with Psychotic Features",
-        "Bereavement-related Psychosis"
+        "Brief Psychotic Disorder",
+        "Major Depressive Episode with Psychotic Features",
+        "Schizophreniform Disorder",
+        "Mood Disorder with Psychotic Features",
+        "Bereavement-Related Psychosis"
       ],
-      "diagnoses_considered_count": 4,
+      "diagnoses_considered_count": 5,
       "disagreements": 0
     },
-    "final_doctor_diagnosis": null,
+    "final_doctor_diagnosis": "Brief psychotic disorder",
     "top_K diagnoses": [
-      "Major Depressive Disorder with Psychotic Features",
-      "Acute Bereavement Reaction",
-      "Suicidal Ideation",
-      "Auditory Hallucinations",
-      "Insomnia",
-      "Generalized Anxiety Symptoms",
-      "Poor Concentration",
-      "Decreased Appetite",
-      "Rule Out Substance-Induced Psychosis",
-      "Rule Out Medical Causes of Psychosis"
+      "Brief psychotic disorder",
+      "Major depressive episode with psychotic features",
+      "Schizophreniform disorder",
+      "Schizophrenia",
+      "Bereavement-related psychosis",
+      "Adjustment disorder with disturbance of emotions and conduct",
+      "Persistent complex bereavement disorder",
+      "Delusional disorder",
+      "Substance/medication-induced psychotic disorder",
+      "Mood disorder due to another medical condition"
     ],
     "top_K": 10,
-    "is_correct": false,
+    "is_correct": true,
     "embedding_similarity": [
-      0.6073305014267182,
-      0.39507657774670385,
-      0.2952970507294066,
-      0.30424767819238663,
-      0.22919404138540303,
-      0.2525206741136193,
-      0.2033565810559966,
-      0.1608982504722711,
-      0.47091671758092324,
-      0.4248492170620127
+      1.0,
+      0.6001388647644628,
+      0.666488331090573,
+      0.47002954946590625,
+      0.5641601653321635,
+      0.38269263585827623,
+      0.4780771841504931,
+      0.5442483928981258,
+      0.5991463932980998,
+      0.4117484715962988
     ],
-    "best_embedding_similarity": 0.6073305014267182,
+    "best_embedding_similarity": 1.0,
     "tests_left_out": [
+      "Thyroid_Stimulating_Hormone",
       "Urine_Toxicology",
-      "Complete_Blood_Count",
       "Comprehensive_Metabolic_Panel",
-      "Thyroid_Stimulating_Hormone"
+      "Complete_Blood_Count"
     ],
-    "specialist_reason": "A Psychiatrist is the most appropriate specialist because the patient is experiencing new-onset auditory hallucinations (hearing voices), mood symptoms (feeling down and anxious), impaired concentration, and functional decline, all without evidence of substance use, medical illness, neurological symptoms, or delirium. These symptoms are most consistent with a primary psychiatric disorder, such as major depressive disorder with psychotic features or a psychotic disorder, which require specialized psychiatric assessment and management.",
+    "specialist_reason": "A Psychiatrist is the most appropriate specialist because the patient is experiencing new-onset auditory hallucinations, mood disturbances (sadness, anxiety), sleep and appetite changes, and passive suicidal ideation without evidence of substance use, medical illness, or neurological symptoms, all of which strongly suggest a primary psychiatric disorder such as major depressive disorder with psychotic features, brief psychotic disorder, or grief-related psychosis.",
     "Top_1": [
-      "Major Depressive Disorder with Psychotic Features"
+      "Brief psychotic disorder"
     ],
-    "Top_1 is_correct": false,
+    "Top_1 is_correct": true,
+    "Top_1 correct rank": 1,
     "Top_3": [
-      "Major Depressive Disorder with Psychotic Features",
-      "Acute Bereavement Reaction",
-      "Suicidal Ideation"
+      "Brief psychotic disorder",
+      "Major depressive episode with psychotic features",
+      "Schizophreniform disorder"
     ],
-    "Top_3 is_correct": false,
+    "Top_3 is_correct": true,
+    "Top_3 correct rank": 1,
     "Top_5": [
-      "Major Depressive Disorder with Psychotic Features",
-      "Acute Bereavement Reaction",
-      "Suicidal Ideation",
-      "Auditory Hallucinations",
-      "Insomnia"
+      "Brief psychotic disorder",
+      "Major depressive episode with psychotic features",
+      "Schizophreniform disorder",
+      "Schizophrenia",
+      "Bereavement-related psychosis"
     ],
-    "Top_5 is_correct": false,
+    "Top_5 is_correct": true,
+    "Top_5 correct rank": 1,
     "Top_7": [
-      "Major Depressive Disorder with Psychotic Features",
-      "Acute Bereavement Reaction",
-      "Suicidal Ideation",
-      "Auditory Hallucinations",
-      "Insomnia",
-      "Generalized Anxiety Symptoms",
-      "Poor Concentration"
+      "Brief psychotic disorder",
+      "Major depressive episode with psychotic features",
+      "Schizophreniform disorder",
+      "Schizophrenia",
+      "Bereavement-related psychosis",
+      "Adjustment disorder with disturbance of emotions and conduct",
+      "Persistent complex bereavement disorder"
     ],
-    "Top_7 is_correct": false,
+    "Top_7 is_correct": true,
+    "Top_7 correct rank": 1,
     "Top_10": [
-      "Major Depressive Disorder with Psychotic Features",
-      "Acute Bereavement Reaction",
-      "Suicidal Ideation",
-      "Auditory Hallucinations",
-      "Insomnia",
-      "Generalized Anxiety Symptoms",
-      "Poor Concentration",
-      "Decreased Appetite",
-      "Rule Out Substance-Induced Psychosis",
-      "Rule Out Medical Causes of Psychosis"
+      "Brief psychotic disorder",
+      "Major depressive episode with psychotic features",
+      "Schizophreniform disorder",
+      "Schizophrenia",
+      "Bereavement-related psychosis",
+      "Adjustment disorder with disturbance of emotions and conduct",
+      "Persistent complex bereavement disorder",
+      "Delusional disorder",
+      "Substance/medication-induced psychotic disorder",
+      "Mood disorder due to another medical condition"
     ],
-    "Top_10 is_correct": false,
-    "final_diagnosis_is_correct": false,
+    "Top_10 is_correct": true,
+    "Top_10 correct rank": 1,
+    "final_diagnosis_is_correct": true,
     "best_embedding_similarity_rank": 1,
-    "info_density_score": 0.5262740254402161
+    "info_density_score": 0.5213868618011475
   }
 ]

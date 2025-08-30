@@ -368,7 +368,7 @@ class DoctorAgent(Agent):
             return answer, "patient_interaction"
 
         elif mode == "consultation":
-            prompt = f"\nHere is the full history (Patient interaction, {doctors_switched} Previous Doctor Interactions if not 0, followed by consultation):\n{self.agent_hist}\nYou are a doctor of speciality: {self.current_speciality} consulting with a {self.specialist_type}.\nHere was the specialist's latest response:\n{last_response}\nContinue the consultation using your expertise as a {self.current_speciality} specialist. Ask questions or share your thoughts to refine the diagnosis.\nDoctor: "
+            prompt = f"\nHere is the full history (Patient interaction, {doctors_switched} previous doctor Interactions if not 0, followed by consultation):\n{self.agent_hist}\nYou are a doctor of speciality: {self.current_speciality} consulting with a {self.specialist_type}.\nHere was the specialist's latest response:\n{last_response}\nContinue the consultation using your expertise as a {self.current_speciality} specialist. Ask questions or share your thoughts to refine the diagnosis.\nDoctor: "
             system_prompt = f"You are Dr. Agent of speciality: {self.current_speciality}, consulting with a {self.specialist_type} about a patient case. Discuss the findings and differential diagnoses based on the history provided and your experience as a practitioner of {self.current_speciality}. Aim to reach a conclusion."
             answer = query_model(prompt, system_prompt)
             self.add_hist(f"Doctor: {answer}")

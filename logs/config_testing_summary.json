@@ -1,13 +1,13 @@
 {
-  "start_time": "2025-08-02T12:22:49.433325",
+  "start_time": "2025-08-29T18:26:09.290293",
   "completed_combinations": 4,
   "total_combinations": 4,
   "results_by_combination": {
     "MedQA_Base-Case": {
       "completed": true,
       "scenarios_run": 150,
-      "correct_diagnoses": 111,
-      "accuracy": 74.0
+      "correct_diagnoses": 112,
+      "accuracy": 74.66666666666667
     },
     "MedQA_Augmented-Doctor": {
       "completed": true,
@@ -28,6 +28,6 @@
       "accuracy": 68.66666666666667
     }
   },
-  "end_time": "2025-08-02T12:26:24.153825",
-  "total_duration_seconds": 214.7205
+  "end_time": "2025-08-29T18:29:24.363888",
+  "total_duration_seconds": 195.073595
 }
